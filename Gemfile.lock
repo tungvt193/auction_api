@@ -289,10 +289,10 @@ DEPENDENCIES
   capistrano3-puma
   carrierwave (= 1.3.1)
   dotenv-rails
-  graphiql-rails
+  graphiql-rails (= 1.7.0)
   graphql (= 1.9.4)
-  graphql-batch
-  graphql-guard
+  graphql-batch (= 0.4.3)
+  graphql-guard (= 1.3.1)
   graphql-query-resolver (= 0.2.0)
   kaminari (= 1.1.1)
   listen (~> 3.3)

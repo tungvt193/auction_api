@@ -9,7 +9,7 @@ class GraphqlPolicy
       '*': {
         guard: ->(_obj, _args, ctx) { roles.include?(ctx[:current_user].try(:role)) }
       },
-      v1Signin: {
+      v1SignIn: {
         guard: ->(_obj, _args, _ctx) { true }
       },
       v1ForgotPassword: {

@@ -1,17 +1,23 @@
 class AuctionApiSchema < GraphQL::Schema
-  max_depth 10
-  max_complexity 300
-  default_max_page_size 20
-
   mutation(Types::MutationType)
   query(Types::QueryType)
 
+  # Opt in to the new runtime (default in future graphql-ruby versions)
   use GraphQL::Analysis::AST
+  # use GraphQL::Backtrace
+
+  # GraphQL::Batch setup:
   use BatchLoader::GraphQL
+
   use GraphQL::Guard.new(
     policy_object: GraphqlPolicy,
     not_authorized: ->(type, field) { GraphQL::ExecutionError.new("Not authorized to access #{type}.#{field}") }
   )
+
+  # Add built-in connections for pagination
+  # use GraphQL::Pagination::Connections
+
+  # Relay Object Identification:
 
   # Object Resolution
   def self.resolve_type(_type, _obj, _ctx)
@@ -24,7 +30,7 @@ class AuctionApiSchema < GraphQL::Schema
   end
 
   # Return a string UUID for `object`
-  def self.id_from_object(object, type_definition, _)
+  def self.id_from_object(object, type_definition, _query_ctx)
     # Here's a simple implementation which:
     # - joins the type name & object.id
     # - encodes it with base64:
@@ -32,7 +38,7 @@ class AuctionApiSchema < GraphQL::Schema
   end
 
   # Given a string UUID, find the object
-  def self.object_from_id(id, _)
+  def self.object_from_id(id, _query_ctx)
     # For example, to decode the UUIDs generated above:
     _, item_id = GraphQL::Schema::UniqueWithinType.decode(id)
     #

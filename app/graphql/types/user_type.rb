@@ -2,10 +2,14 @@
 #
 # Table name: users
 #
-#  id                     :integer          not null, primary key
+#  id                     :bigint           unsigned, not null, primary key
+#  first_name             :string(255)
+#  last_name              :string(255)
 #  email                  :string(255)      default(""), not null
 #  encrypted_password     :string(255)      default(""), not null
 #  reset_password_token   :string(255)
+#  role                   :integer          default("user"), not null
+#  gender                 :integer          default("male"), not null
 #  reset_password_sent_at :datetime
 #  remember_created_at    :datetime
 #  sign_in_count          :integer          default(0)
@@ -19,13 +23,16 @@
 
 module Types
   class UserType < BaseNode
-    field :email,                  String, null: true
-    field :remember_created_at,    Types::DateType, null: true
-    field :sign_in_count,          Int, null: true
-    field :current_sign_in_at,     Types::DateType, null: true
-    field :last_sign_in_at,        Types::DateType, null: true
-    field :current_sign_in_ip,     String, null: true
-    field :last_sign_in_ip,        String, null: true
-    field :role,                   String, null: false
+    field :first_name,  String, null: true
+    field :last_name, String, null: true
+    field :gender, String, null: true
+    field :email, String, null: true
+    field :remember_created_at, Types::DateType, null: true
+    field :sign_in_count, Int, null: true
+    field :current_sign_in_at, Types::DateType, null: true
+    field :last_sign_in_at, Types::DateType, null: true
+    field :current_sign_in_ip, String, null: true
+    field :last_sign_in_ip, String, null: true
+    field :role, String, null: false
   end
 end

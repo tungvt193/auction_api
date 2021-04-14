@@ -3,10 +3,13 @@
 # Table name: users
 #
 #  id                     :bigint           unsigned, not null, primary key
+#  first_name             :string(255)
+#  last_name              :string(255)
 #  email                  :string(255)      default(""), not null
 #  encrypted_password     :string(255)      default(""), not null
 #  reset_password_token   :string(255)
 #  role                   :integer          default("user"), not null
+#  gender                 :integer          default("male"), not null
 #  reset_password_sent_at :datetime
 #  remember_created_at    :datetime
 #  sign_in_count          :integer          default(0)
@@ -18,9 +21,12 @@
 #  updated_at             :datetime         not null
 #
 class User < ApplicationRecord
-  enum role: {
-    user: 0,
-    admin: 1,
-    super_admin: 2
-  }
+  enum role: [:user, :admin, :super_admin]
+  enum gender: [:male, :female]
+
+  def authenticate(password)
+    cryptor.decrypt_and_verify(encrypted_password) == password
+  rescue StandardError
+    nil
+  end
 end

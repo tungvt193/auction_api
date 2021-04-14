@@ -13,10 +13,13 @@
 ActiveRecord::Schema.define(version: 0) do
 
   create_table "users", id: { type: :bigint, unsigned: true }, charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.string "first_name"
+    t.string "last_name"
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
     t.integer "role", default: 0, null: false
+    t.integer "gender", default: 0, null: false
     t.datetime "reset_password_sent_at", precision: 6
     t.datetime "remember_created_at", precision: 6
     t.integer "sign_in_count", default: 0

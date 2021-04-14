@@ -6,6 +6,20 @@ class ApplicationController < ActionController::API
     logger.error e.message
     logger.error e.backtrace.join("\n")
 
-    render json: { errors: [{ message: e.message, backtrace: e.backtrace }], data: {} }, status: status
+    render json: {
+      errors: [{
+        message: e.message,
+        extensions: {
+        code: 'GRAPHQL_VALIDATION_FAILED',
+          exception: {
+            stacktrace: [
+              e.backtrace
+            ]
+          }
+        }
+      }],
+      message: e.message,
+      data: nil
+    }, status: status
   end
 end
