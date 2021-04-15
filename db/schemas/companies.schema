@@ -1,0 +1,13 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+create_table(:companies, id: { type: :bigint, unsigned: true }, charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci") do |t|
+  t.string 'name', null: false
+  t.string 'logo'
+  t.string 'logo_tmp'
+  t.integer 'status', null: false, default: 0
+
+  t.datetime "created_at", precision: 6, null: false
+  t.datetime "updated_at", precision: 6, null: false
+
+  t.index ['status'], name: 'index_companies_on_status'
+end

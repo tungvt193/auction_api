@@ -10,7 +10,7 @@ class ApplicationController < ActionController::API
       errors: [{
         message: e.message,
         extensions: {
-        code: 'GRAPHQL_VALIDATION_FAILED',
+        code: status,
           exception: {
             stacktrace: [
               e.backtrace
@@ -20,6 +20,6 @@ class ApplicationController < ActionController::API
       }],
       message: e.message,
       data: nil
-    }, status: status
+    }, status: 200
   end
 end

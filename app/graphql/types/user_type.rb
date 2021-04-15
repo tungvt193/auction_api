@@ -27,10 +27,10 @@ module Types
     field :last_name, String, null: true
     field :gender, String, null: true
     field :email, String, null: true
-    field :remember_created_at, Types::DateType, null: true
+    field :remember_created_at, String, null: true
     field :sign_in_count, Int, null: true
-    field :current_sign_in_at, Types::DateType, null: true
-    field :last_sign_in_at, Types::DateType, null: true
+    field :current_sign_in_at, String, null: true
+    field :last_sign_in_at, String, null: true
     field :current_sign_in_ip, String, null: true
     field :last_sign_in_ip, String, null: true
     field :role, String, null: false

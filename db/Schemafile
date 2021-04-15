@@ -2,3 +2,15 @@
 # vi: set ft=ruby :
 
 require 'schemas/users.schema'
+require 'schemas/banners.schema'
+require 'schemas/categories.schema'
+require 'schemas/news.schema'
+require 'schemas/products.schema'
+require 'schemas/images.schema'
+require 'schemas/followers.schema'
+require 'schemas/favorites.schema'
+require 'schemas/videos.schema'
+require 'schemas/auctions.schema'
+require 'schemas/auction_users.schema'
+require 'schemas/rates.schema'
+require 'schemas/companies.schema'

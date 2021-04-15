@@ -12,6 +12,136 @@
 
 ActiveRecord::Schema.define(version: 0) do
 
+  create_table "auction_users", id: { type: :bigint, unsigned: true }, charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.bigint "auction_id", null: false
+    t.bigint "user_id", null: false
+    t.integer "status", default: 0, null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["auction_id", "user_id"], name: "index_auction_users_on_auction_id_and_user_id"
+    t.index ["status"], name: "index_auction_users_on_status"
+  end
+
+  create_table "auctions", id: { type: :bigint, unsigned: true }, charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.string "name", null: false
+    t.float "used_hours", default: 0.0, null: false
+    t.datetime "year_of_manufacture", null: false
+    t.string "address", null: false
+    t.float "min_price", default: 0.0, null: false
+    t.datetime "started_at"
+    t.datetime "ended_at"
+    t.integer "status", default: 0, null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["status"], name: "index_auctions_on_status"
+  end
+
+  create_table "banners", id: { type: :bigint, unsigned: true }, charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.string "url"
+    t.string "cover"
+    t.string "cover_tmp"
+    t.string "title"
+    t.integer "status", default: 0, null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["status"], name: "index_banners_on_status"
+  end
+
+  create_table "categories", id: { type: :bigint, unsigned: true }, charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.string "name", null: false
+    t.integer "status", default: 0, null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["status"], name: "index_categories_on_status"
+  end
+
+  create_table "companies", id: { type: :bigint, unsigned: true }, charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "logo"
+    t.string "logo_tmp"
+    t.integer "status", default: 0, null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["status"], name: "index_companies_on_status"
+  end
+
+  create_table "favorites", id: { type: :bigint, unsigned: true }, charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.string "favoritable_type", null: false
+    t.bigint "favoritable_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["favoritable_id", "favoritable_type"], name: "index_favorites_on_favoritable_type_and_favoritable_id"
+    t.index ["user_id"], name: "index_favorites_on_user_id"
+  end
+
+  create_table "followers", id: { type: :bigint, unsigned: true }, charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.string "followable_type", null: false
+    t.bigint "followable_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["followable_id", "followable_type"], name: "index_followers_on_followable_type_and_followable_id"
+    t.index ["user_id"], name: "index_followers_on_user_id"
+  end
+
+  create_table "images", id: { type: :bigint, unsigned: true }, charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.string "name"
+    t.string "file"
+    t.string "file_tmp"
+    t.string "imageable_type", null: false
+    t.bigint "imageable_id", null: false
+    t.float "price", default: 0.0, null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["imageable_id", "imageable_type"], name: "index_images_on_imageable_id_and_imageable_type"
+    t.index ["imageable_id"], name: "index_images_on_imageable_id"
+    t.index ["imageable_type"], name: "index_images_on_imageable_type"
+  end
+
+  create_table "news", id: { type: :bigint, unsigned: true }, charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.text "content"
+    t.string "cover"
+    t.string "content_tmp"
+    t.string "cover_tmp"
+    t.text "short_description"
+    t.string "title", null: false
+    t.integer "status", default: 0, null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["status"], name: "index_news_on_status"
+  end
+
+  create_table "products", id: { type: :bigint, unsigned: true }, charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "thumb"
+    t.string "thumb_tmp"
+    t.string "code", null: false
+    t.float "price", default: 0.0, null: false
+    t.string "keyword"
+    t.bigint "company_id", null: false
+    t.float "star", default: 0.0, null: false
+    t.float "star_total", default: 0.0, null: false
+    t.datetime "started_at"
+    t.integer "status", default: 0, null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["company_id"], name: "index_products_on_company_id"
+    t.index ["keyword"], name: "index_products_on_keyword"
+    t.index ["status"], name: "index_products_on_status"
+  end
+
+  create_table "rates", id: { type: :bigint, unsigned: true }, charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.string "ratable_type", null: false
+    t.bigint "ratable_id", null: false
+    t.bigint "user_id", null: false
+    t.text "comment"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["ratable_id", "ratable_type"], name: "index_rates_on_ratable_type_and_ratable_id"
+    t.index ["user_id"], name: "index_rates_on_user_id"
+  end
+
   create_table "users", id: { type: :bigint, unsigned: true }, charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "first_name"
     t.string "last_name"
@@ -27,11 +157,24 @@ ActiveRecord::Schema.define(version: 0) do
     t.datetime "last_sign_in_at", precision: 6
     t.string "current_sign_in_ip"
     t.string "last_sign_in_ip"
+    t.string "avatar"
+    t.string "avatar_tmp"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
     t.index ["role"], name: "index_users_on_role", unique: true
+  end
+
+  create_table "videos", id: { type: :bigint, unsigned: true }, charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.string "cover"
+    t.string "cover_tmp"
+    t.string "url", null: false
+    t.string "title", null: false
+    t.integer "status", default: 0, null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["status"], name: "index_videos_on_status"
   end
 
 end

@@ -1,0 +1,17 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+create_table(:images, id: { type: :bigint, unsigned: true }, charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci") do |t|
+  t.string 'name'
+  t.string 'file'
+  t.string 'file_tmp'
+  t.string 'imageable_type', null: false
+  t.bigint 'imageable_id', null: false
+  t.float 'price', null: false, default: 0.0
+
+  t.datetime "created_at", precision: 6, null: false
+  t.datetime "updated_at", precision: 6, null: false
+
+  t.index ['imageable_id'], name: 'index_images_on_imageable_id'
+  t.index ['imageable_type'], name: 'index_images_on_imageable_type'
+  t.index ['imageable_id', 'imageable_type'], name: 'index_images_on_imageable_id_and_imageable_type'
+end

@@ -1,0 +1,14 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+create_table(:banners, id: { type: :bigint, unsigned: true }, charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci") do |t|
+  t.string 'url'
+  t.string 'cover'
+  t.string 'cover_tmp'
+  t.string 'title'
+  t.integer 'status', null: false, default: 0
+
+  t.datetime "created_at", precision: 6, null: false
+  t.datetime "updated_at", precision: 6, null: false
+
+  t.index ['status'], name: 'index_banners_on_status'
+end
