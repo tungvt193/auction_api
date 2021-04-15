@@ -11,8 +11,9 @@ gem 'mysql2', '0.5.3'
 gem 'puma', '5.2.2'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 # gem 'jbuilder', '~> 2.7'
-# Use Redis adapter to run Action Cable in production
-# gem 'redis', '~> 4.0'
+# redis to make fast storage
+gem 'redis', '~> 3.3', '>= 3.3.1'
+gem 'redis-namespace', '~> 1.6.0'
 # Use Active Model has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
