@@ -18,6 +18,8 @@
 #  updated_at :datetime         not null
 #
 class Product < ApplicationRecord
+  mount_uploader :thumb, ImageUploader
+
   belongs_to :company
   
   enum status: [:deactive, :active, :popular]

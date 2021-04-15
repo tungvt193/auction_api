@@ -14,6 +14,9 @@
 #  updated_at        :datetime         not null
 #
 class News < ApplicationRecord
+  mount_uploader :cover, ImageUploader
+  mount_uploader :content, FileUploader
+
   enum status: [:deactive, :active, :popular]
 
   def cover_url

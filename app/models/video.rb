@@ -12,5 +12,7 @@
 #  updated_at :datetime         not null
 #
 class Video < ApplicationRecord
+  mount_uploader :cover, ImageUploader
+  
   enum status: [:deactive, :active]
 end

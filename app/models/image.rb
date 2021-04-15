@@ -13,6 +13,7 @@
 #  updated_at     :datetime         not null
 #
 class Image < ApplicationRecord
+  mount_uploader :file, ImageUploader
 
   def file_url
     file.try(:url)

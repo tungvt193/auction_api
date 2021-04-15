@@ -12,6 +12,8 @@
 #  updated_at :datetime         not null
 #
 class Banner < ApplicationRecord
+  mount_uploader :cover, ImageUploader
+
   enum status: [:deactive, :active]
   
   def cover_url

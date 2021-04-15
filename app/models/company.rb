@@ -11,6 +11,8 @@
 #  updated_at :datetime         not null
 #
 class Company < ApplicationRecord
+  mount_uploader :logo, ImageUploader
+
   has_many :products
 
   def logo_url
