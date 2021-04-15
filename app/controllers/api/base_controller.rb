@@ -5,7 +5,7 @@ module Api
     attr_accessor :current_user
 
     def authorized_handler
-      return if %w[v1SignIn v1ForgotPassword v1ResetPassword].include?(operation_name)
+      return if skip_operations.include?(operation_name)
 
       @current_user = detect_current_user
     end
@@ -40,6 +40,24 @@ module Api
       return if request.headers['Authorization'].blank?
 
       request.headers['Authorization'].split(' ').try(:last)
+    end
+
+    def skip_operations
+      %w[
+        v1SignIn
+        v1ForgotPassword
+        v1ResetPassword
+        v1NewsList
+        v1CategoryList
+        v1CompanyList
+        v1ProductList
+        v1AuctionList
+        v1Product
+        v1Category
+        v1Company
+        v1News
+        v1Auction
+      ]
     end
   end
 end

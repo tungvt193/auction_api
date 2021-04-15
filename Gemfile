@@ -62,6 +62,8 @@ gem 'ridgepole'
 
 # Gem upload
 gem 'carrierwave', '1.3.1'
+gem 'mini_magick'
+gem 'carrierwave-imageoptimizer'
 
 # Gem load environment
 gem 'dotenv-rails'
@@ -75,3 +77,10 @@ gem "paranoia"
 gem 'ancestry'
 gem 'ransack', github: 'activerecord-hackery/ransack'
 gem 'slack-notifier'
+gem 'carrierwave_backgrounder', github: 'leoduquesnel/carrierwave_backgrounder'
+
+# ActiveJobAdapter
+gem 'sidekiq', '~> 5.0', '>= 5.0.5'
+gem 'sidekiq-bulk', '~> 0.1.1'
+gem 'sidekiq-scheduler', '~> 2.0', '>= 2.0.8'
+gem 'sidekiq-status', '~> 0.6.0'

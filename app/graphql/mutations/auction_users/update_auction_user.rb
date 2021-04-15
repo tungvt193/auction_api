@@ -1,9 +1,9 @@
 module Mutations
-  module Auctions
-    class UpdateAuction < BaseMutation
+  module AuctionUsers
+    class UpdateAuctionUser < BaseMutation
       argument :id, ID, required: true
       argument :attribute, Types::AttributeType, required: true
-      field :data, ::Types::AuctionType, null: false
+      field :data, ::Types::AuctionUserType, null: false
 
       def resolve(args)
         super

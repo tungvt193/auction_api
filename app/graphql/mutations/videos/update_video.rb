@@ -1,9 +1,9 @@
 module Mutations
-  module Images
-    class UpdateImage < BaseMutation
+  module Videos
+    class UpdateVideo < BaseMutation
       argument :id, ID, required: true
       argument :attribute, Types::AttributeType, required: true
-      field :data, ::Types::ImageType, null: false
+      field :data, ::Types::VideoType, null: false
 
       def resolve(args)
         super
@@ -25,7 +25,7 @@ module Mutations
 
       def normalize_parameters(args)
         ::ActionController::Parameters.new(args.as_json).permit(
-          :id, :file
+          :id, :cover, :url, :title, :status
         )
       end
     end
