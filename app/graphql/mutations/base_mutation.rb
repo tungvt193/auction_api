@@ -1,12 +1,13 @@
 module Mutations
   class BaseMutation < GraphQL::Schema::RelayClassicMutation
-    argument_class Types::BaseArgument
+    # argument_class Types::BaseArgument
     field_class Types::BaseField
     input_object_class Types::BaseInputObject
     object_class Types::BaseObject
 
     argument :attribute, Types::AttributeType, required: false
     argument :attributes, [Types::AttributeType], required: false
+    argument :file, Types::AttributeType, required: false
 
     def resolve(_args)
       @current_user = context[:current_user]
