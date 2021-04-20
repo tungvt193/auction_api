@@ -36,3 +36,8 @@ user.assign_attributes({
 
 user.save!
 ```
+
+Start Server
+```sh
+rails s -b 0.0.0.0 -p 3000
+```
