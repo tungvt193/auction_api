@@ -57,6 +57,7 @@ module Api
         v1Company
         v1News
         v1Auction
+        v1BannerList
       ]
     end
   end

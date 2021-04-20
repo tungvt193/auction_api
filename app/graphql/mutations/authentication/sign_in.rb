@@ -9,7 +9,7 @@ module Mutations
 
         params = normalize_parameters(args)
 
-        user = ::User.find_by email: params[:email]
+        user = ::User.find_by email: params[:username]
         raise ActiveRecord::RecordNotFound, 'Username is incorrect!' if user.blank?
 
         unless user.authenticate(params[:password])
@@ -37,7 +37,7 @@ module Mutations
       private
 
       def normalize_parameters(args)
-        ActionController::Parameters.new(args[:attribute].as_json).permit(:email, :password)
+        ActionController::Parameters.new(args[:attribute].as_json).permit(:username, :password)
       end
     end
   end

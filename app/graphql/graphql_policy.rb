@@ -2,7 +2,7 @@ class GraphqlPolicy
   RULES = {
     'Query' => {
       '*': {
-        guard: ->(_obj, _args, ctx) { roles.include?(ctx[:current_user].try(:role)) }
+        guard: ->(_obj, _args, ctx) { true }
       },
     },
     'Mutation' => {
