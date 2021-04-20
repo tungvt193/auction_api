@@ -1,24 +1,38 @@
-# README
+# Auction Flutter API
+## _Đấu giá máy công trình_
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Auction là nền tảng ứng dụng đấu giá
 
-Things you may want to cover:
+## Công nghệ
 
-* Ruby version
+- [Flutter] - Flutter apps!
+- [Ruby on Rails] - API graphql base on Ruby on Rails
 
-* System dependencies
+## Installation
 
-* Configuration
+Dillinger requires Ruby on Rails, Flutter
 
-* Database creation
+Install the dependencies and devDependencies and start the server.
 
-* Database initialization
+For Flutter App
 
-* How to run the test suite
+```sh
+cd auction_api
+bundle install
+bundle exec rails db:create
+bundle exec rails migration:apply
 
-* Services (job queues, cache servers, search engines, etc.)
+```
 
-* Deployment instructions
+To Make a User
+```sh
+cd auction_api
+rails c
+user = User.new
+user.assign_attributes({
+  email: 'tainv.it93@gmail.com',
+  encrypted_password: user.cryptor.encrypt_and_sign('12345678')
+})
 
-* ...
+user.save!
+```
