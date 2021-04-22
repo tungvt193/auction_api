@@ -17,7 +17,6 @@ module Types
     field :name,  String, null: true
     field :address,  String, null: true
     field :started_at, String, null: true
-    field :code, String, null: true
     field :ended_at, String, null: true
     field :status, String, null: true
   end
