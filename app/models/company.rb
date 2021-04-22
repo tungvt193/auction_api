@@ -13,7 +13,8 @@
 class Company < ApplicationRecord
   mount_uploader :logo, ImageUploader
 
-  has_many :products
+  has_many :product_companies
+  has_many :products, through: :product_companies
 
   def logo_url
     logo.try(:url)

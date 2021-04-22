@@ -22,10 +22,7 @@ module Types
   class ProductType < BaseNode
     field :name, String, null: false
     field :thumb_url, String, null: false
-    field :code, String, null: false
-    field :price, Int, null: false
     field :keyword, String, null: false
-    field :company_id, ID, null: false
     field :category_id, ID, null: false
     field :star, String, null: false
     field :star_total, String, null: false

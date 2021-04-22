@@ -4,10 +4,7 @@ create_table(:products, id: { type: :bigint, unsigned: true }, charset: "utf8mb4
   t.string 'name', null: false
   t.string 'thumb'
   t.string 'thumb_tmp'
-  t.string 'code', null: false
-  t.float 'price', null: false, default: 0.0
   t.string 'keyword'
-  t.bigint 'company_id', null: false
   t.bigint 'category_id', null: false
   t.float 'star', null: false, default: 0.0
   t.float 'star_total', null: false, default: 0.0
@@ -20,6 +17,5 @@ create_table(:products, id: { type: :bigint, unsigned: true }, charset: "utf8mb4
 
   t.index ['status'], name: 'index_products_on_status'
   t.index ['keyword'], name: 'index_products_on_keyword'
-  t.index ['company_id'], name: 'index_products_on_company_id'
   t.index ['category_id'], name: 'index_products_on_category_id'
 end

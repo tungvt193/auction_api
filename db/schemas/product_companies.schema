@@ -1,0 +1,12 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+create_table(:product_companies, id: { type: :bigint, unsigned: true }, charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci") do |t|
+  t.bigint 'product_id', null: false
+  t.bigint 'company_id', null: false
+
+  t.datetime "created_at", precision: 6, null: false
+  t.datetime "updated_at", precision: 6, null: false
+
+  t.index ['company_id'], name: 'index_product_companies_on_company_id'
+  t.index ['product_id'], name: 'index_product_companies_on_product_id'
+end

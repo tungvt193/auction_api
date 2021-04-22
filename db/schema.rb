@@ -153,14 +153,20 @@ ActiveRecord::Schema.define(version: 0) do
     t.index ["status"], name: "index_news_on_status"
   end
 
+  create_table "product_companies", id: { type: :bigint, unsigned: true }, charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.bigint "product_id", null: false
+    t.bigint "company_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["company_id"], name: "index_product_companies_on_company_id"
+    t.index ["product_id"], name: "index_product_companies_on_product_id"
+  end
+
   create_table "products", id: { type: :bigint, unsigned: true }, charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name", null: false
     t.string "thumb"
     t.string "thumb_tmp"
-    t.string "code", null: false
-    t.float "price", default: 0.0, null: false
     t.string "keyword"
-    t.bigint "company_id", null: false
     t.bigint "category_id", null: false
     t.float "star", default: 0.0, null: false
     t.float "star_total", default: 0.0, null: false
@@ -169,7 +175,6 @@ ActiveRecord::Schema.define(version: 0) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["category_id"], name: "index_products_on_category_id"
-    t.index ["company_id"], name: "index_products_on_company_id"
     t.index ["keyword"], name: "index_products_on_keyword"
     t.index ["status"], name: "index_products_on_status"
   end

@@ -6,10 +6,7 @@
 #  name        :string(255)      not null
 #  thumb       :string(255)
 #  thumb_tmp   :string(255)
-#  code        :string(255)      not null
-#  price       :float(24)        default(0.0), not null
 #  keyword     :string(255)
-#  company_id  :bigint           not null
 #  category_id :bigint           not null
 #  star        :float(24)        default(0.0), not null
 #  star_total  :float(24)        default(0.0), not null
@@ -21,9 +18,12 @@
 class Product < ApplicationRecord
   mount_uploader :thumb, ImageUploader
 
-  has_many :companies
+  has_many :product_companies
+  has_many :companies, through: :product_companies
   
   enum status: [:deactive, :active, :popular]
+
+  accepts_nested_attributes_for :product_companies
 
   def thumb_url
     thumb.try(:url)
