@@ -37,6 +37,9 @@ module Types
         field :v1VideoList, ::Connections::VideoConnection,
               function: ::Resolvers::Videos::List, null: true, connection: true
         field :v1Video, resolver: ::Resolvers::Videos::Show
+
+        field :v1NearestAuctionList, ::Connections::AuctionConnection,
+              function: ::Resolvers::Auctions::NearestList, null: true, connection: true
       end
     end
   end

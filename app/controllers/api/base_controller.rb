@@ -58,6 +58,7 @@ module Api
         v1News
         v1Auction
         v1BannerList
+        v1NearestAuctionList
       ]
     end
   end

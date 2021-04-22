@@ -20,5 +20,6 @@ auction_attributes = []
   })
 end
 
+Auction.insert_all!(auction_attributes)
 
 puts "FINISH IMPORT AUCTION"
