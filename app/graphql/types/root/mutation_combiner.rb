@@ -10,9 +10,9 @@ module Types
         field :v1ForgotPassword, mutation: ::Mutations::Authentication::ForgotPassword
         field :v1ChangePassword, mutation: ::Mutations::Authentication::ChangePassword
 
-        field :v1CreateAuctionUser, mutation: ::Mutations::AuctionUsers::CreateAuctionUser
-        field :v1UpdateAuctionUser, mutation: ::Mutations::AuctionUsers::UpdateAuctionUser
-        field :v1DeleteAuctionUser, mutation: ::Mutations::AuctionUsers::DeleteAuctionUser
+        field :v1CreateAuctionItemUser, mutation: ::Mutations::AuctionItemUsers::CreateAuctionItemUser
+        field :v1UpdateAuctionItemUser, mutation: ::Mutations::AuctionItemUsers::UpdateAuctionItemUser
+        field :v1DeleteAuctionItemUser, mutation: ::Mutations::AuctionItemUsers::DeleteAuctionItemUser
 
         field :v1CreateAuction, mutation: ::Mutations::Auctions::CreateAuction
         field :v1UpdateAuction, mutation: ::Mutations::Auctions::UpdateAuction

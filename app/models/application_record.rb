@@ -1,3 +1,5 @@
+require 'open-uri'
+
 class ApplicationRecord < ActiveRecord::Base
   self.abstract_class = true
 
@@ -22,5 +24,20 @@ class ApplicationRecord < ActiveRecord::Base
 
   def cryptor
     ::ActiveSupport::MessageEncryptor.new(Rails.application.secrets.secret_key_base.byteslice(0..31))
+  end
+
+  class << self
+    def download_image(prefix, url)
+      absolute_path = Rails.root.join('public', 'downloads')
+      FileUtils.mkdir_p(absolute_path) unless File.directory?(absolute_path)
+
+      img_url = absolute_path + "remote-image-#{prefix}-#{Time.zone.now.to_i}.jpg"
+
+      open(img_url, 'wb') do |file|
+        file << open(url).read
+      end
+
+      File.new(img_url)
+    end
   end
 end

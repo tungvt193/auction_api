@@ -12,22 +12,58 @@
 
 ActiveRecord::Schema.define(version: 0) do
 
-  create_table "auction_users", id: { type: :bigint, unsigned: true }, charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "auction_item_prices", id: { type: :bigint, unsigned: true }, charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.bigint "auction_item_id", null: false
+    t.float "new_price", default: 0.0, null: false
+    t.float "old_price", default: 0.0, null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["auction_item_id"], name: "index_auction_item_prices_on_auction_item_id"
+  end
+
+  create_table "auction_item_users", id: { type: :bigint, unsigned: true }, charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.bigint "auction_id", null: false
+    t.bigint "auction_item_id", null: false
     t.bigint "user_id", null: false
     t.integer "status", default: 0, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["auction_id", "user_id"], name: "index_auction_users_on_auction_id_and_user_id"
-    t.index ["status"], name: "index_auction_users_on_status"
+    t.index ["auction_item_id", "user_id"], name: "index_auction_item_users_on_auction_item_id_and_user_id"
+    t.index ["auction_item_id"], name: "index_auction_item_users_on_auction_item_id"
+    t.index ["status"], name: "index_auction_item_users_on_status"
+  end
+
+  create_table "auction_items", id: { type: :bigint, unsigned: true }, charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "product_name", null: false
+    t.string "category_name", null: false
+    t.string "auction_name", null: false
+    t.integer "status", default: 0, null: false
+    t.bigint "auction_id", null: false
+    t.bigint "product_id", null: false
+    t.bigint "category_id", null: false
+    t.float "price", default: 0.0, null: false
+    t.float "min_price", default: 0.0, null: false
+    t.bigint "marker", null: false
+    t.string "serial", null: false
+    t.string "address", null: false
+    t.string "source_link"
+    t.json "images"
+    t.bigint "user_id"
+    t.float "used_hours", default: 0.0, null: false
+    t.datetime "year_of_manufacture", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["auction_id"], name: "index_auction_items_on_auction_id"
+    t.index ["category_id"], name: "index_auction_items_on_category_id"
+    t.index ["product_id"], name: "index_auction_items_on_product_id"
+    t.index ["status"], name: "index_auction_items_on_status"
+    t.index ["user_id"], name: "index_auction_items_on_user_id"
   end
 
   create_table "auctions", id: { type: :bigint, unsigned: true }, charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name", null: false
-    t.float "used_hours", default: 0.0, null: false
-    t.datetime "year_of_manufacture", null: false
-    t.string "address", null: false
-    t.float "min_price", default: 0.0, null: false
+    t.string "code", null: false
     t.datetime "started_at"
     t.datetime "ended_at"
     t.integer "status", default: 0, null: false
@@ -49,9 +85,14 @@ ActiveRecord::Schema.define(version: 0) do
 
   create_table "categories", id: { type: :bigint, unsigned: true }, charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name", null: false
+    t.string "thumb"
+    t.string "thumb_tmp"
     t.integer "status", default: 0, null: false
+    t.string "category_id"
+    t.bigint "parent_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["parent_id"], name: "index_categories_on_parent_id"
     t.index ["status"], name: "index_categories_on_status"
   end
 
@@ -120,12 +161,14 @@ ActiveRecord::Schema.define(version: 0) do
     t.float "price", default: 0.0, null: false
     t.string "keyword"
     t.bigint "company_id", null: false
+    t.bigint "category_id", null: false
     t.float "star", default: 0.0, null: false
     t.float "star_total", default: 0.0, null: false
     t.datetime "started_at"
     t.integer "status", default: 0, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["category_id"], name: "index_products_on_category_id"
     t.index ["company_id"], name: "index_products_on_company_id"
     t.index ["keyword"], name: "index_products_on_keyword"
     t.index ["status"], name: "index_products_on_status"
@@ -163,7 +206,7 @@ ActiveRecord::Schema.define(version: 0) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
-    t.index ["role"], name: "index_users_on_role", unique: true
+    t.index ["role"], name: "index_users_on_role"
   end
 
   create_table "videos", id: { type: :bigint, unsigned: true }, charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|

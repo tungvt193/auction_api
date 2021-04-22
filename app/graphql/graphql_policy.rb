@@ -23,7 +23,7 @@ class GraphqlPolicy
 
   class << self
     def roles
-      %w[super_admin admin user]
+      %w[agent sale admin user]
     end
 
     def guard(type, field)

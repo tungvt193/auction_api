@@ -1,18 +1,19 @@
 module Mutations
-  module AuctionUsers
-    class UpdateAuctionUser < BaseMutation
-      argument :id, ID, required: true
+  module AuctionItemUsers
+    class CreateAuctionItemUser < BaseMutation
       argument :attribute, Types::AttributeType, required: true
-      field :data, ::Types::AuctionUserType, null: false
+      field :data, ::Types::AuctionItemUserType, null: false
 
       def resolve(args)
         super
 
-        resource = object_from_id(args[:id])
+        resource = collection.new
 
         ApplicationRecord.transaction do
           encode_attributes = normalize_parameters(args[:attribute])
-          attributes = decode_attributes(encode_attributes)
+          attributes = decode_attributes(encode_attributes).merge({
+            user_id: current_user.try(:id)
+          })
 
           resource.assign_attributes(attributes)
           resource.save!
@@ -25,7 +26,7 @@ module Mutations
 
       def normalize_parameters(args)
         ::ActionController::Parameters.new(args.as_json).permit(
-          :id, :auction_id
+          :auction_item_id
         )
       end
     end

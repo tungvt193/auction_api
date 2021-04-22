@@ -23,12 +23,20 @@
 #  updated_at             :datetime         not null
 #
 class User < ApplicationRecord
-  enum role: [:user, :admin, :super_admin]
+  mount_uploader :avatar, ImageUploader
+
+  enum role: [:user, :premium, :sale, :admin]
   enum gender: [:male, :female]
+
+  has_many :auction_items
 
   def authenticate(password)
     cryptor.decrypt_and_verify(encrypted_password) == password
   rescue StandardError
     nil
+  end
+
+  def avatar_url
+    avatar.try(:url)
   end
 end

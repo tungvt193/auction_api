@@ -15,6 +15,8 @@
 class Image < ApplicationRecord
   mount_uploader :file, ImageUploader
 
+  belongs_to :imageable, polymorphic: true
+
   def file_url
     file.try(:url)
   end

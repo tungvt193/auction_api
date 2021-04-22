@@ -1,8 +1,8 @@
 module Mutations
-  module AuctionUsers
-    class DeleteAuctionUser < BaseMutation
+  module AuctionItemUsers
+    class DeleteAuctionItemUser < BaseMutation
       argument :id, ID, required: true
-      field :data, ::Types::AuctionUserType, null: false
+      field :data, ::Types::AuctionItemUserType, null: false
 
       def resolve(args)
         super

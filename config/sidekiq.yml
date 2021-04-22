@@ -1,4 +1,4 @@
-:environment: <%= ENV.fetch('RAILS_ENV') { development }%>
+:environment: <%= ENV.fetch('RAILS_ENV') { 'development' }%>
 :verbose: true
 :concurrency: 25
 :queues:

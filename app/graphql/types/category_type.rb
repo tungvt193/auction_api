@@ -12,5 +12,6 @@ module Types
   class CategoryType < BaseNode
     field :name, String, null: false
     field :status, String, null: false
+    field :thumb_url, String, null: true
   end
 end

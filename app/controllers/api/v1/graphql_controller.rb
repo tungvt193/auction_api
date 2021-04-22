@@ -13,7 +13,7 @@ module Api
           },
           operation_name: operation_name
         )
-        
+
         render json: {
           data: result['data'],
           errors: result['errors'],

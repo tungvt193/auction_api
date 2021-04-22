@@ -2,10 +2,15 @@
 # vi: set ft=ruby :
 create_table(:categories, id: { type: :bigint, unsigned: true }, charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci") do |t|
   t.string 'name', null: false
+  t.string 'thumb'
+  t.string 'thumb_tmp'
   t.integer 'status', null: false, default: 0
+  t.string 'category_id'
+  t.bigint 'parent_id'
 
   t.datetime "created_at", precision: 6, null: false
   t.datetime "updated_at", precision: 6, null: false
 
   t.index ['status'], name: 'index_categories_on_status'
+  t.index ['parent_id'], name: 'index_categories_on_parent_id'
 end

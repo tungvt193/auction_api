@@ -42,11 +42,6 @@ module AuctionApi
     config.autoload_paths << Rails.root.join('lib')
     config.i18n.load_path += Dir[Rails.root.join('config', 'locales', '**', '*.{rb,yml}').to_s]
 
-    config.middleware.insert_before 0, Rack::Cors do
-      allow do
-        origins '*'
-        resource '*', headers: :any, methods: %i[get post options put delete patch]
-      end
-    end
+    Faker::Config.locale = 'vi' if Rails.env.development?
   end
 end
