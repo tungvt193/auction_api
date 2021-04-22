@@ -13,5 +13,7 @@ module Types
     field :name, String, null: false
     field :status, String, null: false
     field :thumb_url, String, null: true
+
+    field :product_total, Int, null: true, resolve: Lazy::LazyProductTotal.new
   end
 end

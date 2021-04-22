@@ -21,7 +21,7 @@
 class Product < ApplicationRecord
   mount_uploader :thumb, ImageUploader
 
-  belongs_to :company
+  has_many :companies
   
   enum status: [:deactive, :active, :popular]
 
