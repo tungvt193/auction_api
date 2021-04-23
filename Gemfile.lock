@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/activerecord-hackery/ransack.git
-  revision: 0bd4afeaac70030b11074e814f090e8fd3131e67
+  revision: 543b34fa9bb17f067f937e59bb4eab8262b5a14d
   specs:
     ransack (2.4.2)
       activerecord (>= 5.2.4)
@@ -98,9 +98,9 @@ GEM
     batch-loader (1.3.0)
     bootsnap (1.7.3)
       msgpack (~> 1.0)
+    brakeman (5.0.0)
     builder (3.2.4)
     byebug (11.1.3)
-    cancancan (3.2.1)
     capistrano (3.16.0)
       airbrussh (>= 1.0.0)
       i18n
@@ -326,21 +326,21 @@ PLATFORMS
 
 DEPENDENCIES
   active_hash (~> 2.3.0)
-  ancestry
-  annotate
+  ancestry (= 3.2.1)
+  annotate (= 3.1.1)
   batch-loader (= 1.3.0)
   bootsnap (>= 1.4.4)
+  brakeman
   byebug
-  cancancan
-  capistrano
-  capistrano-bundler
-  capistrano-rails
-  capistrano-rvm
-  capistrano3-puma
+  capistrano (= 3.16.0)
+  capistrano-bundler (= 2.0.1)
+  capistrano-rails (= 1.6.1)
+  capistrano-rvm (= 0.1.2)
+  capistrano3-puma (= 5.0.4)
   carrierwave (= 1.3.1)
-  carrierwave-imageoptimizer
+  carrierwave-imageoptimizer (= 1.6.0)
   carrierwave_backgrounder!
-  dotenv-rails
+  dotenv-rails (= 2.7.6)
   faker!
   graphiql-rails (= 1.7.0)
   graphql (= 1.9.4)
@@ -350,20 +350,20 @@ DEPENDENCIES
   kaminari (= 1.1.1)
   listen (~> 3.3)
   local_images
-  mini_magick
+  mini_magick (= 4.11.0)
   mysql2 (= 0.5.3)
   parallel (= 1.17.0)
-  paranoia
-  pry-rails
+  paranoia (= 2.4.3)
+  pry-rails (= 0.3.9)
   puma (= 5.2.2)
   rack-attack (= 6.5.0)
   rack-cors (= 1.1.1)
   rails (= 6.1.3.1)
-  rails-observers
-  ransack!
+  rails-observers (= 0.1.5)
+  ransack (= 2.4.2)!
   redis (~> 3.3, >= 3.3.1)
   redis-namespace (~> 1.6.0)
-  ridgepole
+  ridgepole (= 0.9.2)
   rubocop (= 0.88.0)
   rubocop-rails (= 2.7.1)
   search_object (= 1.2.1)
@@ -372,8 +372,8 @@ DEPENDENCIES
   sidekiq-bulk (~> 0.1.1)
   sidekiq-scheduler (~> 2.0, >= 2.0.8)
   sidekiq-status (~> 0.6.0)
-  slack-notifier
-  spring
+  slack-notifier (= 2.3.2)
+  spring (= 2.1.1)
   tzinfo-data
 
 RUBY VERSION

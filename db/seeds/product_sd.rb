@@ -1,6 +1,6 @@
 puts 'START IMPORT PRODUCT'
 
-product = [
+products =  [
   { ca: 'Xe nâng hàng', cm: 'NICHIYU', name: 'FB15PN-75-300', im: 'https://cdn.allstocker.com/resize/w/80/images/21e70d54-e87c-0d00-a11e-57dd093ce855/69aeee55-e87c-0d00-a142-e38c093ce855.jpg' },
   { ca: 'Máy xúc lật', cm: 'TCM', name: 'L6-2', im: 'https://cdn.allstocker.com/resize/w/80/images/fc5a4ef7-da7c-0d00-ae13-2640093ce855/27008803-db7c-0d00-afef-67b0093ce855.jpg' },
   { ca: 'Xe tải tự đổ', cm: 'ISUZU', name: 'PJ-CYZ51V5', im: 'https://cdn.allstocker.com/resize/w/80/images/5f31cd6b-a77b-0d00-a5d8-a83d05fccc98/524b0f6d-a77b-0d00-a5fd-471f05fccc98.jpg' },
@@ -109,7 +109,7 @@ categories = Category.select(:id, :name)
 companies = Company.select(:id, :name)
 
 products.each_with_index do |product, index|
-  puts "MAKE PRODUCT #{index + 1} / #{products.size}"
+  puts"MAKE PRODUCT #{index + 1} / #{products.size}"
 
   e_companies = companies.select { |com| product[:cm].split(',').include?(com.try(:name)) }
   cx = categories.to_a.detect { |c| product[:ca].to_s.downcase.include?(c.try(:name).downcase) }

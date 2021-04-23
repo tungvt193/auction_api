@@ -36,17 +36,18 @@ end
 group :development do
   gem 'listen', '~> 3.3'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
-  gem 'spring'
+  gem 'spring', '2.1.1'
   gem 'graphiql-rails', '1.7.0'
-  gem 'pry-rails'
-  gem 'annotate'
+  gem 'pry-rails', '0.3.9'
+  gem 'annotate', '3.1.1'
   gem 'rubocop', '0.88.0'
   gem 'rubocop-rails', '2.7.1'
-  gem 'capistrano'
-  gem 'capistrano3-puma'
-  gem 'capistrano-rails', require: false
-  gem 'capistrano-bundler', require: false
-  gem 'capistrano-rvm'
+  gem 'capistrano', '3.16.0'
+  gem 'capistrano3-puma', '5.0.4'
+  gem 'capistrano-rails', '1.6.1', require: false
+  gem 'capistrano-bundler', '2.0.1', require: false
+  gem 'capistrano-rvm', '0.1.2'
+  gem 'brakeman'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
@@ -61,25 +62,24 @@ gem 'search_object', '1.2.1'
 gem 'search_object_graphql', '0.1'
 gem 'batch-loader', '1.3.0'
 gem 'parallel', '1.17.0'
-gem 'ridgepole'
+gem 'ridgepole', '0.9.2'
 
 # Gem upload
 gem 'carrierwave', '1.3.1'
-gem 'mini_magick'
-gem 'carrierwave-imageoptimizer'
+gem 'mini_magick',  '4.11.0'
+gem 'carrierwave-imageoptimizer', '1.6.0'
 
 # Gem load environment
-gem 'dotenv-rails'
+gem 'dotenv-rails', '2.7.6'
 
 # Gem Pagination
 gem 'active_hash', '~> 2.3.0'
-gem 'cancancan'
 gem 'kaminari', '1.1.1'
-gem 'rails-observers'
-gem "paranoia"
-gem 'ancestry'
-gem 'ransack', github: 'activerecord-hackery/ransack'
-gem 'slack-notifier'
+gem 'rails-observers', '0.1.5'
+gem "paranoia", '2.4.3'
+gem 'ancestry', '3.2.1'
+gem 'ransack', '2.4.2', github: 'activerecord-hackery/ransack'
+gem 'slack-notifier', '2.3.2'
 gem 'carrierwave_backgrounder', github: 'leoduquesnel/carrierwave_backgrounder'
 
 # ActiveJobAdapter
