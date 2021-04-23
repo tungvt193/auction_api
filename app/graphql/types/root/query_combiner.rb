@@ -40,6 +40,10 @@ module Types
 
         field :v1NearestAuctionList, ::Connections::AuctionConnection,
               function: ::Resolvers::Auctions::NearestList, null: true, connection: true
+
+        field :v1AuctionItemList, ::Connections::AuctionItemConnection,
+              function: ::Resolvers::AuctionItems::List, null: true, connection: true
+        field :v1AuctionItem, resolver: ::Resolvers::AuctionItems::Show
       end
     end
   end
