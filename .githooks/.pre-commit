@@ -4,7 +4,7 @@ if [[ `git status --porcelain` ]]; then
   exit 1
 fi
 printf "\e[33;1m%s\e[0m\n" 'Running the Rubocop verify coding convention'
-rubocop . -a
+bundle exec rubocop . -a
 
 if [ $? -ne 0 ]; then
   printf "\e[31;1m%s\e[0m\n" 'Rubocop verify coding convention error'
