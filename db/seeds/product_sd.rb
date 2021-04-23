@@ -109,7 +109,7 @@ categories = Category.select(:id, :name)
 companies = Company.select(:id, :name)
 
 products.each_with_index do |product, index|
-  puts"MAKE PRODUCT #{index + 1} / #{products.size}"
+  puts "MAKE PRODUCT #{index + 1} / #{products.size}"
 
   e_companies = companies.select { |com| product[:cm].split(',').include?(com.try(:name)) }
   cx = categories.to_a.detect { |c| product[:ca].to_s.downcase.include?(c.try(:name).downcase) }
