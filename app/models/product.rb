@@ -20,6 +20,7 @@ class Product < ApplicationRecord
 
   has_many :product_companies
   has_many :companies, through: :product_companies
+  belongs_to :category
   
   enum status: [:deactive, :active, :popular]
 

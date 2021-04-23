@@ -17,6 +17,8 @@ class Category < ApplicationRecord
 
   enum status: [:deactive, :active]
 
+  has_many :products
+
   def thumb_url
     thumb.try(:url)
   end

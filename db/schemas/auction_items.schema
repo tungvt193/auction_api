@@ -1,7 +1,6 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 create_table(:auction_items, id: { type: :bigint, unsigned: true }, charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci") do |t|
-  t.string 'name', null: false
   t.string 'product_name', null: false
   t.string 'category_name', null: false
   t.string 'auction_name', null: false
@@ -9,9 +8,10 @@ create_table(:auction_items, id: { type: :bigint, unsigned: true }, charset: "ut
   t.bigint 'auction_id', null: false
   t.bigint 'product_id', null: false
   t.bigint 'category_id', null: false
+  t.bigint 'company_id', null: false
   t.float 'price', null: false, default: 0.0
   t.float 'min_price', null: false, default: 0.0
-  t.bigint 'marker', null: false
+  t.string 'marker', null: false
   t.string 'serial', null: false
   t.string 'address', null: false
   t.string 'source_link'
@@ -28,4 +28,5 @@ create_table(:auction_items, id: { type: :bigint, unsigned: true }, charset: "ut
   t.index ['product_id'], name: 'index_auction_items_on_product_id'
   t.index ['category_id'], name: 'index_auction_items_on_category_id'
   t.index ['user_id'], name: 'index_auction_items_on_user_id'
+  t.index ['company_id'], name: 'index_auction_items_on_company_id'
 end

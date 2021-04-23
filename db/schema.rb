@@ -34,7 +34,6 @@ ActiveRecord::Schema.define(version: 0) do
   end
 
   create_table "auction_items", id: { type: :bigint, unsigned: true }, charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.string "name", null: false
     t.string "product_name", null: false
     t.string "category_name", null: false
     t.string "auction_name", null: false
@@ -42,9 +41,10 @@ ActiveRecord::Schema.define(version: 0) do
     t.bigint "auction_id", null: false
     t.bigint "product_id", null: false
     t.bigint "category_id", null: false
+    t.bigint "company_id", null: false
     t.float "price", default: 0.0, null: false
     t.float "min_price", default: 0.0, null: false
-    t.bigint "marker", null: false
+    t.string "marker", null: false
     t.string "serial", null: false
     t.string "address", null: false
     t.string "source_link"
@@ -56,6 +56,7 @@ ActiveRecord::Schema.define(version: 0) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["auction_id"], name: "index_auction_items_on_auction_id"
     t.index ["category_id"], name: "index_auction_items_on_category_id"
+    t.index ["company_id"], name: "index_auction_items_on_company_id"
     t.index ["product_id"], name: "index_auction_items_on_product_id"
     t.index ["status"], name: "index_auction_items_on_status"
     t.index ["user_id"], name: "index_auction_items_on_user_id"

@@ -26,7 +26,6 @@
 #
 module Types
   class AuctionItemType < BaseNode
-    field :name, String, null: false
     field :product_name, String, null: false
     field :category_name, String, null: false
     field :auction_name, String, null: false
@@ -34,6 +33,7 @@ module Types
     field :auction_id, ID, null: false
     field :product_id, ID, null: false
     field :category_id, ID, null: false
+    field :company_id, ID, null: false
     field :price, String, null: false
     field :min_price, String, null: false
     field :marker, String, null: false
