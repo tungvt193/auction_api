@@ -9,7 +9,7 @@ module Api
           variables: variables,
           context: {
             session: session,
-            current_user: current_user,
+            current_user: current_user
           },
           operation_name: operation_name
         )
@@ -34,7 +34,7 @@ module Api
 
           variable_keys = variables.keys
 
-          map_json.keys.each do |file_k|
+          map_json.each_key do |file_k|
             variables['input']['file'] = params[file_k] if variable_keys.include?('file')
             variables['input']['files'].push(params[file_k]) if variable_keys.include?('files')
           end
@@ -48,7 +48,6 @@ module Api
 
         [query, variables, operation_name]
       end
-
 
       # Handle variables in form data, JSON body, or a blank value
       def prepare_variables(variables_param)
@@ -70,14 +69,14 @@ module Api
         end
       end
 
-      def handle_error_in_development(e)
-        logger.error e.message
-        logger.error e.backtrace.join("\n")
+      def handle_error_in_development(exc)
+        logger.error exc.message
+        logger.error exc.backtrace.join("\n")
 
         render json: {
-          errors: [{ message: e.message, backtrace: e.backtrace }],
+          errors: [{ message: exc.message, backtrace: exc.backtrace }],
           data: {}
-        }, status: 500
+        }, status: :internal_server_error
       end
     end
   end

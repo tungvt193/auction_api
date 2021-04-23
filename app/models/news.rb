@@ -17,7 +17,9 @@ class News < ApplicationRecord
   mount_uploader :cover, ImageUploader
   mount_uploader :content, FileUploader
 
-  enum status: [:deactive, :active, :popular]
+  enum status: { deactive: 0, active: 1, popular: 2 }
+
+  ransacker :status, formatter: proc { |v| statuses[v] }
 
   def cover_url
     cover.try(:url)

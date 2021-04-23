@@ -15,9 +15,11 @@
 class Category < ApplicationRecord
   mount_uploader :thumb, ImageUploader
 
-  enum status: [:deactive, :active]
+  enum status: { deactive: 0, active: 1 }
 
   has_many :products
+
+  ransacker :status, formatter: proc { |v| statuses[v] }
 
   def thumb_url
     thumb.try(:url)

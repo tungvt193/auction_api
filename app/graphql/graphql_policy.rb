@@ -2,8 +2,8 @@ class GraphqlPolicy
   RULES = {
     'Query' => {
       '*': {
-        guard: ->(_obj, _args, ctx) { true }
-      },
+        guard: ->(_obj, _args, _ctx) { true }
+      }
     },
     'Mutation' => {
       '*': {

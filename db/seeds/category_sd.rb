@@ -1,11 +1,11 @@
-puts "START IMPORT CATEGORY"
+puts 'START IMPORT CATEGORY'
 
-names = ["Máy xúc mini", "Máy xúc", "Máy xúc lật", "Máy ủi", "Con lăn", "Máy san đất", "Máy hoàn thiện", "Cần cẩu", "Máy móc xây dựng khác", "Xe nâng hàng", "Máy phát điện", "Máy hàn", "Máy nén khí", "Phụ tùng", "Bộ phận", "Mục nhỏ", "Xe tải tự đổ", "Xe tải", "Các loại xe khác", "Máy kéo", "Máy nông nghiệp khác", "Những loại khác"]
+names = ['Máy xúc mini', 'Máy xúc', 'Máy xúc lật', 'Máy ủi', 'Con lăn', 'Máy san đất', 'Máy hoàn thiện', 'Cần cẩu', 'Máy móc xây dựng khác', 'Xe nâng hàng', 'Máy phát điện', 'Máy hàn', 'Máy nén khí', 'Phụ tùng', 'Bộ phận', 'Mục nhỏ', 'Xe tải tự đổ', 'Xe tải', 'Các loại xe khác', 'Máy kéo', 'Máy nông nghiệp khác', 'Những loại khác']
 
 now = Time.zone.now
 
 names.each_with_index do |name, index|
-  "MAKE CATEGORY #{index + 1} / #{names.size}"
+  puts "MAKE CATEGORY #{index + 1} / #{names.size}"
 
   cat = Category.new(
     name: name,
@@ -18,4 +18,4 @@ names.each_with_index do |name, index|
   cat.save!
 end
 
-puts "FINISH IMPORT CATEGORY"
+puts 'FINISH IMPORT CATEGORY'

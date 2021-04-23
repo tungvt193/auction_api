@@ -1,7 +1,7 @@
 module Resolvers
   module Auctions
     class NearestList < ::Resolvers::BaseQuery
-      scope { instance_scope.order('started_at asc') }
+      scope { instance_scope.order(started_at: :asc, ended_at: :asc) }
       type types[::Types::AuctionType]
 
       option :per_page, type: types.Int, default: 10, with: :apply_per_page
@@ -9,7 +9,7 @@ module Resolvers
       def normalize_filters(value, branches = [])
         query = super
 
-        scope = instance_scope.graphql_ransack(query).order('started_at asc')
+        scope = instance_scope.graphql_ransack(query).order(started_at: :asc, ended_at: :asc)
         branches << scope
 
         branches
@@ -28,9 +28,24 @@ module Resolvers
 
       def instance_scope
         ::Auction.graphql_ransack({
-          status_eq: 'active',
-          started_at_gteq: Time.zone.now
-        })
+                                    m: 'and',
+                                    g: {
+                                      '0' => {
+                                        status_eq: 'active'
+                                      },
+                                      '1' => {
+                                        m: 'or',
+                                        g: {
+                                          '0' => {
+                                            started_at_gteq: Time.zone.now
+                                          },
+                                          '1' => {
+                                            ended_at_gteq: Time.zone.now
+                                          }
+                                        }
+                                      }
+                                    }
+                                  })
       end
     end
   end

@@ -28,13 +28,13 @@ class ApplicationRecord < ActiveRecord::Base
 
   class << self
     def download_image(prefix, url)
-      absolute_path = Rails.root.join('public', 'downloads')
+      absolute_path = Rails.root.join('public/downloads')
       FileUtils.mkdir_p(absolute_path) unless File.directory?(absolute_path)
 
       img_url = absolute_path + "remote-image-#{prefix}-#{Time.zone.now.to_i}.jpg"
 
-      open(img_url, 'wb') do |file|
-        file << open(url).read
+      File.open(img_url, 'wb') do |file|
+        file << File.open(url).read
       end
 
       File.new(img_url)

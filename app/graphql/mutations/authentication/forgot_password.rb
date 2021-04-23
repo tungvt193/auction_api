@@ -10,7 +10,8 @@ module Mutations
         attributes = normalize_parameters(args[:attribute])
         user = ::User.find_by(email: attributes[:email])
 
-        raise GraphQL::ExecutionError, 'Not found account using this email' if  user.blank?
+        raise GraphQL::ExecutionError, 'Not found account using this email' if user.blank?
+
         ::UserMailer.reset_password(admin.try(:id)).deliver!
 
         OpenStruct.new({

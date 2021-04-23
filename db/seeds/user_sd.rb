@@ -1,16 +1,14 @@
-puts "START IMPORT USER"
-
-user_attributes = []
+puts 'START IMPORT USER'
 
 encrypted_password = User.new.cryptor.encrypt_and_sign('12345678')
 roles = User.roles.keys
-genders = ['male', 'female']
+genders = %w[male female]
 now = Time.zone.now
 
-user_attributes = 10.times.map do |time|
-  "MAKE USER #{time} / 10"
+10.times.map do |time|
+  puts "MAKE USER #{time} / 10"
 
-  avatar_url = LocalImages::Faces.local_link("humans")
+  avatar_url = LocalImages::Faces.local_link('humans')
 
   user = User.new(
     email: "user-#{time}@example.com",
@@ -27,4 +25,4 @@ user_attributes = 10.times.map do |time|
   user.save!
 end
 
-puts "FINISH IMPORT USER"
+puts 'FINISH IMPORT USER'

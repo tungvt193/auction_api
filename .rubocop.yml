@@ -1,0 +1,245 @@
+require:
+  - rubocop-rails
+
+AllCops:
+  Exclude:
+    - db/schema.rb
+    - bin/**/*
+    - Gemfile
+    - Gemfile.lock
+    - config/environments/**/*
+    - lib/tasks/**/*
+  DisplayCopNames: true
+  TargetRubyVersion: 2.6.5
+
+Rails:
+  Enabled: true
+
+Rails/Output:
+  Exclude:
+    - db/seeds/*
+
+Style/BlockDelimiters:
+  Enabled: false
+
+Style/EmptyMethod:
+  Enabled: false
+
+Style/EachWithObject:
+  Enabled: false
+
+Style/BlockComments:
+  Exclude:
+    - spec/**/*
+
+Metrics/BlockLength:
+  Exclude:
+    - spec/**/*
+    - db/seeds/**/*
+    - app/graphql/types/root/*.rb
+    - app/graphql/mutations/base_mutation.rb
+    - config/*
+
+Metrics/AbcSize:
+  Enabled: false
+
+Metrics/ModuleLength:
+  Enabled: true
+
+Metrics/ClassLength:
+  Enabled: true
+  Exclude:
+    - app/controllers/**/*
+
+Metrics/MethodLength:
+  Max: 20
+  Exclude:
+    - app/graphql/mutations/base_mutation.rb
+
+Metrics/PerceivedComplexity:
+  Enabled: true
+
+Metrics/CyclomaticComplexity:
+  Max: 10
+
+Style/CollectionMethods:
+  PreferredMethods:
+    detect: detect
+    find: detect
+    inject: inject
+    reduce: inject
+
+Layout/DotPosition:
+  EnforcedStyle: trailing
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+Security/MarshalLoad:
+  Enabled: false
+
+Style/StringLiterals:
+  EnforcedStyle: single_quotes
+  SupportedStyles:
+    - single_quotes
+    - double_quotes
+
+Rails/HasManyOrHasOneDependent:
+  Enabled: false
+
+Rails/DynamicFindBy:
+  Enabled: true
+
+Rails/HttpPositionalArguments:
+  Enabled: false
+
+Naming/PredicateName:
+  Enabled: false
+
+Rails/HasAndBelongsToMany:
+  Enabled: false
+
+Rails/UnknownEnv:
+  Environments:
+    - production
+    - development
+    - test
+    - staging
+Style/GlobalVars:
+  Enabled: false
+
+Naming/FileName:
+  Enabled: false
+
+Layout/EmptyLinesAroundAttributeAccessor:
+  Enabled: true
+
+Layout/SpaceAroundMethodCallOperator:
+  Enabled: true
+
+Lint/DeprecatedOpenSSLConstant:
+  Enabled: true
+
+Lint/DuplicateElsifCondition:
+  Enabled: true
+
+Lint/MixedRegexpCaptureTypes:
+  Enabled: true
+
+Lint/RaiseException:
+  Enabled: true
+
+Style/SelfAssignment:
+  Enabled: true
+
+Lint/StructNewOverride:
+  Enabled: true
+
+Style/AccessorGrouping:
+  Enabled: true
+
+Style/ArrayCoercion:
+  Enabled: true
+
+Style/BisectedAttrAccessor:
+  Enabled: true
+
+Style/CaseLikeIf:
+  Enabled: true
+
+Style/ExponentialNotation:
+  Enabled: true
+
+Style/HashAsLastArrayItem:
+  Enabled: true
+
+Style/HashEachMethods:
+  Enabled: true
+
+Style/HashLikeCase:
+  Enabled: true
+
+Style/HashTransformKeys:
+  Enabled: true
+
+Style/HashTransformValues:
+  Enabled: true
+
+Style/RedundantAssignment:
+  Enabled: true
+
+Style/RedundantFetchBlock:
+  Enabled: true
+
+Style/RedundantFileExtensionInRequire:
+  Enabled: true
+
+Style/RedundantRegexpCharacterClass:
+  Enabled: true
+
+Style/RedundantRegexpEscape:
+  Enabled: true
+
+Style/SlicingWithRange:
+  Enabled: true
+
+Style/Documentation:
+  Enabled: false
+
+Style/ClassAndModuleChildren:
+  Enabled: false
+
+Rails/ActiveRecordCallbacksOrder:
+  Enabled: true
+
+Rails/FindById:
+  Enabled: true
+
+Rails/Inquiry:
+  Enabled: true
+
+Rails/MailerName:
+  Enabled: true
+
+Rails/MatchRoute:
+  Enabled: true
+
+Rails/NegateInclude:
+  Enabled: true
+
+Rails/Pluck:
+  Enabled: true
+
+Rails/PluckInWhere:
+  Enabled: true
+
+Rails/RenderInline:
+  Enabled: true
+
+Rails/RenderPlainText:
+  Enabled: true
+
+Rails/ShortI18n:
+  Enabled: true
+
+Rails/WhereExists:
+  Enabled: true
+
+Style/AsciiComments:
+  Enabled: false
+
+Rails/UniqueValidationWithoutIndex:
+  Enabled: false
+
+Layout/LineLength:
+  Enabled: false
+
+Lint/Void:
+  Enabled: true
+  Exclude:
+    - db/seeds/*
+
+Rails/SkipsModelValidations:
+  Enabled: true
+  Exclude:
+    - db/seeds/*

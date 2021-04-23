@@ -1,4 +1,4 @@
-server 'auction-staging', roles: [:web, :app, :db], primary: true
+server 'auction-staging', roles: %i[web app db], primary: true
 set :ssh_options, forward_agent: true, user: 'root'
 # If the environment differs from the stage name
 set :rails_env, 'staging'

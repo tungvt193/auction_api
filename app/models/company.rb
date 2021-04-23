@@ -16,6 +16,10 @@ class Company < ApplicationRecord
   has_many :product_companies
   has_many :products, through: :product_companies
 
+  enum status: { deactive: 0, active: 1 }
+
+  ransacker :status, formatter: proc { |v| statuses[v] }
+
   def logo_url
     logo.try(:url)
   end

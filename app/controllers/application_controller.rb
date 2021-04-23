@@ -2,24 +2,24 @@ class ApplicationController < ActionController::API
   include IErrors
   include ExceptionHandler
 
-  def api_error(e, status)
-    logger.error e.message
-    logger.error e.backtrace.join("\n")
+  def api_error(error, status)
+    logger.error error.message
+    logger.error error.backtrace.join("\n")
 
     render json: {
       errors: [{
-        message: e.message,
+        message: error.message,
         extensions: {
-        code: status,
+          code: status,
           exception: {
             stacktrace: [
-              e.backtrace
+              error.backtrace
             ]
           }
         }
       }],
-      message: e.message,
+      message: error.message,
       data: nil
-    }, status: 200
+    }, status: :ok
   end
 end

@@ -25,10 +25,13 @@
 class User < ApplicationRecord
   mount_uploader :avatar, ImageUploader
 
-  enum role: [:user, :premium, :sale, :admin]
-  enum gender: [:male, :female]
+  enum role: { user: 0, premium: 1, sale: 2, admin: 3 }
+  enum gender: { male: 0, female: 1 }
 
   has_many :auction_items
+
+  ransacker :role, formatter: proc { |v| roles[v] }
+  ransacker :gender, formatter: proc { |v| genders[v] }
 
   def authenticate(password)
     cryptor.decrypt_and_verify(encrypted_password) == password

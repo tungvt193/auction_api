@@ -12,11 +12,11 @@
 #  updated_at :datetime         not null
 #
 class Auction < ApplicationRecord
-  enum status: [:deactive, :active]
-  
+  enum status: { deactive: 0, active: 1 }
+
   has_many :images, as: :imageable
 
   accepts_nested_attributes_for :images, allow_destroy: true
-  
+
   ransacker :status, formatter: proc { |v| statuses[v] }
 end

@@ -15,7 +15,7 @@ set :migration_command, 'db:migrate'
 set :conditionally_migrate, true
 
 # Defaults to [:web]
-set :assets_roles, [:web, :app]
+set :assets_roles, %i[web app]
 
 # Defaults to ["/path/to/release_path/public/#{fetch(:assets_prefix)}/.sprockets-manifest*", "/path/to/release_path/public/#{fetch(:assets_prefix)}/manifest*.*"]
 # This should match config.assets.manifest in your rails config/application.rb
@@ -25,7 +25,7 @@ set :assets_roles, [:web, :app]
 set :rails_assets_groups, :assets
 
 # If you need to touch public/images, public/javascripts, and public/stylesheets on each deploy
-set :normalize_asset_timestamps, %w{public/uploads}
+set :normalize_asset_timestamps, %w[public/uploads]
 
 # Don't change these unless you know what you're doing
 set :pty,             true

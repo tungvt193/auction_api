@@ -12,9 +12,7 @@ module Mutations
         user = ::User.find_by email: params[:username]
         raise ActiveRecord::RecordNotFound, 'Username is incorrect!' if user.blank?
 
-        unless user.authenticate(params[:password])
-          raise ::ActionController::InvalidAuthenticityToken.new('Password is incorrect!')
-        end
+        raise ::ActionController::InvalidAuthenticityToken, 'Password is incorrect!' unless user.authenticate(params[:password])
 
         # use Ruby on Rails - ActiveSupport::MessageEncryptor, to build a token
         crypt = ActiveSupport::MessageEncryptor.new(Rails.application.secrets.secret_key_base.byteslice(0..31))

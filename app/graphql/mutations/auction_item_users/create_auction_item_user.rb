@@ -12,8 +12,8 @@ module Mutations
         ApplicationRecord.transaction do
           encode_attributes = normalize_parameters(args[:attribute])
           attributes = decode_attributes(encode_attributes).merge({
-            user_id: current_user.try(:id)
-          })
+                                                                    user_id: current_user.try(:id)
+                                                                  })
 
           resource.assign_attributes(attributes)
           resource.save!

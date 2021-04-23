@@ -24,9 +24,7 @@ module Api
       token = crypt.decrypt_and_verify token
       items = token.split('&')
 
-      if items.blank? || items.first.blank?
-        raise ActionController::InvalidAuthenticityToken, 'Invalid Token. Please login and try again!'
-      end
+      raise ActionController::InvalidAuthenticityToken, 'Invalid Token. Please login and try again!' if items.blank? || items.first.blank?
 
       user_id = items[0].gsub('user-id:', '').to_i
       expired_at = items[1]
@@ -59,6 +57,8 @@ module Api
         v1Auction
         v1BannerList
         v1NearestAuctionList
+        v1AuctionItemList
+        v1AuctionItem
       ]
     end
   end

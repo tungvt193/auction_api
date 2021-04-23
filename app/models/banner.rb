@@ -14,8 +14,10 @@
 class Banner < ApplicationRecord
   mount_uploader :cover, ImageUploader
 
-  enum status: [:deactive, :active]
-  
+  enum status: { deactive: 0, active: 1 }
+
+  ransacker :status, formatter: proc { |v| statuses[v] }
+
   def cover_url
     cover.try(:url)
   end
