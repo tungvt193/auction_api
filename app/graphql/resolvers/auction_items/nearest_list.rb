@@ -13,7 +13,7 @@ module Resolvers
           'auctions.started_at' => 'asc',
           'auctions.ended_at' => 'asc'
         )
-        
+
         branches << scope
 
         branches
