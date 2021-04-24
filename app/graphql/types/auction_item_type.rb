@@ -40,7 +40,7 @@ module Types
     field :serial, String, null: false
     field :address, String, null: false
     field :source_link, String, null: true
-    field :images, String, null: true
+    field :images, [String], null: true, resolve: Lazy::LazyAuctionImage.new
     field :user_id, ID, null: true
     field :used_hours, String, null: false
     field :year_of_manufacture, String, null: false

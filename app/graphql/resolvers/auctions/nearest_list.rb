@@ -27,25 +27,7 @@ module Resolvers
       private
 
       def instance_scope
-        ::Auction.graphql_ransack({
-                                    m: 'and',
-                                    g: {
-                                      '0' => {
-                                        status_eq: 'active'
-                                      },
-                                      '1' => {
-                                        m: 'or',
-                                        g: {
-                                          '0' => {
-                                            started_at_gteq: Time.zone.now
-                                          },
-                                          '1' => {
-                                            ended_at_gteq: Time.zone.now
-                                          }
-                                        }
-                                      }
-                                    }
-                                  })
+        ::Auction.where('status = ? OR status = ? AND (started_at >= ? OR ended_at >= ? )', 0, 1, Time.zone.now, Time.zone.now)
       end
     end
   end

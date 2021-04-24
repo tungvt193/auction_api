@@ -59,6 +59,7 @@ module Api
         v1NearestAuctionList
         v1AuctionItemList
         v1AuctionItem
+        v1AuctionItemNearestList
       ]
     end
   end
