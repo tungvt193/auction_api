@@ -27,6 +27,7 @@ module Types
     field :last_name, String, null: true
     field :gender, String, null: true
     field :email, String, null: true
+    field :phone, String, null: false
     field :remember_created_at, String, null: true
     field :sign_in_count, Int, null: true
     field :current_sign_in_at, String, null: true
