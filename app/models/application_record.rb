@@ -34,7 +34,7 @@ class ApplicationRecord < ActiveRecord::Base
       img_url = absolute_path + "remote-image-#{prefix}-#{Time.zone.now.to_i}.jpg"
 
       File.open(img_url, 'wb') do |file|
-        file << File.open(url).read
+        file << URI.open(url).read
       end
 
       File.new(img_url)
