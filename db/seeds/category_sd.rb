@@ -14,7 +14,7 @@ names.each_with_index do |name, index|
     updated_at: now
   )
 
-  cat.thumb = Category.download_image(index, 'https://source.unsplash.com/1600x900/?machine')
+  cat.thumb = Category.download_image(index, 'https://source.unsplash.com/1600x900/?truck')
   cat.save!
 end
 

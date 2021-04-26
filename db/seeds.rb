@@ -6,20 +6,24 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-User.delete_all
-Category.delete_all
-Banner.delete_all
-Company.delete_all
-ProductCompany.delete_all
-Product.delete_all
-Auction.delete_all
-AuctionItem.delete_all
+if Rails.env.development?
+  FileUtils.rm_rf('public/downloads')
+  FileUtils.rm_rf('public/uploads')
 
-load Rails.root.join('db/seeds/user_sd.rb')
-load Rails.root.join('db/seeds/category_sd.rb')
-load Rails.root.join('db/seeds/banner_sd.rb')
-load Rails.root.join('db/seeds/company_sd.rb')
-load Rails.root.join('db/seeds/product_sd.rb')
-load Rails.root.join('db/seeds/auction_sd.rb')
+  User.delete_all
+  Category.delete_all
+  Banner.delete_all
+  Company.delete_all
+  ProductCompany.delete_all
+  Product.delete_all
+  Auction.delete_all
+  AuctionItem.delete_all
 
-load Rails.root.join('db/seeds/auction_item_sd.rb')
+  load Rails.root.join('db/seeds/user_sd.rb')
+  load Rails.root.join('db/seeds/category_sd.rb')
+  load Rails.root.join('db/seeds/banner_sd.rb')
+  load Rails.root.join('db/seeds/company_sd.rb')
+  load Rails.root.join('db/seeds/product_sd.rb')
+  load Rails.root.join('db/seeds/auction_sd.rb')
+  load Rails.root.join('db/seeds/auction_item_sd.rb')
+end
