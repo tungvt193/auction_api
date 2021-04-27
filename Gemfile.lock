@@ -192,6 +192,8 @@ GEM
     nio4r (2.5.7)
     nokogiri (1.11.3-x86_64-darwin)
       racc (~> 1.4)
+    nokogiri (1.11.3-x86_64-linux)
+      racc (~> 1.4)
     parallel (1.17.0)
     paranoia (2.4.3)
       activerecord (>= 4.0, < 6.2)
@@ -318,6 +320,7 @@ GEM
 
 PLATFORMS
   x86_64-darwin-20
+  x86_64-linux
 
 DEPENDENCIES
   active_hash (~> 2.3.0)
