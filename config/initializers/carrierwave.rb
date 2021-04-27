@@ -5,7 +5,7 @@ CarrierWave.configure do |config|
   config.directory_permissions = 0o777
   config.asset_host = 'http://localhost:3000' if Rails.env.development?
 
-  if Rails.env.production?
+  unless Rails.env.development?
     config.fog_provider = 'fog/google'
     config.fog_directory = ENV['GOOGLE_BUCKET_NAME']
     config.fog_credentials = {
