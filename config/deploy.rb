@@ -31,7 +31,7 @@ set :normalize_asset_timestamps, %w[public/uploads]
 set :pty,             true
 set :use_sudo,        false
 set :rvm_bin_path,    '/usr/local/rvm/scripts/rvm'
-set :rvm_ruby_version, '2.6.5'
+set :rvm_ruby_version, '3.0.0'
 set :deploy_via, :remote_cache
 set :resque_environment_task, true
 set :sidekiq_default_hooks, true
@@ -78,8 +78,8 @@ namespace :deploy do
     end
   end
 
-  after :finishing, :stop_puma
-  after :finishing, :stop_sidekiq
+  # after :finishing, :stop_puma
+  # after :finishing, :stop_sidekiq
   after :finishing, :start_sidekiq
 end
 
