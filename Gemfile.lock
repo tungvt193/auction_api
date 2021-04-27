@@ -409,7 +409,7 @@ DEPENDENCIES
   carrierwave_backgrounder!
   dotenv-rails (= 2.7.6)
   faker!
-  fog-google
+  fog-google (= 1.12.1)
   graphiql-rails (= 1.7.0)
   graphql (= 1.9.4)
   graphql-batch (= 0.4.3)
