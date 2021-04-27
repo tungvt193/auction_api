@@ -6,7 +6,7 @@
 #  name       :string(255)      not null
 #  logo       :string(255)
 #  logo_tmp   :string(255)
-#  status     :integer          default(0), not null
+#  status     :integer          default("deactive"), not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #

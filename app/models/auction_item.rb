@@ -3,7 +3,6 @@
 # Table name: auction_items
 #
 #  id                  :bigint           unsigned, not null, primary key
-#  name                :string(255)      not null
 #  product_name        :string(255)      not null
 #  category_name       :string(255)      not null
 #  auction_name        :string(255)      not null
@@ -11,9 +10,10 @@
 #  auction_id          :bigint           not null
 #  product_id          :bigint           not null
 #  category_id         :bigint           not null
+#  company_id          :bigint           not null
 #  price               :float(24)        default(0.0), not null
 #  min_price           :float(24)        default(0.0), not null
-#  marker              :bigint           not null
+#  marker              :string(255)      not null
 #  serial              :string(255)      not null
 #  address             :string(255)      not null
 #  source_link         :string(255)

@@ -5,6 +5,7 @@
 #  id                     :bigint           unsigned, not null, primary key
 #  first_name             :string(255)
 #  last_name              :string(255)
+#  phone                  :string(255)      not null
 #  email                  :string(255)      default(""), not null
 #  encrypted_password     :string(255)      default(""), not null
 #  reset_password_token   :string(255)

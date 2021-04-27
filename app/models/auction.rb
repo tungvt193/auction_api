@@ -4,7 +4,6 @@
 #
 #  id         :bigint           unsigned, not null, primary key
 #  name       :string(255)      not null
-#  code       :string(255)      not null
 #  started_at :datetime
 #  ended_at   :datetime
 #  status     :integer          default("deactive"), not null
