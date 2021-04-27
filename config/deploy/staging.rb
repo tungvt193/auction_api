@@ -4,7 +4,7 @@ set :ssh_options, forward_agent: true, user: 'root'
 set :rails_env, 'staging'
 
 # Change these
-set :branch, 'develop'
+set :branch, 'staging'
 set :user, 'root'
 set :rvm_type,        :system
 set :deploy_to,       "/home/#{fetch(:user)}/apps/#{fetch(:application)}"
