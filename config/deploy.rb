@@ -39,8 +39,8 @@ set :sidekiq_default_hooks, true
 set :puma_preload_app, true
 set :puma_worker_timeout, nil
 set :puma_init_active_record, true # Change to false when not using ActiveRecord
-set :linked_files, %w[config/secrets.yml .env config/credentials.yml.enc]
-set :linked_dirs, fetch(:linked_dirs, []) + %w[log environments tmp/pids tmp/cache tmp/sockets public]
+set :linked_files, %w[.env config/credentials.yml.enc]
+set :linked_dirs, fetch(:linked_dirs, []) + %w[log tmp/pids tmp/cache tmp/sockets public]
 
 ## Defaults:
 # set :scm,           :git
