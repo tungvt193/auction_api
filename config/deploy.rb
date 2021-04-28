@@ -79,8 +79,8 @@ namespace :deploy do
     end
   end
 
-  # after :finishing, :stop_puma
-  # after :finishing, :stop_sidekiq
+  after :finishing, :stop_puma
+  after :finishing, :stop_sidekiq
   after :finishing, :start_sidekiq
 end
 
