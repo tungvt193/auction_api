@@ -25,6 +25,7 @@
 #
 class User < ApplicationRecord
   mount_uploader :avatar, ImageUploader
+  store_in_background :avatar
 
   enum role: { user: 0, premium: 1, sale: 2, admin: 3 }
   enum gender: { male: 0, female: 1 }

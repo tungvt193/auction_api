@@ -17,6 +17,11 @@ Install the dependencies and devDependencies and start the server.
 - [MySQL](https://www.digitalocean.com/community/tutorials/how-to-install-mysql-on-ubuntu-18-04)
 - [Ruby on Rails - Ruby 2.6.5](https://gorails.com/setup/ubuntu/18.04)
 
+Install Optimizing Image
+```sh
+sudo apt-get install -y jpegoptim
+```
+
 Install ImageMagick
 ```sh
 sudo apt-get install imagemagick libmagickwand-dev -y

@@ -12,6 +12,7 @@
 #
 class Company < ApplicationRecord
   mount_uploader :logo, ImageUploader
+  store_in_background :logo
 
   has_many :product_companies
   has_many :products, through: :product_companies

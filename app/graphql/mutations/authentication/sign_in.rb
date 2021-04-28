@@ -14,10 +14,8 @@ module Mutations
 
         raise ::ActionController::InvalidAuthenticityToken, 'Password is incorrect!' unless user.authenticate(params[:password])
 
-        # use Ruby on Rails - ActiveSupport::MessageEncryptor, to build a token
-        crypt = ActiveSupport::MessageEncryptor.new(Rails.application.secrets.secret_key_base.byteslice(0..31))
         expired_at = 1.hour.from_now.strftime('%H:%M %d/%m/%Y')
-        token = crypt.encrypt_and_sign("user-id:#{user.id}&expired_at:#{expired_at}")
+        token = cryptor.encrypt_and_sign("user-id:#{user.id}&expired-at:#{expired_at}")
 
         context[:session][:token] = token
 

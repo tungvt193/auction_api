@@ -13,6 +13,7 @@
 #
 class Video < ApplicationRecord
   mount_uploader :cover, ImageUploader
+  store_in_background :cover
 
   enum status: { deactive: 0, active: 1 }
 

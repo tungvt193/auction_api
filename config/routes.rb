@@ -6,6 +6,12 @@ Rails.application.routes.draw do
           post '/', action: :execute
         end
       end
+
+      resources :crawlers do
+        collection do
+          post '/', action: :create
+        end
+      end
     end
   end
 end

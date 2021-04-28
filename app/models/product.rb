@@ -17,6 +17,7 @@
 #
 class Product < ApplicationRecord
   mount_uploader :thumb, ImageUploader
+  store_in_background :thumb
 
   has_many :product_companies
   has_many :companies, through: :product_companies

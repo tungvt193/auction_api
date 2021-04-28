@@ -3,3 +3,4 @@
 :concurrency: 25
 :queues:
   - [carrierwave, 5]
+  - [crawler, 1]

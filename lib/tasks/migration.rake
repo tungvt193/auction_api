@@ -5,6 +5,9 @@ namespace :migration do
   task apply: :environment do
     ridgepole(['--apply', "--file '#{schema_file}'"])
     Rake::Task['db:schema:dump'].invoke
+
+    puts 'bundle exec annotate --models --exclude fixtures,specs'
+    system 'bundle exec annotate --models --exclude fixtures,specs'
   end
 
   desc 'Export database schema'

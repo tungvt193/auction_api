@@ -9,10 +9,7 @@ module Resolvers
       def normalize_filters(value, branches = [])
         query = super
 
-        scope = instance_scope.graphql_ransack(query).order(
-          'auctions.started_at' => 'asc',
-          'auctions.ended_at' => 'asc'
-        )
+        scope = instance_scope.graphql_ransack(query)
 
         branches << scope
 

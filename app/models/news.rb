@@ -17,6 +17,9 @@ class News < ApplicationRecord
   mount_uploader :cover, ImageUploader
   mount_uploader :content, FileUploader
 
+  store_in_background :cover
+  store_in_background :content
+
   enum status: { deactive: 0, active: 1, popular: 2 }
 
   ransacker :status, formatter: proc { |v| statuses[v] }
