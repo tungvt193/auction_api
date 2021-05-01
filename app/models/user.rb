@@ -40,7 +40,7 @@ class User < ApplicationRecord
   rescue StandardError
     nil
   end
-  
+
   def password=(string_password)
     self.encrypted_password = cryptor.encrypt_and_sign(string_password)
   end
