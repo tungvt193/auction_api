@@ -40,6 +40,14 @@ class User < ApplicationRecord
   rescue StandardError
     nil
   end
+  
+  def password=(string_password)
+    self.encrypted_password = cryptor.encrypt_and_sign(string_password)
+  end
+
+  def password
+    cryptor.decrypt_and_verify(encrypted_password)
+  end
 
   def avatar_url
     avatar.try(:url)
