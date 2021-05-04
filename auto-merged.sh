@@ -25,7 +25,7 @@ if [ ${COUNTBRANCHES} -eq "0" ]; then
       --header "Content-Type: application/json" \
       --data "${BODY}";
 
-  echo "Opened a new merge request: auto create merge request from staging and assigned to you";
+  echo "Opened a new merge request: Auto create merge request from staging and assigned to Mr.John";
   exit;
 fi
 
