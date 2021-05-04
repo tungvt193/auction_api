@@ -17,9 +17,10 @@ stages:
 
 automation_deploy:
   stage: automation_deploy
-  image: kroniak/ssh-client
+  image: ruby:2.6.5
   before_script:
     - echo "Auto deploying api for staging environment"
+    - apt-get update && apt-get -y install openssh-client
     - eval "$(ssh-agent -s)"
     - ssh-add <(echo "$SSH_PRIVATE_KEY" | base64 -d)
   script:
