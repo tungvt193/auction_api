@@ -1,11 +1,46 @@
 stages:
-  - coding_convention
+  # - coding_convention
+  - automation_deploy
+  - manual_deploy
 
-coding_convention:
-  stage: coding_convention
-  image: ruby:2.6.5
+# coding_convention:
+#   stage: coding_convention
+#   image: ruby:2.6.5
+#   before_script:
+#     - gem install bundler --no-document
+#     - bundle install
+#   script:
+#     - bundle exec rubocop .
+#   when: always
+#   except:
+#     - staging
+
+automation_deploy:
+  stage: automation_deploy
+  image: kroniak/ssh-client
   before_script:
-    - gem install bundler --no-document
-    - bundle install
+    - echo "Auto deploying api for staging environment"
   script:
-    - bundle exec rubocop .
+    - chmod 400 $SSH_PRIVATE_KEY
+    - eval "$(ssh-agent -s)"
+    - ssh-add $SSH_PRIVATE_KEY
+    - sed -i 's/auction-staging/AUCTION_STAGING_IP/g' config/deploy/staging.rb
+    - bundle exec cap staging deploy
+  when: on_success
+  only:
+    - staging
+
+manual_deploy:
+  stage: manual_deploy
+  image: kroniak/ssh-client
+  before_script:
+    - echo "Manual deploy api for production environment"
+  script:
+    - chmod 400 $SSH_PRIVATE_KEY
+    - eval "$(ssh-agent -s)"
+    - ssh-add $SSH_PRIVATE_KEY
+    - sed -i 's/auction-production/AUCTION_PRODUCTION_IP/g' config/deploy/production.rb
+    - bundle exec cap production deploy
+  when: manual
+  only:
+    - master
