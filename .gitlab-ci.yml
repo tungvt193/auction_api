@@ -23,6 +23,8 @@ automation_deploy:
     - apt-get update && apt-get -y install openssh-client
     - eval "$(ssh-agent -s)"
     - ssh-add <(echo "$SSH_PRIVATE_KEY" | base64 -d)
+    - gem install bundler --no-document
+    - bundle install
   script:
     - sed -i 's/auction-staging/$AUCTION_STAGING_IP/g' config/deploy/staging.rb
     - bundle exec cap staging deploy
