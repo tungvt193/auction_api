@@ -22,7 +22,7 @@ automation_deploy:
     - echo "Auto deploying api for staging environment"
     - chmod 400 $SSH_PRIVATE_KEY
     - eval "$(ssh-agent -s)"
-    - ssh-add <(echo "$SSH_PRIVATE_KEY")
+    - echo "${SSH_PRIVATE_KEY}" | tr -d '\r' | ssh-add - > /dev/null
   script:
     - sed -i 's/auction-staging/$AUCTION_STAGING_IP/g' config/deploy/staging.rb
     - bundle exec cap staging deploy
@@ -37,7 +37,7 @@ manual_deploy:
     - echo "Manual deploy api for production environment"
     - chmod 400 $SSH_PRIVATE_KEY
     - eval "$(ssh-agent -s)"
-    - ssh-add <(echo "$SSH_PRIVATE_KEY")
+    - echo "${SSH_PRIVATE_KEY}" | tr -d '\r' | ssh-add - > /dev/null
   script:
     - sed -i 's/auction-production/$AUCTION_PRODUCTION_IP/g' config/deploy/production.rb
     - bundle exec cap production deploy
