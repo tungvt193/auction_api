@@ -1,4 +1,4 @@
-server 'tadaima-production', roles: %i[web app db], primary: true
+server 'auction-production', roles: %i[web app db], primary: true
 set :ssh_options, forward_agent: true, user: 'auction'
 # If the environment differs from the stage name
 set :rails_env, 'production'
