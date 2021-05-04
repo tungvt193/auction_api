@@ -1,4 +1,4 @@
-image: ruby:2.6.5
+image: ${CI_BASE_IMAGE}:latest
 
 stages:
   - coding_convention
@@ -7,13 +7,11 @@ stages:
   - manual_deploy
 
 .ruby_setup:
-  script:
-    - gem install bundler --no-document
+  before_script:
     - bundle install
 
 .setup_deployment:
-  script:
-    - apt-get update && apt-get -y install openssh-client
+  before_script:
     - eval "$(ssh-agent -s)"
     - ssh-add <(echo "$SSH_PRIVATE_KEY" | base64 -d)
 
@@ -21,7 +19,7 @@ coding_convention:
   stage: coding_convention
   before_script:
     - echo "Check coding convention using rubocop"
-    - !reference [.ruby_setup, script]
+    - !reference [.ruby_setup, before_script]
   script:
     - bundle exec rubocop .
   when: always
@@ -30,8 +28,8 @@ automation_deploy:
   stage: automation_deploy
   before_script:
     - echo "Auto deploying api for staging environment"
-    - !reference [.ruby_setup, script]
-    - !reference [.setup_deployment, script]
+    - !reference [.ruby_setup, before_script]
+    - !reference [.setup_deployment, before_script]
   script:
     - sed -i "s/auction-staging/${AUCTION_STAGING_IP}/g" config/deploy/staging.rb
     - bundle exec cap staging deploy
@@ -51,8 +49,8 @@ manual_deploy:
   stage: manual_deploy
   before_script:
     - echo "Manual deploy api for production environment"
-    - !reference [.ruby_setup, script]
-    - !reference [.setup_deployment, script]
+    - !reference [.ruby_setup, before_script]
+    - !reference [.setup_deployment, before_script]
   script:
     - sed -i "s/auction-production/${AUCTION_PRODUCTION_IP}/g" config/deploy/production.rb
     - bundle exec cap production deploy
