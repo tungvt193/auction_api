@@ -1,7 +1,7 @@
 stages:
   - coding_convention
 
-.coding_convention:
+coding_convention:
   stage: coding_convention
   image: ruby:2.6.5
   before_script:
