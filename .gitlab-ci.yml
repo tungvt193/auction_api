@@ -24,7 +24,7 @@ automation_deploy:
     - chmod 400 $SSH_PRIVATE_KEY
     - eval "$(ssh-agent -s)"
     - ssh-add $SSH_PRIVATE_KEY
-    - sed -i 's/auction-staging/AUCTION_STAGING_IP/g' config/deploy/staging.rb
+    - sed -i 's/auction-staging/$AUCTION_STAGING_IP/g' config/deploy/staging.rb
     - bundle exec cap staging deploy
   when: on_success
   only:
@@ -39,7 +39,7 @@ manual_deploy:
     - chmod 400 $SSH_PRIVATE_KEY
     - eval "$(ssh-agent -s)"
     - ssh-add $SSH_PRIVATE_KEY
-    - sed -i 's/auction-production/AUCTION_PRODUCTION_IP/g' config/deploy/production.rb
+    - sed -i 's/auction-production/$AUCTION_PRODUCTION_IP/g' config/deploy/production.rb
     - bundle exec cap production deploy
   when: manual
   only:
