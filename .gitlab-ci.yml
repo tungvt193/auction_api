@@ -5,17 +5,10 @@ stages:
   - automation_deploy
   - manual_deploy
 
-before_script:
-  - gem install bundler --no-document
-  - bundle install
-
-coding_convention:
-  stage: coding_convention
+.ruby_setup:
   script:
-    - bundle exec rubocop .
-  when: always
-  except:
-    - staging
+    - gem install bundler --no-document
+    - bundle install
 
 .setup_deployment:
   script:
@@ -23,10 +16,22 @@ coding_convention:
     - eval "$(ssh-agent -s)"
     - ssh-add <(echo "$SSH_PRIVATE_KEY" | base64 -d)
 
+coding_convention:
+  stage: coding_convention
+  before_script:
+    - echo "Check coding convention using rubocop"
+    - !reference [.ruby_setup, script]
+  script:
+    - bundle exec rubocop .
+  when: always
+  except:
+    - staging
+
 automation_deploy:
   stage: automation_deploy
   before_script:
     - echo "Auto deploying api for staging environment"
+    - !reference [.ruby_setup, script]
     - !reference [.setup_deployment, script]
   script:
     - sed -i 's/auction-staging/${AUCTION_STAGING_IP}/g' config/deploy/staging.rb
@@ -39,6 +44,7 @@ manual_deploy:
   stage: manual_deploy
   before_script:
     - echo "Manual deploy api for production environment"
+    - !reference [.ruby_setup, script]
     - !reference [.setup_deployment, script]
   script:
     - sed -i 's/auction-production/${AUCTION_PRODUCTION_IP}/g' config/deploy/production.rb
