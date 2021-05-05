@@ -10,7 +10,7 @@
 #  updated_at :datetime         not null
 #
 class Crawler < ApplicationRecord
-  mount_uploader :file, ImageUploader
+  mount_uploader :file, FileUploader
   store_in_background :file
 
   enum status: { pending: 0, success: 1, failed: 2 }
