@@ -38,6 +38,7 @@ Metrics/BlockLength:
     - db/seeds/**/*
     - app/graphql/types/root/*.rb
     - app/graphql/mutations/base_mutation.rb
+    - app/graphql/types/root/**/*
     - config/*
 
 Metrics/AbcSize:

@@ -48,26 +48,12 @@ module Api
     end
 
     def skip_operations
-      %w[
-        v1SignIn
-        v1ForgotPassword
-        v1ResetPassword
-        v1NewsList
-        v1CategoryList
-        v1CompanyList
-        v1ProductList
-        v1AuctionList
-        v1Product
-        v1Category
-        v1Company
-        v1News
-        v1Auction
-        v1BannerList
-        v1NearestAuctionList
-        v1AuctionItemList
-        v1AuctionItem
-        v1AuctionItemNearestList
-      ]
+      [
+        Api::SkipOperation.admin,
+        Api::SkipOperation.common,
+        Api::SkipOperation.mobile,
+        Api::SkipOperation.web
+      ].flatten
     end
   end
 end

@@ -10,7 +10,7 @@ class AuctionApiSchema < GraphQL::Schema
   use BatchLoader::GraphQL
 
   use GraphQL::Guard.new(
-    policy_object: GraphqlPolicy,
+    policy_object: Policies::GraphqlPolicy,
     not_authorized: ->(type, field) { GraphQL::ExecutionError.new("Not authorized to access #{type}.#{field}") }
   )
 
