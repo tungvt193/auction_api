@@ -8,13 +8,13 @@ module Policies
       def mutation
         {
           v1AdminSignIn: {
-            guard: ->(_obj, _args, ctx) { is_admin?(ctx) }
+            guard: ->(_obj, _args, ctx) { true }
           },
           v1AdminForgotPassword: {
-            guard: ->(_obj, _args, ctx) { is_admin?(ctx) }
+            guard: ->(_obj, _args, ctx) { true }
           },
           v1AdminResetPassword: {
-            guard: ->(_obj, _args, ctx) { is_admin?(ctx) }
+            guard: ->(_obj, _args, ctx) { true }
           }
         }
       end
