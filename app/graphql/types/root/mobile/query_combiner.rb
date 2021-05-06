@@ -11,14 +11,6 @@ module Types
                 function: ::Resolvers::Mobile::Users::List, null: true, connection: true
           field :v1MobileUser, resolver: ::Resolvers::Mobile::Users::Show
 
-          field :v1MobileBannerList, ::Connections::BannerConnection,
-                function: ::Resolvers::Mobile::Banners::List, null: true, connection: true
-          field :v1MobileBanner, resolver: ::Resolvers::Mobile::Banners::Show
-
-          field :v1MobileCategoryList, ::Connections::CategoryConnection,
-                function: ::Resolvers::Mobile::Categories::List, null: true, connection: true
-          field :v1MobileCategory, resolver: ::Resolvers::Mobile::Categories::Show
-
           field :v1MobileCompanyList, ::Connections::CompanyConnection,
                 function: ::Resolvers::Mobile::Companies::List, null: true, connection: true
           field :v1MobileCompany, resolver: ::Resolvers::Mobile::Companies::Show
@@ -27,17 +19,9 @@ module Types
                 function: ::Resolvers::Mobile::Images::List, null: true, connection: true
           field :v1MobileImage, resolver: ::Resolvers::Mobile::Images::Show
 
-          field :v1MobileNewsList, ::Connections::NewsConnection,
-                function: ::Resolvers::Mobile::News::List, null: true, connection: true
-          field :v1MobileNews, resolver: ::Resolvers::Mobile::News::Show
-
           field :v1MobileProductList, ::Connections::ProductConnection,
                 function: ::Resolvers::Mobile::Products::List, null: true, connection: true
           field :v1MobileProduct, resolver: ::Resolvers::Mobile::Products::Show
-
-          field :v1MobileVideoList, ::Connections::VideoConnection,
-                function: ::Resolvers::Mobile::Videos::List, null: true, connection: true
-          field :v1MobileVideo, resolver: ::Resolvers::Mobile::Videos::Show
 
           field :v1MobileNearestAuctionList, ::Connections::AuctionConnection,
                 function: ::Resolvers::Mobile::Auctions::NearestList, null: true, connection: true

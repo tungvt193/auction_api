@@ -69,6 +69,16 @@ module Mutations
       ::ActiveSupport::MessageEncryptor.new(Rails.application.secrets.secret_key_base.byteslice(0..31))
     end
 
+    class << self
+      def graphql_name(ons = nil)
+        split_names = name.split('::')
+
+        return ons if split_names.size < 2
+
+        split_names[1].to_s + split_names.try(:last).to_s
+      end
+    end
+
     private
 
     def model

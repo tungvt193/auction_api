@@ -2,6 +2,7 @@ module Mutations
   module Web
     module Authentication
       class SignIn < BaseMutation
+        graphql_name 'WebSignIn'
         argument :attribute, Types::AttributeType, required: true
         field :data, Types::SignInType, null: false
 

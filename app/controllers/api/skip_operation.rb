@@ -10,7 +10,16 @@ module Api
       end
 
       def common
-        %w[]
+        %w[
+          v1CommonCategoryList
+          v1CommonCategory
+          v1CommonNewsList
+          v1CommonNews
+          v1CommonBannerList
+          v1CommonBanner
+          v1CommonVideoList
+          v1CommonVideo
+        ]
       end
 
       def mobile
@@ -18,17 +27,12 @@ module Api
           v1MobileSignIn
           v1MobileForgotPassword
           v1MobileResetPassword
-          v1MobileNewsList
-          v1MobileCategoryList
           v1MobileCompanyList
           v1MobileProductList
           v1MobileAuctionList
           v1MobileProduct
-          v1MobileCategory
           v1MobileCompany
-          v1MobileNews
           v1MobileAuction
-          v1MobileBannerList
           v1MobileNearestAuctionList
           v1MobileAuctionItemList
           v1MobileAuctionItem
