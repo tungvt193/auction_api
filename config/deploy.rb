@@ -53,7 +53,7 @@ namespace :deploy do
     on roles(:app), in: :sequence, wait: 5 do
       within release_path do
         with rails_env: fetch(:stage) do
-          execute "ps -ef | grep auction-puma.sock | grep -v grep | awk '{print $2}' | xargs kill -9"
+          execute "ps -ef | grep auction-puma.sock | grep -v grep | awk '{print $2}' | xargs --no-run-if-empty kill -9"
         end
       end
     end
@@ -63,7 +63,7 @@ namespace :deploy do
     on roles(:app), in: :sequence, wait: 5 do
       within release_path do
         with rails_env: fetch(:stage) do
-          execute "ps -ef | grep sidekiq | grep -v grep | awk '{print $2}' | xargs kill -9"
+          execute "ps -ef | grep sidekiq | grep -v grep | awk '{print $2}' | xargs --no-run-if-empty kill -9"
         end
       end
     end
