@@ -16,13 +16,13 @@ class EmailRepository < BaseRepository
         ).merge({
           Variables: {
             first_name: record.try(:first_name).to_s,
-            reset_password_url: record.try(:reset_password_url).to_s,
+            reset_password_url: record.try(:reset_password_url).to_s
           }
         }.as_json)
       ]
     )
   end
-  
+
   private
 
   def base_template(template_id, receiver, subject)
