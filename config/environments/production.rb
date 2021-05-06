@@ -107,4 +107,16 @@ Rails.application.configure do
   # config.active_record.database_selector = { delay: 2.seconds }
   # config.active_record.database_resolver = ActiveRecord::Middleware::DatabaseSelector::Resolver
   # config.active_record.database_resolver_context = ActiveRecord::Middleware::DatabaseSelector::Resolver::Session
+
+
+  config.action_mailer.delivery_method = :smtp
+  # SMTP settings for gmail
+  config.action_mailer.smtp_settings = {
+    address: 'in-v3.mailjet.com',
+    port: 587,
+    user_name: ENV['MAILJET_API_KEY'],
+    password: ENV['MAILJET_SECRET_KEY'],
+    authentication: 'plain',
+    enable_starttls_auto: true
+  }
 end

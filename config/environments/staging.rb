@@ -115,14 +115,14 @@ Rails.application.configure do
   # config.active_record.database_resolver_context = ActiveRecord::Middleware::DatabaseSelector::Resolver::Session
 
   # Rails.application.routes.default_url_options = { host: ENV['EMAIL_HOST_SERVER'] }
-  # config.action_mailer.delivery_method = :smtp
-  # IMAP settings for email
-  # config.action_mailer.smtp_settings = {
-  #   address: ENV['EMAIL_SERVER'],
-  #   port: 587,
-  #   user_name: ENV['EMAIL_USERNAME'],
-  #   password: ENV['EMAIL_PASSWORD'],
-  #   authentication: 'plain',
-  #   enable_starttls_auto: true
-  # }
+  config.action_mailer.delivery_method = :smtp
+  # SMTP settings for gmail
+  config.action_mailer.smtp_settings = {
+    address: 'in-v3.mailjet.com',
+    port: 587,
+    user_name: ENV['MAILJET_API_KEY'],
+    password: ENV['MAILJET_SECRET_KEY'],
+    authentication: 'plain',
+    enable_starttls_auto: true
+  }
 end
