@@ -11,7 +11,7 @@ module Mutations
           params = normalize_parameters(args)
           user = ::User.by_username_and_role(params[:username], 'admin')
           repo = ::AuthRepository.new(nil, user)
-          token = repo.sign_in(params)
+          token = repo.sign_in(context, params)
 
           OpenStruct.new({
                            data: {

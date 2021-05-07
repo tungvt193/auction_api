@@ -35,7 +35,7 @@ module Mutations
         private
 
         def normalize_parameters(args)
-          ActionController::Parameters.new(args[:attribute].as_json).permit(:username, :password)
+          ::ActionController::Parameters.new(args[:attribute].as_json).permit(:username, :password)
         end
       end
     end
