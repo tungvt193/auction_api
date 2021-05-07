@@ -31,6 +31,7 @@ class User < ApplicationRecord
   enum gender: { male: 0, female: 1 }
 
   has_many :auction_items
+  has_many :device_tokens, dependent: :destroy
 
   ransacker :role, formatter: proc { |v| roles[v] }
   ransacker :gender, formatter: proc { |v| genders[v] }
@@ -71,5 +72,9 @@ class User < ApplicationRecord
 
   def full_name
     "#{last_name} #{first_name}"
+  end
+
+  def reset_password_url
+    # TODO
   end
 end

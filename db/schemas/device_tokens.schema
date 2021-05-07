@@ -1,0 +1,13 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+create_table(:device_tokens, id: { type: :bigint, unsigned: true }, charset: "utf8mb4", collation: "utf8mb4_general_ci") do |t|
+  t.text 'token'
+  t.integer 'token_type', null: false, default: 0
+  t.bigint 'user_id'
+
+  t.datetime "created_at", precision: 6, null: false
+  t.datetime "updated_at", precision: 6, null: false
+
+  t.index ['token_type'], name: 'index_device_tokens_on_token_type'
+  t.index ['user_id'], name: 'index_device_tokens_on_user_id'
+end

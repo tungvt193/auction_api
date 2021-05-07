@@ -115,6 +115,16 @@ ActiveRecord::Schema.define(version: 0) do
     t.index ["status"], name: "index_crawlers_on_status"
   end
 
+  create_table "device_tokens", id: { type: :bigint, unsigned: true }, charset: "utf8mb4", collation: "utf8mb4_general_ci", force: :cascade do |t|
+    t.text "token"
+    t.integer "token_type", default: 0, null: false
+    t.bigint "user_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["token_type"], name: "index_device_tokens_on_token_type"
+    t.index ["user_id"], name: "index_device_tokens_on_user_id"
+  end
+
   create_table "favorites", id: { type: :bigint, unsigned: true }, charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "favoritable_type", null: false
     t.bigint "favoritable_id", null: false
