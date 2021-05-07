@@ -10,10 +10,13 @@ module Mutations
 
           params = normalize_parameters(args)
 
-          user = ::User.find_by(username: params[:username], role: 'admin')
+          user = ::User.by_username_and_role(params[:username], 'admin')
           raise ActiveRecord::RecordNotFound, 'Username is incorrect!' if user.blank?
 
           raise ::ActionController::InvalidAuthenticityToken, 'Password is incorrect!' unless user.authenticate(params[:password])
+
+          device_token = ::DeviceToken.where(user_id: user.id, token: params[:device_token])
+          make_device_token(user, params) if device_token.blank?
 
           expired_at = 1.hour.from_now.strftime('%H:%M %d/%m/%Y')
           token = cryptor.encrypt_and_sign("user-id:#{user.id}&expired-at:#{expired_at}")
@@ -34,7 +37,15 @@ module Mutations
         private
 
         def normalize_parameters(args)
-          ActionController::Parameters.new(args[:attribute].as_json).permit(:username, :password)
+          ActionController::Parameters.new(args[:attribute].as_json).permit(:username, :password, :device_token)
+        end
+
+        def make_device_token(user, params)
+          ::DeviceToken.create(
+            user_id: user.id,
+            token: params[:device_token],
+            token_type: 'owner'
+          )
         end
       end
     end
