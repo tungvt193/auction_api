@@ -22,6 +22,8 @@ module Types
           field :v1CommonVideoList, ::Connections::VideoConnection,
                 function: ::Resolvers::Common::Videos::List, null: true, connection: true
           field :v1CommonVideo, resolver: ::Resolvers::Common::Videos::Show
+
+          field :v1CommonUserByUsername, resolver: ::Resolvers::Common::Users::ByUsername
         end
       end
     end

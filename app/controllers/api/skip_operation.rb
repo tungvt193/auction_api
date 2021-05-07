@@ -19,6 +19,7 @@ module Api
           v1CommonBanner
           v1CommonVideoList
           v1CommonVideo
+          v1CommonUserByUsername
         ]
       end
 
