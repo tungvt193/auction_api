@@ -77,4 +77,14 @@ class User < ApplicationRecord
   def reset_password_url
     # TODO
   end
+
+  def save_device_token(device_token)
+    return if device_token.blank?
+    return if device_tokens.find_by(token: device_token).present?
+
+    device_tokens.create({
+                           token: device_token,
+                           token_type: 'owner'
+                         })
+  end
 end

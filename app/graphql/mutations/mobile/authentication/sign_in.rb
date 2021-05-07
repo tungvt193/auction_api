@@ -9,19 +9,9 @@ module Mutations
           super
 
           params = normalize_parameters(args)
-
           user = ::User.by_username_and_role(params[:username])
-          raise ActiveRecord::RecordNotFound, 'Username is incorrect!' if user.blank?
-
-          raise ::ActionController::InvalidAuthenticityToken, 'Password is incorrect!' unless user.authenticate(params[:password])
-
-          expired_at = 1.hour.from_now.strftime('%H:%M %d/%m/%Y')
-          token = cryptor.encrypt_and_sign("user-id:#{user.id}&expired-at:#{expired_at}")
-
-          context[:session][:token] = token
-
-          user.assign_attributes({ last_sign_in_at: Time.zone.now })
-          user.save!
+          repo = ::AuthRepository.new(nil, user)
+          token = repo.sign_in(params)
 
           OpenStruct.new({
                            data: {
@@ -34,7 +24,7 @@ module Mutations
         private
 
         def normalize_parameters(args)
-          ActionController::Parameters.new(args[:attribute].as_json).permit(:username, :password)
+          ActionController::Parameters.new(args[:attribute].as_json).permit(:username, :password, :device_token)
         end
       end
     end
