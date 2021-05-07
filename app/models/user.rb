@@ -35,6 +35,22 @@ class User < ApplicationRecord
   ransacker :role, formatter: proc { |v| roles[v] }
   ransacker :gender, formatter: proc { |v| genders[v] }
 
+  class << self
+    def by_username_and_role(username, role = 'user')
+      graphql_ransack({
+                        m: 'or',
+                        g: {
+                          '0' => {
+                            email_eq: username
+                          },
+                          '1' => {
+                            phone_eq: username
+                          }
+                        }
+                      }).find_by(role: role)
+    end
+  end
+
   def authenticate(password)
     cryptor.decrypt_and_verify(encrypted_password) == password
   rescue StandardError

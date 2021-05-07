@@ -11,7 +11,7 @@ module Mutations
 
           params = normalize_parameters(args)
 
-          user = ::User.find_by email: params[:username]
+          user = ::User.by_username_and_role(params[:username])
           raise ActiveRecord::RecordNotFound, 'Username is incorrect!' if user.blank?
 
           raise ::ActionController::InvalidAuthenticityToken, 'Password is incorrect!' unless user.authenticate(params[:password])
