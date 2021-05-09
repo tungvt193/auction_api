@@ -75,7 +75,11 @@ class User < ApplicationRecord
   end
 
   def reset_password_url
-    # TODO
+    expired_at = 15.minutes.from_now.strftime('%H:%M %d/%m/%Y')
+    token = cryptor.encrypt_and_sign("user-id:#{id}&expired-at:#{expired_at}&token-type:reset_password")
+
+    assign_attributes({ reset_password_token: token, reset_password_sent_at: Time.zone.now })
+    "#{ENV.fetch('RESET_PASSWORD_URL')}?token=#{token}"
   end
 
   def save_device_token(device_token)

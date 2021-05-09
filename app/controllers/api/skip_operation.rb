@@ -5,7 +5,6 @@ module Api
         %w[
           v1AdminSignIn
           v1AdminForgotPassword
-          v1AdminResetPassword
         ]
       end
 

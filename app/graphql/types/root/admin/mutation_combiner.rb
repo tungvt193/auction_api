@@ -9,6 +9,7 @@ module Types
         included do
           field :v1AdminSignIn, mutation: ::Mutations::Admin::Authentication::SignIn
           field :v1AdminForgotPassword, mutation: ::Mutations::Admin::Authentication::ForgotPassword
+          field :v1AdminResetPassword, mutation: ::Mutations::Admin::Authentication::ResetPassword
           field :v1AdminChangePassword, mutation: ::Mutations::Admin::Authentication::ChangePassword
 
           field :v1AdminCreateAuction, mutation: ::Mutations::Admin::Auctions::CreateAuction

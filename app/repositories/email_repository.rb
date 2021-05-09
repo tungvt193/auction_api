@@ -21,6 +21,8 @@ class EmailRepository < BaseRepository
         }.as_json)
       ]
     )
+
+    record.save!
   end
 
   private

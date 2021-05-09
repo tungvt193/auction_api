@@ -1,7 +1,7 @@
 class AuthRepository < BaseRepository
   def sign_in(context, params)
-    raise ::ActiveRecord::RecordNotFound, 'Username is incorrect!' if record.blank?
-    raise ::ActionController::InvalidAuthenticityToken, 'Password is incorrect!' unless record.authenticate(params[:password])
+    raise ::ActiveRecord::RecordNotFound, 'Tài khoản không chính xác.' if record.blank?
+    raise ::ActionController::InvalidAuthenticityToken, 'Mật khẩu không chính xác.' unless record.authenticate(params[:password])
 
     device_token = ::DeviceToken.where(user_id: record.id, token: params[:device_token])
     record.save_device_token(params[:device_token]) if device_token.blank?
