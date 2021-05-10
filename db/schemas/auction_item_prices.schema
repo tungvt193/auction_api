@@ -1,6 +1,6 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
-create_table(:auction_item_prices, id: { type: :bigint, unsigned: true }, charset: "utf8mb4", collation: "utf8mb4_general_ci") do |t|
+create_table(:auction_item_prices, id: { type: :bigint, unsigned: true }, charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci") do |t|
   t.bigint 'auction_item_id', null: false
   t.float 'new_price', null: false, default: 0.0
   t.float 'old_price', null: false, default: 0.0
