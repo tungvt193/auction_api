@@ -11,7 +11,7 @@ module Mutations
           attributes = normalize_parameters(args[:attribute])
           user = ::User.find_by(email: attributes[:email])
 
-          raise GraphQL::ExecutionError, 'Not found account using this email' if user.blank?
+          raise GraphQL::ExecutionError, 'Không tìm thấy tài khoản sử dụng email này.' if user.blank?
 
           ::UserMailer.reset_password(user.try(:id)).deliver!
 
@@ -19,7 +19,7 @@ module Mutations
                            data: {
                              is_sent: true,
                              email: attributes[:email],
-                             message: 'Please check inbox the email!'
+                             message: 'Đường dẫn thay đổi mật khẩu đã được gửi đến hòm thư của bạn. Hãy kiểm tra và làm theo hướng dẫn'
                            }
                          })
         end

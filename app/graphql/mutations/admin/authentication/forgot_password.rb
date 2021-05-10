@@ -3,23 +3,22 @@ module Mutations
     module Authentication
       class ForgotPassword < BaseMutation
         argument :attribute, Types::AttributeType, required: true
-        field :data, Types::UserType, null: false
+        field :data, Types::ResponseType, null: false
 
         def resolve(args)
           super
 
           attributes = normalize_parameters(args[:attribute])
-          user = ::User.find_by(email: attributes[:email], role: 'admin')
+          user = ::User.find_by(email: attributes[:email].downcase, role: 'admin')
 
           raise GraphQL::ExecutionError, 'Not found account using this email' if user.blank?
 
-          ::UserMailer.reset_password(user.try(:id)).deliver!
+          ::EmailRepository.new(nil, user).forgot_password
 
           OpenStruct.new({
                            data: {
-                             is_sent: true,
-                             email: attributes[:email],
-                             message: 'Please check inbox the email!'
+                             is_success: true,
+                             message: 'Yêu cầu thay đổi lại mật khẩu đã được gửi tới email của bạn, vui lòng kiểm tra mail!'
                            }
                          })
         end
