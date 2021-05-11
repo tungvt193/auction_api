@@ -172,6 +172,23 @@ ActiveRecord::Schema.define(version: 0) do
     t.index ["status"], name: "index_news_on_status"
   end
 
+  create_table "notifications", id: { type: :bigint, unsigned: true }, charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.string "title", null: false
+    t.integer "notification_type", default: 0, null: false
+    t.text "message"
+    t.boolean "status", default: false, null: false
+    t.string "image_url"
+    t.json "data"
+    t.bigint "user_id"
+    t.text "reader_ids"
+    t.text "blinder_ids"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["notification_type"], name: "index_notifications_on_notification_type"
+    t.index ["status"], name: "index_notifications_on_status"
+    t.index ["user_id"], name: "index_notifications_on_user_id"
+  end
+
   create_table "product_companies", id: { type: :bigint, unsigned: true }, charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.bigint "product_id", null: false
     t.bigint "company_id", null: false
