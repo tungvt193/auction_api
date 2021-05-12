@@ -1,0 +1,8 @@
+login_session_expiration_time_hour: 1
+expired_time_reset_password_minute: 15
+expired_time_otp_minute: 15
+
+validations:
+  user:
+    email_regex: !ruby/regexp '/\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i'
+    password_regex: !ruby/regexp '/\A(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[\W]).{8,}\z/'

@@ -242,7 +242,7 @@ ActiveRecord::Schema.define(version: 0) do
     t.string "first_name"
     t.string "last_name"
     t.string "phone", null: false
-    t.string "email", default: "", null: false
+    t.string "email"
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
     t.integer "role", default: 0, null: false
@@ -259,7 +259,7 @@ ActiveRecord::Schema.define(version: 0) do
     t.integer "status", default: 0, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["email"], name: "index_users_on_email"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
     t.index ["role"], name: "index_users_on_role"
     t.index ["status"], name: "index_users_on_status"
