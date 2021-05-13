@@ -3,7 +3,7 @@
 namespace :migration do
   desc 'Apply database schema allow drop table put ALLOW_DROP_TABLE or allow remove column put ALLOW_REMOVE_COLUMN'
   task apply: :environment do
-    ridgepole(['--apply', "--file '#{schema_file}'"])
+    ridgepole(['--apply', '--allow-pk-change', "--file '#{schema_file}'"])
     Rake::Task['db:schema:dump'].invoke
 
     puts 'bundle exec annotate --models --exclude fixtures,specs'
