@@ -24,6 +24,10 @@ module Types
           field :v1CommonVideo, resolver: ::Resolvers::Common::Videos::Show
 
           field :v1CommonUserByUsername, resolver: ::Resolvers::Common::Users::ByUsername
+
+          field :v1CommonSubCategoryList, ::Connections::SubCategoryConnection,
+                function: ::Resolvers::Common::SubCategories::List, null: true, connection: true
+          field :v1CommonSubCategory, resolver: ::Resolvers::Common::SubCategories::Show
         end
       end
     end

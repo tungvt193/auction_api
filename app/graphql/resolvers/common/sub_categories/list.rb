@@ -1,9 +1,9 @@
 module Resolvers
   module Common
-    module Categories
+    module SubCategories
       class List < ::Resolvers::BaseQuery
         scope { instance_scope }
-        type types[::Types::CategoryType]
+        type types[::Types::SubCategoryType]
 
         option :per_page, type: types.Int, default: 10, with: :apply_per_page
         option :order_by, type: types.String, default: 'position ASC', with: :apply_order
@@ -21,7 +21,7 @@ module Resolvers
           # NOTE: Don't run QueryResolver during tests
           return super if context.blank?
 
-          GraphQL::QueryResolver.run(::Category, context, ::Types::CategoryType) do
+          GraphQL::QueryResolver.run(::SubCategory, context, ::Types::SubCategoryType) do
             super
           end
         end
@@ -29,7 +29,7 @@ module Resolvers
         private
 
         def instance_scope
-          ::Category.active
+          ::SubCategory.active
         end
       end
     end

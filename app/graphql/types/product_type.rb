@@ -28,6 +28,7 @@ module Types
     field :star_total, String, null: false
     field :started_at, String, null: false
     field :status, String, null: false
+    field :short_description, String, null: true
 
     field :company, Types::CompanyType, null: true, resolve: Lazy::LazyCompany.new
     field :category, Types::CategoryType, null: true, resolve: Lazy::LazyCategory.new

@@ -88,11 +88,10 @@ ActiveRecord::Schema.define(version: 0) do
     t.string "thumb"
     t.string "thumb_tmp"
     t.integer "status", default: 0, null: false
-    t.string "category_id"
-    t.bigint "parent_id"
+    t.integer "position", default: 0, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["parent_id"], name: "index_categories_on_parent_id"
+    t.index ["position"], name: "index_categories_on_position"
     t.index ["status"], name: "index_categories_on_status"
   end
 
@@ -206,6 +205,7 @@ ActiveRecord::Schema.define(version: 0) do
     t.bigint "category_id", null: false
     t.float "star", default: 0.0, null: false
     t.float "star_total", default: 0.0, null: false
+    t.text "short_description"
     t.datetime "started_at"
     t.integer "status", default: 0, null: false
     t.datetime "created_at", precision: 6, null: false
@@ -226,6 +226,18 @@ ActiveRecord::Schema.define(version: 0) do
     t.index ["user_id"], name: "index_rates_on_user_id"
   end
 
+  create_table "sub_categories", id: { type: :bigint, unsigned: true }, charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.string "name", null: false
+    t.bigint "category_id", null: false
+    t.integer "status", default: 0, null: false
+    t.integer "position", default: 0, null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["category_id"], name: "index_sub_categories_on_category_id"
+    t.index ["position"], name: "index_sub_categories_on_position"
+    t.index ["status"], name: "index_sub_categories_on_status"
+  end
+
   create_table "users", id: { type: :bigint, unsigned: true }, charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "first_name"
     t.string "last_name"
@@ -244,11 +256,13 @@ ActiveRecord::Schema.define(version: 0) do
     t.string "last_sign_in_ip"
     t.string "avatar"
     t.string "avatar_tmp"
+    t.integer "status", default: 0, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
     t.index ["role"], name: "index_users_on_role"
+    t.index ["status"], name: "index_users_on_status"
   end
 
   create_table "videos", id: { type: :bigint, unsigned: true }, charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|

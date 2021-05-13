@@ -1,0 +1,78 @@
+[
+  {
+    "name": "Máy hàn",
+    "thumb": "categories/máy hàn.png"
+  },
+  {
+    "name": "Máy khoan",
+    "thumb": "categories/máy khoan.png"
+  },
+  {
+    "name": "Máy nén khí",
+    "thumb": "categories/máy nén khí.png"
+  },
+  {
+    "name": "Máy nghiền",
+    "thumb": "categories/máy nghiền.png"
+  },
+  {
+    "name": "Máy phát điện",
+    "thumb": "categories/máy phát điện.png"
+  },
+  {
+    "name": "Máy san gạt",
+    "thumb": "categories/máy san gạt.png"
+  },
+  {
+    "name": "Máy ủi",
+    "thumb": "categories/máy ủi.png"
+  },
+  {
+    "name": "Máy xúc bánh xích",
+    "thumb": "categories/máy xúc bánh xích.png"
+  },
+  {
+    "name": "Máy xúc đào",
+    "thumb": "categories/máy xúc đào.png"
+  },
+  {
+    "name": "Mini Excavator",
+    "thumb": "categories/mini excavator.png"
+  },
+  {
+    "name": "Phụ kiện",
+    "thumb": "categories/phụ kiện.png"
+  },
+  {
+    "name": "Xe cẩu",
+    "thumb": "categories/xe cẩu.png"
+  },
+  {
+    "name": "Xe lu",
+    "thumb": "categories/xe lu.png"
+  },
+  {
+    "name": "Xe nâng hàng",
+    "thumb": "categories/xe nâng hàng.png"
+  },
+  {
+    "name": "Xe nâng người",
+    "thumb": "categories/xe nâng người.png"
+  },
+  {
+    "name": "Xe tải tự đổ",
+    "thumb": "categories/xe tải tự đổ.png"
+  },
+  {
+    "name": "Xe tải mỏ",
+    "thumb": "categories/xe tải mỏ.png"
+  },
+  {
+    "name": "Xúc lật",
+    "thumb": "categories/xúc lật.png"
+  },
+  {
+    "name": "Khác",
+    "thumb": "categories/others.png"
+  }
+]

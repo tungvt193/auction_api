@@ -1,20 +1,21 @@
 puts 'START IMPORT CATEGORY'
 
-names = ['Máy xúc mini', 'Máy xúc', 'Máy xúc lật', 'Máy ủi', 'Con lăn', 'Máy san đất', 'Máy hoàn thiện', 'Cần cẩu', 'Máy móc xây dựng khác', 'Xe nâng hàng', 'Máy phát điện', 'Máy hàn', 'Máy nén khí', 'Phụ tùng', 'Bộ phận', 'Mục nhỏ', 'Xe tải tự đổ', 'Xe tải', 'Các loại xe khác', 'Máy kéo', 'Máy nông nghiệp khác', 'Những loại khác']
-
+json_data = File.read(Rails.root.join('db/jsons/categories.json'))
+categories = JSON.parse(json_data)
 now = Time.zone.now
+base_im_url = Rails.root.join('db/images/').to_s
 
-names.each_with_index do |name, index|
-  puts "MAKE CATEGORY #{index + 1} / #{names.size}"
-
+categories.each_with_index do |category, index|
+  puts "MAKE CATEGORY #{index + 1} / #{categories.size}"
   cat = Category.new(
-    name: name,
+    name: category['name'],
     status: 'active',
     created_at: now,
-    updated_at: now
+    updated_at: now,
+    position: index
   )
 
-  cat.thumb = Category.download_image(index, 'https://source.unsplash.com/1600x900/?truck')
+  cat.thumb = File.new(base_im_url + category['thumb'])
   cat.save!
 end
 

@@ -46,10 +46,12 @@ module Types
     field :year_of_manufacture, String, null: false
     field :created_at, String, null: false
     field :updated_at, String, null: false
+    field :short_description, String, null: true, resolve: Lazy::LazyShortDescription.new
 
     field :user, Types::UserType, null: true, resolve: Lazy::LazyUser.new
     field :auction, Types::AuctionType, null: true, resolve: Lazy::LazyAuction.new
     field :product, Types::ProductType, null: true, resolve: Lazy::LazyProduct.new
     field :category, Types::CategoryType, null: true, resolve: Lazy::LazyCategory.new
+    field :company, Types::CompanyType, null: true, resolve: Lazy::LazyCompany.new
   end
 end

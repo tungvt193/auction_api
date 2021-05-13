@@ -20,8 +20,8 @@ auctions.map do |auction|
     product_company = product_companies.detect { |c| c.try(:product_id) == product.try(:id) }
     company = companies.detect { |c| c.try(:id) == product_company.try(:company_id) }
 
-    price = rand(10_000_000_000_000)
-    used_hours = rand(10_000_000)
+    price = rand(2_000_000_000)
+    used_hours = rand(10_000_00)
 
     record_attributes.push({
                              product_name: product.try(:name),
@@ -32,7 +32,7 @@ auctions.map do |auction|
                              product_id: product.try(:id),
                              category_id: product.try(:category_id),
                              price: price,
-                             min_price: price - 10_000_000,
+                             min_price: price - rand(500_000_000),
                              marker: company.try(:name),
                              serial: rand(10_000_000),
                              address: Faker::Address.full_address,

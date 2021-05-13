@@ -20,6 +20,7 @@
 #  last_sign_in_ip        :string(255)
 #  avatar                 :string(255)
 #  avatar_tmp             :string(255)
+#  status                 :integer          default("deactive"), not null
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
 #
@@ -29,12 +30,14 @@ class User < ApplicationRecord
 
   enum role: { user: 0, premium: 1, sale: 2, admin: 3 }
   enum gender: { male: 0, female: 1 }
+  enum status: { deactive: 0, active: 1, ban: 2 }
 
   has_many :auction_items
   has_many :device_tokens, dependent: :destroy
 
   ransacker :role, formatter: proc { |v| roles[v] }
   ransacker :gender, formatter: proc { |v| genders[v] }
+  ransacker :status, formatter: proc { |v| statuses[v] }
 
   class << self
     def by_username_and_role(username, role = 'user')
