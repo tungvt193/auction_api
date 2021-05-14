@@ -9,7 +9,7 @@ module Mutations
           super
 
           params = normalize_parameters(args[:attribute])
-          user, token = repo.verify_otp(context, params)
+          user, token = repo.verify_otp(params)
 
           OpenStruct.new({
                            data: {
