@@ -16,9 +16,7 @@ module Mutations
 
           raise ::ActionController::InvalidAuthenticityToken, 'Password is incorrect!' unless user.authenticate(params[:password])
 
-          expired_at = 1.hour.from_now.strftime('%H:%M %d/%m/%Y')
-          token = cryptor.encrypt_and_sign("user-id:#{user.id}&expired-at:#{expired_at}")
-
+          token = user.generate_token(Settings.login_session_expiration_time_hour.hour)
           context[:session][:token] = token
 
           user.assign_attributes({ last_sign_in_at: Time.zone.now })

@@ -26,7 +26,7 @@ module Api
         %w[
           v1MobileSignIn
           v1MobileForgotPassword
-          v1MobileResetPassword
+          v1MobileVerifyOtp
           v1MobileCompanyList
           v1MobileProductList
           v1MobileAuctionList

@@ -1,6 +1,6 @@
 puts 'START IMPORT USER'
 
-encrypted_password = User.new.cryptor.encrypt_and_sign('12345678')
+encrypted_password = User.new.cryptor.encrypt_and_sign('Bidma@2021')
 roles = User.roles.keys
 genders = %w[male female]
 now = Time.zone.now
