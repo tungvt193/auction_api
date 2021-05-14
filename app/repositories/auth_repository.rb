@@ -15,7 +15,7 @@ class AuthRepository < BaseRepository
     token
   end
 
-  def verify_otp(context, params)
+  def verify_otp(params)
     response = HTTParty.post(verify_url,
                              headers: {
                                'Content-Type': 'application/json'
