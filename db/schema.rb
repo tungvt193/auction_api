@@ -165,6 +165,10 @@ ActiveRecord::Schema.define(version: 0) do
     t.string "cover_tmp"
     t.text "short_description"
     t.string "title", null: false
+    t.string "slug"
+    t.bigint "votes_total", default: 0, null: false
+    t.bigint "comments_count", default: 0, null: false
+    t.bigint "comments_total", default: 0, null: false
     t.integer "status", default: 0, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

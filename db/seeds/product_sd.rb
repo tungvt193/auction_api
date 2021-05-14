@@ -28,7 +28,7 @@ products.each_with_index do |product, index|
     product_companies_attributes: company_attributes
   )
 
-  pro.thumb = Product.download_image(index, product['im'])
+  pro.thumb = Product.download_file(index, product['im'])
   pro.save!
 end
 

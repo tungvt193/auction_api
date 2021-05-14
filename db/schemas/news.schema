@@ -7,6 +7,10 @@ create_table(:news, id: { type: :bigint, unsigned: true }, charset: "utf8mb4", c
   t.string 'cover_tmp'
   t.text 'short_description'
   t.string 'title', null: false
+  t.string 'slug'
+  t.bigint 'votes_total', null: false, default: 0
+  t.bigint 'comments_count', null: false, default: 0
+  t.bigint 'comments_total', null: false, default: 0
   t.integer 'status', null: false, default: 0
 
   t.datetime "created_at", precision: 6, null: false

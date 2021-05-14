@@ -7,7 +7,7 @@ puts 'START IMPORT BANNER'
                         status: 'active'
                       })
 
-  banner.cover = Banner.download_image(time, 'https://source.unsplash.com/1600x900/?truck')
+  banner.cover = Banner.download_file(time, 'https://source.unsplash.com/1600x900/?truck')
   banner.save!
 end
 
