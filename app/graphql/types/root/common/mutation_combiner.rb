@@ -7,6 +7,7 @@ module Types
 
         # CRUD
         included do
+          field :v1CommonNewInformation, mutation: ::Mutations::Common::Users::NewInformation
         end
       end
     end
