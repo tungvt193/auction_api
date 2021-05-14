@@ -29,9 +29,8 @@ class AuthRepository < BaseRepository
 
     user = ::User.by_phone_or_new(response['phoneNumber'])
     token = user.generate_token(Settings.expired_time_otp_minute.minutes)
-    context[:session][:token] = token
 
-    token
+    [user, token]
   end
 
   private

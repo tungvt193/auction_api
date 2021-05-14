@@ -4,7 +4,7 @@ module Mutations
       class SignIn < BaseMutation
         graphql_name 'WebSignIn'
         argument :attribute, Types::AttributeType, required: true
-        field :data, Types::SignInType, null: false
+        field :data, Types::AuthorizedType, null: false
 
         def resolve(args)
           super
