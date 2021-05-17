@@ -27,6 +27,8 @@
 class AuctionItem < ApplicationRecord
   belongs_to :auction
   belongs_to :user, optional: true
+  
+  has_many :bookings, dependent: :destroy
 
   enum status: { pending: 0, progress: 1, sold: 2, unsold: 3, expired: 4 }
 end

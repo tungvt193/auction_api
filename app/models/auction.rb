@@ -14,6 +14,7 @@ class Auction < ApplicationRecord
   enum status: { deactive: 0, active: 1 }
 
   has_many :images, as: :imageable
+  has_many :bookings, dependent: :destroy
 
   accepts_nested_attributes_for :images, allow_destroy: true
 

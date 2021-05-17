@@ -19,6 +19,8 @@ unless Rails.env.production?
   Auction.delete_all
   AuctionItem.delete_all
   News.delete_all
+  Notification.delete_all
+  Booking.delete_all
 
   load Rails.root.join('db/seeds/user_sd.rb')
   load Rails.root.join('db/seeds/category_sd.rb')
@@ -28,4 +30,6 @@ unless Rails.env.production?
   load Rails.root.join('db/seeds/auction_sd.rb')
   load Rails.root.join('db/seeds/auction_item_sd.rb')
   load Rails.root.join('db/seeds/news_sd.rb')
+  load Rails.root.join('db/seeds/notification_sd.rb')
+  load Rails.root.join('db/seeds/booking_sd.rb')
 end

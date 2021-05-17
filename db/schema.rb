@@ -83,6 +83,22 @@ ActiveRecord::Schema.define(version: 0) do
     t.index ["status"], name: "index_banners_on_status"
   end
 
+  create_table "bookings", id: { type: :bigint, unsigned: true }, charset: "utf8mb4", collation: "utf8mb4_general_ci", force: :cascade do |t|
+    t.bigint "auction_item_id", null: false
+    t.bigint "auction_id", null: false
+    t.integer "status", default: 0, null: false
+    t.bigint "user_id", null: false
+    t.bigint "supporter_id"
+    t.datetime "booking_at", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["auction_id"], name: "index_bookings_on_auction_id"
+    t.index ["auction_item_id"], name: "index_bookings_on_auction_item_id"
+    t.index ["status"], name: "index_bookings_on_status"
+    t.index ["supporter_id"], name: "index_bookings_on_supporter_id"
+    t.index ["user_id", "auction_item_id"], name: "index_bookings_on_user_id_and_auction_item_id"
+  end
+
   create_table "categories", id: { type: :bigint, unsigned: true }, charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name", null: false
     t.string "thumb"
