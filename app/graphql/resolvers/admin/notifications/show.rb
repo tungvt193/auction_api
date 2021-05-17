@@ -1,6 +1,6 @@
 module Resolvers
   module Admin
-    module Notification
+    module Notifications
       class Show < ::Resolvers::BaseResolver
         argument :id, ID, required: true
         type ::Types::NotificationType, null: false
