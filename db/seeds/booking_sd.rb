@@ -13,14 +13,14 @@ customers = users.select { |u| u.try(:user?) }
   supporter = admins.sample
   customer = customers.sample
 
-  b =  Booking.new({
-                      status: statuses.sample,
-                      auction_item_id: auction_item.try(:id),
-                      auction_id: auction_item.try(:auction_id),
-                      user_id: customer.try(:id),
-                      supporter_id: supporter.try(:id),
-                      booking_at: rand(10).days.from_now
-                    })
+  b = Booking.new({
+                    status: statuses.sample,
+                    auction_item_id: auction_item.try(:id),
+                    auction_id: auction_item.try(:auction_id),
+                    user_id: customer.try(:id),
+                    supporter_id: supporter.try(:id),
+                    booking_at: rand(10).days.from_now
+                  })
   b.save!
 end
 

@@ -13,7 +13,7 @@
 #  updated_at      :datetime         not null
 #
 class Booking < ApplicationRecord
-  enum status: {pending: 0, confirmed: 1, success: 2, canceled: 3, failed: 4}
+  enum status: { pending: 0, confirmed: 1, success: 2, canceled: 3, failed: 4 }
 
   belongs_to :user
   belongs_to :auction
