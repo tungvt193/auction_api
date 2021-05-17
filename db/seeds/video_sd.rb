@@ -1,4 +1,4 @@
-puts "START IMPORT VIDEO"
+puts 'START IMPORT VIDEO'
 
 base_api = ENV['BASE_YOUTUBE_API_URL']
 api_key = ENV['YOUTUBE_API_KEY']
@@ -31,4 +31,4 @@ if response.code == 200
   ::Video.insert_all!(video_attributes)
 end
 
-puts "FINISH IMPORT VIDEO SUCCESSFUL"
+puts 'FINISH IMPORT VIDEO SUCCESSFUL'
