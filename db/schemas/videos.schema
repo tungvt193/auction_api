@@ -1,10 +1,10 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 create_table(:videos, id: { type: :bigint, unsigned: true }, charset: "utf8mb4", collation: "utf8mb4_general_ci") do |t|
-  t.string 'cover'
-  t.string 'cover_tmp'
-  t.string 'url', null: false
+  t.string 'cover_url'
+  t.string 'video_id', null: false
   t.string 'title', null: false
+  t.text 'description'
   t.integer 'status', null: false, default: 0
 
   t.datetime "created_at", precision: 6, null: false

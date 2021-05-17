@@ -288,10 +288,10 @@ ActiveRecord::Schema.define(version: 0) do
   end
 
   create_table "videos", id: { type: :bigint, unsigned: true }, charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.string "cover"
-    t.string "cover_tmp"
-    t.string "url", null: false
+    t.string "cover_url"
+    t.string "video_id", null: false
     t.string "title", null: false
+    t.text "description"
     t.integer "status", default: 0, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

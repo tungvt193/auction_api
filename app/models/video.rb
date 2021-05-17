@@ -2,19 +2,16 @@
 #
 # Table name: videos
 #
-#  id         :bigint           unsigned, not null, primary key
-#  cover      :string(255)
-#  cover_tmp  :string(255)
-#  url        :string(255)      not null
-#  title      :string(255)      not null
-#  status     :integer          default("deactive"), not null
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
+#  id          :bigint           unsigned, not null, primary key
+#  cover_url   :string(255)
+#  video_id    :string(255)      not null
+#  title       :string(255)      not null
+#  description :text(65535)
+#  status      :integer          default("deactive"), not null
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
 #
 class Video < ApplicationRecord
-  mount_uploader :cover, ImageUploader
-  store_in_background :cover
-
   enum status: { deactive: 0, active: 1 }
 
   ransacker :status, formatter: proc { |v| statuses[v] }
