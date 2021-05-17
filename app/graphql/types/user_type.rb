@@ -36,5 +36,6 @@ module Types
     field :last_sign_in_ip, String, null: true
     field :role, String, null: false
     field :status, String, null: false
+    field :user_type, String, null: false
   end
 end

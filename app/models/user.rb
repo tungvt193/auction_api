@@ -10,6 +10,7 @@
 #  encrypted_password     :string(255)      default(""), not null
 #  reset_password_token   :string(255)
 #  role                   :integer          default("user"), not null
+#  user_type              :integer          default("normal"), not null
 #  gender                 :integer          default("male"), not null
 #  reset_password_sent_at :datetime
 #  remember_created_at    :datetime
@@ -28,9 +29,10 @@ class User < ApplicationRecord
   mount_uploader :avatar, ImageUploader
   store_in_background :avatar
 
-  enum role: { user: 0, premium: 1, sale: 2, admin: 3 }
+  enum role: { user: 0, admin: 1 }
   enum gender: { male: 0, female: 1 }
   enum status: { deactive: 0, active: 1, ban: 2 }
+  enum user_type: { normal: 0, premium: 1, sale: 2 }
 
   has_many :auction_items
   has_many :device_tokens, dependent: :destroy
@@ -38,6 +40,7 @@ class User < ApplicationRecord
   ransacker :role, formatter: proc { |v| roles[v] }
   ransacker :gender, formatter: proc { |v| genders[v] }
   ransacker :status, formatter: proc { |v| statuses[v] }
+  ransacker :user_type, formatter: proc { |v| user_types[v] }
 
   VALID_EMAIL_REGEX = Settings.validations.user.email_regex
   VALID_PASSWORD_REGEX = Settings.validations.user.password_regex

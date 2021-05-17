@@ -266,6 +266,7 @@ ActiveRecord::Schema.define(version: 0) do
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
     t.integer "role", default: 0, null: false
+    t.integer "user_type", default: 0, null: false
     t.integer "gender", default: 0, null: false
     t.datetime "reset_password_sent_at", precision: 6
     t.datetime "remember_created_at", precision: 6
@@ -283,6 +284,7 @@ ActiveRecord::Schema.define(version: 0) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
     t.index ["role"], name: "index_users_on_role"
     t.index ["status"], name: "index_users_on_status"
+    t.index ["user_type"], name: "index_users_on_user_type"
   end
 
   create_table "videos", id: { type: :bigint, unsigned: true }, charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
