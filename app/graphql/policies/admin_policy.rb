@@ -2,7 +2,20 @@ module Policies
   class AdminPolicy < BasePolicy
     class << self
       def query
-        {}
+        {
+          v1AdminBookingList: {
+            guard: ->(_obj, _args, ctx) { is_admin?(ctx) }
+          },
+          v1AdminBookingSummary: {
+            guard: ->(_obj, _args, ctx) { is_admin?(ctx) }
+          },
+          v1AdminNotification: {
+            guard: ->(_obj, _args, ctx) { is_admin?(ctx) }
+          },
+          v1AdminNotificationList: {
+            guard: ->(_obj, _args, ctx) { is_admin?(ctx) }
+          }
+        }
       end
 
       def mutation

@@ -23,6 +23,7 @@
 
 module Types
   class UserType < BaseNode
+    field :full_name, String, null: true
     field :first_name, String, null: true
     field :last_name, String, null: true
     field :gender, String, null: true

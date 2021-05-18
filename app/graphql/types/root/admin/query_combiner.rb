@@ -13,6 +13,8 @@ module Types
 
           field :v1AdminBookingSummary, ::Connections::BookingSummaryConnection,
                 function: ::Resolvers::Admin::Bookings::Summary, null: true, connection: true
+          field :v1AdminBookingList, ::Connections::BookingConnection,
+                function: ::Resolvers::Admin::Bookings::List, null: true, connection: true
         end
       end
     end
