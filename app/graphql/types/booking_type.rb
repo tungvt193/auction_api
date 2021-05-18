@@ -15,11 +15,16 @@
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
 #
-class Booking < ApplicationRecord
-  enum status: { pending: 0, confirmed: 1, success: 2, canceled: 3, failed: 4 }
-  enum booking_type: { online: 0, offline: 1 }
+module Types
+  class BookingType < BaseNode
+    field :status, String, null: true
+    field :booking_type, String, null: true
+    field :zoom_id, String, null: true
+    field :zoom_password, String, null: true
+    field :booking_at, String, null: false
 
-  belongs_to :user
-  belongs_to :auction
-  belongs_to :auction_item
+    field :user, Types::UserType, null: true, resolve: Lazy::LazyUser.new
+    field :auction, Types::AuctionType, null: true, resolve: Lazy::LazyAuction.new
+    field :auction_item, Types::AuctionItemType, null: true, resolve: Lazy::LazyAuctionItem.new
+  end
 end

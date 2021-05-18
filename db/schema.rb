@@ -88,6 +88,9 @@ ActiveRecord::Schema.define(version: 0) do
     t.bigint "auction_id", null: false
     t.integer "status", default: 0, null: false
     t.bigint "user_id", null: false
+    t.integer "booking_type", default: 0, null: false
+    t.string "zoom_id"
+    t.string "zoom_password"
     t.bigint "supporter_id"
     t.datetime "booking_at", null: false
     t.datetime "created_at", precision: 6, null: false

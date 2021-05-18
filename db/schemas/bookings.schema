@@ -5,6 +5,9 @@ create_table(:bookings, id: { type: :bigint, unsigned: true }, charset: "utf8mb4
   t.bigint 'auction_id', null: false
   t.integer 'status', null: false, default: 0
   t.bigint 'user_id', null: false
+  t.integer 'booking_type', null: false, default: 0
+  t.string 'zoom_id'
+  t.string 'zoom_password'
   t.bigint 'supporter_id'
 
   t.datetime 'booking_at', null: false
