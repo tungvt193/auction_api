@@ -9,6 +9,9 @@ module Policies
           v1AdminBookingSummary: {
             guard: ->(_obj, _args, ctx) { is_admin?(ctx) }
           },
+          v1AdminBooking: {
+            guard: ->(_obj, _args, ctx) { is_admin?(ctx) }
+          },
           v1AdminNotification: {
             guard: ->(_obj, _args, ctx) { is_admin?(ctx) }
           },

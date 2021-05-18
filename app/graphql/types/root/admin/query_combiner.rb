@@ -15,6 +15,7 @@ module Types
                 function: ::Resolvers::Admin::Bookings::Summary, null: true, connection: true
           field :v1AdminBookingList, ::Connections::BookingConnection,
                 function: ::Resolvers::Admin::Bookings::List, null: true, connection: true
+          field :v1AdminBooking, resolver: ::Resolvers::Admin::Bookings::Show
         end
       end
     end
