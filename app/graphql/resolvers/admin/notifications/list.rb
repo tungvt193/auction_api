@@ -1,6 +1,6 @@
 module Resolvers
   module Admin
-    module Notification
+    module Notifications
       class List < ::Resolvers::BaseQuery
         scope { instance_scope }
         type types[::Types::NotificationType]
