@@ -6,6 +6,7 @@ products = JSON.parse(json_data)
 now = Time.zone.now
 
 categories = Category.select(:id, :name)
+sub_categories = SubCategory.select(:id, :category_id).group_by(&:category_id)
 companies = Company.select(:id, :name)
 other_category = categories.detect { |cat| cat.try(:name) == 'Khác' }
 
@@ -17,10 +18,14 @@ products.each_with_index do |product, index|
   cx = other_category if cx.blank?
 
   company_attributes = e_companies.map { |e_company| { company_id: e_company.try(:id) } }
+  subs = sub_categories[cx.try(:id)]
+
+  next if subs.blank?
 
   pro = Product.new(
     name: product['name'],
     category_id: cx.try(:id),
+    sub_category_id: subs.sample.try(:id),
     status: 'active',
     created_at: now,
     updated_at: now,

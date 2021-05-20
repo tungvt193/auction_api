@@ -32,5 +32,6 @@ module Types
 
     field :company, Types::CompanyType, null: true, resolve: Lazy::LazyCompany.new
     field :category, Types::CategoryType, null: true, resolve: Lazy::LazyCategory.new
+    field :sub_category, Types::SubCategoryType, null: true, resolve: Lazy::LazySubCategory.new
   end
 end

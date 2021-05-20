@@ -12,6 +12,7 @@ unless Rails.env.production?
 
   User.delete_all
   Category.delete_all
+  SubCategory.delete_all
   Banner.delete_all
   Company.delete_all
   ProductCompany.delete_all
@@ -21,11 +22,11 @@ unless Rails.env.production?
   News.delete_all
   Notification.delete_all
   Booking.delete_all
-  SubCategory.delete_all
   Video.delete_all
 
   load Rails.root.join('db/seeds/user_sd.rb')
   load Rails.root.join('db/seeds/category_sd.rb')
+  load Rails.root.join('db/seeds/sub_category_sd.rb')
   load Rails.root.join('db/seeds/banner_sd.rb')
   load Rails.root.join('db/seeds/company_sd.rb')
   load Rails.root.join('db/seeds/product_sd.rb')
@@ -34,6 +35,5 @@ unless Rails.env.production?
   load Rails.root.join('db/seeds/news_sd.rb')
   load Rails.root.join('db/seeds/notification_sd.rb')
   load Rails.root.join('db/seeds/booking_sd.rb')
-  load Rails.root.join('db/seeds/sub_category_sd.rb')
   load Rails.root.join('db/seeds/video_sd.rb')
 end
