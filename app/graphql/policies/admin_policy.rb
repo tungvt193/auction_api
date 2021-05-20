@@ -28,7 +28,6 @@ module Policies
 
       private
 
-
       def admin_guard
         { guard: ->(_obj, _args, ctx) { is_admin?(ctx) } }
       end
