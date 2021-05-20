@@ -66,6 +66,7 @@ ActiveRecord::Schema.define(version: 0) do
     t.string "name", null: false
     t.datetime "started_at"
     t.datetime "ended_at"
+    t.float "rating", default: 0.0, null: false
     t.integer "status", default: 0, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -243,6 +244,7 @@ ActiveRecord::Schema.define(version: 0) do
     t.bigint "ratable_id", null: false
     t.bigint "user_id", null: false
     t.text "comment"
+    t.float "star", default: 0.0, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["ratable_id", "ratable_type"], name: "index_rates_on_ratable_type_and_ratable_id"

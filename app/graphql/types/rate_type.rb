@@ -7,11 +7,13 @@
 #  ratable_id   :bigint           not null
 #  user_id      :bigint           not null
 #  comment      :text(65535)
+#  star         :float(24)        default(0.0), not null
 #  created_at   :datetime         not null
 #  updated_at   :datetime         not null
 #
 module Types
   class RateType < BaseNode
+    field :star, Float, null: false
     field :ratable_type, String, null: false
     field :ratable_id, ID, null: false
     field :user_id, ID, null: false
