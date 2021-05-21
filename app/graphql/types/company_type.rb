@@ -15,6 +15,6 @@ module Types
   class CompanyType < BaseNode
     field :name, String, null: false
     field :status, String, null: false
-    field :logo_url, String, null: false
+    field :logo_url, String, null: true
   end
 end
