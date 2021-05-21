@@ -4,7 +4,8 @@ create_table(:rates, id: { type: :bigint, unsigned: true }, charset: "utf8mb4", 
   t.string 'ratable_type', null: false
   t.bigint 'ratable_id', null: false
   t.bigint 'user_id', null: false
-  t.text 'comment' 
+  t.text 'comment'
+  t.float 'star', null: false, default: 0.0
 
   t.datetime "created_at", precision: 6, null: false
   t.datetime "updated_at", precision: 6, null: false
