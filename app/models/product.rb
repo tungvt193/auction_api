@@ -8,8 +8,7 @@
 #  thumb_tmp         :string(255)
 #  keyword           :string(255)
 #  category_id       :bigint           not null
-#  star              :float(24)        default(0.0), not null
-#  star_total        :float(24)        default(0.0), not null
+#  sub_category_id   :bigint           not null
 #  short_description :text(65535)
 #  started_at        :datetime
 #  status            :integer          default("deactive"), not null

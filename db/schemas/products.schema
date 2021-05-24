@@ -6,8 +6,7 @@ create_table(:products, id: { type: :bigint, unsigned: true }, charset: "utf8mb4
   t.string 'thumb_tmp'
   t.string 'keyword'
   t.bigint 'category_id', null: false
-  t.float 'star', null: false, default: 0.0
-  t.float 'star_total', null: false, default: 0.0
+  t.bigint 'sub_category_id', null: false
   t.text 'short_description'
 
   t.datetime 'started_at' 

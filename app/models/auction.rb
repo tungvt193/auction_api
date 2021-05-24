@@ -17,16 +17,18 @@ class Auction < ApplicationRecord
   has_many :images, as: :imageable
   has_many :bookings, dependent: :destroy
   has_many :auction_items, dependent: :destroy
-  has_many :rates, as: :ratable
+  has_many :rates, dependent: :destroy
 
   accepts_nested_attributes_for :images, allow_destroy: true
 
   ransacker :status, formatter: proc { |v| statuses[v] }
 
   def update_average_rating
-    @value = rates.sum(&:star)
-    @total = rates.size
+    value = rates.select { |item| item.ratable_type == 'AuctionItem' }.sum(&:star)
+    total = rates.select { |item| item.ratable_type == 'AuctionItem' }.size
 
-    update!(rating: @value.to_f / @total)
+    return if total.zero?
+
+    update!(rating: value.to_f / total)
   end
 end

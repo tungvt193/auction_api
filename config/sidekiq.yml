@@ -3,4 +3,5 @@
 :concurrency: 25
 :queues:
   - [carrierwave, 5]
-  - [crawler, 1]
+  - [crawler_job, 1]
+  - [rating_job, 1]

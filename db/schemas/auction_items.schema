@@ -10,6 +10,7 @@ create_table(:auction_items, id: { type: :bigint, unsigned: true }, charset: "ut
   t.bigint 'category_id', null: false
   t.bigint 'company_id', null: false
   t.float 'price', null: false, default: 0.0
+  t.float 'rating', null: false, default: 0.0
   t.float 'min_price', null: false, default: 0.0
   t.string 'marker', null: false
   t.string 'serial', null: false
