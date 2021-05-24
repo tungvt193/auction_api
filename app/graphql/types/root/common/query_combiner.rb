@@ -28,6 +28,10 @@ module Types
           field :v1CommonSubCategoryList, ::Connections::SubCategoryConnection,
                 function: ::Resolvers::Common::SubCategories::List, null: true, connection: true
           field :v1CommonSubCategory, resolver: ::Resolvers::Common::SubCategories::Show
+
+          field :v1CommonCompanyList, ::Connections::CompanyConnection,
+                function: ::Resolvers::Common::Companies::List, null: true, connection: true
+          field :v1CommonCompany, resolver: ::Resolvers::Common::Companies::Show
         end
       end
     end
