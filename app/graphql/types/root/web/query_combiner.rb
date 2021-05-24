@@ -9,6 +9,7 @@ module Types
         included do
           field :v1WebAuctionList, ::Connections::AuctionConnection,
                 function: ::Resolvers::Web::Auctions::List, null: true, connection: true
+          field :v1WebAuction, resolver: ::Resolvers::Web::Auctions::Show
           field :v1WebNearestAuctionList, ::Connections::AuctionConnection,
                 function: ::Resolvers::Web::Auctions::NearestList, null: true, connection: true
 

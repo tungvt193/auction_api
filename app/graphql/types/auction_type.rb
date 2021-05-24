@@ -21,6 +21,7 @@ module Types
     field :status, String, null: true
 
     field :last_rate, Types::RateType, null: true, resolve: Lazy::LazyLastRate.new
-    field :last_four_auction_item, [Types::AuctionItemType], null: true, resolve: Lazy::LazyLastFourAuctionItem.new
+    field :last_four_auction_items, [Types::AuctionItemType], null: true, resolve: Lazy::LazyLastFourAuctionItem.new
+    field :auction_items, [Types::AuctionItemType], null: true, resolve: Lazy::LazyGetAllItemsByAuction.new
   end
 end
