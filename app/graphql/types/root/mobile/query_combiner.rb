@@ -31,6 +31,10 @@ module Types
           field :v1MobileAuctionItemNearestList, ::Connections::AuctionItemConnection,
                 function: ::Resolvers::Mobile::AuctionItems::NearestList, null: true, connection: true
           field :v1MobileAuctionItem, resolver: ::Resolvers::Mobile::AuctionItems::Show
+
+          field :v1MobileAuctionList, ::Connections::AuctionConnection,
+                function: ::Resolvers::Mobile::Auctions::List, null: true, connection: true
+          field :v1MobileAuction, resolver: ::Resolvers::Mobile::Auctions::Show
         end
       end
     end

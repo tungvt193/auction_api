@@ -66,6 +66,7 @@ ActiveRecord::Schema.define(version: 0) do
     t.string "name", null: false
     t.datetime "started_at"
     t.datetime "ended_at"
+    t.string "color"
     t.integer "status", default: 0, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -226,6 +227,7 @@ ActiveRecord::Schema.define(version: 0) do
     t.string "thumb_tmp"
     t.string "keyword"
     t.bigint "category_id", null: false
+    t.bigint "sub_category_id", null: false
     t.float "star", default: 0.0, null: false
     t.float "star_total", default: 0.0, null: false
     t.text "short_description"
@@ -236,6 +238,7 @@ ActiveRecord::Schema.define(version: 0) do
     t.index ["category_id"], name: "index_products_on_category_id"
     t.index ["keyword"], name: "index_products_on_keyword"
     t.index ["status"], name: "index_products_on_status"
+    t.index ["sub_category_id"], name: "index_products_on_sub_category_id"
   end
 
   create_table "rates", id: { type: :bigint, unsigned: true }, charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|

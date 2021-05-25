@@ -6,6 +6,7 @@
 #  name       :string(255)      not null
 #  started_at :datetime
 #  ended_at   :datetime
+#  color      :string(255)
 #  status     :integer          default("deactive"), not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
@@ -19,4 +20,8 @@ class Auction < ApplicationRecord
   accepts_nested_attributes_for :images, allow_destroy: true
 
   ransacker :status, formatter: proc { |v| statuses[v] }
+
+  def flutter_color
+    '0xFF' + color.gsub('#', '')
+  end
 end

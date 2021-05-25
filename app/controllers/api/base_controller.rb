@@ -33,7 +33,7 @@ module Api
 
       user = User.find_by(id: user_id)
 
-      raise ActionController::InvalidAuthenticityToken, 'Phiên đăng nhập không hợp lệ. Hãy tạo lại yêu cầu thay đổi mật khẩu!' if token_is_invalid(token, token_type, user)
+      raise ActionController::InvalidAuthenticityToken, 'Token không hợp lệ, vui lòng thử lại' if token_is_invalid(token, token_type, user)
 
       return user if token_type == 'crawler'
 

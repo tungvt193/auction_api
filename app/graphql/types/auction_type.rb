@@ -16,6 +16,8 @@ module Types
   class AuctionType < BaseNode
     field :name, String, null: true
     field :address, String, null: true
+    field :color, String, null: true
+    field :flutter_color, String, null: true
     field :started_at, String, null: true
     field :ended_at, String, null: true
     field :status, String, null: true

@@ -3,6 +3,7 @@ class CrawlerJob < ApplicationJob
 
   def perform(id)
     crawler = ::Crawler.find_by(id: id, status: 'pending')
+    
     return if crawler.blank?
   rescue StandardError => e
     Rails.logger.error(e.message.to_s)
