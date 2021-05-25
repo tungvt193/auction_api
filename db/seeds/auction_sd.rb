@@ -6,7 +6,7 @@ auction_attributes = []
 20.times.map do |time|
   puts "MAKE AUCTION #{time} / 10"
   r_name = (0...3).map { ('a'..'z').to_a[rand(26)] }.join.upcase
-  color = Random.new.bytes(3).unpack("H*")[0].upcase
+  color = Random.new.bytes(3).unpack1('H*').upcase
 
   from = (-15...3).to_a.sample
   to = (3...20).to_a.sample

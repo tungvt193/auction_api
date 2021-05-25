@@ -29,8 +29,8 @@ module Resolvers
 
         def instance_scope
           ::Auction.graphql_ransack({
-            status_eq: 'active'
-          })
+                                      status_eq: 'active'
+                                    })
         end
       end
     end
