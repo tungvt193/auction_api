@@ -22,6 +22,7 @@ unless Rails.env.production?
   News.delete_all
   Notification.delete_all
   Booking.delete_all
+  Rate.delete_all
   Video.delete_all
 
   load Rails.root.join('db/seeds/user_sd.rb')
@@ -35,5 +36,6 @@ unless Rails.env.production?
   load Rails.root.join('db/seeds/news_sd.rb')
   load Rails.root.join('db/seeds/notification_sd.rb')
   load Rails.root.join('db/seeds/booking_sd.rb')
+  load Rails.root.join('db/seeds/rate_sd.rb')
   load Rails.root.join('db/seeds/video_sd.rb')
 end

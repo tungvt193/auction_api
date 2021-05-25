@@ -5,6 +5,7 @@ create_table(:auctions, id: { type: :bigint, unsigned: true }, charset: "utf8mb4
   t.datetime 'started_at'
   t.datetime 'ended_at'
   t.string 'color'
+  t.float 'rating', null: false, default: 0.0
   t.integer 'status', null: false, default: 0
 
   t.datetime "created_at", precision: 6, null: false

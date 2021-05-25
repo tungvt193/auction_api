@@ -12,6 +12,7 @@
 #  category_id         :bigint           not null
 #  company_id          :bigint           not null
 #  price               :float(24)        default(0.0), not null
+#  rating              :float(24)        default(0.0), not null
 #  min_price           :float(24)        default(0.0), not null
 #  marker              :string(255)      not null
 #  serial              :string(255)      not null
@@ -26,9 +27,21 @@
 #
 class AuctionItem < ApplicationRecord
   belongs_to :auction
+  belongs_to :company
+  belongs_to :category
   belongs_to :user, optional: true
 
   has_many :bookings, dependent: :destroy
+  has_many :rates, as: :ratable
 
   enum status: { pending: 0, progress: 1, sold: 2, unsold: 3, expired: 4 }
+
+  def update_average_rating
+    value = rates.sum(&:star)
+    total = rates.size
+
+    return if total.zero?
+
+    update!(rating: value.to_f / total)
+  end
 end

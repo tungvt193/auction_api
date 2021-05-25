@@ -7,6 +7,7 @@
 #  started_at :datetime
 #  ended_at   :datetime
 #  color      :string(255)
+#  rating     :float(24)        default(0.0), not null
 #  status     :integer          default("deactive"), not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
@@ -16,6 +17,8 @@ class Auction < ApplicationRecord
 
   has_many :images, as: :imageable
   has_many :bookings, dependent: :destroy
+  has_many :auction_items, dependent: :destroy
+  has_many :rates, dependent: :destroy
 
   accepts_nested_attributes_for :images, allow_destroy: true
 
@@ -23,5 +26,14 @@ class Auction < ApplicationRecord
 
   def flutter_color
     '0xFF' + color.gsub('#', '')
+  end
+
+  def update_average_rating
+    value = rates.select { |item| item.ratable_type == 'AuctionItem' }.sum(&:star)
+    total = rates.select { |item| item.ratable_type == 'AuctionItem' }.size
+
+    return if total.zero?
+
+    update!(rating: value.to_f / total)
   end
 end

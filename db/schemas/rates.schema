@@ -4,11 +4,14 @@ create_table(:rates, id: { type: :bigint, unsigned: true }, charset: "utf8mb4", 
   t.string 'ratable_type', null: false
   t.bigint 'ratable_id', null: false
   t.bigint 'user_id', null: false
-  t.text 'comment' 
+  t.bigint 'auction_id', null: true
+  t.text 'comment'
+  t.float 'star', null: false, default: 0.0
 
   t.datetime "created_at", precision: 6, null: false
   t.datetime "updated_at", precision: 6, null: false
 
   t.index ['ratable_id', 'ratable_type'], name: 'index_rates_on_ratable_type_and_ratable_id'
   t.index ['user_id'], name: 'index_rates_on_user_id'
+  t.index ['auction_id'], name: 'index_rates_on_auction_id'
 end

@@ -16,6 +16,7 @@ class Category < ApplicationRecord
   store_in_background :thumb
 
   enum status: { deactive: 0, active: 1 }
+  has_many :auction_items, dependent: :destroy
   has_many :products
 
   ransacker :status, formatter: proc { |v| statuses[v] }

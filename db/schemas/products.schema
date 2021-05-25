@@ -10,7 +10,6 @@ create_table(:products, id: { type: :bigint, unsigned: true }, charset: "utf8mb4
   t.float 'star', null: false, default: 0.0
   t.float 'star_total', null: false, default: 0.0
   t.text 'short_description'
-
   t.datetime 'started_at' 
   t.integer 'status', null: false, default: 0
 
