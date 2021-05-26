@@ -22,6 +22,10 @@ module Types
           field :v1WebCompanyList, ::Connections::CompanyConnection,
                 function: ::Resolvers::Web::Companies::List, null: true, connection: true
           field :v1WebCompany, resolver: ::Resolvers::Web::Companies::Show
+
+          field :v1WebProductList, ::Connections::ProductConnection,
+                function: ::Resolvers::Web::Products::List, null: true, connection: true
+          field :v1WebProduct, resolver: ::Resolvers::Web::Products::Show
         end
       end
     end

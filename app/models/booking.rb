@@ -8,6 +8,7 @@
 #  status          :integer          default("pending"), not null
 #  user_id         :bigint           not null
 #  booking_type    :integer          default("online"), not null
+#  address         :string(255)
 #  zoom_id         :string(255)
 #  zoom_password   :string(255)
 #  supporter_id    :bigint
