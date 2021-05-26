@@ -41,7 +41,7 @@ class AuctionItem < ApplicationRecord
   end
 
   def name
-    "#{auction_item} #{marker}-#{serial}".upcase
+    "#{auction_name} #{marker}-#{serial}".upcase
   end
 
   def update_average_rating
