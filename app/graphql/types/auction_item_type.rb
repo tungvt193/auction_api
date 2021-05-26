@@ -26,6 +26,7 @@
 #
 module Types
   class AuctionItemType < BaseNode
+    field :name, String, null: false
     field :product_name, String, null: false
     field :category_name, String, null: false
     field :auction_name, String, null: false
@@ -40,6 +41,7 @@ module Types
     field :serial, String, null: false
     field :address, String, null: false
     field :source_link, String, null: true
+    field :thumb_url, String, null: true
     field :images, [String], null: true, resolve: Lazy::LazyAuctionImage.new
     field :user_id, ID, null: true
     field :used_hours, String, null: false

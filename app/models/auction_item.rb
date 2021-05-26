@@ -36,6 +36,14 @@ class AuctionItem < ApplicationRecord
 
   enum status: { pending: 0, progress: 1, sold: 2, unsold: 3, expired: 4 }
 
+  def thumb_url
+    images.split(',').try(:first)
+  end
+
+  def name
+    "#{auction_item} #{marker}-#{serial}".upcase
+  end
+
   def update_average_rating
     value = rates.sum(&:star)
     total = rates.size
