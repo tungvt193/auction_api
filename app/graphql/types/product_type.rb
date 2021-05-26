@@ -20,11 +20,11 @@ module Types
     field :thumb_url, String, null: true
     field :keyword, String, null: false
     field :category_id, ID, null: false
-    field :started_at, String, null: false
+    field :started_at, String, null: true
     field :status, String, null: false
     field :short_description, String, null: true
 
-    field :company, Types::CompanyType, null: true, resolve: Lazy::LazyCompany.new
+    field :companies, [Types::CompanyType], null: true, resolve: Lazy::LazyCompaniesOfProduct.new
     field :category, Types::CategoryType, null: true, resolve: Lazy::LazyCategory.new
     field :sub_category, Types::SubCategoryType, null: true, resolve: Lazy::LazySubCategory.new
   end

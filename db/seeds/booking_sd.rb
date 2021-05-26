@@ -30,6 +30,10 @@ customers = users.select { |u| u.try(:user?) }
                           zoom_id: srand.to_s.last(10),
                           zoom_password: (0...6).map { rand(97..122).chr }.join
                         })
+  else
+    b.assign_attributes({
+                          address: Faker::Address.full_address
+                        })
   end
   b.save!
 end

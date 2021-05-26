@@ -45,6 +45,9 @@ module Api
           v1WebSignIn
           v1WebForgotPassword
           v1WebResetPassword
+          v1WebAuctionList
+          v1WebCompanyList
+          v1WebProductList
         ]
       end
     end
