@@ -23,6 +23,7 @@ module Types
     field :zoom_password, String, null: true
     field :booking_at, String, null: false
 
+    field :name, String, null: true, resolve: Lazy::LazyBookingName.new
     field :user, Types::UserType, null: true, resolve: Lazy::LazyUser.new
     field :auction, Types::AuctionType, null: true, resolve: Lazy::LazyAuction.new
     field :auction_item, Types::AuctionItemType, null: true, resolve: Lazy::LazyAuctionItem.new

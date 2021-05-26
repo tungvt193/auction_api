@@ -7,6 +7,12 @@ module Types
 
         # CRUD
         included do
+          field :v1MobileBookingSummary, ::Connections::BookingSummaryConnection,
+                function: ::Resolvers::Mobile::Bookings::Summary, null: true, connection: true
+          field :v1MobileBookingList, ::Connections::BookingConnection,
+                function: ::Resolvers::Mobile::Bookings::List, null: true, connection: true
+          field :v1MobileBooking, resolver: ::Resolvers::Mobile::Bookings::Show
+
           field :v1MobileUserList, ::Connections::UserConnection,
                 function: ::Resolvers::Mobile::Users::List, null: true, connection: true
           field :v1MobileUser, resolver: ::Resolvers::Mobile::Users::Show
