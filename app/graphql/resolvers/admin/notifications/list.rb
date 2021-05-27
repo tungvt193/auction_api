@@ -27,7 +27,7 @@ module Resolvers
         private
 
         def instance_scope
-          ::Notification.where(user_id: current_user.id)
+          ::Notification.where('user_id= ? OR notification_type= ?', current_user.id, 'global')
         end
       end
     end
