@@ -30,7 +30,7 @@ class Auction < ApplicationRecord
   end
 
   def modified_display_name
-    display_name + ' ' + ended_at.strftime('%m-%d')
+    display_name + ' ' + ended_at.strftime('%d-%m')
   end
 
   def update_average_rating

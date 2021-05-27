@@ -30,7 +30,7 @@ class Booking < ApplicationRecord
   def is_expired
     return false if booking_at.blank?
 
-    booking_at < beginning_of_day
+    booking_at < Time.zone.now
   end
 
   def is_today

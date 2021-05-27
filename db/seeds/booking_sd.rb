@@ -1,6 +1,7 @@
 puts 'START IMPORT BOOKING'
 
 auction_items = ::AuctionItem.select(:id, :auction_id)
+auctions = ::Auction.select(:id, :started_at, :ended_at)
 users = ::User.select(:id, :role)
 statuses = ::Booking.statuses.keys
 booking_types = ::Booking.booking_types.keys
@@ -14,6 +15,9 @@ customers = users.select { |u| u.try(:user?) }
   supporter = admins.sample
   customer = customers.sample
   booking_type = booking_types.sample
+  auction = auctions.detect { |a| a.try(:id) == auction_item.try(:auction_id) }
+
+  next if auction.blank?
 
   b = Booking.new({
                     booking_type: booking_type,
@@ -22,7 +26,7 @@ customers = users.select { |u| u.try(:user?) }
                     auction_id: auction_item.try(:auction_id),
                     user_id: customer.try(:id),
                     supporter_id: supporter.try(:id),
-                    booking_at: rand(10).days.from_now
+                    booking_at: (auction.try(:started_at).to_date...auction.try(:ended_at).to_date).to_a.sample
                   })
 
   if booking_type == 'online'
