@@ -2,20 +2,22 @@
 #
 # Table name: auctions
 #
-#  id         :bigint           unsigned, not null, primary key
-#  name       :string(255)      not null
-#  started_at :datetime
-#  ended_at   :datetime
-#  rating     :float(24)        default(0.0), not null
-#  status     :integer          default("deactive"), not null
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
+#  id           :bigint           unsigned, not null, primary key
+#  name         :string(255)      not null
+#  display_name :string(255)
+#  started_at   :datetime
+#  ended_at     :datetime
+#  color        :string(255)
+#  rating       :float(24)        default(0.0), not null
+#  status       :integer          default("deactive"), not null
+#  created_at   :datetime         not null
+#  updated_at   :datetime         not null
 #
 
 module Types
   class AuctionType < BaseNode
     field :name, String, null: true
-    field :address, String, null: true
+    field :modified_display_name, String, null: true
     field :color, String, null: true
     field :flutter_color, String, null: true
     field :rating, Float, null: false

@@ -20,6 +20,9 @@ class Booking < ApplicationRecord
   enum status: { pending: 0, confirmed: 1, success: 2, canceled: 3, failed: 4 }
   enum booking_type: { online: 0, offline: 1 }
 
+  ransacker :status, formatter: proc { |v| statuses[v] }
+  ransacker :booking_type, formatter: proc { |v| booking_types[v] }
+
   belongs_to :user
   belongs_to :auction
   belongs_to :auction_item

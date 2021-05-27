@@ -1,9 +1,9 @@
 module Mutations
   module Admin
-    module Auctions
-      class CreateAuction < BaseMutation
+    module Bookings
+      class CreateBooking < BaseMutation
         argument :attribute, Types::AttributeType, required: true
-        field :data, ::Types::AuctionType, null: false
+        field :data, ::Types::BookingType, null: false
 
         def resolve(args)
           super
@@ -25,8 +25,9 @@ module Mutations
 
         def normalize_parameters(args)
           ::ActionController::Parameters.new(args.as_json).permit(
-            :name, :display_name, :used_hours, :year_of_manufacture, :address,
-            :min_price, :started_at, :ended_at, :status
+            :auction_item_id, :auction_id, :status, :user_id,
+            :booking_type, :address, :zoom_id, :zoom_password,
+            :supporter_id, :booking_at
           )
         end
       end

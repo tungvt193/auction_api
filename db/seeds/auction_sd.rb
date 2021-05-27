@@ -13,6 +13,7 @@ auction_attributes = []
 
   auction_attributes.push({
                             name: r_name,
+                            display_name: r_name,
                             started_at: from.days.from_now,
                             ended_at: to.days.from_now.end_of_day,
                             status: [0, 1].sample,
