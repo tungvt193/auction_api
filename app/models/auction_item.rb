@@ -36,6 +36,8 @@ class AuctionItem < ApplicationRecord
 
   enum status: { pending: 0, progress: 1, sold: 2, unsold: 3, expired: 4 }
 
+  ransacker :status, formatter: proc { |v| statuses[v] }
+
   def thumb_url
     images.split(',').try(:first)
   end

@@ -16,6 +16,10 @@ module Types
           field :v1AdminUpdateAuction, mutation: ::Mutations::Admin::Auctions::UpdateAuction
           field :v1AdminDeleteAuction, mutation: ::Mutations::Admin::Auctions::DeleteAuction
 
+          field :v1AdminCreateBooking, mutation: ::Mutations::Admin::Bookings::CreateBooking
+          field :v1AdminUpdateBooking, mutation: ::Mutations::Admin::Bookings::UpdateBooking
+          field :v1AdminDeleteBooking, mutation: ::Mutations::Admin::Bookings::DeleteBooking
+
           field :v1AdminCreateBanner, mutation: ::Mutations::Admin::Banners::CreateBanner
           field :v1AdminUpdateBanner, mutation: ::Mutations::Admin::Banners::UpdateBanner
           field :v1AdminDeleteBanner, mutation: ::Mutations::Admin::Banners::DeleteBanner

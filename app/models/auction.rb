@@ -2,15 +2,16 @@
 #
 # Table name: auctions
 #
-#  id         :bigint           unsigned, not null, primary key
-#  name       :string(255)      not null
-#  started_at :datetime
-#  ended_at   :datetime
-#  color      :string(255)
-#  rating     :float(24)        default(0.0), not null
-#  status     :integer          default("deactive"), not null
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
+#  id           :bigint           unsigned, not null, primary key
+#  name         :string(255)      not null
+#  display_name :string(255)      default("")
+#  started_at   :datetime
+#  ended_at     :datetime
+#  color        :string(255)
+#  rating       :float(24)        default(0.0), not null
+#  status       :integer          default("deactive"), not null
+#  created_at   :datetime         not null
+#  updated_at   :datetime         not null
 #
 class Auction < ApplicationRecord
   enum status: { deactive: 0, active: 1 }
@@ -26,6 +27,10 @@ class Auction < ApplicationRecord
 
   def flutter_color
     '0xFF' + color.gsub('#', '')
+  end
+
+  def modified_display_name
+    display_name + ' ' + ended_at.strftime('%m-%d')
   end
 
   def update_average_rating

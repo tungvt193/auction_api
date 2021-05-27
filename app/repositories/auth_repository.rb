@@ -6,7 +6,7 @@ class AuthRepository < BaseRepository
     device_token = ::DeviceToken.where(user_id: record.id, token: params[:device_token])
     record.save_device_token(params[:device_token]) if device_token.blank?
 
-    token = record.generate_token(Settings.login_session_expiration_time_hour.hour)
+    token = record.generate_token(Settings.login_session_expiration_time_week.week)
     context[:session][:token] = token
 
     record.assign_attributes({ last_sign_in_at: Time.zone.now })
