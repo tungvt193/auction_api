@@ -28,7 +28,7 @@ module Resolvers
         private
 
         def instance_scope
-          ::Booking.where(user_id: current_user.try(:id))
+          ::Booking.all
         end
       end
     end
