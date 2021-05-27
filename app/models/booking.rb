@@ -23,4 +23,24 @@ class Booking < ApplicationRecord
   belongs_to :user
   belongs_to :auction
   belongs_to :auction_item
+
+  def is_expired
+    return false if booking_at.blank?
+
+    booking_at < beginning_of_day
+  end
+
+  def is_today
+    return false if booking_at.blank?
+
+    booking_at.between?(beginning_of_day, end_of_day)
+  end
+
+  def beginning_of_day
+    Time.zone.now.beginning_of_day
+  end
+
+  def end_of_day
+    Time.zone.now.end_of_day
+  end
 end

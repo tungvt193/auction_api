@@ -24,6 +24,8 @@ module Types
     field :zoom_id, String, null: true
     field :zoom_password, String, null: true
     field :booking_at, String, null: false
+    field :is_expired, Boolean, null: false
+    field :is_today, Boolean, null: false
 
     field :name, String, null: true, resolve: Lazy::LazyBookingName.new
     field :user, Types::UserType, null: true, resolve: Lazy::LazyUser.new
