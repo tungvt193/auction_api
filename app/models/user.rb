@@ -50,17 +50,7 @@ class User < ApplicationRecord
 
   class << self
     def by_username_and_role(username, role = 'user')
-      graphql_ransack({
-                        m: 'or',
-                        g: {
-                          '0' => {
-                            email_eq: username
-                          },
-                          '1' => {
-                            phone_eq: username
-                          }
-                        }
-                      }).find_by(role: role)
+      where('email = ? OR phone = ?', username, username).find_by(role: role)
     end
 
     def by_phone_or_new(phone)
