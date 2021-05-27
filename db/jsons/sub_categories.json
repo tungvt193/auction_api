@@ -1,0 +1,107 @@
+[
+  {
+    "name": "Máy xúc bánh xích",
+    "english_name": "Crawler Excavator",
+    "category_id": 1
+  },
+  {
+    "name": "Máy xúc bánh lốp",
+    "english_name": "Wheel Excavator",
+    "category_id": 1
+  },
+  {
+    "name": "Xúc lật mini",
+    "english_name": "Mini Wheel loader",
+    "category_id": 3
+  },
+  {
+    "name": "Xúc lật bánh lốp",
+    "english_name": "Wheel loader",
+    "category_id": 3
+  },
+  {
+    "name": "Xúc lật bánh xích",
+    "english_name": "Crawler loader",
+    "category_id": 3
+  },
+  {
+    "name": "Xúc lật liên hợp",
+    "english_name": "Loader Backhoes",
+    "category_id": 3
+  },
+  {
+    "name": "Cẩu bánh xích",
+    "english_name": "Crawler Crane",
+    "category_id": 5
+  },
+  {
+    "name": "Cẩu bánh lốp",
+    "english_name": "Tire Crane",
+    "category_id": 5
+  },
+  {
+    "name": "Xe tải cẩu",
+    "english_name": "Truck Crane",
+    "category_id": 5
+  },
+  {
+    "name": "Máy rải",
+    "english_name": "Paver",
+    "category_id": 6
+  },
+  {
+    "name": "Xe lu",
+    "english_name": "Roller",
+    "category_id": 6
+  },
+  {
+    "name": "Máy cào bóc",
+    "english_name": "Cold Planer",
+    "category_id": 6
+  },
+  {
+    "name": "Máy san",
+    "english_name": "Motor Grader",
+    "category_id": 6
+  },
+  {
+    "name": "Máy nén",
+    "english_name": "Air Compressors",
+    "category_id": 7
+  },
+  {
+    "name": "Máy hàn",
+    "english_name": "welder machine",
+    "category_id": 7
+  },
+  {
+    "name": "Máy phát điện",
+    "english_name": "Generators",
+    "category_id": 7
+  },
+  {
+    "name": "Máy khoan",
+    "english_name": "Drill machine",
+    "category_id": 8
+  },
+  {
+    "name": "Xe tải bánh lốp",
+    "english_name": "Truck",
+    "category_id": 8
+  },
+  {
+    "name": "Xe tải bánh xích",
+    "english_name": "Crawler Truck",
+    "category_id": 8
+  },
+  {
+    "name": "Xe nâng hàng",
+    "english_name": "Folk lift",
+    "category_id": 9
+  },
+  {
+    "name": "Xe nâng người",
+    "english_name": "Man lift",
+    "category_id": 9
+  }
+]

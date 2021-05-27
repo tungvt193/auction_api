@@ -1,6 +1,5 @@
 puts 'START IMPORT USER'
 
-encrypted_password = User.new.cryptor.encrypt_and_sign('Bidma@2021')
 roles = User.roles.keys
 genders = %w[male female]
 now = Time.zone.now
@@ -12,7 +11,6 @@ now = Time.zone.now
 
   user = User.new(
     email: "user-#{time}@example.com",
-    encrypted_password: encrypted_password,
     role: roles.sample,
     first_name: Faker::Name.first_name,
     last_name: Faker::Name.last_name,
@@ -22,6 +20,7 @@ now = Time.zone.now
     updated_at: now
   )
 
+  user.password = 'Bidma@2021'
   user.avatar = File.new(avatar_url)
   user.save!
 end

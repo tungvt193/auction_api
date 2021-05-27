@@ -1,78 +1,62 @@
 [
   {
-    "name": "Máy hàn",
-    "thumb": "categories/máy hàn.png"
+    "id": 1,
+    "name": "Máy xúc",
+    "english_name": "Excavator",
+    "thumb": "categories/máy xúc.png"
   },
   {
-    "name": "Máy khoan",
-    "thumb": "categories/máy khoan.png"
+    "id": 2,
+    "name": "Máy xúc mini",
+    "english_name": "Mini excavator",
+    "thumb": "categories/máy xúc mini.png"
   },
   {
-    "name": "Máy nén khí",
-    "thumb": "categories/máy nén khí.png"
-  },
-  {
-    "name": "Máy nghiền",
-    "thumb": "categories/máy nghiền.png"
-  },
-  {
-    "name": "Máy phát điện",
-    "thumb": "categories/máy phát điện.png"
-  },
-  {
-    "name": "Máy san gạt",
-    "thumb": "categories/máy san gạt.png"
-  },
-  {
-    "name": "Máy ủi",
-    "thumb": "categories/máy ủi.png"
-  },
-  {
-    "name": "Máy xúc bánh xích",
-    "thumb": "categories/máy xúc bánh xích.png"
-  },
-  {
-    "name": "Máy xúc đào",
-    "thumb": "categories/máy xúc đào.png"
-  },
-  {
-    "name": "Mini Excavator",
-    "thumb": "categories/mini excavator.png"
-  },
-  {
-    "name": "Phụ kiện",
-    "thumb": "categories/phụ kiện.png"
-  },
-  {
-    "name": "Xe cẩu",
-    "thumb": "categories/xe cẩu.png"
-  },
-  {
-    "name": "Xe lu",
-    "thumb": "categories/xe lu.png"
-  },
-  {
-    "name": "Xe nâng hàng",
-    "thumb": "categories/xe nâng hàng.png"
-  },
-  {
-    "name": "Xe nâng người",
-    "thumb": "categories/xe nâng người.png"
-  },
-  {
-    "name": "Xe tải tự đổ",
-    "thumb": "categories/xe tải tự đổ.png"
-  },
-  {
-    "name": "Xe tải mỏ",
-    "thumb": "categories/xe tải mỏ.png"
-  },
-  {
+    "id": 3,
     "name": "Xúc lật",
+    "english_name": "Wheel loader",
     "thumb": "categories/xúc lật.png"
   },
   {
-    "name": "Khác",
+    "id": 4,
+    "name": "Máy ủi",
+    "english_name": "Bull dozer",
+    "thumb": "categories/máy ủi.png"
+  },
+  {
+    "id": 5,
+    "name": "Xe cẩu",
+    "english_name": "Crane",
+    "thumb": "categories/xe cẩu.png"
+  },
+  {
+    "id": 6,
+    "name": "Thiết bị làm đường",
+    "english_name": "Road construction equipment",
+    "thumb": "categories/thiết bị làm đường.png"
+  },
+  {
+    "id": 7,
+    "name": "Máy công nghiệp",
+    "english_name": "Industry equipment",
+    "thumb": "categories/máy công nghiệp.png"
+  },
+  {
+    "id": 8,
+    "name": "Thiết bị mỏ",
+    "english_name": "Mining equipment",
+    "thumb": "categories/thiết bị mỏ.png"
+  },
+  {
+    "id": 9,
+    "name": "Xe nâng",
+    "english_name": "Lifting machine",
+    "thumb": "categories/xe nâng.png"
+  },
+  {
+    "id": 10,
+    "name": "Thiết bị lắp kèm & khác",
+    "english_name": "Attaachment & Others",
     "thumb": "categories/others.png"
   }
 ]
