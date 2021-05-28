@@ -109,6 +109,7 @@ ActiveRecord::Schema.define(version: 0) do
 
   create_table "categories", id: { type: :bigint, unsigned: true }, charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name", null: false
+    t.string "english_name", null: false
     t.string "thumb"
     t.string "thumb_tmp"
     t.integer "status", default: 0, null: false
@@ -216,6 +217,38 @@ ActiveRecord::Schema.define(version: 0) do
     t.index ["user_id"], name: "index_notifications_on_user_id"
   end
 
+  create_table "order_items", id: { type: :bigint, unsigned: true }, charset: "utf8mb4", collation: "utf8mb4_general_ci", force: :cascade do |t|
+    t.bigint "order_id", null: false
+    t.bigint "auction_item_id", null: false
+    t.bigint "auction_id", null: false
+    t.bigint "product_id", null: false
+    t.float "price", default: 0.0, null: false
+    t.integer "status", default: 0, null: false
+    t.integer "quantity", default: 1, null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["auction_id"], name: "index_order_items_on_auction_id"
+    t.index ["auction_item_id"], name: "index_order_items_on_auction_item_id"
+    t.index ["order_id"], name: "index_order_items_on_order_id"
+    t.index ["product_id"], name: "index_order_items_on_product_id"
+    t.index ["status"], name: "index_order_items_on_status"
+  end
+
+  create_table "orders", id: { type: :bigint, unsigned: true }, charset: "utf8mb4", collation: "utf8mb4_general_ci", force: :cascade do |t|
+    t.string "code", null: false
+    t.string "cod_code"
+    t.integer "status", default: 0, null: false
+    t.bigint "user_id", null: false
+    t.integer "payment_type", default: 0, null: false
+    t.bigint "price", default: 0, null: false
+    t.float "tax", default: 0.0, null: false
+    t.datetime "booking_at", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["status"], name: "index_orders_on_status"
+    t.index ["user_id"], name: "index_orders_on_user_id"
+  end
+
   create_table "product_companies", id: { type: :bigint, unsigned: true }, charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.bigint "product_id", null: false
     t.bigint "company_id", null: false
@@ -261,6 +294,7 @@ ActiveRecord::Schema.define(version: 0) do
 
   create_table "sub_categories", id: { type: :bigint, unsigned: true }, charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name", null: false
+    t.string "english_name", null: false
     t.bigint "category_id", null: false
     t.integer "status", default: 0, null: false
     t.integer "position", default: 0, null: false

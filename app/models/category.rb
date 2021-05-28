@@ -2,14 +2,15 @@
 #
 # Table name: categories
 #
-#  id         :bigint           unsigned, not null, primary key
-#  name       :string(255)      not null
-#  thumb      :string(255)
-#  thumb_tmp  :string(255)
-#  status     :integer          default("deactive"), not null
-#  position   :integer          default(0), not null
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
+#  id           :bigint           unsigned, not null, primary key
+#  name         :string(255)      not null
+#  english_name :string(255)      not null
+#  thumb        :string(255)
+#  thumb_tmp    :string(255)
+#  status       :integer          default("deactive"), not null
+#  position     :integer          default(0), not null
+#  created_at   :datetime         not null
+#  updated_at   :datetime         not null
 #
 class Category < ApplicationRecord
   mount_uploader :thumb, ImageUploader
