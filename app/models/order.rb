@@ -15,7 +15,7 @@
 #  updated_at   :datetime         not null
 #
 class Order < ApplicationRecord
-  enum status: {pending: 0, success: 1, failed: 2, canceled: 3}
+  enum status: { pending: 0, success: 1, failed: 2, canceled: 3 }
 
   belongs_to :user
   has_many :order_items, dependent: :destroy

@@ -30,7 +30,11 @@ class Auction < ApplicationRecord
   end
 
   def modified_display_name
-    display_name + ' ' + try(:id).to_s
+    display_name + ' ' + string_id
+  end
+
+  def string_id
+    try(:id).to_i < 10 ? "0#{try(:id)}" : try(:id).to_s
   end
 
   def update_average_rating
