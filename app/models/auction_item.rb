@@ -33,6 +33,7 @@ class AuctionItem < ApplicationRecord
 
   has_many :bookings, dependent: :destroy
   has_many :rates, as: :ratable
+  has_many :followers, as: :followable
 
   enum status: { pending: 0, progress: 1, sold: 2, unsold: 3, expired: 4 }
 

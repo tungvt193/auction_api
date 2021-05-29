@@ -50,6 +50,7 @@ module Types
     field :updated_at, String, null: false
     field :short_description, String, null: true, resolve: Lazy::LazyShortDescription.new
 
+    field :is_followed, Boolean, null: true, resolve: Lazy::LazyIsFollowedAuctionItem.new
     field :user, Types::UserType, null: true, resolve: Lazy::LazyUser.new
     field :auction, Types::AuctionType, null: true, resolve: Lazy::LazyAuction.new
     field :product, Types::ProductType, null: true, resolve: Lazy::LazyProduct.new

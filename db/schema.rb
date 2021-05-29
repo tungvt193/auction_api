@@ -165,7 +165,7 @@ ActiveRecord::Schema.define(version: 0) do
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["followable_id", "followable_type"], name: "index_followers_on_followable_type_and_followable_id"
+    t.index ["followable_id", "followable_type", "user_id"], name: "index_followers_on_followable_type_and_followable_id", unique: true
     t.index ["user_id"], name: "index_followers_on_user_id"
   end
 
