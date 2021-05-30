@@ -28,5 +28,6 @@ module Types
     field :last_rate, Types::RateType, null: true, resolve: Lazy::LazyLastRate.new
     field :last_four_auction_items, [Types::AuctionItemType], null: true, resolve: Lazy::LazyLastFourAuctionItem.new
     field :auction_items, [Types::AuctionItemType], null: true, resolve: Lazy::LazyGetAllItemsByAuction.new
+    field :score, Types::ScoreType, null: true, resolve: Lazy::LazyAuctionScore.new
   end
 end

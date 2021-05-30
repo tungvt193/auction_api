@@ -21,4 +21,8 @@ class Rate < ApplicationRecord
   def update_auction_rating
     RatingJob.perform_async(id)
   end
+
+  def rounded_star
+    star.to_i.to_s
+  end
 end

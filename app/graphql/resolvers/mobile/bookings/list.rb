@@ -6,6 +6,7 @@ module Resolvers
         type types[::Types::BookingType]
 
         option :per_page, type: types.Int, default: 10, with: :apply_per_page
+        option :order_by, type: types.String, default: 'booking_at DESC', with: :apply_order
 
         def normalize_filters(value, branches = [])
           query = super
@@ -28,7 +29,7 @@ module Resolvers
         private
 
         def instance_scope
-          ::Booking.where(user_id: current_user.try(:id))
+          ::Booking.all
         end
       end
     end
