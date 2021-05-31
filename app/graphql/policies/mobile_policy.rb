@@ -13,9 +13,6 @@ module Policies
           v1MobileForgotPassword: {
             guard: ->(_obj, _args, _ctx) { true }
           },
-          v1MobileVerifyOtp: {
-            guard: ->(_obj, _args, _ctx) { true }
-          },
           v1MobileResetPassword: {
             guard: ->(_obj, _args, _ctx) { true }
           }

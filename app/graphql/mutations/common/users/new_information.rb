@@ -23,7 +23,7 @@ module Mutations
           OpenStruct.new({
                            data: {
                              user: current_user,
-                             token: current_user.generate_token(Settings.expired_time_otp_minute.minutes)
+                             token: current_user.generate_token(Settings.login_session_expiration_time_week.week)
                            }
                          })
         end
