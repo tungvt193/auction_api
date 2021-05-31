@@ -18,6 +18,7 @@ module Types
     field :ratable_id, ID, null: false
     field :user_id, ID, null: false
     field :comment, String, null: false
+    field :username, String, null: true, resolve: LazyRatingName.new
 
     field :user, Types::UserType, null: true, resolve: Lazy::LazyUser.new
   end

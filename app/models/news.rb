@@ -42,6 +42,12 @@ class News < ApplicationRecord
     time_ago_in_words(created_at)
   end
 
+  def html_content
+    value.optimized.read.force_encoding('utf-8')
+  rescue StandardError
+    '<p></p>'
+  end
+
   private
 
   def slug_generator

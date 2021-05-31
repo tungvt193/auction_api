@@ -7,7 +7,6 @@ module Mutations
 
     argument :attribute, Types::AttributeType, required: false
     argument :attributes, [Types::AttributeType], required: false
-    argument :file, Types::AttributeType, required: false
 
     def resolve(_args)
       @current_user = context[:current_user]

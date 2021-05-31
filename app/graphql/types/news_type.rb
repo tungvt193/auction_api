@@ -22,6 +22,8 @@ module Types
     field :content_url, String, null: true
     field :cover_url, String, null: true
     field :short_description, String, null: true
+    field :created_in_word, String, null: true
+    field :html_content, String, null: true
     field :title, String, null: false
     field :slug, String, null: true
     field :votes_total, Int, null: true

@@ -3,7 +3,7 @@ module Mutations
     module Users
       class NewInformation < BaseMutation
         argument :attribute, Types::AttributeType, required: true
-        field :data, ::Types::UserType, null: false
+        field :data, ::Types::AuthorizedType, null: false
 
         def resolve(args)
           super
@@ -20,7 +20,12 @@ module Mutations
             current_user.save!
           end
 
-          { data: current_user }
+          OpenStruct.new({
+                           data: {
+                             user: current_user,
+                             token: current_user.generate_token(Settings.expired_time_otp_minute.minutes)
+                           }
+                         })
         end
 
         private

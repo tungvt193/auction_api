@@ -1,6 +1,8 @@
 require 'open-uri'
 
 class ApplicationRecord < ActiveRecord::Base
+  include ActionView::Helpers::DateHelper
+
   self.abstract_class = true
 
   def self.adjust_date_for_cdt(datetime)
@@ -24,6 +26,10 @@ class ApplicationRecord < ActiveRecord::Base
 
   def cryptor
     ::ActiveSupport::MessageEncryptor.new(Rails.application.secrets.secret_key_base.byteslice(0..31))
+  end
+
+  def created_in_word
+    time_ago_in_words(created_at)
   end
 
   class << self
