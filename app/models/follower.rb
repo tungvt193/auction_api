@@ -10,4 +10,8 @@
 #  updated_at      :datetime         not null
 #
 class Follower < ApplicationRecord
+  belongs_to :followable, polymorphic: true
+  belongs_to :user
+
+  validates :user_id, uniqueness: { scope: %i[followable_type followable_id], message: 'Bạn đã theo dõi sản phẩm đấu giá này.' }
 end

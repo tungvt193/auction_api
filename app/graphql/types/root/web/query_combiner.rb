@@ -17,6 +17,8 @@ module Types
                 function: ::Resolvers::Web::AuctionItems::List, null: true, connection: true
           field :v1WebAuctionItemNearestList, ::Connections::AuctionItemConnection,
                 function: ::Resolvers::Web::AuctionItems::NearestList, null: true, connection: true
+          field :v1WebFollowedAuctionItemList, ::Connections::AuctionItemConnection,
+                function: ::Resolvers::Web::AuctionItems::FollowedByCurrentUserList, null: true, connection: true
           field :v1WebAuctionItem, resolver: ::Resolvers::Mobile::AuctionItems::Show
 
           field :v1WebCompanyList, ::Connections::CompanyConnection,
