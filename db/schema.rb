@@ -195,6 +195,7 @@ ActiveRecord::Schema.define(version: 0) do
     t.bigint "comments_count", default: 0, null: false
     t.bigint "comments_total", default: 0, null: false
     t.integer "status", default: 0, null: false
+    t.datetime "published_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["status"], name: "index_news_on_status"
@@ -340,6 +341,8 @@ ActiveRecord::Schema.define(version: 0) do
     t.string "title", null: false
     t.text "description"
     t.integer "status", default: 0, null: false
+    t.string "slug"
+    t.datetime "published_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["status"], name: "index_videos_on_status"

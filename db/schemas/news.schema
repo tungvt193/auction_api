@@ -12,6 +12,7 @@ create_table(:news, id: { type: :bigint, unsigned: true }, charset: "utf8mb4", c
   t.bigint 'comments_count', null: false, default: 0
   t.bigint 'comments_total', null: false, default: 0
   t.integer 'status', null: false, default: 0
+  t.datetime 'published_at'
 
   t.datetime "created_at", precision: 6, null: false
   t.datetime "updated_at", precision: 6, null: false

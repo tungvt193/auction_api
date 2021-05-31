@@ -1,13 +1,19 @@
 module Resolvers
   class BaseResolver < GraphQL::Schema::Resolver
     def resolve(id:)
-      _, id = GraphQL::Schema::UniqueWithinType.decode(id)
-
-      collection.find(id)
+      collection.find try_decode(id)
     end
 
     def current_user
       context.fetch(:current_user)
+    end
+
+    def try_decode(id)
+      _, decode_id = GraphQL::Schema::UniqueWithinType.decode(id)
+
+      decode_id
+    rescue StandardError
+      id
     end
 
     private

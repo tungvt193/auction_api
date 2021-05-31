@@ -6,7 +6,9 @@ create_table(:videos, id: { type: :bigint, unsigned: true }, charset: "utf8mb4",
   t.string 'title', null: false
   t.text 'description'
   t.integer 'status', null: false, default: 0
-
+  t.string 'slug'
+  t.datetime 'published_at'
+  
   t.datetime "created_at", precision: 6, null: false
   t.datetime "updated_at", precision: 6, null: false
 

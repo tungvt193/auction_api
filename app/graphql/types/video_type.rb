@@ -17,6 +17,8 @@ module Types
     field :video_id, String, null: true
     field :title, String, null: true
     field :status, String, null: false
+    field :slug, String, null: true
     field :description, String, null: true
+    field :published_at, String, null: true
   end
 end

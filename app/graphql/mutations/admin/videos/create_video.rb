@@ -25,7 +25,7 @@ module Mutations
 
         def normalize_parameters(args)
           ::ActionController::Parameters.new(args.as_json).permit(
-            :cover, :url, :title, :status
+            :cover, :url, :title, :status, :slug, :published_at
           )
         end
       end

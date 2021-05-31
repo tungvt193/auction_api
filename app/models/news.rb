@@ -14,6 +14,7 @@
 #  comments_count    :bigint           default(0), not null
 #  comments_total    :bigint           default(0), not null
 #  status            :integer          default("deactive"), not null
+#  published_at      :datetime
 #  created_at        :datetime         not null
 #  updated_at        :datetime         not null
 #
@@ -25,10 +26,7 @@ class News < ApplicationRecord
   store_in_background :content
 
   enum status: { deactive: 0, active: 1, popular: 2 }
-
   ransacker :status, formatter: proc { |v| statuses[v] }
-
-  before_commit :slug_generator, on: :create
 
   def cover_url
     cover.try(:url)
@@ -38,8 +36,8 @@ class News < ApplicationRecord
     content.try(:url)
   end
 
-  def created_in_word
-    time_ago_in_words(created_at)
+  def published_in_word
+    time_ago_in_words(published_at) if published_at.present?
   end
 
   def html_content
@@ -47,8 +45,6 @@ class News < ApplicationRecord
   rescue StandardError
     '<p></p>'
   end
-
-  private
 
   def slug_generator
     self.slug = title.downcase.tr(VIETNAMESE_CHARACTERS, ENGLISH_CHARACTERS).parameterize.truncate 80, omission: ''

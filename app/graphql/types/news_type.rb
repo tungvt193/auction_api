@@ -30,5 +30,6 @@ module Types
     field :comments_count, Int, null: true
     field :comments_total, Int, null: true
     field :status, String, null: false
+    field :published_at, String, null: true
   end
 end
