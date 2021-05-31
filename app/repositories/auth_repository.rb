@@ -28,8 +28,9 @@ class AuthRepository < BaseRepository
     raise GraphQL::ExecutionError, 'OTP đã nhập không chính xác.' if response['error'].present?
 
     user = ::User.by_phone_or_new(response['phoneNumber'])
-    token = user.generate_token(Settings.expired_time_otp_minute.minutes)
+    token = user.generate_token(Settings.expired_time_otp_minute.minutes, 'new_information')
 
+    user.update!({ reset_password_token: token })
     [user, token]
   end
 

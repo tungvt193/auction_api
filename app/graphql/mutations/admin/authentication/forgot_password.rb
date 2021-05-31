@@ -11,7 +11,7 @@ module Mutations
           attributes = normalize_parameters(args[:attribute])
           user = ::User.find_by(email: attributes[:email].downcase, role: 'admin')
 
-          raise GraphQL::ExecutionError, 'Not found account using this email' if user.blank?
+          raise GraphQL::ExecutionError, 'Không tìm thấy tài khoản sử dụng email này.' if user.blank?
 
           ::EmailRepository.new(nil, user).forgot_password
 

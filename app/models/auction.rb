@@ -43,6 +43,6 @@ class Auction < ApplicationRecord
 
     return if total.zero?
 
-    update!(rating: value.to_f / total)
+    update!(rating: (value.to_f / total).round(1))
   end
 end

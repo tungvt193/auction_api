@@ -1,5 +1,5 @@
 module Mutations
-  module Mobile
+  module Common
     module Authentication
       class ChangePassword < BaseMutation
         argument :attribute, Types::AttributeType, required: true
@@ -15,8 +15,7 @@ module Mutations
             raise GraphQL::ExecutionError, 'Password is incorrect!' unless is_correctly
 
             ApplicationRecord.transaction do
-              encrypted_password = cryptor.encrypt_and_sign(attributes[:password])
-              current_user.assign_attributes({ password_digest: encrypted_password })
+              current_user.password = attributes[:password]
               current_user.save!
             end
           end

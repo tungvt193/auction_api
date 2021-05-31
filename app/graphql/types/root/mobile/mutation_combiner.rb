@@ -7,11 +7,6 @@ module Types
 
         # CRUD
         included do
-          field :v1MobileSignIn, mutation: ::Mutations::Mobile::Authentication::SignIn
-          field :v1MobileForgotPassword, mutation: ::Mutations::Mobile::Authentication::ForgotPassword
-          field :v1MobileChangePassword, mutation: ::Mutations::Mobile::Authentication::ChangePassword
-          field :v1MobileVerifyOtp, mutation: ::Mutations::Mobile::Authentication::VerifyOtp
-
           field :v1MobileCreateAuctionItemUser, mutation: ::Mutations::Mobile::AuctionItemUsers::CreateAuctionItemUser
           field :v1MobileUpdateAuctionItemUser, mutation: ::Mutations::Mobile::AuctionItemUsers::UpdateAuctionItemUser
           field :v1MobileDeleteAuctionItemUser, mutation: ::Mutations::Mobile::AuctionItemUsers::DeleteAuctionItemUser
