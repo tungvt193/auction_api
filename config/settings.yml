@@ -1,7 +1,7 @@
 login_session_expiration_time_week: 1
 login_session_expiration_time_hour: 1
 expired_time_reset_password_minute: 15
-expired_time_otp_minute: 15
+expired_time_otp_minute: 5
 
 validations:
   user:

@@ -58,7 +58,11 @@ module Api
     end
 
     def token_is_invalid(token, token_type, user)
-      user.blank? || (token_type == 'reset_password' && (operation_name != 'v1AdminResetPassword' || token != user.reset_password_token))
+      user.blank? || (token_type == 'reset_password' && (operation_name != 'v1AdminResetPassword' || token != user.reset_password_token)) || (token_type == 'new_information' && (operation_is_not_reset_password_nor_new_information || token != user.reset_password_token))
+    end
+
+    def operation_is_not_reset_password_nor_new_information
+      operation_name != 'v1CommonNewInformation' && operation_name != 'v1CommonResetPassword'
     end
   end
 end

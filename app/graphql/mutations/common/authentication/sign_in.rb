@@ -1,5 +1,5 @@
 module Mutations
-  module Mobile
+  module Common
     module Authentication
       class SignIn < BaseMutation
         argument :attribute, Types::AttributeType, required: true

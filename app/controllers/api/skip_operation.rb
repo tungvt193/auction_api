@@ -10,6 +10,9 @@ module Api
 
       def common
         %w[
+          v1CommonSignIn
+          v1CommonForgotPassword
+          v1CommonVerifyOtp
           v1CommonCategoryList
           v1CommonCategory
           v1CommonNewsList
@@ -24,9 +27,6 @@ module Api
 
       def mobile
         %w[
-          v1MobileSignIn
-          v1MobileForgotPassword
-          v1MobileVerifyOtp
           v1MobileCompanyList
           v1MobileProductList
           v1MobileAuctionList
@@ -42,9 +42,6 @@ module Api
 
       def web
         %w[
-          v1WebSignIn
-          v1WebForgotPassword
-          v1WebResetPassword
           v1WebAuctionList
           v1WebCompanyList
           v1WebProductList

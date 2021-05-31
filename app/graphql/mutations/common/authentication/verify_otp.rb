@@ -1,5 +1,5 @@
 module Mutations
-  module Mobile
+  module Common
     module Authentication
       class VerifyOtp < BaseMutation
         argument :attribute, Types::AttributeType, required: true

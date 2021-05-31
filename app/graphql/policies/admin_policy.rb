@@ -23,10 +23,31 @@ module Policies
           v1AdminResetPassword: {
             guard: ->(_obj, _args, _ctx) { true }
           }
-        }
+        }.merge(block_policy('Auction')).
+          merge(block_policy('Banner')).
+          merge(block_policy('Booking')).
+          merge(block_policy('Category')).
+          merge(block_policy('Company')).
+          merge(block_policy('Image')).
+          merge(block_policy('News')).
+          merge(block_policy('Video'))
       end
 
       private
+
+      def block_policy(model_name)
+        create_action = 'v1AdminCreate' + model_name
+        update_action = 'v1AdminUpdate' + model_name
+        delete_action = 'v1AdminDelete' + model_name
+
+        block = {}
+
+        block[create_action.to_sym] = admin_guard
+        block[update_action.to_sym] = admin_guard
+        block[delete_action.to_sym] = admin_guard
+
+        block
+      end
 
       def admin_guard
         { guard: ->(_obj, _args, ctx) { is_admin?(ctx) } }
