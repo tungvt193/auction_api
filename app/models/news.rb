@@ -43,7 +43,7 @@ class News < ApplicationRecord
   end
 
   def html_content
-    value.optimized.read.force_encoding('utf-8')
+    content.read.force_encoding('utf-8')
   rescue StandardError
     '<p></p>'
   end
