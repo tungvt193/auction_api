@@ -22,11 +22,6 @@ module Api
           v1CommonVideoList
           v1CommonVideo
           v1CommonUserByUsername
-        ]
-      end
-
-      def mobile
-        %w[
           v1CommonAuctionList
           v1CommonAuction
           v1CommonCompany
@@ -40,9 +35,17 @@ module Api
         ]
       end
 
-      def web
+      def mobile
         %w[
+          v1MobileBookingList
+          v1MobileBooking
+          v1MobileRateList
+          v1MobileRate
         ]
+      end
+
+      def web
+        %w[]
       end
     end
   end
