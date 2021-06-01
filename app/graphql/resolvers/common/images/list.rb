@@ -1,9 +1,9 @@
 module Resolvers
-  module Web
-    module AuctionItems
-      class FollowedByCurrentUserList < ::Resolvers::BaseQuery
+  module Common
+    module Images
+      class List < ::Resolvers::BaseQuery
         scope { instance_scope }
-        type types[::Types::AuctionItemType]
+        type types[::Types::ImageType]
 
         option :per_page, type: types.Int, default: 10, with: :apply_per_page
 
@@ -20,7 +20,7 @@ module Resolvers
           # NOTE: Don't run QueryResolver during tests
           return super if context.blank?
 
-          GraphQL::QueryResolver.run(::AuctionItem, context, ::Types::AuctionItemType) do
+          GraphQL::QueryResolver.run(::Image, context, ::Types::ImageType) do
             super
           end
         end
@@ -28,8 +28,7 @@ module Resolvers
         private
 
         def instance_scope
-          auction_item_ids = Follower.where(user_id: current_user.id, followable_type: 'AuctionItem').pluck(:followable_id)
-          ::AuctionItem.where(id: auction_item_ids)
+          ::Image.active
         end
       end
     end

@@ -1,16 +1,16 @@
 module Resolvers
-  module Web
-    module Users
+  module Common
+    module Products
       class List < ::Resolvers::BaseQuery
-        scope { ::User.all }
-        type types[::Types::UserType]
+        scope { instance_scope }
+        type types[::Types::ProductType]
 
         option :per_page, type: types.Int, default: 10, with: :apply_per_page
 
         def normalize_filters(value, branches = [])
           query = super
 
-          scope = ::User.graphql_ransack(query)
+          scope = instance_scope.graphql_ransack(query)
           branches << scope
 
           branches
@@ -20,9 +20,15 @@ module Resolvers
           # NOTE: Don't run QueryResolver during tests
           return super if context.blank?
 
-          GraphQL::QueryResolver.run(::User, context, ::Types::UserType) do
+          GraphQL::QueryResolver.run(::Product, context, ::Types::ProductType) do
             super
           end
+        end
+
+        private
+
+        def instance_scope
+          ::Product.all
         end
       end
     end

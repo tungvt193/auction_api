@@ -9,7 +9,7 @@
 #  cover_tmp         :string(255)
 #  short_description :text(65535)
 #  title             :string(255)      not null
-#  slug              :string(255)
+#  slug              :string(255)      not null
 #  votes_total       :bigint           default(0), not null
 #  comments_count    :bigint           default(0), not null
 #  comments_total    :bigint           default(0), not null

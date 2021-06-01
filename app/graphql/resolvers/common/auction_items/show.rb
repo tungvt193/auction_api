@@ -1,9 +1,9 @@
 module Resolvers
-  module Mobile
-    module Users
+  module Common
+    module AuctionItems
       class Show < ::Resolvers::BaseResolver
         argument :id, ID, required: true
-        type ::Types::UserType, null: false
+        type ::Types::AuctionItemType, null: false
 
         def resolve(id:)
           super

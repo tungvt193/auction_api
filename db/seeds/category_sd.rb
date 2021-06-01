@@ -9,6 +9,7 @@ categories.each_with_index do |category, index|
   puts "MAKE CATEGORY #{index + 1} / #{categories.size}"
   cat = Category.new(
     name: category['name'],
+    english_name: category['english_name'],
     status: 'active',
     created_at: now,
     updated_at: now,

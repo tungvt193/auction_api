@@ -8,7 +8,7 @@
 #  title        :string(255)      not null
 #  description  :text(65535)
 #  status       :integer          default("deactive"), not null
-#  slug         :string(255)
+#  slug         :string(255)      not null
 #  published_at :datetime
 #  created_at   :datetime         not null
 #  updated_at   :datetime         not null

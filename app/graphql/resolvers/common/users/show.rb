@@ -1,9 +1,9 @@
 module Resolvers
-  module Mobile
-    module Images
+  module Common
+    module Users
       class Show < ::Resolvers::BaseResolver
         argument :id, ID, required: true
-        type ::Types::ImageType, null: false
+        type ::Types::UserType, null: false
 
         def resolve(id:)
           super
