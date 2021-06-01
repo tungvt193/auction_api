@@ -36,17 +36,11 @@ module Policies
       private
 
       def block_policy(model_name)
-        create_action = 'v1AdminCreate' + model_name
-        update_action = 'v1AdminUpdate' + model_name
-        delete_action = 'v1AdminDelete' + model_name
-
-        block = {}
-
-        block[create_action.to_sym] = admin_guard
-        block[update_action.to_sym] = admin_guard
-        block[delete_action.to_sym] = admin_guard
-
-        block
+        {
+          "v1AdminCreate#{model_name}": admin_guard,
+          "v1AdminUpdate#{model_name}": admin_guard,
+          "v1AdminDelete#{model_name}": admin_guard
+        }
       end
 
       def admin_guard

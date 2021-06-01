@@ -28,7 +28,11 @@ if response.code == 200
     }
   end.compact
 
-  ::Video.insert_all!(video_attributes)
+  video_attributes.each do |video_attribute|
+    record = Video.new(video_attribute)
+    record.slug_generator
+    record.save!
+  end
 end
 
 puts 'FINISH IMPORT VIDEO SUCCESSFUL'

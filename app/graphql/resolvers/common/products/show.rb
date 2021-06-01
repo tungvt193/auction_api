@@ -1,5 +1,5 @@
 module Resolvers
-  module Web
+  module Common
     module Products
       class Show < ::Resolvers::BaseResolver
         argument :id, ID, required: true

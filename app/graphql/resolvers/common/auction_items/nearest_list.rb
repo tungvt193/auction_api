@@ -1,8 +1,8 @@
 module Resolvers
-  module Web
+  module Common
     module AuctionItems
-      class List < ::Resolvers::BaseQuery
-        scope { instance_scope }
+      class NearestList < ::Resolvers::BaseQuery
+        scope { instance_scope.order('auctions.started_at' => 'asc', 'auctions.ended_at' => 'asc') }
         type types[::Types::AuctionItemType]
 
         option :per_page, type: types.Int, default: 10, with: :apply_per_page
@@ -11,6 +11,7 @@ module Resolvers
           query = super
 
           scope = instance_scope.graphql_ransack(query)
+
           branches << scope
 
           branches
@@ -28,7 +29,7 @@ module Resolvers
         private
 
         def instance_scope
-          ::AuctionItem.where(user_id: nil)
+          ::AuctionItem.joins(:auction).where('auctions.status = ? AND (auctions.started_at >= ? OR auctions.ended_at >= ? ) AND auction_items.status = ?  OR auction_items.status = ? ', 1, Time.zone.now, Time.zone.now, 0, 1)
         end
       end
     end

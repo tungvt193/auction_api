@@ -1,9 +1,9 @@
 module Resolvers
-  module Mobile
-    module Products
+  module Common
+    module AuctionItems
       class List < ::Resolvers::BaseQuery
         scope { instance_scope }
-        type types[::Types::ProductType]
+        type types[::Types::AuctionItemType]
 
         option :per_page, type: types.Int, default: 10, with: :apply_per_page
 
@@ -20,7 +20,7 @@ module Resolvers
           # NOTE: Don't run QueryResolver during tests
           return super if context.blank?
 
-          GraphQL::QueryResolver.run(::Product, context, ::Types::ProductType) do
+          GraphQL::QueryResolver.run(::AuctionItem, context, ::Types::AuctionItemType) do
             super
           end
         end
@@ -28,7 +28,7 @@ module Resolvers
         private
 
         def instance_scope
-          ::Product.all
+          ::AuctionItem.where(user_id: nil)
         end
       end
     end

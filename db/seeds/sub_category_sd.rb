@@ -1,20 +1,21 @@
 puts 'START IMPORT SUB CATEGORY'
 
-category_ids = ::Category.pluck(:id)
+json_data = File.read(Rails.root.join('db/jsons/sub_categories.json'))
+sub_categories = JSON.parse(json_data)
 now = Time.zone.now
 
-50.times do |index|
-  puts "MAKE SUB CATEGORY #{index + 1} / 10"
-  r_name = (0...3).map { ('a'..'z').to_a[rand(26)] }.join.upcase
-  subcate = ::SubCategory.new({
-                                name: r_name,
-                                status: 'active',
-                                created_at: now,
-                                updated_at: now,
-                                position: index,
-                                category_id: category_ids.sample
-                              })
-  puts 'MAKE SUB CATEGORY SUCCESS' if subcate.save!
+sub_categories.each_with_index do |sub_category, index|
+  puts "MAKE SUB CATEGORY #{index + 1} / #{sub_categories.size}"
+  sub_cat = SubCategory.new(
+    name: sub_category['name'],
+    english_name: sub_category['english_name'],
+    category_id: sub_category['category_id'],
+    created_at: now,
+    updated_at: now,
+    position: index
+  )
+
+  sub_cat.save!
 end
 
-puts 'FINISH IMPORT SUB CATEGORY'
+puts 'FINISH IMPORT CATEGORY'

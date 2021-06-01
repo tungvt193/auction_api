@@ -7,7 +7,7 @@ create_table(:news, id: { type: :bigint, unsigned: true }, charset: "utf8mb4", c
   t.string 'cover_tmp'
   t.text 'short_description'
   t.string 'title', null: false
-  t.string 'slug'
+  t.string 'slug', null: false
   t.bigint 'votes_total', null: false, default: 0
   t.bigint 'comments_count', null: false, default: 0
   t.bigint 'comments_total', null: false, default: 0
@@ -18,4 +18,5 @@ create_table(:news, id: { type: :bigint, unsigned: true }, charset: "utf8mb4", c
   t.datetime "updated_at", precision: 6, null: false
 
   t.index ['status'], name: 'index_news_on_status'
+  t.index ['slug'], name: 'index_news_on_slug', unique: true
 end
