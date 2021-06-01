@@ -27,24 +27,21 @@ module Api
 
       def mobile
         %w[
-          v1MobileCompanyList
-          v1MobileProductList
-          v1MobileAuctionList
-          v1MobileProduct
-          v1MobileCompany
-          v1MobileAuction
-          v1MobileNearestAuctionList
-          v1MobileAuctionItemList
-          v1MobileAuctionItem
-          v1MobileAuctionItemNearestList
+          v1CommonAuctionList
+          v1CommonAuction
+          v1CommonCompany
+          v1CommonCompanyList
+          v1CommonProduct
+          v1CommonProductList
+          v1CommonNearestAuctionList
+          v1CommonAuctionItemList
+          v1CommonAuctionItem
+          v1CommonAuctionItemNearestList
         ]
       end
 
       def web
         %w[
-          v1WebAuctionList
-          v1WebCompanyList
-          v1WebProductList
         ]
       end
     end
