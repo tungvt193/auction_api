@@ -3,7 +3,7 @@ module Policies
     class << self
       def query
         {
-          'v1CommonMyProfile': user_guard,
+          'v1CommonMyProfile': user_guard
         }
       end
 

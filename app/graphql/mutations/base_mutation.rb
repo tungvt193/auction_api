@@ -10,7 +10,7 @@ module Mutations
 
     def resolve(args)
       @current_user = context[:current_user]
-      
+
       @params = ::ActionController::Parameters.new(args[:attribute]) if args[:attribute].present?
       @params = ::ActionController::Parameters.new(args[:attributes]) if args[:attributes].present?
     end
@@ -64,7 +64,7 @@ module Mutations
     end
 
     def upload_permitted
-      [:content_type, :headers, :original_filename, :tempfile]
+      %i[content_type headers original_filename tempfile]
     end
 
     def collection

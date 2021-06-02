@@ -14,7 +14,7 @@ module Mutations
           ApplicationRecord.transaction do
             attributes = decode_attributes(normalize_parameters)
             resource.assign_attributes(attributes)
-            
+
             resource.save!
           end
 

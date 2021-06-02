@@ -35,9 +35,7 @@ module Api
       raise ActionController::InvalidAuthenticityToken, 'Token không hợp lệ, vui lòng thử lại' if token_is_invalid(token, token_type, user)
 
       return user if token_type == 'crawler'
-      if expired_at.blank? || Time.zone.parse(expired_at) < Time.zone.now
-        raise ActionController::InvalidAuthenticityToken, 'Phiên đăng nhập đã hết hạn. Vui lòng thử lại!'
-      end
+      raise ActionController::InvalidAuthenticityToken, 'Phiên đăng nhập đã hết hạn. Vui lòng thử lại!' if expired_at.blank? || Time.zone.parse(expired_at) < Time.zone.now
 
       user
     end

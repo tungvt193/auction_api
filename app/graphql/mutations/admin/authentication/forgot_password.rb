@@ -10,6 +10,7 @@ module Mutations
 
           user = ::User.find_by(email: normalize_parameters[:email].downcase, role: 'admin')
           raise GraphQL::ExecutionError, 'Không tìm thấy tài khoản sử dụng email này.' if user.blank?
+
           ::EmailRepository.new(nil, user).forgot_password
 
           OpenStruct.new({

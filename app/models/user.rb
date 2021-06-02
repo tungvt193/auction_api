@@ -88,7 +88,7 @@ class User < ApplicationRecord
 
   def avatar_url
     return base_file_url + avatar.try(:store_dir).to_s + File.basename(avatar_tmp.to_s) if avatar.blank?
-      
+
     avatar.try(:url)
   end
 
