@@ -9,13 +9,11 @@ module Mutations
 
         def resolve(args)
           super
-
-          encode_attributes = normalize_parameters(args[:attribute])
-          attributes = decode_attributes(encode_attributes)
+          attributes = decode_attributes(normalize_parameters)
 
           ApplicationRecord.transaction do
             current_user.assign_attributes(attributes)
-            current_user.avatar = args[:avatar] if args[:avatar].present?
+            current_user.avatar = params[:avatar] if params[:avatar].present?
 
             current_user.save!
           end
@@ -25,10 +23,8 @@ module Mutations
 
         private
 
-        def normalize_parameters(args)
-          ::ActionController::Parameters.new(args.as_json).permit(
-            :first_name, :last_name, :email, :gender
-          )
+        def normalize_parameters
+          params.permit(:first_name, :last_name, :email, :gender)
         end
       end
     end

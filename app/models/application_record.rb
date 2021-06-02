@@ -32,6 +32,12 @@ class ApplicationRecord < ActiveRecord::Base
     time_ago_in_words(created_at)
   end
 
+  def base_file_url
+    return 'http://localhost:3000/public/' if Rails.env.development?
+
+    "https://storage.googleapis.com/#{ENV.fetch('GOOGLE_BUCKET_NAME')}/"
+  end
+
   class << self
     def download_file(prefix, url, afterfix = 'jpg')
       absolute_path = Rails.root.join('public/downloads')

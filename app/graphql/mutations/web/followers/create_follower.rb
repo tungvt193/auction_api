@@ -11,10 +11,8 @@ module Mutations
           resource = collection.new
 
           ApplicationRecord.transaction do
-            encode_attributes = normalize_parameters(args[:attribute])
-            attributes = decode_attributes(encode_attributes).merge({
-                                                                      user_id: current_user.try(:id),
-                                                                      followable_type: 'AuctionItem'
+            attributes = decode_attributes(normalize_parameters).merge({
+                                                                      user_id: current_user.try(:id)
                                                                     })
 
             resource.assign_attributes(attributes)
@@ -26,10 +24,8 @@ module Mutations
 
         private
 
-        def normalize_parameters(args)
-          ::ActionController::Parameters.new(args.as_json).permit(
-            :followable_id
-          )
+        def normalize_parameters
+          params.permit(:followable_id, :followable_type)
         end
       end
     end

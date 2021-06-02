@@ -8,13 +8,16 @@ module Mutations
     argument :attribute, Types::AttributeType, required: false
     argument :attributes, [Types::AttributeType], required: false
 
-    def resolve(_args)
+    def resolve(args)
       @current_user = context[:current_user]
+      
+      @params = ::ActionController::Parameters.new(args[:attribute]) if args[:attribute].present?
+      @params = ::ActionController::Parameters.new(args[:attributes]) if args[:attributes].present?
     end
 
     protected
 
-    attr_reader :current_user
+    attr_reader :current_user, :params
 
     def decode_attributes(attributes)
       attributes.each_key do |k|
@@ -58,6 +61,10 @@ module Mutations
       _, item_id = GraphQL::Schema::UniqueWithinType.decode(id)
 
       collection.find(item_id)
+    end
+
+    def upload_permitted
+      [:content_type, :headers, :original_filename, :tempfile]
     end
 
     def collection

@@ -8,11 +8,8 @@ module Mutations
         def resolve(args)
           super
 
-          attributes = normalize_parameters(args[:attribute])
-          user = ::User.find_by(email: attributes[:email].downcase, role: 'admin')
-
+          user = ::User.find_by(email: normalize_parameters[:email].downcase, role: 'admin')
           raise GraphQL::ExecutionError, 'Không tìm thấy tài khoản sử dụng email này.' if user.blank?
-
           ::EmailRepository.new(nil, user).forgot_password
 
           OpenStruct.new({
@@ -25,8 +22,8 @@ module Mutations
 
         private
 
-        def normalize_parameters(args)
-          ::ActionController::Parameters.new(args.as_json).permit(:email)
+        def normalize_parameters
+          params.permit(:email)
         end
       end
     end

@@ -87,6 +87,8 @@ class User < ApplicationRecord
   end
 
   def avatar_url
+    return base_file_url + avatar.try(:store_dir).to_s + File.basename(avatar_tmp.to_s) if avatar.blank?
+      
     avatar.try(:url)
   end
 
@@ -95,7 +97,7 @@ class User < ApplicationRecord
   end
 
   def reset_password_url
-    token = generate_token(Settings.expired_time_reset_password_minute.minutes, 'reset_password')
+    token = generate_token(Settings.token_time.reset_password.minutes, 'reset_password')
 
     assign_attributes({ reset_password_token: token, reset_password_sent_at: Time.zone.now })
     "#{ENV.fetch('RESET_PASSWORD_URL')}?token=#{token}"
@@ -113,6 +115,7 @@ class User < ApplicationRecord
 
   def generate_token(expired_time, token_type = nil)
     expired_at = expired_time.from_now.strftime('%H:%M %d/%m/%Y')
+
     cryptor.encrypt_and_sign("user-id:#{id}&expired-at:#{expired_at}&token-type:#{token_type}")
   end
 end

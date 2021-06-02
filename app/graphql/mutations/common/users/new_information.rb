@@ -8,10 +8,9 @@ module Mutations
         def resolve(args)
           super
 
-          encode_attributes = normalize_parameters(args[:attribute])
-          attributes = decode_attributes(encode_attributes.except('confirmed_password'))
+          attributes = decode_attributes(normalize_parameters.except('confirmed_password'))
 
-          raise ActionController::InvalidAuthenticityToken, 'Mật khẩu và mật khẩu xác nhận không trùng khớp!' if encode_attributes[:password] != encode_attributes[:confirmed_password]
+          raise ActionController::InvalidAuthenticityToken, 'Mật khẩu và mật khẩu xác nhận không trùng khớp!' if normalize_parameters[:password] != normalize_parameters[:confirmed_password]
           raise ActiveRecord::RecordNotFound, 'Không tìm thấy tài khoản này!' if current_user.blank?
 
           ApplicationRecord.transaction do
@@ -23,15 +22,15 @@ module Mutations
           OpenStruct.new({
                            data: {
                              user: current_user,
-                             token: current_user.generate_token(Settings.login_session_expiration_time_week.week)
+                             token: current_user.generate_token(Settings.token_time.normal.week)
                            }
                          })
         end
 
         private
 
-        def normalize_parameters(args)
-          ::ActionController::Parameters.new(args.as_json).permit(
+        def normalize_parameters
+          params.permit(
             :first_name, :last_name, :gender, :email, :password, :confirmed_password
           )
         end

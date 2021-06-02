@@ -8,10 +8,9 @@ module Mutations
         def resolve(args)
           super
 
-          params = normalize_parameters(args)
-          user = ::User.by_username_and_role(params[:username])
+          user = ::User.by_username_and_role(normalize_parameters[:username])
           repo = ::AuthRepository.new(nil, user)
-          token = repo.sign_in(context, params)
+          token = repo.sign_in(context, normalize_parameters)
 
           OpenStruct.new({
                            data: {
@@ -23,8 +22,8 @@ module Mutations
 
         private
 
-        def normalize_parameters(args)
-          ::ActionController::Parameters.new(args[:attribute].as_json).permit(:username, :password, :device_token)
+        def normalize_parameters
+          params.permit(:username, :password, :device_token)
         end
       end
     end

@@ -32,12 +32,12 @@ module Api
       token_type = items[2]&.gsub('token-type:', '')
 
       user = User.find_by(id: user_id)
-
       raise ActionController::InvalidAuthenticityToken, 'Token không hợp lệ, vui lòng thử lại' if token_is_invalid(token, token_type, user)
 
       return user if token_type == 'crawler'
-
-      raise ActionController::InvalidAuthenticityToken, 'Phiên đăng nhập đã hết hạn. Vui lòng thử lại!' if expired_at.blank? || Time.zone.parse(expired_at) < Time.zone.now
+      if expired_at.blank? || Time.zone.parse(expired_at) < Time.zone.now
+        raise ActionController::InvalidAuthenticityToken, 'Phiên đăng nhập đã hết hạn. Vui lòng thử lại!'
+      end
 
       user
     end
@@ -58,7 +58,11 @@ module Api
     end
 
     def token_is_invalid(token, token_type, user)
-      user.blank? || (token_type == 'reset_password' && (operation_name != 'v1AdminResetPassword' || token != user.reset_password_token)) || (token_type == 'new_information' && (operation_is_not_reset_password_nor_new_information || token != user.reset_password_token))
+      return true if user.blank?
+      return operation_name != 'v1AdminResetPassword' || token != user.reset_password_token if token_type == 'reset_password'
+      return token_type == 'new_information' if operation_is_not_reset_password_nor_new_information || token != user.reset_password_token
+
+      false
     end
 
     def operation_is_not_reset_password_nor_new_information

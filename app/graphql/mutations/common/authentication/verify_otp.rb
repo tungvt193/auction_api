@@ -8,8 +8,7 @@ module Mutations
         def resolve(args)
           super
 
-          params = normalize_parameters(args[:attribute])
-          user, token = repo.verify_otp(params)
+          user, token = repo.verify_otp(normalize_parameters)
 
           OpenStruct.new({
                            data: {
@@ -21,8 +20,8 @@ module Mutations
 
         private
 
-        def normalize_parameters(args)
-          ::ActionController::Parameters.new(args.as_json).permit(:code, :verification_id)
+        def normalize_parameters
+          params.permit(:code, :verification_id)
         end
 
         def repo

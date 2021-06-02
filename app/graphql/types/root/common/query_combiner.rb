@@ -57,6 +57,8 @@ module Types
           field :v1CommonImageList, ::Connections::ImageConnection,
                 function: ::Resolvers::Common::Images::List, null: true, connection: true
           field :v1CommonImage, resolver: ::Resolvers::Common::Images::Show
+
+          field :v1CommonMyProfile, resolver: ::Resolvers::Common::Users::MyProfile
         end
       end
     end

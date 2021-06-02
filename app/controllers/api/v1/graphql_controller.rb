@@ -24,24 +24,6 @@ module Api
       private
 
       def formated_entity
-        if params[:operations].present?
-          operation_json = JSON.parse(params[:operations])
-          map_json = JSON.parse(params[:map])
-
-          variables = operation_json['variables']
-          query = operation_json['query']
-          operation_name = operation_json['operationName']
-
-          variable_keys = variables.keys
-
-          map_json.each_key do |file_k|
-            variables['input']['file'] = params[file_k] if variable_keys.include?('file')
-            variables['input']['files'].push(params[file_k]) if variable_keys.include?('files')
-          end
-
-          return [query, variables, operation_name]
-        end
-
         query = params[:query]
         operation_name = params[:operationName]
         variables = prepare_variables(params[:variables])

@@ -11,8 +11,7 @@ module Mutations
           resource = collection.new
 
           ApplicationRecord.transaction do
-            encode_attributes = normalize_parameters(args[:attribute])
-            attributes = decode_attributes(encode_attributes)
+            attributes = decode_attributes(normalize_parameters)
             attributes.merge!({ cover: args[:file] }) if args[:file].present?
 
             resource.assign_attributes(attributes)
@@ -24,8 +23,8 @@ module Mutations
 
         private
 
-        def normalize_parameters(args)
-          ::ActionController::Parameters.new(args.as_json).permit(
+        def normalize_parameters
+          params.permit(
             :url, :title, :status
           )
         end
