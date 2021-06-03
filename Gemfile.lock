@@ -8,6 +8,17 @@ GIT
       i18n
 
 GIT
+  remote: https://github.com/elastic/elasticsearch-rails.git
+  revision: bfdd2243f0de298547b2dc199e9a671cf72ccde6
+  branch: 5.x
+  specs:
+    elasticsearch-model (5.1.0)
+      activesupport (> 3)
+      elasticsearch (~> 5)
+      hashie
+    elasticsearch-rails (5.1.0)
+
+GIT
   remote: https://github.com/faker-ruby/faker.git
   revision: aa31845ed54c25eb2638d716bfddf59771b502aa
   branch: master
@@ -180,6 +191,14 @@ GEM
       dry-equalizer (~> 0.2)
       dry-initializer (~> 3.0)
       dry-schema (~> 1.5, >= 1.5.2)
+    elasticsearch (5.0.5)
+      elasticsearch-api (= 5.0.5)
+      elasticsearch-transport (= 5.0.5)
+    elasticsearch-api (5.0.5)
+      multi_json
+    elasticsearch-transport (5.0.5)
+      faraday
+      multi_json
     erubi (1.10.0)
     et-orbi (1.2.4)
       tzinfo
@@ -246,6 +265,7 @@ GEM
       graphql (>= 1.6.0, < 2)
     graphql-query-resolver (0.2.0)
       graphql (~> 1.0, >= 1.0.0)
+    hashie (4.1.0)
     http-accept (1.7.0)
     http-cookie (1.0.3)
       domain_name (~> 0.5)
@@ -474,6 +494,8 @@ DEPENDENCIES
   carrierwave_backgrounder!
   config (= 3.0.0)
   dotenv-rails (= 2.7.6)
+  elasticsearch-model!
+  elasticsearch-rails!
   faker!
   fog-google (= 1.12.1)
   graphiql-rails (= 1.7.0)
