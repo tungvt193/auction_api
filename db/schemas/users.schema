@@ -20,6 +20,9 @@ create_table(:users, id: { type: :bigint, unsigned: true }, charset: "utf8mb4", 
   t.string 'avatar'
   t.string 'avatar_tmp'
   t.integer 'status', null: false, default: 0
+  t.bigint 'ward_id', null: true
+  t.bigint 'district_id', null: true
+  t.bigint 'province_id', null: true
 
   t.datetime "created_at", precision: 6, null: false
   t.datetime "updated_at", precision: 6, null: false
@@ -29,4 +32,7 @@ create_table(:users, id: { type: :bigint, unsigned: true }, charset: "utf8mb4", 
   t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   t.index ["status"], name: "index_users_on_status"
   t.index ["user_type"], name: "index_users_on_user_type"
+  t.index ['ward_id'], name: 'index_users_on_ward_id'
+  t.index ['district_id'], name: 'index_users_on_district_id'
+  t.index ['province_id'], name: 'index_users_on_province_id'
 end

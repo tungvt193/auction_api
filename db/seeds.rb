@@ -10,6 +10,9 @@ unless Rails.env.production?
   FileUtils.rm_rf('public/downloads')
   FileUtils.rm_rf('public/uploads')
 
+  Province.delete_all
+  District.delete_all
+  Ward.delete_all
   User.delete_all
   Category.delete_all
   SubCategory.delete_all
@@ -25,6 +28,7 @@ unless Rails.env.production?
   Rate.delete_all
   Video.delete_all
 
+  load Rails.root.join('db/seeds/administrative_division_sd.rb')
   load Rails.root.join('db/seeds/user_sd.rb')
   load Rails.root.join('db/seeds/category_sd.rb')
   load Rails.root.join('db/seeds/sub_category_sd.rb')

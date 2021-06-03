@@ -5,6 +5,7 @@ create_table(:categories, id: { type: :bigint, unsigned: true }, charset: "utf8m
   t.string 'english_name', null: false
   t.string 'thumb'
   t.string 'thumb_tmp'
+  t.string 'slug', null: false
   t.integer 'status', null: false, default: 0
   t.integer 'position', null: false, default: 0
 
@@ -13,4 +14,5 @@ create_table(:categories, id: { type: :bigint, unsigned: true }, charset: "utf8m
 
   t.index ['status'], name: 'index_categories_on_status'
   t.index ['position'], name: 'index_categories_on_position'
+  t.index ['slug'], name: 'index_categories_on_slug', unique: true
 end

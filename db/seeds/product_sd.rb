@@ -34,6 +34,12 @@ products.each_with_index do |product, index|
   )
 
   pro.thumb = Product.download_file(index, product['im'])
+  pro.slug_generator
+  pro.save!
+end
+
+Product.all.each do |pro|
+  pro.slug_generator
   pro.save!
 end
 
