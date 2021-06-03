@@ -32,6 +32,9 @@ module Api
           v1CommonAuctionItemList
           v1CommonAuctionItem
           v1CommonAuctionItemNearestList
+          v1CommonProvinceList
+          v1CommonDistrictList
+          v1CommonWardList
         ]
       end
 

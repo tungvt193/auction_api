@@ -18,6 +18,7 @@ categories.each_with_index do |category, index|
   )
 
   cat.thumb = File.new(base_im_url + category['thumb'])
+  cat.slug_generator
   cat.save!
 end
 

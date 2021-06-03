@@ -1,0 +1,9 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+create_table(:provinces, id: { type: :bigint, unsigned: true }, charset: "utf8mb4", collation: "utf8mb4_general_ci") do |t|
+  t.string 'name', null: false
+  t.string 'code', null: false
+
+  t.datetime "created_at", precision: 6, null: false
+  t.datetime "updated_at", precision: 6, null: false
+end

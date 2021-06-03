@@ -22,6 +22,9 @@
 #  avatar                 :string(255)
 #  avatar_tmp             :string(255)
 #  status                 :integer          default("deactive"), not null
+#  ward_id                :bigint
+#  district_id            :bigint
+#  province_id            :bigint
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
 #

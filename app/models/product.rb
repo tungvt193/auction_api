@@ -8,9 +8,8 @@
 #  thumb_tmp         :string(255)
 #  keyword           :string(255)
 #  category_id       :bigint           not null
+#  slug              :string(255)      not null
 #  sub_category_id   :bigint           not null
-#  star              :float(24)        default(0.0), not null
-#  star_total        :float(24)        default(0.0), not null
 #  short_description :text(65535)
 #  started_at        :datetime
 #  status            :integer          default("deactive"), not null
@@ -33,5 +32,13 @@ class Product < ApplicationRecord
 
   def thumb_url
     thumb.try(:url)
+  end
+
+  def string_to_slug
+    companies.pluck(:name).uniq.concat([name]).join(' ')
+  end
+
+  def slug_generator
+    self.slug = string_to_slug.downcase.tr(VIETNAMESE_CHARACTERS, ENGLISH_CHARACTERS).parameterize.truncate 80, omission: ''
   end
 end

@@ -1,0 +1,12 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+create_table(:districts, id: { type: :bigint, unsigned: true }, charset: "utf8mb4", collation: "utf8mb4_general_ci") do |t|
+  t.string 'name', null: false
+  t.string 'code', null: false
+  t.bigint 'province_id'
+
+  t.datetime "created_at", precision: 6, null: false
+  t.datetime "updated_at", precision: 6, null: false
+
+  t.index ['province_id'], name: 'index_districts_on_province_id'
+end

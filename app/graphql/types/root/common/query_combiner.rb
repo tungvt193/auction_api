@@ -59,6 +59,13 @@ module Types
           field :v1CommonImage, resolver: ::Resolvers::Common::Images::Show
 
           field :v1CommonMyProfile, resolver: ::Resolvers::Common::Users::MyProfile
+
+          field :v1CommonProvinceList, ::Connections::ProvinceConnection,
+                function: ::Resolvers::Common::Provinces::List, null: true, connection: true
+          field :v1CommonDistrictList, ::Connections::DistrictConnection,
+                function: ::Resolvers::Common::Districts::List, null: true, connection: true
+          field :v1CommonWardList, ::Connections::WardConnection,
+                function: ::Resolvers::Common::Wards::List, null: true, connection: true
         end
       end
     end
