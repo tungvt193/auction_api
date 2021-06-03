@@ -20443,11 +20443,7 @@
          {
             "Id":"318",
             "Name":"Huyện Bạch Long Vĩ",
-            "Wards":[
-               {
-                  "Level":"Huyện"
-               }
-            ]
+            "Wards":[]
          }
       ]
    },
@@ -33282,11 +33278,7 @@
          {
             "Id":"471",
             "Name":"Huyện Cồn Cỏ",
-            "Wards":[
-               {
-                  "Level":"Huyện"
-               }
-            ]
+            "Wards":[]
          }
       ]
    },
@@ -34404,11 +34396,7 @@
          {
             "Id":"498",
             "Name":"Huyện Hoàng Sa",
-            "Wards":[
-               {
-                  "Level":"Huyện"
-               }
-            ]
+            "Wards":[]
          }
       ]
    },
@@ -36675,11 +36663,7 @@
          {
             "Id":"536",
             "Name":"Huyện Lý Sơn",
-            "Wards":[
-               {
-                  "Level":"Huyện"
-               }
-            ]
+            "Wards":[]
          }
       ]
    },
@@ -47024,11 +47008,7 @@
          {
             "Id":"755",
             "Name":"Huyện Côn Đảo",
-            "Wards":[
-               {
-                  "Level":"Huyện"
-               }
-            ]
+            "Wards":[]
          }
       ]
    },

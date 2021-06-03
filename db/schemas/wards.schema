@@ -2,7 +2,6 @@
 # vi: set ft=ruby :
 create_table(:wards, id: { type: :bigint, unsigned: true }, charset: "utf8mb4", collation: "utf8mb4_general_ci") do |t|
   t.string 'name', null: false
-  t.string 'code', null: false
   t.bigint 'district_id'
 
   t.datetime "created_at", precision: 6, null: false

@@ -4,40 +4,42 @@ json_data = File.read(Rails.root.join('db/jsons/hanhchinh-vietnam.json'))
 provinces = JSON.parse(json_data)
 now = Time.zone.now
 
+
+province_attributes = []
+district_attributes = []
+ward_attributes = []
+
 provinces.each do |province|
-  pro = Province.new(
+  province_attributes.push({
+    id: province['Id'].to_i,
     name: province['Name'],
-    code: province['Id'],
     created_at: now,
     updated_at: now
-  )
-  pro.save!
+  })
 
-  districts = province['Districts']
-  districts.each do |district|
-    dis = District.new(
+  province['Districts'].each do |district|
+    district_attributes.push({
+      id: district['Id'].to_i,
       name: district['Name'],
-      code: district['Id'],
-      province_id: Province.find_by(code: province['Id']).id,
+      province_id: province['Id'].to_i,
       created_at: now,
       updated_at: now
-    )
-    dis.save!
+    })
 
-    wards = district['Wards']
-    wards.each do |ward|
-      next unless ward['Id'].presence
-
-      wa = Ward.new(
+    district['Wards'].each do |ward|
+      ward_attributes.push({
+        id: ward['Id'].to_i,
         name: ward['Name'],
-        code: ward['Id'],
-        district_id: District.find_by(code: district['Id']).id,
+        district_id: district['Id'].to_i,
         created_at: now,
-        updated_at: now
-      )
-      wa.save!
+        updated_at: now 
+      })
     end
   end
 end
+
+Province.insert_all!(province_attributes)
+District.insert_all!(district_attributes)
+Ward.insert_all!(ward_attributes)
 
 puts 'FINISH IMPORT ADMINISTRATIVE DIVISION'
