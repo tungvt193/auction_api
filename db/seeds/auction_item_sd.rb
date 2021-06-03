@@ -23,6 +23,9 @@ auctions.map do |auction|
     price = rand(2_000_000_000)
     used_hours = rand(10_000_00)
 
+    next if product_company.blank?
+    next if product.blank?
+
     record_attributes.push({
                              product_name: product.try(:name),
                              category_name: product.try(:category_name),

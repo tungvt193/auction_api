@@ -87,9 +87,11 @@ class User < ApplicationRecord
   end
 
   def avatar_url
-    return base_file_url + avatar.try(:store_dir).to_s + File.basename(avatar_tmp.to_s) if avatar.blank?
+    avatar_store_url(avatar || avatar_tmp)
+  end
 
-    avatar.try(:url)
+  def avatar_store_url(file)
+    "#{base_file_url}/#{avatar.try(:store_dir)}/" + File.basename(file.to_s)
   end
 
   def full_name

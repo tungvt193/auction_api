@@ -33,9 +33,9 @@ class ApplicationRecord < ActiveRecord::Base
   end
 
   def base_file_url
-    return 'http://localhost:3000/public/' if Rails.env.development?
+    return 'http://localhost:3000' if Rails.env.development?
 
-    "https://storage.googleapis.com/#{ENV.fetch('GOOGLE_BUCKET_NAME')}/"
+    "https://storage.googleapis.com/#{ENV.fetch('GOOGLE_BUCKET_NAME')}"
   end
 
   class << self
