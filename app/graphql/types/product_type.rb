@@ -8,6 +8,8 @@
 #  thumb_tmp         :string(255)
 #  keyword           :string(255)
 #  category_id       :bigint           not null
+#  slug              :string(255)      not null
+#  sub_category_id   :bigint           not null
 #  short_description :text(65535)
 #  started_at        :datetime
 #  status            :integer          default("deactive"), not null
@@ -20,6 +22,7 @@ module Types
     field :thumb_url, String, null: true
     field :keyword, String, null: false
     field :category_id, ID, null: false
+    field :slug, String, null: true
     field :started_at, String, null: true
     field :status, String, null: false
     field :short_description, String, null: true
