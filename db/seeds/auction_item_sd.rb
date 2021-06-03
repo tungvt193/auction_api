@@ -50,6 +50,6 @@ auctions.map do |auction|
   end
 end
 
-AuctionItem.insert_all!(record_attributes)
+AuctionItem.insert_all!(record_attributes) if record_attributes.present?
 
 puts 'FINISH IMPORT AUCTION ITEM'

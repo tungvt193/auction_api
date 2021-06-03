@@ -8,10 +8,11 @@ now = Time.zone.now
   puts "MAKE USER #{time} / 10"
 
   avatar_url = LocalImages::Faces.local_link('humans')
+  role = time == 2 ? 'admin' : roles.sample
 
   user = User.new(
     email: "user-#{time}@example.com",
-    role: roles.sample,
+    role: role,
     first_name: Faker::Name.first_name,
     last_name: Faker::Name.last_name,
     phone: Faker::PhoneNumber.phone_number.gsub(' ', ''),
