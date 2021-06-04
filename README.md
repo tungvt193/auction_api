@@ -9,6 +9,7 @@ Auction platform
 - [Ruby on Rails] - API graphql base on Ruby on Rails
 - [MySQL] - MySQL database
 - [ImageMagick] - For upload file
+- [Elasticsearch]
 
 ## Installation
 
@@ -43,4 +44,17 @@ bundle exec rails db:seed
 Start Server
 ```sh
 rails s -b 0.0.0.0 -p 3000
+```
+
+Start Elasticsearch
+```sh
+ docker run \
+    -d \
+    --name elasticsearch-app \
+    --publish 9200:9200 \
+    --env "discovery.type=single-node" \
+    --env "cluster.name=elasticsearch-rails" \
+    --env "cluster.routing.allocation.disk.threshold_enabled=false" \
+    --rm \
+    tainv93/elasticsearch-ruby:latest
 ```

@@ -274,7 +274,7 @@ ActiveRecord::Schema.define(version: 0) do
     t.string "name", null: false
     t.string "thumb"
     t.string "thumb_tmp"
-    t.string "keyword"
+    t.text "keyword"
     t.bigint "category_id", null: false
     t.string "slug", null: false
     t.bigint "sub_category_id", null: false
@@ -284,7 +284,6 @@ ActiveRecord::Schema.define(version: 0) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["category_id"], name: "index_products_on_category_id"
-    t.index ["keyword"], name: "index_products_on_keyword"
     t.index ["slug"], name: "index_products_on_slug", unique: true
     t.index ["status"], name: "index_products_on_status"
     t.index ["sub_category_id"], name: "index_products_on_sub_category_id"

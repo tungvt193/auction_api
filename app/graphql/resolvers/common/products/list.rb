@@ -10,7 +10,8 @@ module Resolvers
         def normalize_filters(value, branches = [])
           query = super
 
-          scope = instance_scope.graphql_ransack(query)
+          scope = query['smart_filter'].present? ? ::Product.search(query['smart_filter']).records : ::Product
+          scope = scope.graphql_ransack(query)
           branches << scope
 
           branches
