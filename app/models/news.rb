@@ -33,7 +33,7 @@ class News < ApplicationRecord
   end
 
   def content_url
-    "#{ENV['BASE_NEWS_URL']}/news/#{slug}_#{id}?frame=1"
+    "#{ENV['BASE_NEWS_URL']}/news/#{slug}-#{graphql_id}?frame=1"
   end
 
   def published_in_word
@@ -48,5 +48,11 @@ class News < ApplicationRecord
 
   def slug_generator
     self.slug = title.downcase.tr(VIETNAMESE_CHARACTERS, ENGLISH_CHARACTERS).parameterize.truncate 80, omission: ''
+  end
+
+  private
+
+  def graphql_id
+    GraphQL::Schema::UniqueWithinType.encode('NewsType', id)
   end
 end
