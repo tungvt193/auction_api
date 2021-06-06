@@ -327,6 +327,7 @@ ActiveRecord::Schema.define(version: 0) do
     t.string "last_name"
     t.string "phone", null: false
     t.string "email"
+    t.datetime "birthday"
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
     t.integer "role", default: 0, null: false

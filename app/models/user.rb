@@ -7,6 +7,7 @@
 #  last_name              :string(255)
 #  phone                  :string(255)      not null
 #  email                  :string(255)
+#  birthday               :datetime
 #  encrypted_password     :string(255)      default(""), not null
 #  reset_password_token   :string(255)
 #  role                   :integer          default("user"), not null
