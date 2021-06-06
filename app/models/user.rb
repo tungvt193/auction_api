@@ -35,7 +35,7 @@ class User < ApplicationRecord
   store_in_background :avatar
 
   enum role: { user: 0, admin: 1 }
-  enum gender: { male: 0, female: 1 }
+  enum gender: { male: 0, female: 1, nope: 2 }
   enum status: { deactive: 0, active: 1, ban: 2 }
   enum user_type: { normal: 0, premium: 1, sale: 2 }
 
