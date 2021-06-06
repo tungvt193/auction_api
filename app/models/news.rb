@@ -33,7 +33,7 @@ class News < ApplicationRecord
   end
 
   def content_url
-    "#{ENV['BASE_NEWS_URL']}/news/#{slug}?frame=1"
+    "#{ENV['BASE_NEWS_URL']}/news/#{slug}_#{id}?frame=1"
   end
 
   def published_in_word
