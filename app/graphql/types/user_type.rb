@@ -42,8 +42,8 @@ module Types
     field :tel, String, null: true
     field :address, String, null: true
 
-    field :province, Types::ProvinceType, resolve: Lazy::LazyProvince.new
-    field :district, Types::DistrictType, resolve: Lazy::LazyDistrict.new
-    field :ward, Types::WardType, resolve: Lazy::LazyWard.new
+    field :province, Types::ProvinceType, resolve: Lazy::LazyProvince.new, null: true
+    field :district, Types::DistrictType, resolve: Lazy::LazyDistrict.new, null: true
+    field :ward, Types::WardType, resolve: Lazy::LazyWard.new, null: true
   end
 end
