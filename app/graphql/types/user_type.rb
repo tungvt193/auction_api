@@ -39,5 +39,6 @@ module Types
     field :avatar_url, String, null: true
     field :status, String, null: false
     field :user_type, String, null: false
+    field :tel, String, null: true
   end
 end

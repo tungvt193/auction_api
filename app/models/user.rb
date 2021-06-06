@@ -25,6 +25,8 @@
 #  ward_id                :bigint
 #  district_id            :bigint
 #  province_id            :bigint
+#  address                :string(255)
+#  tel                    :string(255)
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
 #

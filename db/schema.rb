@@ -345,6 +345,8 @@ ActiveRecord::Schema.define(version: 0) do
     t.bigint "ward_id"
     t.bigint "district_id"
     t.bigint "province_id"
+    t.string "address"
+    t.string "tel"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["district_id"], name: "index_users_on_district_id"
