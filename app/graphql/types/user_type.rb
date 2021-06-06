@@ -40,5 +40,6 @@ module Types
     field :status, String, null: false
     field :user_type, String, null: false
     field :tel, String, null: true
+    field :address, String, null: true
   end
 end
