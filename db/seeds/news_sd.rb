@@ -19,7 +19,7 @@ newses.each_with_index do |news, index|
   )
 
   record.slug_generator
-  record.slug = record.slug + " #{index}"
+  record.slug = record.slug + "-#{Time.zone.now.to_i}-#{index}"
   record.content = News.download_file(index, news['content'], 'html')
   record.cover = News.download_file(index, 'https://source.unsplash.com/1600x900/?truck')
   record.save!
