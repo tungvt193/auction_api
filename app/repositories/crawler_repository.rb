@@ -86,7 +86,7 @@ class CrawlerRepository < BaseRepository
           category_id: sub_category.try(:category_id),
           created_at: now,
           updated_at: now,
-          images: images.to_json
+          images: images.join(',')
         }
       end.compact.uniq
 
