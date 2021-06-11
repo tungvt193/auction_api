@@ -8,7 +8,7 @@ product_companies = ::ProductCompany.select(:company_id, :product_id)
 companies = ::Company.select(:id, :name)
 statuses = ::AuctionItem.statuses.values
 product_ids = product_companies.pluck(:product_id)
-products = ::Product.joins(:category).where(id: product_ids).select(:id, :name, :category_id, 'categories.name as category_name')
+products = ::Product.joins(:category).where(id: product_ids).select(:id, :name, :sub_category_id, :category_id, 'categories.name as category_name')
 
 Faker::Config.locale = 'ja'
 
@@ -34,6 +34,7 @@ auctions.map do |auction|
                              auction_id: auction.try(:id),
                              product_id: product.try(:id),
                              category_id: product.try(:category_id),
+                             sub_category_id: product.try(:sub_category_id),
                              price: price,
                              min_price: price - rand(500_000_000),
                              marker: company.try(:name),

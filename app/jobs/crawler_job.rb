@@ -53,8 +53,8 @@ class CrawlerJob < ApplicationJob
           status: status,
           sub_category_id: sub_category.try(:id),
           category_id: sub_category.try(:category_id),
-          started_at: Time.zone.strptime(row['OpenTime'], '%Y-%m-%d %H%:M'),
-          ended_at: Time.zone.strptime(row['ExpriedDate'], '%Y-%m-%d %H%:M'),
+          started_at: Time.zone.parse(row['OpenTime']),
+          ended_at: Time.zone.parse(row['ExpriedDate']),
           created_at: now,
           updated_at: now,
           images: images.to_json

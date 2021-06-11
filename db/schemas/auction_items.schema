@@ -9,6 +9,7 @@ create_table(:auction_items, id: { type: :bigint, unsigned: true }, charset: "ut
   t.bigint 'product_id', null: false
   t.bigint 'category_id', null: false
   t.bigint 'company_id', null: false
+  t.bigint 'sub_category_id'
   t.float 'price', null: false, default: 0.0
   t.float 'rating', null: false, default: 0.0
   t.float 'min_price', null: false, default: 0.0
@@ -30,4 +31,5 @@ create_table(:auction_items, id: { type: :bigint, unsigned: true }, charset: "ut
   t.index ['category_id'], name: 'index_auction_items_on_category_id'
   t.index ['user_id'], name: 'index_auction_items_on_user_id'
   t.index ['company_id'], name: 'index_auction_items_on_company_id'
+  t.index ['sub_category_id'], name: 'index_auction_items_on_sub_category_id'
 end

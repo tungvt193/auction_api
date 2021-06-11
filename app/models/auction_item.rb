@@ -11,6 +11,7 @@
 #  product_id          :bigint           not null
 #  category_id         :bigint           not null
 #  company_id          :bigint           not null
+#  sub_category_id     :bigint
 #  price               :float(24)        default(0.0), not null
 #  rating              :float(24)        default(0.0), not null
 #  min_price           :float(24)        default(0.0), not null

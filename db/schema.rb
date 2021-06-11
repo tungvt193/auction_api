@@ -42,6 +42,7 @@ ActiveRecord::Schema.define(version: 0) do
     t.bigint "product_id", null: false
     t.bigint "category_id", null: false
     t.bigint "company_id", null: false
+    t.bigint "sub_category_id"
     t.float "price", default: 0.0, null: false
     t.float "rating", default: 0.0, null: false
     t.float "min_price", default: 0.0, null: false
@@ -60,6 +61,7 @@ ActiveRecord::Schema.define(version: 0) do
     t.index ["company_id"], name: "index_auction_items_on_company_id"
     t.index ["product_id"], name: "index_auction_items_on_product_id"
     t.index ["status"], name: "index_auction_items_on_status"
+    t.index ["sub_category_id"], name: "index_auction_items_on_sub_category_id"
     t.index ["user_id"], name: "index_auction_items_on_user_id"
   end
 

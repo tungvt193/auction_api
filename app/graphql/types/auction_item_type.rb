@@ -34,6 +34,7 @@ module Types
     field :auction_id, ID, null: false
     field :product_id, ID, null: false
     field :category_id, ID, null: false
+    field :sub_category_id, ID, null: true
     field :company_id, ID, null: false
     field :price, String, null: false
     field :min_price, String, null: false
@@ -55,6 +56,7 @@ module Types
     field :auction, Types::AuctionType, null: true, resolve: Lazy::LazyAuction.new
     field :product, Types::ProductType, null: true, resolve: Lazy::LazyProduct.new
     field :category, Types::CategoryType, null: true, resolve: Lazy::LazyCategory.new
+    field :sub_category, Types::CategoryType, null: true, resolve: Lazy::LazySubCategory.new
     field :company, Types::CompanyType, null: true, resolve: Lazy::LazyCompany.new
   end
 end
