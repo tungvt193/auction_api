@@ -10,7 +10,6 @@ class CrawlerRepository < BaseRepository
 
   def import!
     unmappings = []
-    attributes = []
     sub_categories = SubCategory.joins(:category).select(:id, :category_id, :name).group_by { |f| f.try(:name).downcase }
     categories = Category.select(:id, :name).group_by(&:id)
     companies = Company.select(:id, :name).group_by { |f| f.try(:name).downcase }
@@ -21,12 +20,11 @@ class CrawlerRepository < BaseRepository
     product_companies = ::ProductCompany.select(:id, :company_id, :product_id).group_by { |f| "#{f.try(:company_id)}_#{f.try(:product_id)}" }
 
     ApplicationRecord.transaction do
-      rows.each_with_index do |row, _index|
+      attributes = rows.map do |row|
         price = row['CurrentPrice'].to_s.gsub(',', '').to_f
         marker = row['Maker']
         model = row['Model']
         serial = row['SerialNo']
-        images = []
         opened_at = Time.zone.parse(row['OpenTime'])
         closed_at = Time.zone.parse(row['ExpriedDate'])
         auction = auctions.detect { |a| a.try(:started_at) == opened_at && a.try(:ended_at) == closed_at }
@@ -41,8 +39,8 @@ class CrawlerRepository < BaseRepository
           next
         end
 
-        row['TotalImage'].to_i.times do |index|
-          images << formatted_url("#{auction_name}/#{model}-#{serial}", "#{index.to_s.rjust(3, '0')}.jpg")
+        images = (1..row['TotalImage']).to_a.map do |index|
+          formatted_url("#{auction_name}/#{model}-#{serial}", "#{index.to_s.rjust(3, '0')}.jpg")
         end
 
         if company.blank?
@@ -68,28 +66,28 @@ class CrawlerRepository < BaseRepository
           product_companies[pc_key] = [pc]
         end
 
-        attributes.push({
-                          category_name: category.try(:name),
-                          product_name: model,
-                          product_id: product.try(:id),
-                          auction_id: auction.try(:id),
-                          auction_name: "#{marker}-#{model}-#{serial}",
-                          serial: serial,
-                          company_id: company.try(:id),
-                          address: row['DeliveryPlace'],
-                          marker: marker,
-                          price: price,
-                          source_link: row['Url'],
-                          min_price: price,
-                          year_of_manufacture: row['Year'],
-                          used_hours: row['Hour'].to_f,
-                          status: status,
-                          sub_category_id: sub_category.try(:id),
-                          category_id: sub_category.try(:category_id),
-                          created_at: now,
-                          updated_at: now,
-                          images: images.to_json
-                        })
+        {
+          category_name: category.try(:name),
+          product_name: model,
+          product_id: product.try(:id),
+          auction_id: auction.try(:id),
+          auction_name: "#{marker}-#{model}-#{serial}",
+          serial: serial,
+          company_id: company.try(:id),
+          address: row['DeliveryPlace'],
+          marker: marker,
+          price: price,
+          source_link: row['Url'],
+          min_price: price,
+          year_of_manufacture: row['Year'],
+          used_hours: row['Hour'].to_f,
+          status: status,
+          sub_category_id: sub_category.try(:id),
+          category_id: sub_category.try(:category_id),
+          created_at: now,
+          updated_at: now,
+          images: images.to_json
+        }
       end
 
       ::AuctionItem.insert_all!(attributes)
