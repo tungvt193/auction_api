@@ -103,7 +103,7 @@ class CrawlerRepository < BaseRepository
   private
 
   def formatted_url(folder, filename)
-    "https://storage.googleapis.com/#{ENV.fetch('GOOGLE_BUCKET_NAME')}/uploads/img/#{folder}/#{filename}"
+    "https://storage.cloud.google.com/#{ENV.fetch('GOOGLE_BUCKET_NAME')}/uploads/img/#{folder}/#{filename}?authuser=3"
   end
 
   def make_product(model, sub_category)
