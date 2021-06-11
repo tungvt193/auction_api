@@ -10,5 +10,7 @@ class CrawlerJob < ApplicationJob
   rescue StandardError => e
     Rails.logger.error(e.message.to_s)
     Rails.logger.error(e.backtrace)
+
+    crawler.failed!
   end
 end

@@ -17,6 +17,8 @@ class Crawler < ApplicationRecord
 
   ransacker :status, formatter: proc { |v| statuses[v] }
 
+  after_commit :sync_background, on: :create
+
   def file_url
     file.try(:url)
   end
@@ -33,5 +35,11 @@ class Crawler < ApplicationRecord
 
   def filename
     File.basename(try(:file_url).to_s).to_s
+  end
+
+  private
+
+  def sync_background
+    ::CrawlerJob.perform_in(1.minute, id)
   end
 end

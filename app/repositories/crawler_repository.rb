@@ -91,6 +91,8 @@ class CrawlerRepository < BaseRepository
       end.compact.uniq
 
       ::AuctionItem.insert_all!(attributes)
+      record.success!
+
       ::Product.elasticsearch_import
 
       # Send email when unmappings has items
