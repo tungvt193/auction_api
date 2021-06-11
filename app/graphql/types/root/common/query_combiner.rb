@@ -66,6 +66,8 @@ module Types
                 function: ::Resolvers::Common::Districts::List, null: true, connection: true
           field :v1CommonWardList, ::Connections::WardConnection,
                 function: ::Resolvers::Common::Wards::List, null: true, connection: true
+
+          field :v1CommonEstimatedPrice, resolver: ::Resolvers::Common::AuctionItems::EstimatedPrice
         end
       end
     end

@@ -40,6 +40,7 @@ Metrics/BlockLength:
     - app/graphql/mutations/base_mutation.rb
     - app/graphql/types/root/**/*
     - config/*
+    - app/jobs/crawler_job.rb
 
 Metrics/AbcSize:
   Enabled: false
@@ -57,6 +58,7 @@ Metrics/MethodLength:
   Exclude:
     - app/graphql/mutations/base_mutation.rb
     - app/controllers/api/skip_operation.rb
+    - app/jobs/crawler_job.rb
 
 Metrics/PerceivedComplexity:
   Enabled: true
@@ -245,3 +247,4 @@ Rails/SkipsModelValidations:
   Enabled: true
   Exclude:
     - db/seeds/*
+    - app/jobs/crawler_job.rb

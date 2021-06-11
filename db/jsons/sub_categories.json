@@ -103,5 +103,10 @@
     "name": "Xe nâng người",
     "english_name": "Man lift",
     "category_id": 9
+  },
+  {
+    "name": "Máy ủi bánh xích",
+    "english_name": "Crawler Bulldozer",
+    "category_id": 4
   }
 ]
