@@ -24,9 +24,9 @@ class Product < ApplicationRecord
   store_in_background :thumb
 
   before_commit :auto_keyword!, on: [:create]
-  # after_commit :create_index, on: [:create]
-  # after_commit :update_index, on: [:update]
-  # after_commit :delete_index, on: [:destroy]
+  after_commit :create_index, on: [:create]
+  after_commit :update_index, on: [:update]
+  after_commit :delete_index, on: [:destroy]
 
   has_many :product_companies
   has_many :companies, through: :product_companies

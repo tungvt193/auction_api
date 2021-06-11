@@ -93,6 +93,7 @@ class CrawlerRepository < BaseRepository
       end
 
       ::AuctionItem.insert_all!(attributes)
+      ::Product.elasticsearch_import
 
       # Send email when unmappings has items
       return if unmappings.blank?
