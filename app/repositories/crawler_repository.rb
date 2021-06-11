@@ -88,7 +88,7 @@ class CrawlerRepository < BaseRepository
           updated_at: now,
           images: images.to_json
         }
-      end
+      end.compact.uniq
 
       ::AuctionItem.insert_all!(attributes)
       ::Product.elasticsearch_import
