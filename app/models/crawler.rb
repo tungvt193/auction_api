@@ -20,4 +20,18 @@ class Crawler < ApplicationRecord
   def file_url
     file.try(:url)
   end
+
+  def json_from_file
+    json = try(:file).try(:read)
+
+    JSON.parse(json)
+  rescue StandardError => e
+    Rails.log.error("Error---------> #{e.message}")
+
+    []
+  end
+
+  def filename
+    File.basename(try(:file_url).to_s).to_s
+  end
 end

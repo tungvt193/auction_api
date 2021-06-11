@@ -13,15 +13,15 @@ module Searchable
     document_type name.downcase
 
     def create_index
-      __elasticsearch__.index_document
+      __elasticsearch__.index_document unless skip_callback == 'create'
     end
 
     def update_index
-      __elasticsearch__.update_document
+      __elasticsearch__.update_document unless skip_callback == 'update'
     end
 
     def delete_index
-      __elasticsearch__.delete_document
+      __elasticsearch__.delete_document unless skip_callback == 'delete'
     end
   end
 end

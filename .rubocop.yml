@@ -40,7 +40,7 @@ Metrics/BlockLength:
     - app/graphql/mutations/base_mutation.rb
     - app/graphql/types/root/**/*
     - config/*
-    - app/jobs/crawler_job.rb
+    - app/repositories/crawler_repository.rb
 
 Metrics/AbcSize:
   Enabled: false
@@ -52,19 +52,24 @@ Metrics/ClassLength:
   Enabled: true
   Exclude:
     - app/controllers/**/*
+    - app/repositories/crawler_repository.rb
 
 Metrics/MethodLength:
   Max: 20
   Exclude:
     - app/graphql/mutations/base_mutation.rb
     - app/controllers/api/skip_operation.rb
-    - app/jobs/crawler_job.rb
+    - app/repositories/crawler_repository.rb
 
 Metrics/PerceivedComplexity:
   Enabled: true
+  Exclude:
+    - app/repositories/crawler_repository.rb
 
 Metrics/CyclomaticComplexity:
   Max: 10
+  Exclude:
+    - app/repositories/crawler_repository.rb
 
 Style/CollectionMethods:
   PreferredMethods:
@@ -247,4 +252,4 @@ Rails/SkipsModelValidations:
   Enabled: true
   Exclude:
     - db/seeds/*
-    - app/jobs/crawler_job.rb
+    - app/repositories/crawler_repository.rb

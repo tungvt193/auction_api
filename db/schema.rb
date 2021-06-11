@@ -283,6 +283,7 @@ ActiveRecord::Schema.define(version: 0) do
     t.text "short_description"
     t.datetime "started_at"
     t.integer "status", default: 0, null: false
+    t.string "skip_callback"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["category_id"], name: "index_products_on_category_id"
