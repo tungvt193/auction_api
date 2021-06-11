@@ -48,7 +48,7 @@ class CrawlerJob < ApplicationJob
           price: price,
           source_link: row['Url'],
           min_price: price,
-          year_of_manufacture: Time.zone.parse("01/01/#{row['Year']}"),
+          year_of_manufacture: row['Year'],
           used_hours: row['Hour'],
           status: status,
           sub_category_id: sub_category.try(:id),

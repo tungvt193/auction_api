@@ -53,7 +53,7 @@ ActiveRecord::Schema.define(version: 0) do
     t.json "images"
     t.bigint "user_id"
     t.float "used_hours", default: 0.0, null: false
-    t.datetime "year_of_manufacture", null: false
+    t.string "year_of_manufacture"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["auction_id"], name: "index_auction_items_on_auction_id"

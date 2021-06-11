@@ -44,7 +44,7 @@ auctions.map do |auction|
                              source_link: 'https://source.unsplash.com/1600x900/?truck',
                              images: ['https://source.unsplash.com/1600x900/?machine', 'https://source.unsplash.com/1600x900/?truck', 'https://source.unsplash.com/1600x900/?car'].join(','),
                              used_hours: used_hours,
-                             year_of_manufacture: Faker::Date.between(from: 10.years.ago, to: Time.zone.today),
+                             year_of_manufacture: Faker::Date.between(from: 10.years.ago, to: Time.zone.today).strftime('%Y'),
                              created_at: now,
                              updated_at: now
                            })

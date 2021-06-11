@@ -46,7 +46,7 @@ module Types
     field :images, [String], null: true, resolve: Lazy::LazyAuctionImage.new
     field :user_id, ID, null: true
     field :used_hours, String, null: false
-    field :year_of_manufacture, String, null: false
+    field :year_of_manufacture, String, null: true
     field :created_at, String, null: false
     field :updated_at, String, null: false
     field :short_description, String, null: true, resolve: Lazy::LazyShortDescription.new

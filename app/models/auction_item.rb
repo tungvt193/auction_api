@@ -22,7 +22,7 @@
 #  images              :json
 #  user_id             :bigint
 #  used_hours          :float(24)        default(0.0), not null
-#  year_of_manufacture :datetime         not null
+#  year_of_manufacture :string(255)
 #  created_at          :datetime         not null
 #  updated_at          :datetime         not null
 #
