@@ -7,14 +7,11 @@ module Mutations
 
         def resolve(args)
           super
-
-          ApplicationRecord.transaction do
-            attributes = decode_attributes(normalize_parameters).merge({
-                                                                         user_id: current_user.try(:id)
-                                                                       })
-            resource = object_from_followable(attributes)
-            is_present?(resource) ? resource.destroy! : resource.save!
-          end
+          attributes = decode_attributes(normalize_parameters).merge({
+                                                                       user_id: current_user.try(:id)
+                                                                     })
+          resource = object_from_followable(attributes)
+          is_present?(resource) ? resource.destroy! : resource.save!
 
           { data: resource }
         end
