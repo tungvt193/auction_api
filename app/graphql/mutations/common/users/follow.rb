@@ -15,7 +15,7 @@ module Mutations
 
           {
             data: ::OpenStruct.new({
-                                     id: graphql_encode('Follower', resource),
+                                     id: graphql_encode(::Follower, resource),
                                      followable_id: normalize_parameters[:followable_id],
                                      followable_type: normalize_parameters[:followable_type]
                                    })
