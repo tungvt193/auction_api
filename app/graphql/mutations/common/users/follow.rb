@@ -13,7 +13,13 @@ module Mutations
           resource = object_from_followable(attributes)
           is_present?(resource) ? resource.destroy! : resource.save!
 
-          { data: resource }
+          {
+            data: ::OpenStruct.new({
+                                     id: graphql_encode('Follower', resource),
+                                     followable_id: normalize_parameters[:followable_id],
+                                     followable_type: normalize_parameters[:followable_type]
+                                   })
+          }
         end
 
         private

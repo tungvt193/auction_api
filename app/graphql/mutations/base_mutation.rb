@@ -57,6 +57,10 @@ module Mutations
       attributes
     end
 
+    def graphql_encode(type_definition, object)
+      GraphQL::Schema::UniqueWithinType.encode(type_definition.name, object.try(:id))
+    end
+
     def object_from_id(id)
       _, item_id = GraphQL::Schema::UniqueWithinType.decode(id)
 
