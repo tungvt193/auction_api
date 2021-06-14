@@ -3,7 +3,7 @@ module Policies
     class << self
       def query
         {
-          'v1CommonMyProfile': user_guard
+          v1CommonMyProfile: user_guard
         }
       end
 
@@ -20,7 +20,8 @@ module Policies
           },
           v1CommonResetPassword: {
             guard: ->(_obj, _args, _ctx) { true }
-          }
+          },
+          v1CommonUsersFollow: user_guard
         }
       end
 

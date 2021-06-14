@@ -14,6 +14,8 @@ module Types
 
           field :v1CommonNewInformation, mutation: ::Mutations::Common::Users::NewInformation
           field :v1CommonUpdateProfile, mutation: ::Mutations::Common::Users::UpdateProfile
+
+          field :v1CommonUsersFollow, mutation: ::Mutations::Common::Users::Follow
         end
       end
     end
