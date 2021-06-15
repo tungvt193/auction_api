@@ -1,6 +1,6 @@
 puts 'START IMPORT PRODUCT'
 
-workbook = RubyXL::Parser.parse('/Users/john/Desktop/products.xlsx')
+workbook = RubyXL::Parser.parse(Rails.root.join('db/xlsx/products.xlsx'))
 categories = Category.select(:id, :name)
 sub_categories = SubCategory.select(:id, :name, :category_id)
 other_category = categories.detect { |c| c.try(:name) == 'Thiết bị lắp kèm & khác' }
