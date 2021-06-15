@@ -11,7 +11,8 @@ products = ::Product.select(:id, :name)
 now = Time.zone.now
 sluges = []
 
-p_attributes, pc_attributes = [], []
+p_attributes = []
+pc_attributes = []
 
 sequence_number = 1
 
@@ -33,7 +34,7 @@ workbook.worksheets.each_with_index do |worksheet, sheet_index|
     com = companies.detect { |c| c.try(:name).to_s.downcase == com_name }
     pc = product_companies.detect { |f| f.try(:product_name) == cells[7] && f.company_id == com.try(:id) }
     pd = products.detect { |f| f.try(:name) == cells[7] }
-    
+
     if ceg.blank?
       ceg = other_category
       seg = other_sub_category
@@ -45,19 +46,19 @@ workbook.worksheets.each_with_index do |worksheet, sheet_index|
 
     if pd.present?
       pc_attributes.push({
-                          product_id: pd.try(:id),
-                          company_id: com.try(:id),
-                          created_at: now,
-                          updated_at: now
-                        })
+                           product_id: pd.try(:id),
+                           company_id: com.try(:id),
+                           created_at: now,
+                           updated_at: now
+                         })
       next
     end
-
 
     slug = "#{com.try(:name)} #{cells[7]}".downcase.tr(VIETNAMESE_CHARACTERS, ENGLISH_CHARACTERS).parameterize.truncate(80, omission: '')
 
     next if sluges.include?(slug)
     next if cells[7].blank?
+
     product_id = sequence_number + 1
 
     p_attributes.push({
@@ -76,11 +77,11 @@ workbook.worksheets.each_with_index do |worksheet, sheet_index|
                       })
 
     pc_attributes.push({
-                        company_id: com.try(:id),
-                        product_id: product_id,
-                        created_at: now,
-                        updated_at: now
-                      })
+                         company_id: com.try(:id),
+                         product_id: product_id,
+                         created_at: now,
+                         updated_at: now
+                       })
 
     sluges.push(slug)
     sequence_number += 1
