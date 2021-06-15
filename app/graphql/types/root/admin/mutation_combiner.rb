@@ -43,6 +43,9 @@ module Types
           field :v1AdminCreateVideo, mutation: ::Mutations::Admin::Videos::CreateVideo
           field :v1AdminUpdateVideo, mutation: ::Mutations::Admin::Videos::UpdateVideo
           field :v1AdminDeleteVideo, mutation: ::Mutations::Admin::Videos::DeleteVideo
+
+          field :v1AdminCreateUser, mutation: ::Mutations::Admin::Users::CreateUser
+          field :v1AdminUpdateUser, mutation: ::Mutations::Admin::Users::UpdateUser
         end
       end
     end
