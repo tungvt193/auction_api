@@ -284,9 +284,12 @@ ActiveRecord::Schema.define(version: 0) do
     t.datetime "started_at"
     t.integer "status", default: 0, null: false
     t.string "skip_callback"
+    t.string "model"
+    t.integer "product_type", default: 0, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["category_id"], name: "index_products_on_category_id"
+    t.index ["product_type"], name: "index_products_on_product_type"
     t.index ["slug"], name: "index_products_on_slug", unique: true
     t.index ["status"], name: "index_products_on_status"
     t.index ["sub_category_id"], name: "index_products_on_sub_category_id"

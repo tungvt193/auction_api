@@ -14,6 +14,8 @@
 #  started_at        :datetime
 #  status            :integer          default("deactive"), not null
 #  skip_callback     :string(255)
+#  model             :string(255)
+#  product_type      :integer          default(0), not null
 #  created_at        :datetime         not null
 #  updated_at        :datetime         not null
 #
@@ -34,7 +36,11 @@ class Product < ApplicationRecord
   belongs_to :sub_category
 
   enum status: { deactive: 0, active: 1, popular: 2 }
+  enum product_types: { container: 0, size_10_ton: 1, size_20_ton: 2, size_30_ton: 3 }
+
   ransacker :status, formatter: proc { |v| statuses[v] }
+  ransacker :product_type, formatter: proc { |v| product_types[v] }
+
   accepts_nested_attributes_for :product_companies
 
   def thumb_url

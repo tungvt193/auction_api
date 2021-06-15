@@ -108,5 +108,10 @@
     "name": "Máy ủi bánh xích",
     "english_name": "Crawler Bulldozer",
     "category_id": 4
+  },
+  {
+    "name": "Khác",
+    "english_name": "other",
+    "category_id": 10
   }
 ]

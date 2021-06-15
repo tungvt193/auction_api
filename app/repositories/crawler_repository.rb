@@ -16,7 +16,7 @@ class CrawlerRepository < BaseRepository
     rows = record.try(:json_from_file)
     auction_name = record.try(:filename).split('_').try(:first)
     auctions = ::Auction.where(name: auction_name).select(:id, :started_at, :ended_at).to_a
-    products = ::Product.select(:id, :name).group_by { |f| f.try(:name).downcase }
+    products = ::Product.select(:id, :name, :model).group_by { |f| f.try(:model).downcase }
     product_companies = ::ProductCompany.select(:id, :company_id, :product_id).group_by { |f| "#{f.try(:company_id)}_#{f.try(:product_id)}" }
 
     ApplicationRecord.transaction do

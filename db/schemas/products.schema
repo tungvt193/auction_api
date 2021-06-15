@@ -12,6 +12,8 @@ create_table(:products, id: { type: :bigint, unsigned: true }, charset: "utf8mb4
   t.datetime 'started_at' 
   t.integer 'status', null: false, default: 0
   t.string 'skip_callback'
+  t.string 'model'
+  t.integer 'product_type', null: false, default: 0
 
   t.datetime "created_at", precision: 6, null: false
   t.datetime "updated_at", precision: 6, null: false
@@ -20,4 +22,5 @@ create_table(:products, id: { type: :bigint, unsigned: true }, charset: "utf8mb4
   t.index ['category_id'], name: 'index_products_on_category_id'
   t.index ['sub_category_id'], name: 'index_products_on_sub_category_id'
   t.index ['slug'], name: 'index_products_on_slug', unique: true
+  t.index ['product_type'], name: 'index_products_on_product_type'
 end

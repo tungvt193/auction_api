@@ -1,0 +1,413 @@
+[
+  {
+    "name": "MITSUBISHI"
+  },
+  {
+    "name": "CATERPILLAR"
+  },
+  {
+    "name": "KOMATSU"
+  },
+  {
+    "name": "YANMAR"
+  },
+  {
+    "name": "HYUNDAI"
+  },
+  {
+    "name": "SUMITOMO"
+  },
+  {
+    "name": "HITACHI"
+  },
+  {
+    "name": "KOBELCO"
+  },
+  {
+    "name": "KUBOTA"
+  },
+  {
+    "name": "IHI"
+  },
+  {
+    "name": "TCM"
+  },
+  {
+    "name": "DAEWOO"
+  },
+  {
+    "name": "TOYOTA"
+  },
+  {
+    "name": "CASE"
+  },
+  {
+    "name": "SAMSUNG"
+  },
+  {
+    "name": "VOLVO"
+  },
+  {
+    "name": "DOOSAN"
+  },
+  {
+    "name": "HANIX"
+  },
+  {
+    "name": "AIRMAN"
+  },
+  {
+    "name": "FURUKAWA"
+  },
+  {
+    "name": "BOBCAT"
+  },
+  {
+    "name": "OTHERS"
+  },
+  {
+    "name": "SZM"
+  },
+  {
+    "name": "SAKAI"
+  },
+  {
+    "name": "QINGGONG"
+  },
+  {
+    "name": "NISSAN"
+  },
+  {
+    "name": "KATO"
+  },
+  {
+    "name": "MINGYU"
+  },
+  {
+    "name": "MITSUI"
+  },
+  {
+    "name": "LAIGONG"
+  },
+  {
+    "name": "SITON"
+  },
+  {
+    "name": "JCB"
+  },
+  {
+    "name": "SINOMACH"
+  },
+  {
+    "name": "TAKEUCHI"
+  },
+  {
+    "name": "KAWASAKI"
+  },
+  {
+    "name": "KANGHONG"
+  },
+  {
+    "name": "TAIAN"
+  },
+  {
+    "name": "MONKEY"
+  },
+  {
+    "name": "AGLITE"
+  },
+  {
+    "name": "YONGYI"
+  },
+  {
+    "name": "ATLAS COPCO"
+  },
+  {
+    "name": "HAIHONG"
+  },
+  {
+    "name": "CHANGLIN"
+  },
+  {
+    "name": "LUTONG"
+  },
+  {
+    "name": "LIUGONG"
+  },
+  {
+    "name": "TEREX"
+  },
+  {
+    "name": "HEGALES"
+  },
+  {
+    "name": "JOHN DEERE"
+  },
+  {
+    "name": "ZHONGMEI"
+  },
+  {
+    "name": "NEW HOLLAND"
+  },
+  {
+    "name": "CHL"
+  },
+  {
+    "name": "LONKING"
+  },
+  {
+    "name": "HENGTE"
+  },
+  {
+    "name": "TONGZHOU"
+  },
+  {
+    "name": "WOLWA"
+  },
+  {
+    "name": "LINKBELT"
+  },
+  {
+    "name": "MYZG"
+  },
+  {
+    "name": "BULL"
+  },
+  {
+    "name": "LUYU"
+  },
+  {
+    "name": "DRESSTA"
+  },
+  {
+    "name": "SHUGONG"
+  },
+  {
+    "name": "LAIXING"
+  },
+  {
+    "name": "MUSTANG"
+  },
+  {
+    "name": "GEHL"
+  },
+  {
+    "name": "DTH"
+  },
+  {
+    "name": "LOONG SHEEN"
+  },
+  {
+    "name": "FOTON LOVOL"
+  },
+  {
+    "name": "ZHONGSHOU"
+  },
+  {
+    "name": "HAMM"
+  },
+  {
+    "name": "BOMAG"
+  },
+  {
+    "name": "DYNAPAC"
+  },
+  {
+    "name": "SHANYU"
+  },
+  {
+    "name": "YINENG"
+  },
+  {
+    "name": "XCMG"
+  },
+  {
+    "name": "UOTANI"
+  },
+  {
+    "name": "RHINOCEROS"
+  },
+  {
+    "name": "YUTANI"
+  },
+  {
+    "name": "LIEBHERR"
+  },
+  {
+    "name": "HALLA"
+  },
+  {
+    "name": "HITACHI "
+  },
+  {
+    "name": "GOLDSTAR"
+  },
+  {
+    "name": "SHANTUI"
+  },
+  {
+    "name": "ZOOMLION"
+  },
+  {
+    "name": "WIRTGEN"
+  },
+  {
+    "name": "UNICARRIERS"
+  },
+  {
+    "name": "MITSUNBISHI"
+  },
+  {
+    "name": "MITSUBIHI"
+  },
+  {
+    "name": "ZINAN"
+  },
+  {
+    "name": "IWAFUJI"
+  },
+  {
+    "name": "MOROOKA"
+  },
+  {
+    "name": "TADANO"
+  },
+  {
+    "name": "MIKASA"
+  },
+  {
+    "name": "NIIGATA"
+  },
+  {
+    "name": "KANTO"
+  },
+  {
+    "name": "WIGGINS"
+  },
+  {
+    "name": "DENYO"
+  },
+  {
+    "name": "YAMABIKO"
+  },
+  {
+    "name": "NISSHA"
+  },
+  {
+    "name": "SHINDAIWA"
+  },
+  {
+    "name": "AIRAMAN"
+  },
+  {
+    "name": "NIPPONSHARYO"
+  },
+  {
+    "name": "rosenbauer"
+  },
+  {
+    "name": "ISUZU"
+  },
+  {
+    "name": "HINO"
+  },
+  {
+    "name": "MAZDA"
+  },
+  {
+    "name": "NIPPON FRUEHAUF"
+  },
+  {
+    "name": "FUSO"
+  },
+  {
+    "name": "N/A"
+  },
+  {
+    "name": "BRIDGESTONE"
+  },
+  {
+    "name": "MARUJUN"
+  },
+  {
+    "name": "OKADA"
+  },
+  {
+    "name": "NPK"
+  },
+  {
+    "name": "KONAN"
+  },
+  {
+    "name": "GIKEN"
+  },
+  {
+    "name": "DAIKIN"
+  },
+  {
+    "name": "MATSUMOTO"
+  },
+  {
+    "name": "TOMINAGA"
+  },
+  {
+    "name": "IIDA"
+  },
+  {
+    "name": "SHIN NIHON"
+  },
+  {
+    "name": "JLG"
+  },
+  {
+    "name": "ZENOAH"
+  },
+  {
+    "name": "OOMACHI"
+  },
+  {
+    "name": "NAKAMICHI HOUSE"
+  },
+  {
+    "name": "BARONESS"
+  },
+  {
+    "name": "SKYJACK"
+  },
+  {
+    "name": "NICHIJYO"
+  },
+  {
+    "name": "TIMAN"
+  },
+  {
+    "name": "TOYO RYUKI"
+  },
+  {
+    "name": "ISEKI"
+  },
+  {
+    "name": "MAEDA"
+  },
+  {
+    "name": "OHASHI"
+  },
+  {
+    "name": "TENNANT"
+  },
+  {
+    "name": "FORD"
+  },
+  {
+    "name": "OHARA"
+  },
+  {
+    "name": "KENCHO"
+  },
+  {
+    "name": "AIKI"
+  },
+  {
+    "name": "TOA DENKI"
+  }
+]

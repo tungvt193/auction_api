@@ -1,13 +1,12 @@
 puts 'START INSERT COMPANY'
-
-names = ['KOMATSU', 'HITACHI', 'KOBELCO', 'CATERPILLAR', 'KUBOTA', 'SUMITOMO', 'YANMAR', 'IHI', 'FURUKAWA', 'UNICARRIERS', 'MITSUNBISHI', 'TCM', 'MITSUBIHI', 'KAWASAKI', 'ZINAN', 'TOYOTA', 'IWAFUJI', 'MOROOKA', 'KATO', 'TADANO', 'MIKASA', 'SAKAI', 'MITSUBISHI', 'DYNAPAC', 'NIIGATA', 'KANTO', 'NISSAN', 'WIGGINS', 'AIRMAN', 'DENYO', 'YAMABIKO', 'NISSHA', 'SHINDAIWA', 'AIRAMAN', 'NIPPONSHARYO', 'rosenbauer', 'ISUZU', 'HINO', 'MAZDA', 'NIPPON FRUEHAUF', 'FUSO', 'N/A', 'BRIDGESTONE', 'MARUJUN', 'OKADA', 'NPK', 'KONAN', 'GIKEN', 'DAIKIN', 'MATSUMOTO', 'TOMINAGA', 'IIDA', 'SHIN NIHON', 'JLG', 'ZENOAH', 'VOLVO', 'OOMACHI', 'NAKAMICHI HOUSE', 'BARONESS', 'SKYJACK', 'NICHIJYO', 'TIMAN', 'TOYO RYUKI', 'ISEKI', 'MAEDA', 'OHASHI', 'TENNANT', 'ATLAS COPCO', 'FORD', 'OHARA', 'KENCHO', 'AIKI', 'TOA DENKI']
-
+json_data = File.read(Rails.root.join('db/jsons/companies.json'))
+companies = JSON.parse(json_data)
 now = Time.zone.now
 company_attributes = []
 
-names.each do |n|
+companies.each do |com|
   company_attributes << {
-    name: n,
+    name: com['name'],
     status: 1,
     created_at: now,
     updated_at: now
