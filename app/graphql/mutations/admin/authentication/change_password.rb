@@ -25,7 +25,7 @@ module Mutations
         private
 
         def normalize_parameters
-          params.permit(:password, :old_password)
+          params.require(:attribute).permit(:password, :old_password)
         end
       end
     end

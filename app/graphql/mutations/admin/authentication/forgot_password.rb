@@ -24,7 +24,7 @@ module Mutations
         private
 
         def normalize_parameters
-          params.permit(:email)
+          params.require(:attribute).permit(:email)
         end
       end
     end

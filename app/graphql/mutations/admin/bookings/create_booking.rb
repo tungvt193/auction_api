@@ -23,7 +23,7 @@ module Mutations
         private
 
         def normalize_parameters
-          params.permit(
+          params.require(:attribute).permit(
             :auction_item_id, :auction_id, :status, :user_id,
             :booking_type, :address, :zoom_id, :zoom_password,
             :supporter_id, :booking_at

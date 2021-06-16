@@ -27,7 +27,7 @@ module Mutations
         private
 
         def normalize_parameters
-          params.permit(:first_name, :last_name, :email, :gender, :province_id,
+          params.require(:attribute).permit(:first_name, :last_name, :email, :gender, :province_id,
                         :district_id, :ward_id, :address, :birthday, :tel)
         end
       end

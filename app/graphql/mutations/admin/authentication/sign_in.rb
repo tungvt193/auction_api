@@ -23,7 +23,7 @@ module Mutations
         private
 
         def normalize_parameters
-          params.permit(:username, :password, :device_token)
+          params.require(:attribute).permit(:username, :password, :device_token)
         end
       end
     end

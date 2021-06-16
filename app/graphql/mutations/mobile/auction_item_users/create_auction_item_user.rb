@@ -25,7 +25,7 @@ module Mutations
         private
 
         def normalize_parameters
-          params.permit(:auction_item_id)
+          params.require(:attribute).permit(:auction_item_id)
         end
       end
     end

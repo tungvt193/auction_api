@@ -36,7 +36,7 @@ class Product < ApplicationRecord
   belongs_to :sub_category
 
   enum status: { deactive: 0, active: 1, popular: 2 }
-  enum product_types: { container: 0, size_10_ton: 1, size_20_ton: 2, size_30_ton: 3 }
+  enum product_types: { size_20_feet: 0, size_10_ton: 1, size_20_ton: 2, size_30_ton: 3 }
 
   ransacker :status, formatter: proc { |v| statuses[v] }
   ransacker :product_type, formatter: proc { |v| product_types[v] }
@@ -70,5 +70,9 @@ class Product < ApplicationRecord
 
   def auto_keyword!
     self.keyword = [name, short_description.to_s, category.try(:name).to_s, sub_category.try(:name).to_s].concat(companies.pluck(:name)).join(', ') + category.try(:name).to_s
+  end
+
+  def vn_transport_fee
+    Estimated.vn_transport_fee[product_type]
   end
 end

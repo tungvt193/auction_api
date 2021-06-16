@@ -22,7 +22,7 @@ module Mutations
         private
 
         def normalize_parameters
-          params.permit(
+          params.require(:attribute).permit(
             :name, :display_name, :used_hours, :year_of_manufacture, :address,
             :min_price, :started_at, :ended_at, :status
           )

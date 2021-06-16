@@ -23,7 +23,7 @@ module Mutations
         private
 
         def normalize_parameters
-          params.permit(
+          params.require(:attribute).permit(
             :cover, :url, :title, :status, :slug, :published_at
           )
         end

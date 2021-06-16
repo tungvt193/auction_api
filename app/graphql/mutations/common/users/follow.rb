@@ -25,7 +25,7 @@ module Mutations
         private
 
         def normalize_parameters
-          params.permit(:followable_id, :followable_type)
+          params.require(:attribute).permit(:followable_id, :followable_type)
         end
 
         def object_from_followable(attributes)

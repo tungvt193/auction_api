@@ -30,7 +30,7 @@ module Mutations
         private
 
         def normalize_parameters
-          params.permit(
+          params.require(:attribute).permit(
             :first_name, :last_name, :gender, :email, :password, :confirmed_password
           )
         end
