@@ -11,8 +11,7 @@ module Mutations
     def resolve(args)
       @current_user = context[:current_user]
 
-      @params = ::ActionController::Parameters.new(args[:attribute]) if args[:attribute].present?
-      @params = ::ActionController::Parameters.new(args[:attributes]) if args[:attributes].present?
+      @params = ::ActionController::Parameters.new(args)
     end
 
     protected
