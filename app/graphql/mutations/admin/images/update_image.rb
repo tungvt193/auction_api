@@ -3,7 +3,7 @@ module Mutations
     module Images
       class UpdateImage < BaseMutation
         argument :id, ID, required: true
-        argument :attribute, Types::AttributeType, required: true
+        argument :file, Types::FileType, required: true
         field :data, ::Types::ImageType, null: false
 
         def resolve(args)
@@ -12,19 +12,11 @@ module Mutations
           resource = object_from_id(args[:id])
 
           ApplicationRecord.transaction do
-            attributes = decode_attributes(normalize_parameters)
-
-            resource.assign_attributes(attributes)
+            resource.file = params[:file]
             resource.save!
           end
 
           { data: resource }
-        end
-
-        private
-
-        def normalize_parameters
-          params.require(:attribute).permit(:file)
         end
       end
     end
