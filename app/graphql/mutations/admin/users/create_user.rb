@@ -16,6 +16,7 @@ module Mutations
           ApplicationRecord.transaction do
             resource.assign_attributes(attributes)
             resource.avatar = params[:avatar] if params[:avatar].present?
+            resource.password = ENV['DEFAULT_PASSWORD']
 
             resource.save!
           end
