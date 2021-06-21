@@ -22,7 +22,7 @@ module Mutations
 
         private
 
-        def normalize_params
+        def normalize_parameters
           params.require(:attribute).permit(:imageable_type, :imageable_id)
         end
       end
