@@ -19,7 +19,7 @@ module Mutations
 
           { data: resource }
         end
-        
+
         private
 
         def normalize_params
