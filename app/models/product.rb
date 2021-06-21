@@ -75,4 +75,12 @@ class Product < ApplicationRecord
   def vn_transport_fee
     Estimated.vn_transport_fee[product_type]
   end
+
+  def vn_regsitry_fee
+    Estimated.registry_fee[product_type]
+  end
+
+  def clearance_fee
+    Estimated.clearance_fee[product_type]
+  end
 end

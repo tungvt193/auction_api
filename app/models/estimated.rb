@@ -5,7 +5,6 @@ class Estimated
     def vn_transport_fee
       {
         size_20_feet: 175_000,
-        size_40_feet: 1,
         size_10_ton: 400_000,
         size_20_ton: 500_000,
         size_30_ton: 900_000
@@ -15,14 +14,22 @@ class Estimated
     def clearance_fee
       {
         size_20_feet: 15_000,
-        size_40_feet: 15_000,
         size_10_ton: 15_000,
         size_20_ton: 15_000,
         size_30_ton: 15_000
       }
     end
 
-    def exrate
+    def registry_fee
+      {
+        size_20_feet: 10_000,
+        size_10_ton: 15_000,
+        size_20_ton: 16_000,
+        size_30_ton: 20_000
+      }
+    end
+
+    def vcb_exrate
       r = cache.read('EXRATE_VCB')
 
       return r if r.present?
