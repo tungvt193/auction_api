@@ -14,7 +14,7 @@
 #
 module Types
   class ImageType < BaseNode
-    field :name, String, null: false
+    field :name, String, null: true
     field :file_url, String, null: true
     field :imageable_type, String, null: true
     field :imageable_id, ID, null: true
