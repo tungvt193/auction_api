@@ -4,8 +4,8 @@ create_table(:images, id: { type: :bigint, unsigned: true }, charset: "utf8mb4",
   t.string 'name'
   t.string 'file'
   t.string 'file_tmp'
-  t.string 'imageable_type', null: false
-  t.bigint 'imageable_id', null: false
+  t.string 'imageable_type'
+  t.bigint 'imageable_id'
   t.float 'price', null: false, default: 0.0
 
   t.datetime "created_at", precision: 6, null: false

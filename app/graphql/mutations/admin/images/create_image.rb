@@ -3,7 +3,7 @@ module Mutations
     module Images
       class CreateImage < BaseMutation
         argument :file, Types::FileType, required: true
-        argument :attribute, Types::AttributeType, required: true
+        argument :attribute, Types::AttributeType, required: false
         field :data, ::Types::ImageType, null: false
 
         def resolve(args)

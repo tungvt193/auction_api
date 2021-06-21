@@ -185,8 +185,8 @@ ActiveRecord::Schema.define(version: 0) do
     t.string "name"
     t.string "file"
     t.string "file_tmp"
-    t.string "imageable_type", null: false
-    t.bigint "imageable_id", null: false
+    t.string "imageable_type"
+    t.bigint "imageable_id"
     t.float "price", default: 0.0, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
