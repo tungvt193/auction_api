@@ -19,6 +19,6 @@ class Image < ApplicationRecord
   belongs_to :imageable, polymorphic: true, optional: true
 
   def file_url
-    "#{base_file_url}/#{file.try(:store_dir)}/#{name.to_s}"
+    "#{base_file_url}/#{file.try(:store_dir)}/#{name}"
   end
 end
