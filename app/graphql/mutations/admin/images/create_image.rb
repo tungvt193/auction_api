@@ -14,6 +14,7 @@ module Mutations
           ApplicationRecord.transaction do
             resource.assign_attributes(normalize_parameters)
             resource.file = params[:file]
+            resource.name = File.try(:basename, params[:file])
             resource.save!
           end
 
