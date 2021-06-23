@@ -47,7 +47,7 @@ class Estimated
 
     def estimate(product, price)
       # Tỷ giá
-      exrate = self.vcb_exrate
+      exrate = vcb_exrate
       # Vận chuyển về cảng Việt Nam  (JPY)
       vn_transport_fee = product.try(:vn_transport_fee).to_f
       # Phí giải toả hàng (JPY)
@@ -70,19 +70,19 @@ class Estimated
       entrustment_fee = take_entrustment_fee(jp_to_vnd)
 
       ::OpenStruct.new({
-                          exrate: exrate,
-                          vn_transport_fee: vn_transport_fee,
-                          clearance_fee: clearance_fee,
-                          estimated_fee: estimated_fee,
-                          imported_fee: imported_fee,
-                          jp_to_vnd: jp_to_vnd,
-                          vat_tax: vat_tax,
-                          bank_transport_fee: bank_transport_fee,
-                          registry_fee: registry_fee,
-                          total_price: total_price,
-                          entrustment_fee: entrustment_fee,
-                          final_price: total_price + entrustment_fee
-                        })
+                         exrate: exrate,
+                         vn_transport_fee: vn_transport_fee,
+                         clearance_fee: clearance_fee,
+                         estimated_fee: estimated_fee,
+                         imported_fee: imported_fee,
+                         jp_to_vnd: jp_to_vnd,
+                         vat_tax: vat_tax,
+                         bank_transport_fee: bank_transport_fee,
+                         registry_fee: registry_fee,
+                         total_price: total_price,
+                         entrustment_fee: entrustment_fee,
+                         final_price: total_price + entrustment_fee
+                       })
     end
 
     private
