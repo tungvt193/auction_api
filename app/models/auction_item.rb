@@ -31,6 +31,7 @@ class AuctionItem < ApplicationRecord
   belongs_to :company
   belongs_to :category
   belongs_to :user, optional: true
+  belongs_to :product
 
   has_many :bookings, dependent: :destroy
   has_many :rates, as: :ratable

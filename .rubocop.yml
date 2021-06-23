@@ -60,7 +60,7 @@ Metrics/MethodLength:
     - app/graphql/mutations/base_mutation.rb
     - app/controllers/api/skip_operation.rb
     - app/repositories/crawler_repository.rb
-    - app/graphql/resolvers/common/auction_items/estimated_price.rb
+    - app/models/estimated.rb
 
 Metrics/PerceivedComplexity:
   Enabled: true
