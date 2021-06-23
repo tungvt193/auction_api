@@ -42,6 +42,8 @@ module Types
     field :user_type, String, null: false
     field :tel, String, null: true
     field :address, String, null: true
+    field :referral_id, String, null: true
+    field :creator_id, String, null: true
 
     field :province, Types::ProvinceType, resolve: Lazy::LazyProvince.new, null: true
     field :district, Types::DistrictType, resolve: Lazy::LazyDistrict.new, null: true

@@ -40,6 +40,10 @@ class User < ApplicationRecord
   enum status: { deactive: 0, active: 1, ban: 2 }
   enum user_type: { normal: 0, premium: 1, sale: 2 }
 
+  has_many :referrals, class_name: 'User', foreign_key: :referral_id, inverse_of: :referred_by
+  belongs_to :referred_by, class_name: 'User', foreign_key: :referral_id, optional: true, inverse_of: :referrals
+  has_many :creators, class_name: 'User', foreign_key: :creator_id, inverse_of: :created_by
+  belongs_to :created_by, class_name: 'User', foreign_key: :creator_id, optional: true, inverse_of: :creators
   has_many :auction_items
   has_many :device_tokens, dependent: :destroy
 
@@ -53,6 +57,8 @@ class User < ApplicationRecord
 
   validates :email, format: { with: VALID_EMAIL_REGEX, message: 'Email không đúng định dạng.' }, allow_blank: true
   validates :password, format: { with: VALID_PASSWORD_REGEX, message: 'Mật khẩu phải có ít nhất 8 ký tự bao gồm chữ cái, số và kí tự đặc biệt, viết thường và viết hoa.' }
+  validates :email, uniqueness: { message: 'Email đã được sử dụng. Vui lòng sử dụng email khác!' }
+  validates :phone, uniqueness: { message: 'SĐT đã được sử dụng. Vui lòng sử dụng SĐT khác!' }
 
   class << self
     def by_username_and_role(username, role = 'user')
