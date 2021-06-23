@@ -45,9 +45,10 @@ class Estimated
       xrs
     end
 
-    def estimate(product, price)
+    def estimate(product, price, unit = 'vnd')
       # Tỷ giá
-      exrate = vcb_exrate
+      api_exrate = vcb_exrate
+      used_exrate = take_used_exrate(api_exrate, unit)
       # Vận chuyển về cảng Việt Nam  (JPY)
       vn_transport_fee = product.try(:vn_transport_fee).to_f
       # Phí giải toả hàng (JPY)
@@ -57,11 +58,11 @@ class Estimated
       # Thuế nhập khẩu
       imported_fee = estimated_fee.dup
       # Tý giá tạm tính (VND/JPY)
-      jp_to_vnd = imported_fee * exrate['JPY'].to_f
+      jp_to_vnd = imported_fee * used_exrate.to_f
       # Thuế VAT (VND)
       vat_tax = jp_to_vnd * 1.1
       # Phí chuyển tiền ngân hàng (VND)
-      bank_transport_fee = (estimated_fee * 0.2 + 600) * 1.1 * exrate['JPY'].to_f
+      bank_transport_fee = (estimated_fee * 0.2 + 600) * 1.1 * used_exrate.to_f
       # Chi phí thông quan, đăng kiểm, Vận chuyển (VND)
       registry_fee = product.try(:vn_registry_fee).to_f
       # Tổng giá thành (VND)
@@ -70,7 +71,8 @@ class Estimated
       entrustment_fee = take_entrustment_fee(jp_to_vnd)
 
       ::OpenStruct.new({
-                         exrate: exrate['JPY'],
+                         jpy_exrate: api_exrate['JPY'],
+                         usd_exrate: api_exrate['USD'],
                          vn_transport_fee: vn_transport_fee,
                          clearance_fee: clearance_fee,
                          estimated_fee: estimated_fee,
@@ -100,6 +102,13 @@ class Estimated
       return jp_to_vnd * 0.01 if jp_to_vnd.to_f > 2_000_000_000
 
       jp_to_vnd * 0.03
+    end
+
+    def take_used_exrate(api_exrate, unit)
+      return api_exrate['USD'] if unit == 'usd'
+      return api_exrate['JPY'] if unit == 'jpy'
+
+      1
     end
   end
 end

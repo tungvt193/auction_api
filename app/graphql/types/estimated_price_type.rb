@@ -1,6 +1,7 @@
 module Types
   class EstimatedPriceType < BaseNode
-    field :exrate, Float, null: true, default_value: 0.0
+    field :jpy_exrate, Float, null: true, default_value: 0.0
+    field :usd_exrate, Float, null: true, default_value: 0.0
     field :vn_transport_fee, Float, null: true, default_value: 0.0
     field :clearance_fee, Float, null: true, default_value: 0.0
     field :estimated_fee, Float, null: true, default_value: 0.0
