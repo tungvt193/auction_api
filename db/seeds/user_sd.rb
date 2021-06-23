@@ -23,6 +23,8 @@ now = Time.zone.now
 
   user.password = 'Bidma@2021'
   user.avatar = File.new(avatar_url)
+  user.referral_id = rand(1..10)
+  user.creator_id = rand(1..10)
   user.save!
 end
 

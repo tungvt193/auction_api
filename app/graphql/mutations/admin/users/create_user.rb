@@ -14,7 +14,10 @@ module Mutations
           attributes = decode_attributes(normalize_parameters)
 
           ApplicationRecord.transaction do
-            resource.assign_attributes(attributes)
+            resource.assign_attributes(attributes.merge({
+                                                          creator_id: current_user.try(:id)
+                                                        }))
+
             resource.avatar = params[:avatar] if params[:avatar].present?
             resource.password = ENV['DEFAULT_PASSWORD']
 

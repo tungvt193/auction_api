@@ -12,7 +12,7 @@
 
 ActiveRecord::Schema.define(version: 0) do
 
-  create_table "auction_item_prices", id: { type: :bigint, unsigned: true }, charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "auction_item_prices", id: { type: :bigint, unsigned: true }, charset: "utf8mb4", collation: "utf8mb4_general_ci", force: :cascade do |t|
     t.bigint "auction_item_id", null: false
     t.float "new_price", default: 0.0, null: false
     t.float "old_price", default: 0.0, null: false
@@ -21,7 +21,7 @@ ActiveRecord::Schema.define(version: 0) do
     t.index ["auction_item_id"], name: "index_auction_item_prices_on_auction_item_id"
   end
 
-  create_table "auction_item_users", id: { type: :bigint, unsigned: true }, charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "auction_item_users", id: { type: :bigint, unsigned: true }, charset: "utf8mb4", collation: "utf8mb4_general_ci", force: :cascade do |t|
     t.bigint "auction_id", null: false
     t.bigint "auction_item_id", null: false
     t.bigint "user_id", null: false
@@ -33,7 +33,7 @@ ActiveRecord::Schema.define(version: 0) do
     t.index ["status"], name: "index_auction_item_users_on_status"
   end
 
-  create_table "auction_items", id: { type: :bigint, unsigned: true }, charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "auction_items", id: { type: :bigint, unsigned: true }, charset: "utf8mb4", collation: "utf8mb4_general_ci", force: :cascade do |t|
     t.string "product_name", null: false
     t.string "category_name", null: false
     t.string "auction_name", null: false
@@ -65,7 +65,7 @@ ActiveRecord::Schema.define(version: 0) do
     t.index ["user_id"], name: "index_auction_items_on_user_id"
   end
 
-  create_table "auctions", id: { type: :bigint, unsigned: true }, charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "auctions", id: { type: :bigint, unsigned: true }, charset: "utf8mb4", collation: "utf8mb4_general_ci", force: :cascade do |t|
     t.string "name", null: false
     t.string "display_name", default: ""
     t.datetime "started_at"
@@ -78,7 +78,7 @@ ActiveRecord::Schema.define(version: 0) do
     t.index ["status"], name: "index_auctions_on_status"
   end
 
-  create_table "banners", id: { type: :bigint, unsigned: true }, charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "banners", id: { type: :bigint, unsigned: true }, charset: "utf8mb4", collation: "utf8mb4_general_ci", force: :cascade do |t|
     t.string "url"
     t.string "cover"
     t.string "cover_tmp"
@@ -109,7 +109,7 @@ ActiveRecord::Schema.define(version: 0) do
     t.index ["user_id", "auction_item_id"], name: "index_bookings_on_user_id_and_auction_item_id"
   end
 
-  create_table "categories", id: { type: :bigint, unsigned: true }, charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "categories", id: { type: :bigint, unsigned: true }, charset: "utf8mb4", collation: "utf8mb4_general_ci", force: :cascade do |t|
     t.string "name", null: false
     t.string "english_name", null: false
     t.string "thumb"
@@ -124,7 +124,7 @@ ActiveRecord::Schema.define(version: 0) do
     t.index ["status"], name: "index_categories_on_status"
   end
 
-  create_table "companies", id: { type: :bigint, unsigned: true }, charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "companies", id: { type: :bigint, unsigned: true }, charset: "utf8mb4", collation: "utf8mb4_general_ci", force: :cascade do |t|
     t.string "name", null: false
     t.string "logo"
     t.string "logo_tmp"
@@ -161,7 +161,7 @@ ActiveRecord::Schema.define(version: 0) do
     t.index ["province_id"], name: "index_districts_on_province_id"
   end
 
-  create_table "favorites", id: { type: :bigint, unsigned: true }, charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "favorites", id: { type: :bigint, unsigned: true }, charset: "utf8mb4", collation: "utf8mb4_general_ci", force: :cascade do |t|
     t.string "favoritable_type", null: false
     t.bigint "favoritable_id", null: false
     t.bigint "user_id", null: false
@@ -171,7 +171,7 @@ ActiveRecord::Schema.define(version: 0) do
     t.index ["user_id"], name: "index_favorites_on_user_id"
   end
 
-  create_table "followers", id: { type: :bigint, unsigned: true }, charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "followers", id: { type: :bigint, unsigned: true }, charset: "utf8mb4", collation: "utf8mb4_general_ci", force: :cascade do |t|
     t.string "followable_type", null: false
     t.bigint "followable_id", null: false
     t.bigint "user_id", null: false
@@ -181,7 +181,7 @@ ActiveRecord::Schema.define(version: 0) do
     t.index ["user_id"], name: "index_followers_on_user_id"
   end
 
-  create_table "images", id: { type: :bigint, unsigned: true }, charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "images", id: { type: :bigint, unsigned: true }, charset: "utf8mb4", collation: "utf8mb4_general_ci", force: :cascade do |t|
     t.string "name"
     t.string "file"
     t.string "file_tmp"
@@ -195,7 +195,7 @@ ActiveRecord::Schema.define(version: 0) do
     t.index ["imageable_type"], name: "index_images_on_imageable_type"
   end
 
-  create_table "news", id: { type: :bigint, unsigned: true }, charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "news", id: { type: :bigint, unsigned: true }, charset: "utf8mb4", collation: "utf8mb4_general_ci", force: :cascade do |t|
     t.text "content"
     t.string "cover"
     t.string "content_tmp"
@@ -214,7 +214,7 @@ ActiveRecord::Schema.define(version: 0) do
     t.index ["status"], name: "index_news_on_status"
   end
 
-  create_table "notifications", id: { type: :bigint, unsigned: true }, charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "notifications", id: { type: :bigint, unsigned: true }, charset: "utf8mb4", collation: "utf8mb4_general_ci", force: :cascade do |t|
     t.string "title", null: false
     t.integer "notification_type", default: 0, null: false
     t.text "message"
@@ -263,7 +263,7 @@ ActiveRecord::Schema.define(version: 0) do
     t.index ["user_id"], name: "index_orders_on_user_id"
   end
 
-  create_table "product_companies", id: { type: :bigint, unsigned: true }, charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "product_companies", id: { type: :bigint, unsigned: true }, charset: "utf8mb4", collation: "utf8mb4_general_ci", force: :cascade do |t|
     t.bigint "product_id", null: false
     t.bigint "company_id", null: false
     t.datetime "created_at", precision: 6, null: false
@@ -272,7 +272,7 @@ ActiveRecord::Schema.define(version: 0) do
     t.index ["product_id"], name: "index_product_companies_on_product_id"
   end
 
-  create_table "products", id: { type: :bigint, unsigned: true }, charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "products", id: { type: :bigint, unsigned: true }, charset: "utf8mb4", collation: "utf8mb4_general_ci", force: :cascade do |t|
     t.string "name", null: false
     t.string "thumb"
     t.string "thumb_tmp"
@@ -301,7 +301,7 @@ ActiveRecord::Schema.define(version: 0) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "rates", id: { type: :bigint, unsigned: true }, charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "rates", id: { type: :bigint, unsigned: true }, charset: "utf8mb4", collation: "utf8mb4_general_ci", force: :cascade do |t|
     t.string "ratable_type", null: false
     t.bigint "ratable_id", null: false
     t.bigint "user_id", null: false
@@ -315,7 +315,7 @@ ActiveRecord::Schema.define(version: 0) do
     t.index ["user_id"], name: "index_rates_on_user_id"
   end
 
-  create_table "sub_categories", id: { type: :bigint, unsigned: true }, charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "sub_categories", id: { type: :bigint, unsigned: true }, charset: "utf8mb4", collation: "utf8mb4_general_ci", force: :cascade do |t|
     t.string "name", null: false
     t.string "english_name", null: false
     t.bigint "category_id", null: false
@@ -328,7 +328,7 @@ ActiveRecord::Schema.define(version: 0) do
     t.index ["status"], name: "index_sub_categories_on_status"
   end
 
-  create_table "users", id: { type: :bigint, unsigned: true }, charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "users", id: { type: :bigint, unsigned: true }, charset: "utf8mb4", collation: "utf8mb4_general_ci", force: :cascade do |t|
     t.string "first_name"
     t.string "last_name"
     t.string "phone", null: false
@@ -354,6 +354,8 @@ ActiveRecord::Schema.define(version: 0) do
     t.bigint "province_id"
     t.string "address"
     t.string "tel"
+    t.bigint "referral_id"
+    t.bigint "creator_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["district_id"], name: "index_users_on_district_id"
@@ -366,7 +368,7 @@ ActiveRecord::Schema.define(version: 0) do
     t.index ["ward_id"], name: "index_users_on_ward_id"
   end
 
-  create_table "videos", id: { type: :bigint, unsigned: true }, charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "videos", id: { type: :bigint, unsigned: true }, charset: "utf8mb4", collation: "utf8mb4_general_ci", force: :cascade do |t|
     t.string "cover_url"
     t.string "video_id", null: false
     t.string "title", null: false
