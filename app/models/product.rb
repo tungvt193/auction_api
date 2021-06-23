@@ -36,7 +36,7 @@ class Product < ApplicationRecord
   belongs_to :sub_category
 
   enum status: { deactive: 0, active: 1, popular: 2 }
-  enum product_types: { size_20_feet: 0, size_10_ton: 1, size_20_ton: 2, size_30_ton: 3 }
+  enum product_type: { size_20_feet: 0, size_10_ton: 1, size_20_ton: 2, size_30_ton: 3 }
 
   ransacker :status, formatter: proc { |v| statuses[v] }
   ransacker :product_type, formatter: proc { |v| product_types[v] }
@@ -73,14 +73,14 @@ class Product < ApplicationRecord
   end
 
   def vn_transport_fee
-    Estimated.vn_transport_fee[product_type]
+    Estimated.vn_transport_fee[product_type.to_sym]
   end
 
   def vn_regsitry_fee
-    Estimated.registry_fee[product_type]
+    Estimated.registry_fee[product_type.to_sym]
   end
 
   def clearance_fee
-    Estimated.clearance_fee[product_type]
+    Estimated.clearance_fee[product_type.to_sym]
   end
 end
