@@ -35,6 +35,7 @@ module Api
           v1CommonProvinceList
           v1CommonDistrictList
           v1CommonWardList
+          v1CommonEstimatedPrice
         ]
       end
 
