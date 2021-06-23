@@ -26,6 +26,8 @@ create_table(:users, id: { type: :bigint, unsigned: true }, charset: "utf8mb4", 
   t.bigint 'province_id', null: true
   t.string 'address'
   t.string 'tel'
+  t.bigint 'referral_id',null: true
+  t.bigint 'creator_id',null: true
 
   t.datetime "created_at", precision: 6, null: false
   t.datetime "updated_at", precision: 6, null: false
