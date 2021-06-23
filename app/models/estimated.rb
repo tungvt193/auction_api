@@ -70,7 +70,7 @@ class Estimated
       entrustment_fee = take_entrustment_fee(jp_to_vnd)
 
       ::OpenStruct.new({
-                         exrate: exrate,
+                         exrate: exrate['JPY'],
                          vn_transport_fee: vn_transport_fee,
                          clearance_fee: clearance_fee,
                          estimated_fee: estimated_fee,
