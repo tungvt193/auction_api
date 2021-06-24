@@ -14,11 +14,10 @@
 #
 class Image < ApplicationRecord
   mount_uploader :file, ImageUploader
-  store_in_background :file
 
   belongs_to :imageable, polymorphic: true, optional: true
 
   def file_url
-    "#{base_file_url}/#{file.try(:store_dir)}/#{name}"
+    file.try(:url)
   end
 end

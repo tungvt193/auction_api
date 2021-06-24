@@ -31,7 +31,7 @@ module Mutations
 
         def normalize_parameters
           params.require(:attribute).permit(:phone, :first_name, :last_name, :email, :gender, :province_id,
-                                            :district_id, :ward_id, :address, :birthday, :tel)
+                                            :district_id, :ward_id, :address, :birthday, :tel, :referral_id)
         end
       end
     end

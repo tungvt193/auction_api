@@ -48,5 +48,6 @@ module Types
     field :province, Types::ProvinceType, resolve: Lazy::LazyProvince.new, null: true
     field :district, Types::DistrictType, resolve: Lazy::LazyDistrict.new, null: true
     field :ward, Types::WardType, resolve: Lazy::LazyWard.new, null: true
+    field :referral, Types::UserType, resolve: Lazy::LazyReferral.new, null: true
   end
 end
