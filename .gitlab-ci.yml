@@ -99,7 +99,7 @@ deploy_staging:
     SERVER_IP_ADDRESS: ${STAGING_IP_ADDRESS}
     REGISTRY_IMAGE: ${CI_REGISTRY_IMAGE}/staging
     DOCKER_COMPOSE_IMAGE: ${STAGING_COMPOSE_IMAGE}
-    WORKSPACE: /${STAGING_USERNAME}/auction-api
+    WORKSPACE: /home/${STAGING_USERNAME}/auction-api
   before_script:
     - echo "Auto deploying api for production environment"
     - !reference [.authenticated_setup, script]
@@ -120,7 +120,7 @@ deploy_prod:
     SERVER_IP_ADDRESS: ${PROD_IP_ADDRESS}
     REGISTRY_IMAGE: ${CI_REGISTRY_IMAGE}
     DOCKER_COMPOSE_IMAGE: ${PROD_COMPOSE_IMAGE}
-    WORKSPACE: /${PROD_USERNAME}/auction-api
+    WORKSPACE: /home/${PROD_USERNAME}/auction-api
   before_script:
     - echo "Auto deploying api for production environment"
     - !reference [.authenticated_setup, script]
