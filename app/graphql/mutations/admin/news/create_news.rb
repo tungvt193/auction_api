@@ -12,7 +12,8 @@ module Mutations
 
           ApplicationRecord.transaction do
             attributes = decode_attributes(normalize_parameters)
-            resource.assign_attributes(attributes)
+            resource.assign_attributes(attributes.except(:content))
+            resource.save_html(attributes[:content]) if attributes[:content].present?
 
             resource.save!
           end

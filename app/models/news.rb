@@ -50,9 +50,25 @@ class News < ApplicationRecord
     self.slug = title.downcase.tr(VIETNAMESE_CHARACTERS, ENGLISH_CHARACTERS).parameterize.truncate 80, omission: ''
   end
 
+  def save_html(content)
+    file = Tempfile.new([random_name, '.html'])
+    file.write(content)
+    file.rewind
+
+    self.content = file
+    # record.content.attach(io: file, filename: "#{random_name}.html", content_type: "text/html")
+
+    file.close
+    file.unlink # deletes the temp file
+  end
+
   private
 
   def graphql_id
     GraphQL::Schema::UniqueWithinType.encode('NewsType', id)
+  end
+
+  def random_name
+    SecureRandom.uuid
   end
 end
