@@ -48,7 +48,7 @@ stages:
 .update_compose:
   script:
     - sed -i "s/__REGISTRY_IMAGE__/${DOCKER_COMPOSE_IMAGE}/" docker-compose.yml
-    - sed -i "s/__MYSQL_ROOT_PASSWORD__/${MYSQL_ROOT_PASSWORD}" docker-compose.yml
+    - sed -i "s/__MYSQL_ROOT_PASSWORD__/${MYSQL_ROOT_PASSWORD}/" docker-compose.yml
 
 # coding_convention:
 #   stage: coding_convention
