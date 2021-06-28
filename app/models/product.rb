@@ -15,7 +15,7 @@
 #  status            :integer          default("deactive"), not null
 #  skip_callback     :string(255)
 #  model             :string(255)
-#  product_type      :integer          default(0), not null
+#  product_type      :integer          default("size_20_feet"), not null
 #  created_at        :datetime         not null
 #  updated_at        :datetime         not null
 #
