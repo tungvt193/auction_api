@@ -1,6 +1,6 @@
 module Resolvers
   module Common
-    module Videos
+    module Video
       class Show < ::Resolvers::BaseResolver
         argument :id, ID, required: true
         type ::Types::VideoType, null: false

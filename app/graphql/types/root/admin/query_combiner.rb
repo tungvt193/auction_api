@@ -17,6 +17,12 @@ module Types
           field :v1AdminNotifications, resolver: ::Resolvers::Admin::Notifications::Show
           field :v1AdminCustomers, ::Connections::UserConnection,
                 function: ::Resolvers::Admin::Customers::List, null: true, connection: true
+          field :v1AdminNewsList, ::Connections::NewsConnection,
+                function: ::Resolvers::Admin::News::List, null: true, connection: true
+          field :v1AdminNews, resolver: ::Resolvers::Admin::News::Show
+          field :v1AdminVideoList, ::Connections::VideoConnection,
+                function: ::Resolvers::Admin::Video::List, null: true, connection: true
+          field :v1AdminVideo, resolver: ::Resolvers::Admin::Video::Show
         end
       end
     end

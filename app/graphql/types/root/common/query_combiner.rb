@@ -38,8 +38,8 @@ module Types
           field :v1CommonProduct, resolver: ::Resolvers::Common::Products::Show
 
           field :v1CommonVideoList, ::Connections::VideoConnection,
-                function: ::Resolvers::Common::Videos::List, null: true, connection: true
-          field :v1CommonVideo, resolver: ::Resolvers::Common::Videos::Show
+                function: ::Resolvers::Common::Video::List, null: true, connection: true
+          field :v1CommonVideo, resolver: ::Resolvers::Common::Video::Show
 
           field :v1CommonUserList, ::Connections::UserConnection,
                 function: ::Resolvers::Common::Users::List, null: true, connection: true

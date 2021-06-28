@@ -8,7 +8,11 @@ module Policies
           'v1AdminBooking': admin_guard,
           'v1AdminNotificationsList': admin_guard,
           'v1AdminNotifications': admin_guard,
-          'v1AdminCustomers': admin_guard
+          'v1AdminCustomers': admin_guard,
+          'v1AdminNewsList': admin_guard,
+          'v1AdminNews': admin_guard,
+          'v1AdminVideoList': admin_guard,
+          'v1AdminVideo': admin_guard,
         }
       end
 

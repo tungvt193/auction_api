@@ -1,6 +1,6 @@
 module Resolvers
-  module Common
-    module Videos
+  module Admin
+    module Video
       class List < ::Resolvers::BaseQuery
         scope { instance_scope }
         type types[::Types::VideoType]
@@ -28,7 +28,7 @@ module Resolvers
         private
 
         def instance_scope
-          ::Video.active
+          ::Video.all
         end
       end
     end
