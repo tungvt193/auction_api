@@ -28,6 +28,8 @@ services:
       - "redis"
     env_file:
       - .env
+    volumes:
+      - ./tmp/uploads:/home/auction-api/public/uploads
   web:
     image: __REGISTRY_IMAGE__
     entrypoint: /home/auction-api/entrypoint.sh
@@ -43,3 +45,5 @@ services:
       - redis
     env_file:
       - .env
+    volumes:
+      - ./tmp/uploads:/home/auction-api/public/uploads
