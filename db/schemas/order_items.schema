@@ -8,6 +8,19 @@ create_table(:order_items, id: { type: :bigint, unsigned: true }, charset: "utf8
   t.float 'price', null: false, default: 0.0
   t.integer 'status', null: false, default: 0
   t.integer 'quantity', null: false, default: 1
+  t.float 'jpy_exrate', null: false, default: 0.0
+  t.float 'usd_exrate', null: false, default: 0.0
+  t.float 'vn_transport_fee', null: false, default: 0.0
+  t.float 'clearance_fee', null: false, default: 0.0
+  t.float 'estimated_fee', null: false, default: 0.0
+  t.float 'imported_fee', null: false, default: 0.0
+  t.float 'jp_to_vnd', null: false, default: 0.0
+  t.float 'vat_tax', null: false, default: 0.0
+  t.float 'bank_transport_fee', null: false, default: 0.0
+  t.float 'registry_fee', null: false, default: 0.0
+  t.float 'total_price', null: false, default: 0.0
+  t.float 'entrustment_fee', null: false, default: 0.0
+  t.float 'final_price', null: false, default: 0.0
 
   t.datetime "created_at", precision: 6, null: false
   t.datetime "updated_at", precision: 6, null: false

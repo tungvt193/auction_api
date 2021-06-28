@@ -28,6 +28,8 @@
 #  province_id            :bigint
 #  address                :string(255)
 #  tel                    :string(255)
+#  referral_id            :bigint
+#  creator_id             :bigint
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
 #
