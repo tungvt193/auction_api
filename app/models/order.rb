@@ -19,6 +19,7 @@ class Order < ApplicationRecord
 
   belongs_to :user
   has_many :order_items, dependent: :destroy
-
   ransacker :status, formatter: proc { |v| statuses[v] }
+
+  accepts_nested_attributes_for :order_items
 end

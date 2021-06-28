@@ -2,18 +2,53 @@ image: ${CI_BASE_IMAGE}:latest
 
 stages:
   - coding_convention
-  - automation_deploy
+  - build_staging
+  - deploy_staging
+  - build_prod
+  - deploy_prod
   - make_merged
-  - manual_deploy
+  - clean_staging
+  - clean_prod
 
 .ruby_setup:
   before_script:
     - bundle install
 
-.setup_deployment:
-  before_script:
+.docker_setup:
+  script:
+    - docker login -u "${CI_REGISTRY_USER}" -p "${CI_REGISTRY_PASSWORD}" ${CI_REGISTRY}
+
+.authenticated_setup:
+  script:
     - eval "$(ssh-agent -s)"
-    - ssh-add <(echo "$SSH_PRIVATE_KEY" | base64 -d)
+    - ssh-add <(echo "${SSH_PRIVATE_KEY}" | base64 -d)
+
+.setup_deployment:
+  variables:
+    PROJECT_WORKSPACE: /${SERVER_USERNAME}/auction-api
+  script:
+    - echo "${DATA_ENVIRONMENT}" >> .env
+    - ssh -o StrictHostKeyChecking=no ${SERVER_USERNAME}@${SERVER_IP} "mkdir -p ${PROJECT_WORKSPACE}"
+    - scp -o StrictHostKeyChecking=no -r .env ${SERVER_USERNAME}@${SERVER_IP}:${PROJECT_WORKSPACE}
+    - scp -o StrictHostKeyChecking=no -r docker-compose.yml ${SERVER_USERNAME}@${SERVER_IP}:${PROJECT_WORKSPACE}
+
+.build_setup:
+  script:
+    - docker build --pull -t "${REGISTRY_IMAGE}" .
+    - docker push "${REGISTRY_IMAGE}"
+    - echo "Registry image:" ${REGISTRY_IMAGE}
+
+.deployment_script:
+  variables:
+    DOCKER_COMPOSE_FILE: /${SERVER_USERNAME}/auction-api/docker-compose.yml
+  script:
+    - ssh -o StrictHostKeyChecking=no ${SERVER_USERNAME}@${SERVER_IP} "docker pull ${REGISTRY_IMAGE}"
+    - ssh -o StrictHostKeyChecking=no ${SERVER_USERNAME}@${SERVER_IP} "docker-compose -f ${DOCKER_COMPOSE_FILE} up -d"
+
+.clean_build:
+  script:
+    - ssh -o StrictHostKeyChecking=no ${SERVER_USERNAME}@${SERVER_IP} "docker image prune -a -f"
+
 
 coding_convention:
   stage: coding_convention
@@ -24,18 +59,71 @@ coding_convention:
     - bundle exec rubocop .
   when: always
 
-automation_deploy:
-  stage: automation_deploy
+build_staging:
+  stage: build_staging
+  image: docker:latest
+  variables:
+    REGISTRY_IMAGE: ${CI_REGISTRY_IMAGE}/staging
+  services:
+    - name: docker:19.03.8-dind
   before_script:
-    - echo "Auto deploying api for staging environment"
-    - !reference [.ruby_setup, before_script]
-    - !reference [.setup_deployment, before_script]
+    - !reference [.docker_setup, script]
   script:
-    - sed -i "s/auction-staging/${AUCTION_STAGING_IP}/g" config/deploy/staging.rb
-    - bundle exec cap staging deploy
+    - !reference [.build_setup, script]
   when: on_success
   only:
     - staging
+
+build_prod:
+  stage: build_prod
+  image: docker:latest
+  variables:
+    REGISTRY_IMAGE: ${CI_REGISTRY_IMAGE}
+  services:
+    - name: docker:19.03.8-dind
+  before_script:
+    - !reference [.docker_setup, script]
+  script:
+    - !reference [.build_setup, script]
+  when: on_success
+  only:
+    - master
+
+deploy_staging:
+  stage: deploy_staging
+  image: kroniak/ssh-client
+  variables:
+    DATA_ENVIRONMENT: ${STAGING_ENVIRONMENT}
+    SERVER_USERNAME: ${SERVER_STAGING_IP}
+    SERVER_IP: ${STAGING_SERVER_IP}
+    REGISTRY_IMAGE: ${CI_REGISTRY_IMAGE}/staging
+  before_script:
+    - echo "Auto deploying api for production environment"
+    - !reference [.authenticated_setup, script]
+    - !reference [.setup_deployment, script]
+  script:
+    - !reference [.deployment_script, script]
+  when: on_success
+  only:
+    - staging
+
+deploy_prod:
+  stage: deploy_prod
+  image: kroniak/ssh-client
+  variables:
+    DATA_ENVIRONMENT: ${PROD_ENVIRONMENT}
+    SERVER_USERNAME: ${PROD_SERVER_USERNAME}
+    SERVER_IP: ${SERVER_PRODUCTION_IP}
+    REGISTRY_IMAGE: ${CI_REGISTRY_IMAGE}
+  before_script:
+    - echo "Auto deploying api for production environment"
+    - !reference [.authenticated_setup, script]
+    - !reference [.setup_deployment, script]
+  script:
+    - !reference [.deployment_script, script]
+  when: manual
+  only:
+    - master
 
 make_merged:
   stage: make_merged
@@ -45,15 +133,32 @@ make_merged:
   only:
     - staging
 
-manual_deploy:
-  stage: manual_deploy
+clean_staging:
+  stage: clean_staging
+  image: kroniak/ssh-client
+  variables:
+    SERVER_USERNAME: ${SERVER_STAGING_IP}
+    SERVER_IP: ${STAGING_SERVER_IP}
   before_script:
-    - echo "Manual deploy api for production environment"
-    - !reference [.ruby_setup, before_script]
-    - !reference [.setup_deployment, before_script]
+    - !reference [.authenticated_setup, script]
+    - !reference [.setup_deployment, script]
   script:
-    - sed -i "s/auction-production/${AUCTION_PRODUCTION_IP}/g" config/deploy/production.rb
-    - bundle exec cap production deploy
-  when: manual
+    - !reference [.clean_build, script]
+  when: on_success
   only:
-    - master
+    - staging
+
+clean_prod:
+  stage: clean_prod
+  image: kroniak/ssh-client
+  variables:
+    SERVER_USERNAME: ${PROD_SERVER_USERNAME}
+    SERVER_IP: ${SERVER_PRODUCTION_IP}
+  before_script:
+    - !reference [.authenticated_setup, script]
+    - !reference [.setup_deployment, script]
+  script:
+    - !reference [.clean_build, script]
+  when: on_success
+  only:
+    - staging

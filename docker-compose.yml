@@ -1,0 +1,37 @@
+version: "3.9"
+services:
+  db:
+    image: mysql
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    volumes:
+      - ./db:/var/lib/mysql
+    env_file:
+      - .env
+  redis:
+    image: "redis:5-alpine"
+    command: redis-server
+    ports:
+      - "6379:6379"
+    volumes:
+      - "./redis:/data"
+  sidekiq:
+    image: __REGISTRY_IMAGE__
+    command: bundle exec sidekiq
+    depends_on:
+      - "db"
+      - "redis"
+    env_file:
+      - .env
+  web:
+    image: __REGISTRY_IMAGE__
+    entrypoint: /home/auction-api/entrypoint.sh
+    stdin_open: true
+    tty: true
+    ports:
+      - 3000:3000
+    depends_on:
+      - db
+      - redis
+    env_file:
+      - .env
