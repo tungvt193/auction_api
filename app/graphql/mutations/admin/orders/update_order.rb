@@ -28,9 +28,9 @@ module Mutations
             :auction_item_id, :auction_id, :status, :user_id,
             :booking_type, :address, :zoom_id, :zoom_password,
             :supporter_id, :booking_at,
-            order_items_attributes: [
-              :id, :auction_item_id, :auction_id, :product_id,
-              :price, :status, :quantity, :_destroy
+            order_items_attributes: %i[
+              id auction_item_id auction_id product_id
+              price status quantity _destroy
             ]
           )
         end

@@ -26,9 +26,9 @@ module Mutations
           params.require(:attribute).permit(
             :code, :cod_code, :status, :user_id, :payment_type,
             :price, :tax, :booking_at,
-            order_items_attributes: [
-              :id, :auction_item_id, :auction_id, :product_id,
-              :price, :status, :quantity, :_destroy
+            order_items_attributes: %i[
+              id auction_item_id auction_id product_id
+              price status quantity _destroy
             ]
           )
         end
