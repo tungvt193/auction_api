@@ -1,7 +1,7 @@
 image: ${CI_BASE_IMAGE}:latest
 
 stages:
-  # - coding_convention
+  - coding_convention
   - build_staging
   - deploy_staging
   - build_prod
@@ -50,14 +50,14 @@ stages:
     - sed -i "s/__REGISTRY_IMAGE__/${DOCKER_COMPOSE_IMAGE}/" docker-compose.yml
     - sed -i "s/__MYSQL_ROOT_PASSWORD__/${MYSQL_ROOT_PASSWORD}/" docker-compose.yml
 
-# coding_convention:
-#   stage: coding_convention
-#   before_script:
-#     - echo "Check coding convention using rubocop"
-#     - !reference [.ruby_setup, before_script]
-#   script:
-#     - bundle exec rubocop .
-#   when: always
+coding_convention:
+  stage: coding_convention
+  before_script:
+    - echo "Check coding convention using rubocop"
+    - !reference [.ruby_setup, before_script]
+  script:
+    - bundle exec rubocop .
+  when: always
 
 build_staging:
   stage: build_staging
