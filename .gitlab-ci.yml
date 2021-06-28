@@ -51,7 +51,7 @@ stages:
 
 .update_compose:
   script:
-    - sed -i "s/__REGISTRY_IMAGE__/${REGISTRY_IMAGE}/" docker-compose.yml
+    - sed -i "s/__REGISTRY_IMAGE__/${DOCKER_COMPOSE_IMAGE}/" docker-compose.yml
 
 coding_convention:
   stage: coding_convention
@@ -100,6 +100,7 @@ deploy_staging:
     SERVER_USERNAME: ${STAGING_USERNAME}
     SERVER_IP_ADDRESS: ${STAGING_IP_ADDRESS}
     REGISTRY_IMAGE: ${CI_REGISTRY_IMAGE}/staging
+    DOCKER_COMPOSE_IMAGE: ${STAGING_COMPOSE_IMAGE}
   before_script:
     - echo "Auto deploying api for production environment"
     - !reference [.authenticated_setup, script]
@@ -119,6 +120,7 @@ deploy_prod:
     SERVER_USERNAME: ${PROD_USERNAME}
     SERVER_IP_ADDRESS: ${PROD_IP_ADDRESS}
     REGISTRY_IMAGE: ${CI_REGISTRY_IMAGE}
+    DOCKER_COMPOSE_IMAGE: ${PROD_COMPOSE_IMAGE}
   before_script:
     - echo "Auto deploying api for production environment"
     - !reference [.authenticated_setup, script]
