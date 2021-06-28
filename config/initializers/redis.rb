@@ -2,8 +2,6 @@
 
 require 'sidekiq'
 require 'sidekiq/scheduler'
-require 'sidekiq/web'
-require 'sidekiq-scheduler/web'
 require 'sidekiq-status'
 
 Redis::Namespace.new('auction_api', redis: Redis.new)

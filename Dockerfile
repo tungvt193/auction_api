@@ -18,4 +18,4 @@ RUN bundle install
 # Copy all host application's directory to container
 COPY . ./
 
-RUN chmod +x ./bin/entry-point.sh
+RUN chmod +x ./entrypoint.sh

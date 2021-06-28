@@ -166,4 +166,4 @@ clean_prod:
     - !reference [.clean_build, script]
   when: on_success
   only:
-    - staging
+    - master
