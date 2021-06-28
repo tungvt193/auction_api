@@ -2,7 +2,7 @@ image: ${CI_BASE_IMAGE}:latest
 
 stages:
   # - coding_convention
-  - build_staging
+  # - build_staging
   - deploy_staging
   - build_prod
   - deploy_prod
@@ -48,6 +48,7 @@ stages:
 .update_compose:
   script:
     - sed -i "s/__REGISTRY_IMAGE__/${DOCKER_COMPOSE_IMAGE}/" docker-compose.yml
+    - sed -i "s/__MYSQL_ROOT_PASSWORD__/${MYSQL_ROOT_PASSWORD}" docker-compose.yml
 
 # coding_convention:
 #   stage: coding_convention
@@ -58,20 +59,20 @@ stages:
 #     - bundle exec rubocop .
 #   when: always
 
-build_staging:
-  stage: build_staging
-  image: docker:latest
-  variables:
-    REGISTRY_IMAGE: ${CI_REGISTRY_IMAGE}/staging
-  services:
-    - name: docker:19.03.8-dind
-  before_script:
-    - !reference [.docker_setup, script]
-  script:
-    - !reference [.build_setup, script]
-  when: on_success
-  only:
-    - staging
+# build_staging:
+#   stage: build_staging
+#   image: docker:latest
+#   variables:
+#     REGISTRY_IMAGE: ${CI_REGISTRY_IMAGE}/staging
+#   services:
+#     - name: docker:19.03.8-dind
+#   before_script:
+#     - !reference [.docker_setup, script]
+#   script:
+#     - !reference [.build_setup, script]
+#   when: on_success
+#   only:
+#     - staging
 
 build_prod:
   stage: build_prod
@@ -98,6 +99,7 @@ deploy_staging:
     REGISTRY_IMAGE: ${CI_REGISTRY_IMAGE}/staging
     DOCKER_COMPOSE_IMAGE: ${STAGING_COMPOSE_IMAGE}
     WORKSPACE: /home/${STAGING_USERNAME}/auction-api
+    MYSQL_ROOT_PASSWORD: ${STAGING_MYSQL_ROOT_PASSWORD}
   before_script:
     - echo "Auto deploying api for production environment"
     - !reference [.authenticated_setup, script]
@@ -119,6 +121,7 @@ deploy_prod:
     REGISTRY_IMAGE: ${CI_REGISTRY_IMAGE}
     DOCKER_COMPOSE_IMAGE: ${PROD_COMPOSE_IMAGE}
     WORKSPACE: /home/${PROD_USERNAME}/auction-api
+    MYSQL_ROOT_PASSWORD: ${PROD_MYSQL_ROOT_PASSWORD}
   before_script:
     - echo "Auto deploying api for production environment"
     - !reference [.authenticated_setup, script]
