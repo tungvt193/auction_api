@@ -16,6 +16,10 @@ module Types
           field :v1CommonUpdateProfile, mutation: ::Mutations::Common::Users::UpdateProfile
 
           field :v1CommonUsersFollow, mutation: ::Mutations::Common::Users::Follow
+
+          field :v1CommonCreateBooking, mutation: ::Mutations::Common::Bookings::CreateBooking
+          field :v1CommonUpdateBooking, mutation: ::Mutations::Common::Bookings::UpdateBooking
+          field :v1CommonDeleteBooking, mutation: ::Mutations::Common::Bookings::DeleteBooking
         end
       end
     end

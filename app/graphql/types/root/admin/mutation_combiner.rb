@@ -46,6 +46,7 @@ module Types
 
           field :v1AdminCreateUser, mutation: ::Mutations::Admin::Users::CreateUser
           field :v1AdminUpdateUser, mutation: ::Mutations::Admin::Users::UpdateUser
+          field :v1AdminChangePasswordUser, mutation: ::Mutations::Admin::Users::ChangePasswordUser
         end
       end
     end
