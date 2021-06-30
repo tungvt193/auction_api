@@ -9,8 +9,8 @@ module Mutations
           super
 
           resource = collection.new({
-            user_id: current_user.try(:id)
-          })
+                                      user_id: current_user.try(:id)
+                                    })
 
           ApplicationRecord.transaction do
             attributes = decode_attributes(normalize_parameters)
