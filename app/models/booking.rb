@@ -12,6 +12,9 @@
 #  zoom_id         :string(255)
 #  zoom_password   :string(255)
 #  supporter_id    :bigint
+#  deposit         :float(24)        default(0.0), not null
+#  deposit_type    :integer          default("cash"), not null
+#  payment_type    :integer          default("pay_before"), not null
 #  booking_at      :datetime         not null
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
@@ -19,9 +22,13 @@
 class Booking < ApplicationRecord
   enum status: { pending: 0, confirmed: 1, success: 2, canceled: 3, failed: 4 }
   enum booking_type: { online: 0, offline: 1 }
+  enum deposit_type: { cash: 0, transfer: 1 }
+  enum payment_type: { pay_before: 0, pay_after: 1 }
 
   ransacker :status, formatter: proc { |v| statuses[v] }
   ransacker :booking_type, formatter: proc { |v| booking_types[v] }
+  ransacker :deposit_type, formatter: proc { |v| deposit_types[v] }
+  ransacker :payment_type, formatter: proc { |v| payment_types[v] }
 
   belongs_to :user
   belongs_to :auction

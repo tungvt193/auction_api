@@ -9,7 +9,6 @@ create_table(:orders, id: { type: :bigint, unsigned: true }, charset: "utf8mb4",
   t.bigint 'price', null: false, default: 0
   t.float 'tax', null: false, default: 0.0
 
-  t.datetime 'booking_at', null: false
   t.datetime "created_at", precision: 6, null: false
   t.datetime "updated_at", precision: 6, null: false
 

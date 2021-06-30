@@ -99,11 +99,16 @@ ActiveRecord::Schema.define(version: 0) do
     t.string "zoom_id"
     t.string "zoom_password"
     t.bigint "supporter_id"
+    t.float "deposit", default: 0.0, null: false
+    t.integer "deposit_type", default: 0, null: false
+    t.integer "payment_type", default: 0, null: false
     t.datetime "booking_at", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["auction_id"], name: "index_bookings_on_auction_id"
     t.index ["auction_item_id"], name: "index_bookings_on_auction_item_id"
+    t.index ["deposit_type"], name: "index_bookings_on_deposit_type"
+    t.index ["payment_type"], name: "index_bookings_on_payment_type"
     t.index ["status"], name: "index_bookings_on_status"
     t.index ["supporter_id"], name: "index_bookings_on_supporter_id"
     t.index ["user_id", "auction_item_id"], name: "index_bookings_on_user_id_and_auction_item_id"
@@ -237,7 +242,6 @@ ActiveRecord::Schema.define(version: 0) do
     t.bigint "auction_id", null: false
     t.bigint "product_id", null: false
     t.float "price", default: 0.0, null: false
-    t.integer "status", default: 0, null: false
     t.integer "quantity", default: 1, null: false
     t.float "jpy_exrate", default: 0.0, null: false
     t.float "usd_exrate", default: 0.0, null: false
@@ -258,7 +262,6 @@ ActiveRecord::Schema.define(version: 0) do
     t.index ["auction_item_id"], name: "index_order_items_on_auction_item_id"
     t.index ["order_id"], name: "index_order_items_on_order_id"
     t.index ["product_id"], name: "index_order_items_on_product_id"
-    t.index ["status"], name: "index_order_items_on_status"
   end
 
   create_table "orders", id: { type: :bigint, unsigned: true }, charset: "utf8mb4", collation: "utf8mb4_general_ci", force: :cascade do |t|
@@ -269,7 +272,6 @@ ActiveRecord::Schema.define(version: 0) do
     t.integer "payment_type", default: 0, null: false
     t.bigint "price", default: 0, null: false
     t.float "tax", default: 0.0, null: false
-    t.datetime "booking_at", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["status"], name: "index_orders_on_status"

@@ -10,6 +10,9 @@ create_table(:bookings, id: { type: :bigint, unsigned: true }, charset: "utf8mb4
   t.string 'zoom_id'
   t.string 'zoom_password'
   t.bigint 'supporter_id'
+  t.float 'deposit', null: false, default: 0.0
+  t.integer 'deposit_type', null: false, default: 0
+  t.integer 'payment_type', null: false, default: 0
 
   t.datetime 'booking_at', null: false
   t.datetime "created_at", precision: 6, null: false
@@ -20,4 +23,6 @@ create_table(:bookings, id: { type: :bigint, unsigned: true }, charset: "utf8mb4
   t.index ['auction_item_id'], name: 'index_bookings_on_auction_item_id'
   t.index ['user_id', 'auction_item_id'], name: 'index_bookings_on_user_id_and_auction_item_id'
   t.index ['supporter_id'], name: 'index_bookings_on_supporter_id'
+  t.index ['deposit_type'], name: 'index_bookings_on_deposit_type'
+  t.index ['payment_type'], name: 'index_bookings_on_payment_type'
 end

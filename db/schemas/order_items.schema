@@ -6,7 +6,6 @@ create_table(:order_items, id: { type: :bigint, unsigned: true }, charset: "utf8
   t.bigint 'auction_id', null: false
   t.bigint 'product_id', null: false
   t.float 'price', null: false, default: 0.0
-  t.integer 'status', null: false, default: 0
   t.integer 'quantity', null: false, default: 1
   t.float 'jpy_exrate', null: false, default: 0.0
   t.float 'usd_exrate', null: false, default: 0.0
@@ -25,7 +24,6 @@ create_table(:order_items, id: { type: :bigint, unsigned: true }, charset: "utf8
   t.datetime "created_at", precision: 6, null: false
   t.datetime "updated_at", precision: 6, null: false
 
-  t.index ['status'], name: 'index_order_items_on_status'
   t.index ['auction_id'], name: 'index_order_items_on_auction_id'
   t.index ['auction_item_id'], name: 'index_order_items_on_auction_item_id'
   t.index ['product_id'], name: 'index_order_items_on_product_id'

@@ -23,6 +23,11 @@ module Types
           field :v1AdminVideoList, ::Connections::VideoConnection,
                 function: ::Resolvers::Admin::Video::List, null: true, connection: true
           field :v1AdminVideo, resolver: ::Resolvers::Admin::Video::Show
+          field :v1AdminOrderSummary, ::Connections::OrderSummaryConnection,
+                function: ::Resolvers::Admin::Orders::Summary, null: true, connection: true
+          field :v1AdminOrderList, ::Connections::OrderConnection,
+                function: ::Resolvers::Admin::Orders::List, null: true, connection: true
+          field :v1AdminOrder, resolver: ::Resolvers::Admin::Orders::Show
         end
       end
     end

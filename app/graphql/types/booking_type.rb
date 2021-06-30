@@ -12,6 +12,9 @@
 #  zoom_id         :string(255)
 #  zoom_password   :string(255)
 #  supporter_id    :bigint
+#  deposit         :float(24)        default(0.0), not null
+#  deposit_type    :integer          default("cash"), not null
+#  payment_type    :integer          default("pay_before"), not null
 #  booking_at      :datetime         not null
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
@@ -26,6 +29,9 @@ module Types
     field :booking_at, String, null: false
     field :is_expired, Boolean, null: false
     field :is_today, Boolean, null: false
+    field :deposit, Float, null: false
+    field :deposit_type, String, null: true
+    field :payment_type, String, null: true
 
     field :name, String, null: true, resolve: Lazy::LazyBookingName.new
     field :user, Types::UserType, null: true, resolve: Lazy::LazyUser.new

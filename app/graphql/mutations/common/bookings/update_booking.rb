@@ -27,7 +27,8 @@ module Mutations
           params.permit(
             :auction_item_id, :auction_id, :status, :user_id,
             :booking_type, :address, :zoom_id, :zoom_password,
-            :supporter_id, :booking_at
+            :supporter_id, :booking_at, :deposit, :deposit_type,
+            :payment_type
           )
         end
       end

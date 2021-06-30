@@ -12,7 +12,10 @@ module Policies
           'v1AdminNewsList': admin_guard,
           'v1AdminNews': admin_guard,
           'v1AdminVideoList': admin_guard,
-          'v1AdminVideo': admin_guard
+          'v1AdminVideo': admin_guard,
+          'v1AdminOrderSummary': admin_guard,
+          'v1AdminOrderList': admin_guard,
+          'v1AdminOrder': admin_guard
         }
       end
 

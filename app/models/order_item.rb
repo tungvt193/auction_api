@@ -8,7 +8,6 @@
 #  auction_id         :bigint           not null
 #  product_id         :bigint           not null
 #  price              :float(24)        default(0.0), not null
-#  status             :integer          default(0), not null
 #  quantity           :integer          default(1), not null
 #  jpy_exrate         :float(24)        default(0.0), not null
 #  usd_exrate         :float(24)        default(0.0), not null
