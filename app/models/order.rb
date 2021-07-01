@@ -19,7 +19,7 @@ class Order < ApplicationRecord
 
   belongs_to :user
   has_many :order_items, dependent: :destroy
-  
+
   ransacker :status, formatter: proc { |v| statuses[v] }
   ransacker :payment_type, formatter: proc { |v| payment_types[v] }
 
