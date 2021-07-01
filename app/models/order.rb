@@ -24,4 +24,10 @@ class Order < ApplicationRecord
   ransacker :payment_type, formatter: proc { |v| payment_types[v] }
 
   accepts_nested_attributes_for :order_items
+
+  before_commin :generate_code, on: :create
+
+  def generate_code
+    self.code = "BID-#{Time.zone.now.to_i}"
+  end
 end
