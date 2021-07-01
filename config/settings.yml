@@ -6,4 +6,4 @@ token_time:
 validations:
   user:
     email_regex: !ruby/regexp '/\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i'
-    password_regex: !ruby/regexp '/\A(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[\W]).{8,}\z/'
+    password_regex: !ruby/regexp '/^(?=.*[A-Z])(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[\W]).{8,}$/'
