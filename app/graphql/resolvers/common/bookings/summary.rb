@@ -20,7 +20,6 @@ module Resolvers
 
         def instance_scope
           ::Booking.where(user_id: current_user.try(:id)).select(:id, :status).group_by(&:status).map do |key, value|
-
             OpenStruct.new({
                              summary_type: key,
                              bookings_total: value.size
