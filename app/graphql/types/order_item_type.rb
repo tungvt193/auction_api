@@ -32,7 +32,6 @@ module Types
     field :auction_item_id, ID, null: false
     field :auction_id, ID, null: false
     field :product_id, ID, null: false
-    field :payment_type, String, null: true
     field :price, Float, null: true
     field :quantity, Int, null: true
     field :jpy_exrate, Float, null: true, default_value: 0.0
