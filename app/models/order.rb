@@ -25,7 +25,7 @@ class Order < ApplicationRecord
 
   accepts_nested_attributes_for :order_items
 
-  before_commin :generate_code, on: :create
+  before_commit :generate_code, on: :create
 
   def generate_code
     self.code = "BID-#{Time.zone.now.to_i}"
