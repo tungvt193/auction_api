@@ -1,17 +1,17 @@
 module Resolvers
-  module Mobile
-    module Bookings
+  module Common
+    module Orders
       class Summary
         include SearchObject.module(:graphql)
 
         scope { instance_scope }
-        type types[::Types::BookingSummaryType]
+        type types[::Types::OrderSummaryType]
 
         def fetch_results
           # NOTE: Don't run QueryResolver during tests
           return super if context.blank?
 
-          GraphQL::QueryResolver.run(::Booking, context, ::Types::BookingSummaryType) do
+          GraphQL::QueryResolver.run(::Order, context, ::Types::OrderSummaryType) do
             super
           end
         end
@@ -19,10 +19,10 @@ module Resolvers
         private
 
         def instance_scope
-          ::Booking.select(:id, :status).group_by(&:status).map do |key, value|
+          ::Order.where(user_id: current_user.try(:id)).select(:id, :status).group_by(&:status).map do |key, value|
             OpenStruct.new({
                              summary_type: key,
-                             bookings_total: value.size
+                             orders_total: value.size
                            })
           end
         end

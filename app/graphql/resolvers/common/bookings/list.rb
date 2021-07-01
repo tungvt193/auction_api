@@ -1,5 +1,5 @@
 module Resolvers
-  module Mobile
+  module Common
     module Bookings
       class List < ::Resolvers::BaseQuery
         scope { instance_scope }
@@ -29,7 +29,7 @@ module Resolvers
         private
 
         def instance_scope
-          ::Booking.all
+          ::Booking.where(user_id: current_user.try(:id))
         end
       end
     end

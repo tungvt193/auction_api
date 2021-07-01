@@ -38,7 +38,8 @@ module Policies
           merge(block_policy('Image')).
           merge(block_policy('News')).
           merge(block_policy('Video')).
-          merge(update_policy('User'))
+          merge(update_policy('User')).
+          merge(update_policy('Order'))
       end
 
       private

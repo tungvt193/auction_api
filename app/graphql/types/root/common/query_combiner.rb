@@ -68,6 +68,18 @@ module Types
                 function: ::Resolvers::Common::Wards::List, null: true, connection: true
 
           field :v1CommonEstimatedPrice, resolver: ::Resolvers::Common::AuctionItems::EstimatedPrice
+
+          field :v1CommonBookingSummary, ::Connections::BookingSummaryConnection,
+                function: ::Resolvers::Common::Bookings::Summary, null: true, connection: true
+          field :v1CommonBookingList, ::Connections::BookingConnection,
+                function: ::Resolvers::Common::Bookings::List, null: true, connection: true
+          field :v1CommonBooking, resolver: ::Resolvers::Common::Bookings::Show
+
+          field :v1CommonOrderSummary, ::Connections::OrderSummaryConnection,
+                function: ::Resolvers::Common::Orders::Summary, null: true, connection: true
+          field :v1CommonOrderList, ::Connections::OrderConnection,
+                function: ::Resolvers::Common::Orders::List, null: true, connection: true
+          field :v1CommonOrder, resolver: ::Resolvers::Common::Orders::Show
         end
       end
     end

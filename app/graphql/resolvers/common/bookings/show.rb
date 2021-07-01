@@ -1,5 +1,5 @@
 module Resolvers
-  module Mobile
+  module Common
     module Bookings
       class Show < ::Resolvers::BaseResolver
         argument :id, ID, required: true
