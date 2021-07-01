@@ -21,7 +21,7 @@ module Types
     field :status, String, null: true
     field :user_id, ID, null: false
     field :payment_type, String, null: true
-    field :price, Int, null: true
+    field :price, Float, null: true
     field :tax, Float, null: true
 
     field :order_items, [Types::OrderItemType], null: false, resolve: Lazy::LazyOrderItems.new

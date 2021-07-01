@@ -6,7 +6,7 @@ create_table(:orders, id: { type: :bigint, unsigned: true }, charset: "utf8mb4",
   t.integer 'status', null: false, default: 0
   t.bigint 'user_id', null: false
   t.integer 'payment_type', null: false, default: 0
-  t.bigint 'price', null: false, default: 0
+  t.float 'price', null: false, default: 0.0
   t.float 'tax', null: false, default: 0.0
 
   t.datetime "created_at", precision: 6, null: false

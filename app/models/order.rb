@@ -8,7 +8,7 @@
 #  status       :integer          default("pending"), not null
 #  user_id      :bigint           not null
 #  payment_type :integer          default("cash"), not null
-#  price        :bigint           default(0), not null
+#  price        :float(24)        default(0.0), not null
 #  tax          :float(24)        default(0.0), not null
 #  created_at   :datetime         not null
 #  updated_at   :datetime         not null
@@ -19,6 +19,7 @@ class Order < ApplicationRecord
 
   belongs_to :user
   has_many :order_items, dependent: :destroy
+  
   ransacker :status, formatter: proc { |v| statuses[v] }
   ransacker :payment_type, formatter: proc { |v| payment_types[v] }
 

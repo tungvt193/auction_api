@@ -270,7 +270,7 @@ ActiveRecord::Schema.define(version: 0) do
     t.integer "status", default: 0, null: false
     t.bigint "user_id", null: false
     t.integer "payment_type", default: 0, null: false
-    t.bigint "price", default: 0, null: false
+    t.float "price", default: 0.0, null: false
     t.float "tax", default: 0.0, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
