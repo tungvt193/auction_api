@@ -49,8 +49,8 @@ module Types
     field :final_price, Float, null: true, default_value: 0.0
 
     field :order, Types::OrderType, null: true, resolve: Lazy::LazyOrder.new
-    field :product, Types::OrderType, null: true, resolve: Lazy::LazyProduct.new
-    field :auction, Types::OrderType, null: true, resolve: Lazy::LazyAuction.new
-    field :auction_item, Types::OrderType, null: true, resolve: Lazy::LazyAuctionItem.new
+    field :product, Types::ProductType, null: true, resolve: Lazy::LazyProduct.new
+    field :auction, Types::AuctionType, null: true, resolve: Lazy::LazyAuction.new
+    field :auction_item, Types::AuctionItemType, null: true, resolve: Lazy::LazyAuctionItem.new
   end
 end
