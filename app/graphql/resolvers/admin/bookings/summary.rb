@@ -24,7 +24,7 @@ module Resolvers
           ::Booking.statuses.keys.map do |key|
             OpenStruct.new({
                              summary_type: key,
-                             bookings_total: group_bookings.try(:fetch, key, 0)
+                             bookings_total: group_bookings.try(:fetch, key, 0).try(:size).to_i
                            })
           end
         end

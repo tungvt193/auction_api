@@ -24,7 +24,7 @@ module Resolvers
           ::Order.statuses.keys.map do |key|
             OpenStruct.new({
                              summary_type: key,
-                             orders_total: group_orders.try(:fetch, key, 0)
+                             orders_total: group_orders.try(:fetch, key, []).try(:size).to_i
                            })
           end
         end
