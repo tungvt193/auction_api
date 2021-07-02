@@ -14,7 +14,7 @@
 #  updated_at   :datetime         not null
 #
 class Order < ApplicationRecord
-  enum status: { pending: 0, success: 1, failed: 2, canceled: 3 }
+  enum status: { pending: 0, progress: 1, success: 2, failed: 3, canceled: 4 }
   enum payment_type: { cash: 0, transfer: 1 }
 
   belongs_to :user
