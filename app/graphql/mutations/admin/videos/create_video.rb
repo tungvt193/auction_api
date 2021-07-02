@@ -24,7 +24,7 @@ module Mutations
 
         def normalize_parameters
           params.require(:attribute).permit(
-            :cover, :url, :title, :status, :slug, :published_at
+            :cover, :url, :title, :status, :slug, :published_at, :video_id
           )
         end
       end

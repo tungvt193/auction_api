@@ -25,5 +25,6 @@ module Types
     field :tax, Float, null: true
 
     field :order_items, [Types::OrderItemType], null: false, resolve: Lazy::LazyOrderItems.new
+    field :user, Types::UserType, null: true, resolve: Lazy::LazyUser.new
   end
 end
