@@ -19,10 +19,12 @@ module Resolvers
         private
 
         def instance_scope
-          ::Booking.select(:id, :status).group_by(&:status).map do |key, value|
+          group_bookings = ::Booking.select(:id, :status).group_by(&:status)
+
+          ::Booking.statuses.keys.map do |key|
             OpenStruct.new({
                              summary_type: key,
-                             bookings_total: value.size
+                             bookings_total: group_bookings.try(:fetch, key, 0)
                            })
           end
         end

@@ -19,10 +19,12 @@ module Resolvers
         private
 
         def instance_scope
-          ::Order.select(:id, :status).group_by(&:status).map do |key, value|
+          group_orders = ::Order.select(:id, :status).group_by(&:status)
+
+          ::Order.statuses.keys.map do |key|
             OpenStruct.new({
                              summary_type: key,
-                             orders_total: value.size
+                             orders_total: group_orders.try(:fetch, key, 0)
                            })
           end
         end
