@@ -26,6 +26,7 @@ module Resolvers
                              summary_type: key,
                              bookings_total: group_bookings.try(:fetch, key, 0)
                            })
+          end
         end
       end
     end
