@@ -57,6 +57,6 @@ class Booking < ApplicationRecord
   end
 
   def migrate_auction_id
-    self.auction_id = self.auction_item.try(:auction_id)
+    self.auction_id = auction_item.try(:auction_id)
   end
 end
