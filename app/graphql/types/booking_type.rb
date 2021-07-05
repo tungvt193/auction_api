@@ -37,5 +37,6 @@ module Types
     field :user, Types::UserType, null: true, resolve: Lazy::LazyUser.new
     field :auction, Types::AuctionType, null: true, resolve: Lazy::LazyAuction.new
     field :auction_item, Types::AuctionItemType, null: true, resolve: Lazy::LazyAuctionItem.new
+    field :supporter, Types::UserType, null: true, resolve: Lazy::LazySupporter.new
   end
 end
