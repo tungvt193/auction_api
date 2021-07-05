@@ -15,6 +15,7 @@ module Mutations
           ApplicationRecord.transaction do
             attributes = decode_attributes(normalize_parameters)
             resource.assign_attributes(attributes)
+            resource.auction_id = resource.try(:auction_item).try(:auction_id)
 
             resource.save!
           end
