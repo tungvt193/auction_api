@@ -35,6 +35,7 @@ module Api
 
     def decode_access_token
       return if request.headers['Authorization'].blank?
+
       token = request.headers['Authorization'].split(' ').try(:last)
 
       [token, cryptor.try(:decrypt_and_verify, token)]
