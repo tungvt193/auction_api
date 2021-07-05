@@ -15,7 +15,6 @@ module Mutations
           ApplicationRecord.transaction do
             attributes = decode_attributes(normalize_parameters)
             resource.assign_attributes(attributes)
-            resource.deposit = resource.try(:auction).try(:price).to_f * 0.3
 
             resource.save!
           end
