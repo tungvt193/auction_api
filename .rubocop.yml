@@ -61,6 +61,7 @@ Metrics/MethodLength:
     - app/controllers/api/skip_operation.rb
     - app/repositories/crawler_repository.rb
     - app/models/estimated.rb
+    - app/graphql/policies/*.rb
 
 Metrics/PerceivedComplexity:
   Enabled: true
