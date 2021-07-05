@@ -14,6 +14,7 @@ module Mutations
           ApplicationRecord.transaction do
             attributes = decode_attributes(normalize_parameters)
             resource.assign_attributes(attributes)
+            resource.deposit = resource.try(:auction).try(:price).to_f * 0.3
 
             resource.save!
           end
@@ -27,7 +28,7 @@ module Mutations
           params.permit(
             :auction_item_id, :auction_id, :booking_type, :address,
             :zoom_id, :zoom_password, :supporter_id, :booking_at,
-            :deposit, :deposit_type, :payment_type
+            :deposit_type, :payment_type, :price
           )
         end
       end
