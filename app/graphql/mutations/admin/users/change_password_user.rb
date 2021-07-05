@@ -9,9 +9,9 @@ module Mutations
         def resolve(args)
           super
 
-          ApplicationRecord.transaction do
-            resource = object_from_id(args[:id])
+          resource = object_from_id(args[:id])
 
+          ApplicationRecord.transaction do
             raise GraphQL::ExecutionError, 'Confirmed Password is incorrect!' if is_unconfirmed_password
 
             ApplicationRecord.transaction do
