@@ -12,8 +12,8 @@
 module Types
   class FollowerType < BaseNode
     field :followable_type, String, null: false
-    field :followable_id, ID, null: false
-    field :user_id, ID, null: false
+    field :followable_id, Types::GraphqlIdType, null: false
+    field :user_id, Types::GraphqlIdType, null: false
     field :status, String, null: true
 
     field :user, Types::UserType, null: true, resolve: Lazy::LazyUser.new

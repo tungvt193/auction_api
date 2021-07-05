@@ -31,11 +31,11 @@ module Types
     field :category_name, String, null: false
     field :auction_name, String, null: false
     field :status, String, null: false
-    field :auction_id, ID, null: false
-    field :product_id, ID, null: false
-    field :category_id, ID, null: false
-    field :sub_category_id, ID, null: true
-    field :company_id, ID, null: false
+    field :auction_id, Types::GraphqlIdType, null: false
+    field :product_id, Types::GraphqlIdType, null: false
+    field :category_id, Types::GraphqlIdType, null: false
+    field :sub_category_id, Types::GraphqlIdType, null: true
+    field :company_id, Types::GraphqlIdType, null: false
     field :price, String, null: false
     field :min_price, String, null: false
     field :marker, String, null: false
@@ -44,7 +44,7 @@ module Types
     field :source_link, String, null: true
     field :thumb_url, String, null: true
     field :images, [String], null: true, resolve: Lazy::LazyAuctionImage.new
-    field :user_id, ID, null: true
+    field :user_id, Types::GraphqlIdType, null: true
     field :used_hours, String, null: false
     field :year_of_manufacture, String, null: true
     field :created_at, String, null: false

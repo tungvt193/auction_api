@@ -21,7 +21,7 @@ module Types
     field :name, String, null: false
     field :thumb_url, String, null: true
     field :keyword, String, null: false
-    field :category_id, ID, null: false
+    field :category_id, Types::GraphqlIdType, null: false
     field :slug, String, null: true
     field :started_at, String, null: true
     field :status, String, null: false

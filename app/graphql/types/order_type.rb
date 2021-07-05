@@ -19,7 +19,7 @@ module Types
     field :code, String, null: true
     field :cod_code, String, null: true
     field :status, String, null: true
-    field :user_id, ID, null: false
+    field :user_id, Types::GraphqlIdType, null: false
     field :payment_type, String, null: true
     field :price, Float, null: true
     field :tax, Float, null: true

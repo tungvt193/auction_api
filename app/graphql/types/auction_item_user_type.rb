@@ -11,8 +11,8 @@
 #
 module Types
   class AuctionItemUserType < BaseNode
-    field :auction_id, ID, null: false
-    field :user_id, ID, null: false
+    field :auction_id, Types::GraphqlIdType, null: false
+    field :user_id, Types::GraphqlIdType, null: false
     field :status, String, null: false
 
     field :user, Types::UserType, null: true, resolve: Lazy::LazyUser.new

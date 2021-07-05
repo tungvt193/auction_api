@@ -12,7 +12,7 @@
 module Types
   class FavoriteType < BaseNode
     field :favoritable_type, String, null: false
-    field :favoritable_id, ID, null: false
-    field :user_id, ID, null: false
+    field :favoritable_id, Types::GraphqlIdType, null: false
+    field :user_id, Types::GraphqlIdType, null: false
   end
 end

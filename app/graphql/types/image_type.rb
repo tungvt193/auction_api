@@ -17,7 +17,7 @@ module Types
     field :name, String, null: true
     field :file_url, String, null: true
     field :imageable_type, String, null: true
-    field :imageable_id, ID, null: true
+    field :imageable_id, Types::GraphqlIdType, null: true
     field :price, Int, null: true
   end
 end

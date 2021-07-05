@@ -15,8 +15,8 @@ module Types
   class RateType < BaseNode
     field :star, Float, null: false
     field :ratable_type, String, null: false
-    field :ratable_id, ID, null: false
-    field :user_id, ID, null: false
+    field :ratable_id, Types::GraphqlIdType, null: false
+    field :user_id, Types::GraphqlIdType, null: false
     field :comment, String, null: false
     field :username, String, null: true, resolve: Lazy::LazyRatingName.new
 

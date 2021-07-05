@@ -15,7 +15,7 @@ module Types
     field :name, String, null: false
     field :status, String, null: false
     field :position, Int, null: true
-    field :category_id, ID, null: false
+    field :category_id, Types::GraphqlIdType, null: false
 
     field :category, Types::CategoryType, null: true, resolve: Lazy::LazyCategory.new
   end
