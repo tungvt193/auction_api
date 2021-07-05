@@ -34,6 +34,8 @@ class Booking < ApplicationRecord
   belongs_to :auction
   belongs_to :auction_item
 
+  before_commit :migrate_auction_id, on: :create
+
   def is_expired
     return false if booking_at.blank?
 
@@ -52,5 +54,9 @@ class Booking < ApplicationRecord
 
   def end_of_day
     Time.zone.now.end_of_day
+  end
+
+  def migrate_auction_id
+    self.auction_id = self.auction_item.try(:auction_id)
   end
 end

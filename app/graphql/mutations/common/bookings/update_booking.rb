@@ -26,7 +26,7 @@ module Mutations
 
         def normalize_parameters
           params.permit(
-            :auction_item_id, :auction_id, :booking_type, :address,
+            :auction_item_id, :booking_type, :address,
             :zoom_id, :zoom_password, :supporter_id, :booking_at,
             :deposit_type, :payment_type, :price
           )
