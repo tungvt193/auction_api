@@ -99,7 +99,7 @@ ActiveRecord::Schema.define(version: 0) do
     t.string "zoom_id"
     t.string "zoom_password"
     t.bigint "supporter_id"
-    t.float "deposit", default: 0.0, null: false
+    t.float "price", default: 0.0, null: false
     t.integer "deposit_type", default: 0, null: false
     t.integer "payment_type", default: 0, null: false
     t.datetime "booking_at", null: false

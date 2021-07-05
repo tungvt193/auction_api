@@ -12,7 +12,7 @@
 #  zoom_id         :string(255)
 #  zoom_password   :string(255)
 #  supporter_id    :bigint
-#  deposit         :float(24)        default(0.0), not null
+#  price           :float(24)        default(0.0), not null
 #  deposit_type    :integer          default("cash"), not null
 #  payment_type    :integer          default("pay_before"), not null
 #  booking_at      :datetime         not null

@@ -10,7 +10,7 @@ create_table(:bookings, id: { type: :bigint, unsigned: true }, charset: "utf8mb4
   t.string 'zoom_id'
   t.string 'zoom_password'
   t.bigint 'supporter_id'
-  t.float 'deposit', null: false, default: 0.0
+  t.float 'price', null: false, default: 0.0
   t.integer 'deposit_type', null: false, default: 0
   t.integer 'payment_type', null: false, default: 0
 
