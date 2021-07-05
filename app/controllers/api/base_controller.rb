@@ -6,8 +6,6 @@ module Api
 
     def authorized_handler
       @current_user = detect_current_user
-
-      binding.pry if @current_user.present?
     end
 
     private
@@ -25,7 +23,7 @@ module Api
       token_type = items[2].try(:gsub, 'token-type:', '')
 
       user = User.find_by(id: user_id)
-      return if skip_operations.include?(operation_name)
+      return user if skip_operations.include?(operation_name)
 
       raise ActionController::InvalidAuthenticityToken, 'Phiên đăng nhập không hợp lệ. Vui lòng thử lại!' if token_is_invalid(token, token_type, user)
 

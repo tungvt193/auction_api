@@ -11,7 +11,6 @@ module Resolvers
           query = super
 
           scope = instance_scope.graphql_ransack(query)
-
           branches << scope
 
           branches
