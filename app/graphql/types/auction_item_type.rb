@@ -59,5 +59,6 @@ module Types
     field :sub_category, Types::CategoryType, null: true, resolve: Lazy::LazySubCategory.new
     field :company, Types::CompanyType, null: true, resolve: Lazy::LazyCompany.new
     field :estimated_price, Types::EstimatedPriceType, null: true, resolve: Lazy::LazyEstimatedPrice.new
+    field :lastest_booking, Types::BookingType, null: true, resolve: Lazy::LazyLastestBooking.new
   end
 end
