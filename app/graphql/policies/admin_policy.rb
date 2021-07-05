@@ -15,7 +15,13 @@ module Policies
           'v1AdminVideo': admin_guard,
           'v1AdminOrderSummary': admin_guard,
           'v1AdminOrderList': admin_guard,
-          'v1AdminOrder': admin_guard
+          'v1AdminOrder': admin_guard,
+          'v1AdminAuctionList': admin_guard,
+          'v1AdminAuction': admin_guard,
+          'v1AdminAuctionItemList': admin_guard,
+          'v1AdminAuctionItem': admin_guard,
+          'v1AdminBannerList': admin_guard,
+          'v1AdminBanner': admin_guard
         }
       end
 

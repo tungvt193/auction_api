@@ -28,6 +28,15 @@ module Types
           field :v1AdminOrderList, ::Connections::OrderConnection,
                 function: ::Resolvers::Admin::Orders::List, null: true, connection: true
           field :v1AdminOrder, resolver: ::Resolvers::Admin::Orders::Show
+          field :v1AdminAuctionList, ::Connections::AuctionConnection,
+                function: ::Resolvers::Admin::Auctions::List, null: true, connection: true
+          field :v1AdminAuction, resolver: ::Resolvers::Admin::Auctions::Show
+          field :v1AdminAuctionItemList, ::Connections::AuctionItemConnection,
+                function: ::Resolvers::Admin::AuctionItems::List, null: true, connection: true
+          field :v1AdminAuctionItem, resolver: ::Resolvers::Admin::AuctionItems::Show
+          field :v1AdminBannerList, ::Connections::BannerConnection,
+                function: ::Resolvers::Admin::Banners::List, null: true, connection: true
+          field :v1AdminBanner, resolver: ::Resolvers::Admin::Banners::Show
         end
       end
     end
