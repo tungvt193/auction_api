@@ -9,7 +9,9 @@ module Policies
           v1CommonBooking: user_guard,
           v1CommonOrderSummary: user_guard,
           v1CommonOrderList: user_guard,
-          v1CommonOrder: user_guard
+          v1CommonOrder: user_guard,
+          v1CommonSearchHistoryList: user_guard,
+          v1CommonSearchHistory: user_guard
         }
       end
 
@@ -29,7 +31,8 @@ module Policies
           },
           v1CommonUpdateProfile: user_guard,
           v1CommonUsersFollow: user_guard
-        }.merge(block_policy('Booking'))
+        }.merge(block_policy('Booking')).
+          merge(block_policy('SearchHistory'))
       end
 
       private

@@ -301,6 +301,7 @@ ActiveRecord::Schema.define(version: 0) do
     t.string "skip_callback"
     t.string "model"
     t.integer "product_type", default: 0, null: false
+    t.float "score", default: 0.0, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["category_id"], name: "index_products_on_category_id"
@@ -328,6 +329,17 @@ ActiveRecord::Schema.define(version: 0) do
     t.index ["auction_id"], name: "index_rates_on_auction_id"
     t.index ["ratable_id", "ratable_type"], name: "index_rates_on_ratable_type_and_ratable_id"
     t.index ["user_id"], name: "index_rates_on_user_id"
+  end
+
+  create_table "search_histories", id: { type: :bigint, unsigned: true }, charset: "utf8mb4", collation: "utf8mb4_general_ci", force: :cascade do |t|
+    t.string "keyword", null: false
+    t.bigint "product_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["product_id"], name: "index_search_histories_on_product_id"
+    t.index ["user_id", "product_id"], name: "index_search_histories_on_user_id_and_product_id"
+    t.index ["user_id"], name: "index_search_histories_on_user_id"
   end
 
   create_table "sub_categories", id: { type: :bigint, unsigned: true }, charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|

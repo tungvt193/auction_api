@@ -16,6 +16,7 @@
 #  skip_callback     :string(255)
 #  model             :string(255)
 #  product_type      :integer          default("size_20_feet"), not null
+#  score             :float(24)        default(0.0), not null
 #  created_at        :datetime         not null
 #  updated_at        :datetime         not null
 #

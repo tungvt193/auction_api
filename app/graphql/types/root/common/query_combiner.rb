@@ -80,6 +80,10 @@ module Types
           field :v1CommonOrderList, ::Connections::OrderConnection,
                 function: ::Resolvers::Common::Orders::List, null: true, connection: true
           field :v1CommonOrder, resolver: ::Resolvers::Common::Orders::Show
+
+          field :v1CommonSearchHistoryList, ::Connections::SearchHistoryConnection,
+                function: ::Resolvers::Common::SearchHistories::List, null: true, connection: true
+          field :v1CommonSearchHistory, resolver: ::Resolvers::Common::SearchHistories::Show
         end
       end
     end

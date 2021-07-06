@@ -14,6 +14,7 @@ create_table(:products, id: { type: :bigint, unsigned: true }, charset: "utf8mb4
   t.string 'skip_callback'
   t.string 'model'
   t.integer 'product_type', null: false, default: 0
+  t.float 'score', null: false, default: 0.0
 
   t.datetime "created_at", precision: 6, null: false
   t.datetime "updated_at", precision: 6, null: false

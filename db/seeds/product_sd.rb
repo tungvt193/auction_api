@@ -71,6 +71,7 @@ workbook.worksheets.each_with_index do |worksheet, sheet_index|
                         product_type: sheet_index,
                         short_description: cells.compact.join(', '),
                         slug: slug,
+                        score: 0.0,
                         skip_callback: 'create',
                         created_at: now,
                         updated_at: now
