@@ -87,6 +87,6 @@ class Product < ApplicationRecord
 
   def append_keyword(word)
     self.keyword = "#{keyword} #{word}" unless keyword.include?(word)
-    self.save!
+    save!
   end
 end

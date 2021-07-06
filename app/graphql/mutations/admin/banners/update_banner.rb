@@ -17,7 +17,7 @@ module Mutations
 
             resource.assign_attributes(attributes)
             resource.cover = params[:cover] if params[:cover].present?
-            
+
             resource.save!
           end
 
