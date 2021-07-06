@@ -47,6 +47,10 @@ module Types
           field :v1AdminCreateUser, mutation: ::Mutations::Admin::Users::CreateUser
           field :v1AdminUpdateUser, mutation: ::Mutations::Admin::Users::UpdateUser
           field :v1AdminChangePasswordUser, mutation: ::Mutations::Admin::Users::ChangePasswordUser
+
+          field :v1AdminCreateSubCategory, mutation: ::Mutations::Admin::SubCategories::CreateSubCategory
+          field :v1AdminUpdateSubCategory, mutation: ::Mutations::Admin::SubCategories::UpdateSubCategory
+          field :v1AdminDeleteSubCategory, mutation: ::Mutations::Admin::SubCategories::DeleteSubCategory
         end
       end
     end

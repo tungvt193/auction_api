@@ -21,7 +21,11 @@ module Policies
           'v1AdminAuctionItemList': admin_guard,
           'v1AdminAuctionItem': admin_guard,
           'v1AdminBannerList': admin_guard,
-          'v1AdminBanner': admin_guard
+          'v1AdminBanner': admin_guard,
+          'v1AdminCategoryList': admin_guard,
+          'v1AdminCategory': admin_guard,
+          'v1AdminSubCategoryList': admin_guard,
+          'v1AdminSubCategory': admin_guard
         }
       end
 
@@ -40,6 +44,7 @@ module Policies
           merge(block_policy('Banner')).
           merge(block_policy('Booking')).
           merge(block_policy('Category')).
+          merge(block_policy('SubCategory')).
           merge(block_policy('Company')).
           merge(block_policy('Image')).
           merge(block_policy('News')).

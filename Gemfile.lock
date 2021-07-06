@@ -16,6 +16,7 @@ GIT
       activesupport (> 3)
       elasticsearch (~> 5)
       hashie
+    elasticsearch-rails (5.1.0)
 
 GIT
   remote: https://github.com/faker-ruby/faker.git
@@ -498,6 +499,7 @@ DEPENDENCIES
   config (= 3.0.0)
   dotenv-rails (= 2.7.6)
   elasticsearch-model!
+  elasticsearch-rails!
   faker!
   fog-google (= 1.12.1)
   graphiql-rails (= 1.7.0)

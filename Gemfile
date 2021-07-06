@@ -92,5 +92,7 @@ gem 'mailjet', '1.6.0'
 gem 'httparty', '0.13.7'
 gem 'config', '3.0.0'
 gem 'apollo_upload_server', '2.0.2'
-gem 'elasticsearch-model', github: 'elastic/elasticsearch-rails', branch: '5.x'
 gem 'rubyXL'
+
+gem 'elasticsearch-model', github: 'elastic/elasticsearch-rails', branch: '5.x'
+gem 'elasticsearch-rails', github: 'elastic/elasticsearch-rails', branch: '5.x'

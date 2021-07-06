@@ -12,6 +12,10 @@ module Searchable
     index_name "#{Rails.env}_products"
     document_type name.downcase
 
+    def self.search(keyword)
+      __elasticsearch__.search(keyword)
+    end
+
     def create_index
       __elasticsearch__.index_document unless skip_callback == 'create'
     end
