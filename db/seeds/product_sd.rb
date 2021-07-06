@@ -15,6 +15,7 @@ p_attributes = []
 pc_attributes = []
 
 sequence_number = 1
+pc_keyword = {}
 
 workbook.worksheets.each_with_index do |worksheet, sheet_index|
   puts "READ DATA FROM SHEET #{worksheet.sheet_name}"
@@ -51,6 +52,9 @@ workbook.worksheets.each_with_index do |worksheet, sheet_index|
                            created_at: now,
                            updated_at: now
                          })
+
+
+      pc_keyword[pd.try(:id)] = pc_keyword[pd.try(:id)].concat([com.try(:name).to_s])
       next
     end
 
@@ -58,7 +62,6 @@ workbook.worksheets.each_with_index do |worksheet, sheet_index|
 
     next if sluges.include?(slug)
     next if cells[7].blank?
-
     product_id = sequence_number + 1
 
     p_attributes.push({
@@ -74,7 +77,14 @@ workbook.worksheets.each_with_index do |worksheet, sheet_index|
                         score: 0.0,
                         skip_callback: 'create',
                         created_at: now,
-                        updated_at: now
+                        updated_at: now,
+                        keyword: [
+                          cells[7].to_s,
+                          ceg.try(:name).to_s,
+                          seg.try(:name).to_s,
+                          cells.compact.join(', '),
+                          cells[5].to_s
+                        ].uniq.join(', ').try(:downcase)
                       })
 
     pc_attributes.push({
@@ -84,14 +94,25 @@ workbook.worksheets.each_with_index do |worksheet, sheet_index|
                          updated_at: now
                        })
 
+    pc_keyword[product_id] = [com.try(:name).to_s]
+
     sluges.push(slug)
     sequence_number += 1
   end
 end
 
-::Product.insert_all!(p_attributes.uniq) if p_attributes.present?
-::ProductCompany.insert_all!(pc_attributes.uniq) if pc_attributes.present?
+product_attributes = p_attributes.map do |product|
+  cp_keywords = pc_keyword[product[:id]].join(', ')
+  keyword = [product[:keyword], cp_keywords].join(', ').try(:downcase)
+  non_vi_keyword = keyword.tr(VIETNAMESE_CHARACTERS, ENGLISH_CHARACTERS)
 
-::Product.elasticsearch_import
+  product.merge({
+    keyword: [keyword.split(', '), non_vi_keyword.split(', ')].flatten.uniq.join(', ')
+  })
+end
+
+::Product.insert_all!(product_attributes.uniq) if product_attributes.present?
+::ProductCompany.insert_all!(pc_attributes.uniq) if pc_attributes.present?
+::Product.import force: true, refresh: true, return: 'errors'
 
 puts 'FINISH IMPORT PRODUCT'

@@ -63,6 +63,7 @@ class CrawlerRepository < BaseRepository
 
         if pc.blank?
           pc = make_product_company(product, company)
+
           product_companies[pc_key] = [pc]
         end
 
@@ -116,6 +117,7 @@ class CrawlerRepository < BaseRepository
                             })
 
     product.slug = product.slug_generator
+    product.auto_keyword!
     product.save!
     product
   end

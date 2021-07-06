@@ -9,23 +9,54 @@ module Searchable
     include Elasticsearch::Model
     include Elasticsearch::Model::Callbacks
 
-    index_name "#{Rails.env}_products"
     document_type name.downcase
+    index_name "#{Rails.env}_products"
 
-    def self.search(keyword)
-      __elasticsearch__.search(keyword)
+    def self.search(field, keyword)
+      __elasticsearch__.search({
+                                 query: {
+                                   match: {
+                                     field => "%#{keyword}%"
+                                   }
+                                 },
+                                 highlight: {
+                                   fields: {
+                                     field => {}
+                                   }
+                                 }
+                               })
     end
 
     def create_index
-      __elasticsearch__.index_document unless skip_callback == 'create'
+      return if skip_callback == 'create'
+
+      __elasticsearch__.client.indices.create \
+        index: self.class.index_name,
+        body: {
+          settings: self.class.settings.to_hash,
+          mappings: self.class.mappings.to_hash
+        }
+    rescue StandardError => e
+      nil
     end
 
     def update_index
-      __elasticsearch__.update_document unless skip_callback == 'update'
+      return if skip_callback == 'update'
+
+      __elasticsearch__.client.indices.update \
+        index: self.class.index_name,
+        body: {
+          settings: self.class.settings.to_hash,
+          mappings: self.class.mappings.to_hash
+        }
+    rescue StandardError
+      nil
     end
 
     def delete_index
-      __elasticsearch__.delete_document unless skip_callback == 'delete'
+      self.class.__elasticsearch__.client.indices.delete index: self.class.index_name
+    rescue StandardError
+      nil
     end
   end
 end

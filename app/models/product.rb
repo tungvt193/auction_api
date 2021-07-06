@@ -27,6 +27,7 @@ class Product < ApplicationRecord
   store_in_background :thumb
 
   before_commit :auto_keyword!, on: [:create]
+
   after_commit :create_index, on: [:create]
   after_commit :update_index, on: [:update]
   after_commit :delete_index, on: [:destroy]
@@ -43,6 +44,36 @@ class Product < ApplicationRecord
   ransacker :product_type, formatter: proc { |v| product_types[v] }
 
   accepts_nested_attributes_for :product_companies
+
+  settings index: {
+    number_of_shards: 1,
+    number_of_replicas: 0,
+    analysis: {
+      analyzer: {
+        pattern: {
+          type: 'pattern',
+          pattern: "\\s|_|-|\\.",
+          lowercase: true
+        },
+        trigram: {
+          tokenizer: 'trigram'
+        }
+      },
+      tokenizer: {
+        trigram: {
+          type: 'vi_tokenizer',
+          keep_punctuation: true
+        }
+      }
+    } } do
+    mapping do
+      indexes :title, type: 'text', analyzer: 'vi_analyzer' do
+        indexes :keyword, analyzer: 'keyword'
+        indexes :pattern, analyzer: 'pattern'
+        indexes :trigram, analyzer: 'trigram'
+      end
+    end
+  end
 
   class << self
     def elasticsearch_import
@@ -70,7 +101,10 @@ class Product < ApplicationRecord
   end
 
   def auto_keyword!
-    self.keyword = [name, short_description.to_s, category.try(:name).to_s, sub_category.try(:name).to_s].concat(companies.pluck(:name)).join(', ') + category.try(:name).to_s
+    kw = [name, short_description.to_s, category.try(:name).to_s, sub_category.try(:name).to_s].concat(companies.pluck(:name)).join(', ')
+    english_kw = kw.downcase.tr(VIETNAMESE_CHARACTERS, ENGLISH_CHARACTERS)
+
+    self.keyword = [kw, english_kw].join(', ').split(', ').map(&:downcase).uniq.join(', ')
   end
 
   def vn_transport_fee
