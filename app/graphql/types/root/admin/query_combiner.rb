@@ -38,13 +38,13 @@ module Types
                 function: ::Resolvers::Admin::Banners::List, null: true, connection: true
           field :v1AdminBanner, resolver: ::Resolvers::Admin::Banners::Show
 
-          field :v1CommonCategoryList, ::Connections::CategoryConnection,
-                function: ::Resolvers::Common::Categories::List, null: true, connection: true
-          field :v1CommonCategory, resolver: ::Resolvers::Common::Categories::Show
+          field :v1AdminCategoryList, ::Connections::CategoryConnection,
+                function: ::Resolvers::Admin::Categories::List, null: true, connection: true
+          field :v1AdminCategory, resolver: ::Resolvers::Admin::Categories::Show
 
-          field :v1CommonSubCategoryList, ::Connections::SubCategoryConnection,
-                function: ::Resolvers::Common::SubCategories::List, null: true, connection: true
-          field :v1CommonSubCategory, resolver: ::Resolvers::Common::SubCategories::Show
+          field :v1AdminSubCategoryList, ::Connections::SubCategoryConnection,
+                function: ::Resolvers::Admin::SubCategories::List, null: true, connection: true
+          field :v1AdminSubCategory, resolver: ::Resolvers::Admin::SubCategories::Show
         end
       end
     end
