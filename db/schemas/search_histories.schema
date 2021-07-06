@@ -2,13 +2,11 @@
 # vi: set ft=ruby :
 create_table(:search_histories, id: { type: :bigint, unsigned: true }, charset: "utf8mb4", collation: "utf8mb4_general_ci") do |t|
   t.string 'keyword', null: false
-  t.bigint 'product_id', null: false
+  t.text 'product_ids', null: false, default: ''
   t.bigint 'user_id', null: false
 
   t.datetime "created_at", precision: 6, null: false
   t.datetime "updated_at", precision: 6, null: false
 
-  t.index ['product_id'], name: 'index_search_histories_on_product_id'
   t.index ['user_id'], name: 'index_search_histories_on_user_id'
-  t.index ['user_id', 'product_id'], name: 'index_search_histories_on_user_id_and_product_id'
 end

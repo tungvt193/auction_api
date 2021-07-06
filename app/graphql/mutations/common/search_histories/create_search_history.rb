@@ -8,13 +8,12 @@ module Mutations
         def resolve(args)
           super
 
-          resource = collection.new({
-                                      user_id: current_user.try(:id)
-                                    })
+          resource = search_history_detector
 
           ApplicationRecord.transaction do
             attributes = decode_attributes(normalize_parameters)
             resource.assign_attributes(attributes)
+            resource.try(:product).try(:append_keyword, normalize_parameters[:keyword])
 
             resource.save!
           end
@@ -26,6 +25,13 @@ module Mutations
 
         def normalize_parameters
           params.require(:attribute).permit(:keyword, :product_id)
+        end
+
+        def search_history_detector
+          rs = collection.where(keyword: normalize_parameters[:keyword], user_id: current_user.try(:id)).first
+          return rs if rs.present?
+
+          collection.new({ user_id: current_user.try(:id) })
         end
       end
     end

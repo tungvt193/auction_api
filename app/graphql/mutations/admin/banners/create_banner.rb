@@ -4,6 +4,7 @@ module Mutations
       class CreateBanner < BaseMutation
         argument :attribute, Types::AttributeType, required: true
         field :data, ::Types::BannerType, null: false
+        argument :cover, Types::FileType, required: false
 
         def resolve(args)
           super
@@ -12,9 +13,9 @@ module Mutations
 
           ApplicationRecord.transaction do
             attributes = decode_attributes(normalize_parameters)
-            attributes.merge!({ cover: args[:file] }) if args[:file].present?
-
             resource.assign_attributes(attributes)
+            
+            resource.cover = params[:cover] if params[:cover].present?
             resource.save!
           end
 

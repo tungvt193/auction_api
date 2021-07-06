@@ -22,7 +22,6 @@ module Types
           field :v1CommonDeleteBooking, mutation: ::Mutations::Common::Bookings::DeleteBooking
 
           field :v1CommonCreateSearchHistory, mutation: ::Mutations::Common::SearchHistories::CreateSearchHistory
-          field :v1CommonUpdateSearchHistory, mutation: ::Mutations::Common::SearchHistories::UpdateSearchHistory
           field :v1CommonDeleteSearchHistory, mutation: ::Mutations::Common::SearchHistories::DeleteSearchHistory
         end
       end

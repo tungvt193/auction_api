@@ -30,9 +30,10 @@ module Policies
             guard: ->(_obj, _args, _ctx) { true }
           },
           v1CommonUpdateProfile: user_guard,
-          v1CommonUsersFollow: user_guard
-        }.merge(block_policy('Booking')).
-          merge(block_policy('SearchHistory'))
+          v1CommonUsersFollow: user_guard,
+          v1CommonCreateSearchHistory: user_guard,
+          v1CommonDeleteSearchHistory: user_guard
+        }.merge(block_policy('Booking'))
       end
 
       private

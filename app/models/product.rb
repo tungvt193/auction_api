@@ -44,18 +44,6 @@ class Product < ApplicationRecord
 
   accepts_nested_attributes_for :product_companies
 
-  def thumb_url
-    thumb.try(:url)
-  end
-
-  def string_to_slug
-    companies.pluck(:name).uniq.concat([name]).join(' ')
-  end
-
-  def slug_generator
-    self.slug = string_to_slug.downcase.tr(VIETNAMESE_CHARACTERS, ENGLISH_CHARACTERS).parameterize.truncate 80, omission: ''
-  end
-
   class << self
     def elasticsearch_import
       # Delete the previous Products index in Elasticsearch
@@ -67,6 +55,18 @@ class Product < ApplicationRecord
     rescue StandardError
       nil
     end
+  end
+
+  def thumb_url
+    thumb.try(:url)
+  end
+
+  def string_to_slug
+    companies.pluck(:name).uniq.concat([name]).join(' ')
+  end
+
+  def slug_generator
+    self.slug = string_to_slug.downcase.tr(VIETNAMESE_CHARACTERS, ENGLISH_CHARACTERS).parameterize.truncate 80, omission: ''
   end
 
   def auto_keyword!
@@ -83,5 +83,10 @@ class Product < ApplicationRecord
 
   def clearance_fee
     Estimated.clearance_fee[product_type.to_sym]
+  end
+
+  def append_keyword(word)
+    self.keyword = "#{keyword} #{word}" unless keyword.include?(word)
+    self.save!
   end
 end
