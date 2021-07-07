@@ -5,3 +5,4 @@
   - [carrierwave, 5]
   - [crawler_job, 1]
   - [rating_job, 1]
+  - [make_notification_job, 1]

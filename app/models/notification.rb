@@ -28,6 +28,14 @@ class Notification < ApplicationRecord
 
   belongs_to :user, optional: true
 
+  after_commit :push_notification, on: :create
+
   ransacker :status, formatter: proc { |v| statuses[v] }
   ransacker :notification_type, formatter: proc { |v| notification_types[v] }
+
+  private
+
+  def push_notification
+    ::PusherRepository.new(self).execute!
+  end
 end
