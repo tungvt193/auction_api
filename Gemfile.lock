@@ -212,6 +212,8 @@ GEM
     faraday-excon (1.1.0)
     faraday-net_http (1.0.1)
     faraday-net_http_persistent (1.1.0)
+    fcm (1.0.3)
+      faraday (~> 1)
     ffi (1.15.0)
     fog-core (2.1.0)
       builder
@@ -501,6 +503,7 @@ DEPENDENCIES
   elasticsearch-model!
   elasticsearch-rails!
   faker!
+  fcm
   fog-google (= 1.12.1)
   graphiql-rails (= 1.7.0)
   graphql (= 1.9.4)

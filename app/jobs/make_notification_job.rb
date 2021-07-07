@@ -6,7 +6,7 @@ class MakeNotificationJob < ApplicationJob
 
     return if record.blank?
 
-    body_notifications = ::NotificationRepository.new(nil, record).make_body(type)
+    body_notifications = ::NotificationRepository.new(record).make_body(type)
     return if body_notifications.blank?
 
     if body_notifications.is_a?(Array)
