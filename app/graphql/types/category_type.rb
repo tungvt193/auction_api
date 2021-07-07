@@ -22,5 +22,6 @@ module Types
     field :position, Int, null: true
 
     field :product_total, Int, null: true, resolve: Lazy::LazyProductTotal.new
+    field :sub_categories, [Types::SubCategoryType], resolve: Lazy::SubCategories.new
   end
 end
