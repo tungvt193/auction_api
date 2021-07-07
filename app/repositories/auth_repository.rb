@@ -3,8 +3,7 @@ class AuthRepository < BaseRepository
     raise ::ActiveRecord::RecordNotFound, 'Tài khoản không chính xác.' if record.blank?
     raise ::ActionController::InvalidAuthenticityToken, 'Mật khẩu không chính xác.' unless record.authenticate(params[:password])
 
-    device_token = ::DeviceToken.where(user_id: record.id, token: params[:device_token])
-    record.save_device_token(params[:device_token]) if device_token.blank?
+    record.save_device_token(params[:device_token]) if params[:device_token].present?
 
     token = record.generate_token(Settings.token_time.normal.week)
     context[:session][:token] = token
@@ -30,6 +29,8 @@ class AuthRepository < BaseRepository
     @user = ::User.by_phone_or_new(response['phoneNumber'])
     token_type = 'new_information' if user.deactive?
     token = user.generate_token(time_expired, token_type)
+
+    user.save_device_token(params[:device_token]) if params[:device_token].present?
 
     user.update!({ reset_password_token: token })
     [user, token]

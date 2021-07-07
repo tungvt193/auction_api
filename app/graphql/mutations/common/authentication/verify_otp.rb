@@ -21,7 +21,7 @@ module Mutations
         private
 
         def normalize_parameters
-          params.require(:attribute).permit(:code, :verification_id)
+          params.require(:attribute).permit(:code, :verification_id, :device_token)
         end
 
         def repo
