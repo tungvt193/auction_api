@@ -52,7 +52,7 @@ class Product < ApplicationRecord
       analyzer: {
         pattern: {
           type: 'pattern',
-          pattern: "\\s|_|-|\\.",
+          pattern: '\\s|_|-|\\.',
           lowercase: true
         },
         trigram: {
@@ -65,7 +65,8 @@ class Product < ApplicationRecord
           keep_punctuation: true
         }
       }
-    } } do
+    }
+  } do
     mapping do
       indexes :title, type: 'text', analyzer: 'vi_analyzer' do
         indexes :keyword, analyzer: 'keyword'

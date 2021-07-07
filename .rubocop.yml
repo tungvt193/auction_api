@@ -41,6 +41,7 @@ Metrics/BlockLength:
     - app/graphql/types/root/**/*
     - config/*
     - app/repositories/crawler_repository.rb
+    - app/models/concerns/searchable.rb
 
 Metrics/AbcSize:
   Enabled: false

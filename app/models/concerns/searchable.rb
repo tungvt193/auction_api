@@ -36,7 +36,7 @@ module Searchable
           settings: self.class.settings.to_hash,
           mappings: self.class.mappings.to_hash
         }
-    rescue StandardError => e
+    rescue StandardError
       nil
     end
 

@@ -53,7 +53,6 @@ workbook.worksheets.each_with_index do |worksheet, sheet_index|
                            updated_at: now
                          })
 
-
       pc_keyword[pd.try(:id)] = pc_keyword[pd.try(:id)].concat([com.try(:name).to_s])
       next
     end
@@ -62,6 +61,7 @@ workbook.worksheets.each_with_index do |worksheet, sheet_index|
 
     next if sluges.include?(slug)
     next if cells[7].blank?
+
     product_id = sequence_number + 1
 
     p_attributes.push({
@@ -107,8 +107,8 @@ product_attributes = p_attributes.map do |product|
   non_vi_keyword = keyword.tr(VIETNAMESE_CHARACTERS, ENGLISH_CHARACTERS)
 
   product.merge({
-    keyword: [keyword.split(', '), non_vi_keyword.split(', ')].flatten.uniq.join(', ')
-  })
+                  keyword: [keyword.split(', '), non_vi_keyword.split(', ')].flatten.uniq.join(', ')
+                })
 end
 
 ::Product.insert_all!(product_attributes.uniq) if product_attributes.present?
