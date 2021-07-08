@@ -50,7 +50,8 @@ module Policies
           merge(block_policy('News')).
           merge(block_policy('Video')).
           merge(update_policy('User')).
-          merge(update_policy('Order'))
+          merge(update_policy('Order')).
+          merge(delete_policy('Notification'))
       end
 
       private
@@ -67,6 +68,13 @@ module Policies
         {
           "v1AdminCreate#{model_name}": admin_guard,
           "v1AdminUpdate#{model_name}": admin_guard
+        }
+      end
+
+      def delete_policy(model_name)
+        {
+          "v1AdminCreate#{model_name}": admin_guard,
+          "v1AdminDelete#{model_name}": admin_guard
         }
       end
 

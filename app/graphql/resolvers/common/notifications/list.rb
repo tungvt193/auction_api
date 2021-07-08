@@ -1,5 +1,5 @@
 module Resolvers
-  module Admin
+  module Common
     module Notifications
       class List < ::Resolvers::BaseQuery
         scope { instance_scope }
@@ -27,6 +27,8 @@ module Resolvers
         private
 
         def instance_scope
+          return ::Notification.global if current_user.blank?
+
           ::Notification.available_notification(current_user)
         end
       end

@@ -1,5 +1,5 @@
 module Resolvers
-  module Admin
+  module Common
     module Notifications
       class Show < ::Resolvers::BaseResolver
         argument :id, ID, required: true

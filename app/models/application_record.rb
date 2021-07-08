@@ -9,6 +9,10 @@ class ApplicationRecord < ActiveRecord::Base
     datetime.in_time_zone('UTC')
   end
 
+  def string_id
+    try(:id).try(:to_s)
+  end
+
   scope :graphql_ransack, lambda { |params|
     ransack(params).result(distinct: true)
   }

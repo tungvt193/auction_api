@@ -23,6 +23,8 @@ module Types
 
           field :v1CommonCreateSearchHistory, mutation: ::Mutations::Common::SearchHistories::CreateSearchHistory
           field :v1CommonDeleteSearchHistory, mutation: ::Mutations::Common::SearchHistories::DeleteSearchHistory
+
+          field :v1CommonDeleteNotification, mutation: ::Mutations::Common::Notifications::DeleteNotification
         end
       end
     end

@@ -11,7 +11,9 @@ module Policies
           v1CommonOrderList: user_guard,
           v1CommonOrder: user_guard,
           v1CommonSearchHistoryList: user_guard,
-          v1CommonSearchHistory: user_guard
+          v1CommonSearchHistory: user_guard,
+          v1CommonNotificationList: user_guard,
+          v1CommonNotification: user_guard
         }
       end
 
@@ -32,7 +34,8 @@ module Policies
           v1CommonUpdateProfile: user_guard,
           v1CommonUsersFollow: user_guard,
           v1CommonCreateSearchHistory: user_guard,
-          v1CommonDeleteSearchHistory: user_guard
+          v1CommonDeleteSearchHistory: user_guard,
+          v1CommonDeleteNotification: user_guard
         }.merge(block_policy('Booking'))
       end
 

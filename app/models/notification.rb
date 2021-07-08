@@ -33,6 +33,34 @@ class Notification < ApplicationRecord
   ransacker :status, formatter: proc { |v| statuses[v] }
   ransacker :notification_type, formatter: proc { |v| notification_types[v] }
 
+  scope :available_notification, lambda { |owner|
+    graphql_ransack({
+                      m: 'or',
+                      g: {
+                        '0' => {
+                          user_id_eq: owner.try(:id)
+                        },
+                        '1' => {
+                          notification_type_eq: 'global'
+                        }
+                      }
+                    }).where('(blinder_ids NOT LIKE ?) IS NOT TRUE ', "%#{owner.try(:id)} ,")
+  }
+
+  def is_readed?(reader)
+    try(:reader_ids).to_s.try(:include?, reader.try(:string_id))
+  end
+
+  def read_by!(reader)
+    self.reader_ids = reader_ids.to_s.split(', ').concat([reader.try(:id)]).compact.uniq.join(', ')
+    save!
+  end
+
+  def remove_by!(blinder)
+    self.blinder_ids = blinder_ids.to_s.split(', ').concat([blinder.try(:id)]).compact.uniq.join(', ')
+    save!
+  end
+
   private
 
   def push_notification

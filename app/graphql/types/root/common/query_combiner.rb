@@ -84,6 +84,10 @@ module Types
           field :v1CommonSearchHistoryList, ::Connections::SearchHistoryConnection,
                 function: ::Resolvers::Common::SearchHistories::List, null: true, connection: true
           field :v1CommonSearchHistory, resolver: ::Resolvers::Common::SearchHistories::Show
+
+          field :v1CommonNotificationList, ::Connections::NotificationConnection,
+                function: ::Resolvers::Common::Notifications::List, null: true, connection: true
+          field :v1CommonNotification, resolver: ::Resolvers::Common::Notifications::Show
         end
       end
     end
