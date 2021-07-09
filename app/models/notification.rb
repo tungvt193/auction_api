@@ -48,7 +48,7 @@ class Notification < ApplicationRecord
   }
 
   def is_readed?(reader)
-    return false if readed.blank?
+    return false if reader.blank?
     return try(:readed?) if try(:owner?)
 
     try(:reader_ids).to_s.try(:include?, reader.try(:string_id))
