@@ -23,5 +23,6 @@ module Types
     field :status, String, null: true
     field :image_url, String, null: true
     field :data, String, null: true
+    field :is_readed, Boolean, null: true, resolve: ::Lazy::LazyNotificationStatus.new
   end
 end

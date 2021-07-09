@@ -48,6 +48,9 @@ class Notification < ApplicationRecord
   }
 
   def is_readed?(reader)
+    return false if readed.blank?
+    return try(:readed?) if try(:owner?)
+
     try(:reader_ids).to_s.try(:include?, reader.try(:string_id))
   end
 
@@ -57,6 +60,8 @@ class Notification < ApplicationRecord
   end
 
   def remove_by!(blinder)
+    destroy! if try(:owner?)
+
     self.blinder_ids = blinder_ids.to_s.split(', ').concat([blinder.try(:id)]).compact.uniq.join(', ')
     save!
   end
