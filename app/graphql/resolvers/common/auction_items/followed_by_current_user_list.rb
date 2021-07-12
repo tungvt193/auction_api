@@ -10,7 +10,10 @@ module Resolvers
         def normalize_filters(value, branches = [])
           query = super
 
-          scope = instance_scope.graphql_ransack(query)
+          method = value['type']
+          method = 'avaiable' if method.blank?
+
+          scope = instance_scope.try(method).graphql_ransack(query)
           branches << scope
 
           branches

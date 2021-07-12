@@ -45,12 +45,13 @@ class NotificationRepository < BaseRepository
     base_message = {
       title: 'Trạng thái đơn hàng',
       notification_type: 'owner',
+      user_id: record.try(:user_id),
       data: {
         id: record.try(:id),
         tab: 2,
         app_route: '/',
         sub_tab: 1
-      }
+      }.to_json
     }
 
     case type
@@ -103,11 +104,12 @@ class NotificationRepository < BaseRepository
     base_message = {
       title: 'Lịch hẹn đấu giá',
       notification_type: 'owner',
+      user_id: record.try(:user_id),
       data: {
         id: record.try(:auction_item_id),
         type: 'AuctionItem',
         app_route: 'biz/detail'
-      }
+      }.to_json
     }
 
     case type

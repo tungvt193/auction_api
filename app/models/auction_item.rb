@@ -44,10 +44,24 @@ class AuctionItem < ApplicationRecord
                                   m: 'and',
                                   g: {
                                     '0' => {
-                                      auction_started_at_gteq: Time.zone.now
+                                      auction_ended_at_gteq: Time.zone.now
                                     },
                                     '1' => {
                                       status_in: %w[pending progress]
+                                    }
+                                  }
+                                }).result
+  }
+
+  scope :unavailable, lambda {
+    where(user_id: nil).ransack({
+                                  m: 'or',
+                                  g: {
+                                    '0' => {
+                                      auction_ended_at_lteq: Time.zone.now
+                                    },
+                                    '1' => {
+                                      status_in: %w[sold expired]
                                     }
                                   }
                                 }).result
