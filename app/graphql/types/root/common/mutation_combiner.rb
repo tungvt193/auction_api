@@ -25,6 +25,7 @@ module Types
           field :v1CommonDeleteSearchHistory, mutation: ::Mutations::Common::SearchHistories::DeleteSearchHistory
 
           field :v1CommonDeleteNotification, mutation: ::Mutations::Common::Notifications::DeleteNotification
+          field :v1CommonCreateDeviceToken, mutation: ::Mutations::Common::DeviceTokens::CreateDeviceToken
         end
       end
     end

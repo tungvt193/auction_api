@@ -9,33 +9,34 @@ module Api
       end
 
       def common
-        %w[
-          v1CommonSignIn
-          v1CommonForgotPassword
-          v1CommonVerifyOtp
-          v1CommonCategoryList
-          v1CommonCategory
-          v1CommonNewsList
-          v1CommonNews
-          v1CommonBannerList
-          v1CommonBanner
-          v1CommonVideoList
-          v1CommonVideo
-          v1CommonUserByUsername
-          v1CommonAuctionList
-          v1CommonAuction
-          v1CommonCompany
-          v1CommonCompanyList
-          v1CommonProduct
-          v1CommonProductList
-          v1CommonNearestAuctionList
-          v1CommonAuctionItemList
-          v1CommonAuctionItem
-          v1CommonAuctionItemNearestList
-          v1CommonProvinceList
-          v1CommonDistrictList
-          v1CommonWardList
-          v1CommonEstimatedPrice
+        [
+          'v1CommonSignIn',
+          'v1CommonForgotPassword',
+          'v1CommonVerifyOtp',
+          'v1CommonCategoryList',
+          'v1CommonCategory',
+          'v1CommonNewsList',
+          'v1CommonNews',
+          'v1CommonBannerList',
+          'v1CommonBanner',
+          'v1CommonVideoList',
+          'v1CommonVideo',
+          'v1CommonUserByUsername',
+          'v1CommonAuctionList',
+          'v1CommonAuction',
+          'v1CommonCompany',
+          'v1CommonCompanyList',
+          'v1CommonProduct',
+          'v1CommonProductList',
+          'v1CommonNearestAuctionList',
+          'v1CommonAuctionItemList',
+          'v1CommonAuctionItem',
+          'v1CommonAuctionItemNearestList',
+          'v1CommonProvinceList',
+          'v1CommonDistrictList',
+          'v1CommonWardList',
+          'v1CommonEstimatedPrice,',
+          'v1CommonCreateDeviceToken'
         ]
       end
 

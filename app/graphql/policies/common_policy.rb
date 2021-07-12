@@ -19,23 +19,16 @@ module Policies
 
       def mutation
         {
-          v1CommonSignIn: {
-            guard: ->(_obj, _args, _ctx) { true }
-          },
-          v1CommonForgotPassword: {
-            guard: ->(_obj, _args, _ctx) { true }
-          },
-          v1CommonVerifyOtp: {
-            guard: ->(_obj, _args, _ctx) { true }
-          },
-          v1CommonResetPassword: {
-            guard: ->(_obj, _args, _ctx) { true }
-          },
+          v1CommonSignIn: anonymous_guard,
+          v1CommonForgotPassword: anonymous_guard,
+          v1CommonVerifyOtp: anonymous_guard,
+          v1CommonResetPassword: anonymous_guard,
           v1CommonUpdateProfile: user_guard,
           v1CommonUsersFollow: user_guard,
           v1CommonCreateSearchHistory: user_guard,
           v1CommonDeleteSearchHistory: user_guard,
-          v1CommonDeleteNotification: user_guard
+          v1CommonDeleteNotification: user_guard,
+          v1CommonCreateDeviceToken: anonymous_guard
         }.merge(block_policy('Booking'))
       end
 
@@ -43,6 +36,12 @@ module Policies
 
       def user_guard
         { guard: ->(_obj, _args, ctx) { is_present?(ctx) } }
+      end
+
+      def anonymous_guard
+        {
+          guard: ->(_obj, _args, _ctx) { true }
+        }
       end
 
       def is_present?(ctx)

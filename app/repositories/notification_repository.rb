@@ -113,7 +113,7 @@ class NotificationRepository < BaseRepository
     }
 
     case type
-    when 'booked'
+    when 'pending'
       [
         base_message.merge({
                              message: "Chúc mừng bạn vừa đặt thành công lịch đấu giá lúc #{record.try(:format_booking_at)}"
