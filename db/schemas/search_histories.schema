@@ -2,7 +2,7 @@
 # vi: set ft=ruby :
 create_table(:search_histories, id: { type: :bigint, unsigned: true }, charset: "utf8mb4", collation: "utf8mb4_general_ci") do |t|
   t.string 'keyword', null: false
-  t.text 'product_ids', null: false, default: ''
+  t.text 'product_ids', null: true
   t.bigint 'user_id', null: false
 
   t.datetime "created_at", precision: 6, null: false

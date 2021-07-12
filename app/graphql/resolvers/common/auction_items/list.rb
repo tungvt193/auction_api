@@ -28,7 +28,7 @@ module Resolvers
         private
 
         def instance_scope
-          ::AuctionItem.where(user_id: nil)
+          ::AuctionItem.all
         end
       end
     end

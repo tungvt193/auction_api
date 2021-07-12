@@ -105,6 +105,7 @@ ActiveRecord::Schema.define(version: 0) do
     t.datetime "booking_at", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.text "canceled_reason"
     t.index ["auction_id"], name: "index_bookings_on_auction_id"
     t.index ["auction_item_id"], name: "index_bookings_on_auction_item_id"
     t.index ["deposit_type"], name: "index_bookings_on_deposit_type"
@@ -333,12 +334,10 @@ ActiveRecord::Schema.define(version: 0) do
 
   create_table "search_histories", id: { type: :bigint, unsigned: true }, charset: "utf8mb4", collation: "utf8mb4_general_ci", force: :cascade do |t|
     t.string "keyword", null: false
-    t.bigint "product_id", null: false
+    t.text "product_ids"
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["product_id"], name: "index_search_histories_on_product_id"
-    t.index ["user_id", "product_id"], name: "index_search_histories_on_user_id_and_product_id"
     t.index ["user_id"], name: "index_search_histories_on_user_id"
   end
 

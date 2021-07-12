@@ -18,7 +18,8 @@
 class Notification < ApplicationRecord
   enum notification_type: {
     owner: 0, # Notification dành cho 1 cá nhân
-    global: 1 # Notification Global toàn hệ thống
+    global: 1, # Notification Global toàn hệ thống
+    admin: 2
   }
 
   enum status: {

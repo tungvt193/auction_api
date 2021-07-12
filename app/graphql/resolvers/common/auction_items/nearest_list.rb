@@ -28,7 +28,7 @@ module Resolvers
         private
 
         def instance_scope
-          ::AuctionItem.joins(:auction).where('auctions.status = ? AND (auctions.started_at >= ? OR auctions.ended_at >= ? ) AND auction_items.status = ?  OR auction_items.status = ? ', 1, Time.zone.now, Time.zone.now, 0, 1)
+          ::AuctionItem.available
         end
       end
     end

@@ -18,6 +18,8 @@ create_table(:bookings, id: { type: :bigint, unsigned: true }, charset: "utf8mb4
   t.datetime "created_at", precision: 6, null: false
   t.datetime "updated_at", precision: 6, null: false
 
+  t.text 'canceled_reason'
+
   t.index ['status'], name: 'index_bookings_on_status'
   t.index ['auction_id'], name: 'index_bookings_on_auction_id'
   t.index ['auction_item_id'], name: 'index_bookings_on_auction_item_id'

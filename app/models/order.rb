@@ -36,7 +36,20 @@ class Order < ApplicationRecord
 
   before_commit :generate_code, on: :create
 
+  after_commit :init_notification, on: :create
+  after_commit :update_notification, on: :update
+
   def generate_code
     self.code = "BID-#{Time.zone.now.to_i}"
+  end
+
+  def init_notification
+    MakeNotificationJob.perform_async('Order', status, id)
+  end
+
+  def update_notification
+    return unless status_previously_changed?
+
+    MakeNotificationJob.perform_async('Order', status, id)
   end
 end

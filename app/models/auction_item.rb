@@ -39,6 +39,20 @@ class AuctionItem < ApplicationRecord
 
   enum status: { pending: 0, progress: 1, sold: 2, unsold: 3, expired: 4 }
 
+  scope :available, lambda {
+    where(user_id: nil).graphql_ransack({
+                                          m: 'and',
+                                          g: {
+                                            '0' => {
+                                              auction_started_at_gteq: Time.zone.now
+                                            },
+                                            '1' => {
+                                              status_in: %w[pending progress]
+                                            }
+                                          }
+                                        })
+  }
+
   ransacker :status, formatter: proc { |v| statuses[v] }
 
   def thumb_url

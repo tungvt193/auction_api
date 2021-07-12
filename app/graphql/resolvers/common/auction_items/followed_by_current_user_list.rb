@@ -29,6 +29,7 @@ module Resolvers
 
         def instance_scope
           auction_item_ids = Follower.where(user_id: current_user.id, followable_type: 'AuctionItem').pluck(:followable_id)
+
           ::AuctionItem.where(id: auction_item_ids)
         end
       end

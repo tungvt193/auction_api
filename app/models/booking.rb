@@ -18,6 +18,7 @@
 #  booking_at      :datetime         not null
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
+#  canceled_reason :text(65535)
 #
 class Booking < ApplicationRecord
   enum status: { pending: 0, confirmed: 1, success: 2, canceled: 3, failed: 4 }
@@ -34,6 +35,9 @@ class Booking < ApplicationRecord
   belongs_to :auction
   belongs_to :auction_item
 
+  after_commit :init_notification, on: :create
+  after_commit :update_notification, on: :update
+
   def is_expired
     return false if booking_at.blank?
 
@@ -46,11 +50,25 @@ class Booking < ApplicationRecord
     booking_at.between?(beginning_of_day, end_of_day)
   end
 
+  def format_booking_at
+    booking_at.try(:strftime, '%H:%M %d/%m/%Y')
+  end
+
   def beginning_of_day
     Time.zone.now.beginning_of_day
   end
 
   def end_of_day
     Time.zone.now.end_of_day
+  end
+
+  def init_notification
+    MakeNotificationJob.perform_async('Booking', status, id)
+  end
+
+  def update_notification
+    return unless status_previously_changed?
+
+    MakeNotificationJob.perform_async('Booking', status, id)
   end
 end

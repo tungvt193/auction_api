@@ -19,7 +19,22 @@ class Banner < ApplicationRecord
 
   ransacker :status, formatter: proc { |v| statuses[v] }
 
+  after_commit :init_notification, on: :create
+  after_commit :update_notification, on: :update
+
   def cover_url
     cover.try(:url)
+  end
+
+  private
+
+  def init_notification
+    return if deactive?
+
+    MakeNotificationJob.perform_async('Banner', status, id)
+  end
+
+  def update_notification
+    MakeNotificationJob.perform_async('Banner', status, id) if status_previously_changed? && active?
   end
 end

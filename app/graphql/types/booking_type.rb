@@ -32,6 +32,7 @@ module Types
     field :price, Float, null: false
     field :deposit_type, String, null: true
     field :payment_type, String, null: true
+    field :canceled_reason, String, null: true
 
     field :name, String, null: true, resolve: Lazy::LazyBookingName.new
     field :user, Types::UserType, null: true, resolve: Lazy::LazyUser.new

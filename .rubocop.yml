@@ -54,6 +54,7 @@ Metrics/ClassLength:
   Exclude:
     - app/controllers/**/*
     - app/repositories/crawler_repository.rb
+    - app/repositories/notification_repository.rb
 
 Metrics/MethodLength:
   Max: 20
@@ -63,6 +64,7 @@ Metrics/MethodLength:
     - app/repositories/crawler_repository.rb
     - app/models/estimated.rb
     - app/graphql/policies/*.rb
+    - app/repositories/notification_repository.rb
 
 Metrics/PerceivedComplexity:
   Enabled: true

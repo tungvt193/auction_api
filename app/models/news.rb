@@ -28,6 +28,9 @@ class News < ApplicationRecord
   enum status: { deactive: 0, active: 1, popular: 2 }
   ransacker :status, formatter: proc { |v| statuses[v] }
 
+  after_commit :init_notification, on: :create
+  after_commit :update_notification, on: :update
+
   def cover_url
     cover.try(:url)
   end
@@ -70,5 +73,17 @@ class News < ApplicationRecord
 
   def random_name
     SecureRandom.uuid
+  end
+
+  def init_notification
+    return if published_at.blank?
+
+    MakeNotificationJob.perform_at(published_at, 'News', status, id)
+  end
+
+  def update_notification
+    return unless published_at_previously_changed?
+
+    MakeNotificationJob.perform_at(published_at, 'News', status, id)
   end
 end
