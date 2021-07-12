@@ -41,16 +41,16 @@ class AuctionItem < ApplicationRecord
 
   scope :available, lambda {
     where(user_id: nil).ransack({
-                                          m: 'and',
-                                          g: {
-                                            '0' => {
-                                              auction_started_at_gteq: Time.zone.now
-                                            },
-                                            '1' => {
-                                              status_in: %w[pending progress]
-                                            }
-                                          }
-                                        }).result
+                                  m: 'and',
+                                  g: {
+                                    '0' => {
+                                      auction_started_at_gteq: Time.zone.now
+                                    },
+                                    '1' => {
+                                      status_in: %w[pending progress]
+                                    }
+                                  }
+                                }).result
   }
 
   ransacker :status, formatter: proc { |v| statuses[v] }
