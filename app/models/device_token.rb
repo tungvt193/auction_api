@@ -15,4 +15,8 @@ class DeviceToken < ApplicationRecord
   enum token_type: { anonymous: 0, owner: 1 }
 
   ransacker :token_type, formatter: proc { |v| token_types[v] }
+
+  scope :only_admin, lambda {
+    joins(:user).where('users.role' => 'admin')
+  }
 end

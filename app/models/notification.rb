@@ -35,18 +35,40 @@ class Notification < ApplicationRecord
   ransacker :notification_type, formatter: proc { |v| notification_types[v] }
 
   scope :available_notification, lambda { |owner|
-    graphql_ransack({
-                      m: 'or',
-                      g: {
-                        '0' => {
-                          user_id_eq: owner.try(:id)
-                        },
-                        '1' => {
-                          notification_type_eq: 'global'
-                        }
-                      }
-                    }).where('(blinder_ids NOT LIKE ?) IS NOT TRUE ', "%#{owner.try(:id)} ,")
+    base_query(
+      owner, {
+        notification_type_eq: 'global'
+      }
+    )
   }
+
+  scope :admin_notification, lambda { |owner|
+    base_query(
+      owner, {
+        notification_type_in: %w[global admin]
+      }
+    )
+  }
+
+  class << self
+    def base_query(owner, or_query)
+      graphql_ransack(
+        {
+          m: 'or',
+          g: {
+            '0' => {
+              user_id_eq: owner.try(:id)
+            },
+            '1' => or_query
+          }
+        }
+      ).
+        where(
+          '(blinder_ids NOT LIKE ?) IS NOT TRUE ',
+          "%#{owner.try(:id)} ,"
+        )
+    end
+  end
 
   def is_readed?(reader)
     return false if reader.blank?

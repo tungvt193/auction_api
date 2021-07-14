@@ -44,6 +44,7 @@ class PusherRepository < BaseRepository
 
   def avaiable_device_tokens
     return ::DeviceToken.pluck(:token) if record&.global?
+    return ::DeviceToken.only_admin.pluck(:token) if record&.admin?
 
     record.try(:user).try(:device_tokens)&.pluck(:token)
   end

@@ -40,34 +40,39 @@ class AuctionItem < ApplicationRecord
   enum status: { pending: 0, progress: 1, sold: 2, unsold: 3, expired: 4 }
 
   scope :available, lambda {
-    where(user_id: nil).ransack({
-                                  m: 'and',
-                                  g: {
-                                    '0' => {
-                                      auction_ended_at_gteq: Time.zone.now
-                                    },
-                                    '1' => {
-                                      status_in: %w[pending progress]
-                                    }
-                                  }
-                                }).result
+    avaiable_query(
+      {
+        auction_ended_at_gteq: Time.zone.now
+      },
+      %w[pending progress]
+    )
   }
 
   scope :unavailable, lambda {
-    where(user_id: nil).ransack({
-                                  m: 'or',
-                                  g: {
-                                    '0' => {
-                                      auction_ended_at_lteq: Time.zone.now
-                                    },
-                                    '1' => {
-                                      status_in: %w[sold expired]
-                                    }
-                                  }
-                                }).result
+    avaiable_query(
+      {
+        auction_ended_at_lteq: Time.zone.now
+      },
+      %w[sold expired]
+    )
   }
 
   ransacker :status, formatter: proc { |v| statuses[v] }
+
+  class << self
+    def avaiable_query(time_query, query_statuses)
+      where(user_id: nil).
+        ransack({
+                  m: 'or',
+                  g: {
+                    '0' => time_query,
+                    '1' => {
+                      status_in: query_statuses
+                    }
+                  }
+                }).result
+    end
+  end
 
   def thumb_url
     images.split(',').try(:first)
