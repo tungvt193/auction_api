@@ -1,10 +1,10 @@
 module Mutations
   module Admin
-    module Bookings
-      class UpdateBooking < BaseMutation
+    module Orders
+      class UpdateOrder < BaseMutation
         argument :id, ID, required: true
         argument :attribute, Types::AttributeType, required: true
-        field :data, ::Types::BookingType, null: false
+        field :data, ::Types::OrderType, null: false
 
         def resolve(args)
           super
@@ -25,9 +25,8 @@ module Mutations
 
         def normalize_parameters
           params.permit(
-            :auction_item_id, :auction_id, :status, :user_id,
-            :booking_type, :address, :zoom_id, :zoom_password,
-            :supporter_id, :booking_at,
+            :code, :cod_code, :status, :user_id,
+            :payment_type, :tax, :booking_at,
             order_items_attributes: %i[
               id auction_item_id auction_id product_id
               price status quantity _destroy

@@ -35,6 +35,7 @@ class Order < ApplicationRecord
   accepts_nested_attributes_for :order_items
 
   before_commit :generate_code, on: :create
+  before_save :re_caculate_price
 
   after_commit :init_notification, on: :create
   after_commit :update_notification, on: :update
@@ -51,5 +52,9 @@ class Order < ApplicationRecord
     return unless status_previously_changed?
 
     MakeNotificationJob.perform_async('Order', status, id)
+  end
+
+  def re_caculate_price
+    self.price = order_items.sum(&:final_price)
   end
 end

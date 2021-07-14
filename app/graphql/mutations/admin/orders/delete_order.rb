@@ -1,9 +1,9 @@
 module Mutations
   module Admin
-    module Bookings
-      class DeleteBooking < BaseMutation
+    module Orders
+      class DeleteOrder < BaseMutation
         argument :id, ID, required: true
-        field :data, ::Types::BookingType, null: false
+        field :data, ::Types::OrderType, null: false
 
         def resolve(args)
           super
