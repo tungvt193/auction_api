@@ -51,6 +51,10 @@ module Types
           field :v1AdminCreateSubCategory, mutation: ::Mutations::Admin::SubCategories::CreateSubCategory
           field :v1AdminUpdateSubCategory, mutation: ::Mutations::Admin::SubCategories::UpdateSubCategory
           field :v1AdminDeleteSubCategory, mutation: ::Mutations::Admin::SubCategories::DeleteSubCategory
+
+          field :v1AdminCreateOrder, mutation: ::Mutations::Admin::Orders::CreateOrder
+          field :v1AdminUpdateOrder, mutation: ::Mutations::Admin::Orders::UpdateOrder
+          field :v1AdminDeleteOrder, mutation: ::Mutations::Admin::Orders::DeleteOrder
         end
       end
     end

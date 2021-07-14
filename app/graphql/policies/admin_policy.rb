@@ -51,7 +51,8 @@ module Policies
           merge(block_policy('Video')).
           merge(update_policy('User')).
           merge(update_policy('Order')).
-          merge(delete_policy('Notification'))
+          merge(delete_policy('Notification')).
+          merge(block_policy('Order'))
       end
 
       private
