@@ -16,6 +16,7 @@ module Mutations
             attributes = decode_attributes(normalize_parameters)
             resource.assign_attributes(attributes)
             resource.auction_id = resource.try(:auction_item).try(:auction_id)
+            resource.address = '18 Tôn Thất Thuyết, Mỹ Đình, Cầu Giấy, Hà Nội' if resource.try(:is_default_address?)
 
             resource.save!
           end

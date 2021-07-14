@@ -36,7 +36,7 @@ customers = users.select { |u| u.try(:user?) }
                         })
   else
     b.assign_attributes({
-                          address: Faker::Address.full_address
+                          address: '18 Tôn Thất Thuyết, Mỹ Đình, Cầu Giấy, Hà Nội'
                         })
   end
   b.save!

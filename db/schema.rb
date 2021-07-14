@@ -95,7 +95,7 @@ ActiveRecord::Schema.define(version: 0) do
     t.integer "status", default: 0, null: false
     t.bigint "user_id", null: false
     t.integer "booking_type", default: 0, null: false
-    t.string "address"
+    t.string "address", default: "18 Tôn Thất Thuyết, Mỹ Đình, Cầu Giấy, Hà Nội"
     t.string "zoom_id"
     t.string "zoom_password"
     t.bigint "supporter_id"
