@@ -36,7 +36,8 @@ module Api
           'v1CommonDistrictList',
           'v1CommonWardList',
           'v1CommonEstimatedPrice,',
-          'v1CommonCreateDeviceToken'
+          'v1CommonCreateDeviceToken',
+          'v1CommonNotificationList'
         ]
       end
 
