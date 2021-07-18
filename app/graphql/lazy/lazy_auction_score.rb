@@ -1,7 +1,7 @@
 module Lazy
   class LazyAuctionScore < Base
     def call(obj, _args, _ctx)
-      BatchLoader::GraphQL.for(obj.try(:id)).batch(default_value: nil, cache: false) do |ids, loader|
+      BatchLoader::GraphQL.for(obj.try(:id)).batch(default_value: nil, cache: true) do |ids, loader|
         ::Rate.where(auction_id: ids, ratable_type: 'AuctionItem').group_by(&:auction_id).each do |k, rates|
           loader.call(k) do
             r = rates.group_by(&:rounded_star)
