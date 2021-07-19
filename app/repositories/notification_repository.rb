@@ -7,6 +7,8 @@ class NotificationRepository < BaseRepository
     case class_name
     when 'News'
       make_news_message
+    when 'Video'
+      make_video_message
     when 'AuctionItem'
       make_auction_item_message(type)
     when 'Order'
@@ -32,8 +34,24 @@ class NotificationRepository < BaseRepository
       data: {
         id: record.try(:id),
         type: 'News',
+        title: record.try(:title),
         content_url: record.try(:content_url),
         app_route: 'news/detail'
+      }.to_json
+    }
+  end
+
+  def make_video_message
+    {
+      title: record.try(:title),
+      notification_type: 'global',
+      message: record.try(:short_description),
+      data: {
+        video_id: record.try(:id),
+        type: 'Video',
+        title: record.try(:title),
+        content_url: record.try(:content_url),
+        app_route: 'video/detail'
       }.to_json
     }
   end
@@ -107,6 +125,7 @@ class NotificationRepository < BaseRepository
       user_id: record.try(:user_id),
       data: {
         id: record.try(:auction_item_id),
+        title: record.try(:auction_item).try(:category_name),
         type: 'AuctionItem',
         app_route: 'biz/detail'
       }.to_json

@@ -58,8 +58,8 @@ class User < ApplicationRecord
 
   validates :email, format: { with: VALID_EMAIL_REGEX, message: 'Email không đúng định dạng.' }, allow_blank: true
   validates :password, format: { with: VALID_PASSWORD_REGEX, multiline: true, message: 'Mật khẩu phải có ít nhất 8 ký tự bao gồm chữ cái, số và kí tự đặc biệt, viết thường và viết hoa.' }
-  validates :email, uniqueness: { message: 'Email đã được sử dụng. Vui lòng sử dụng email khác!' }
-  validates :phone, uniqueness: { message: 'SĐT đã được sử dụng. Vui lòng sử dụng SĐT khác!' }
+  validates :email, uniqueness: { message: 'Email đã được sử dụng. Vui lòng sử dụng email khác!' }, allow_blank: true
+  validates :phone, uniqueness: { message: 'SĐT đã được sử dụng. Vui lòng sử dụng SĐT khác!' }, allow_blank: true
 
   class << self
     def by_username_and_role(username, role = 'user')

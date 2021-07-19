@@ -25,7 +25,10 @@ module Policies
           'v1AdminCategoryList': admin_guard,
           'v1AdminCategory': admin_guard,
           'v1AdminSubCategoryList': admin_guard,
-          'v1AdminSubCategory': admin_guard
+          'v1AdminSubCategory': admin_guard,
+          'v1AdminProductList': admin_guard,
+          'v1AdminProduct': admin_guard,
+          'v1AdminRateList': admin_guard
         }
       end
 
@@ -38,6 +41,9 @@ module Policies
             guard: ->(_obj, _args, _ctx) { true }
           },
           v1AdminResetPassword: {
+            guard: ->(_obj, _args, _ctx) { true }
+          },
+          v1AdminDeleteRate: {
             guard: ->(_obj, _args, _ctx) { true }
           }
         }.merge(block_policy('Auction')).
@@ -52,7 +58,7 @@ module Policies
           merge(update_policy('User')).
           merge(update_policy('Order')).
           merge(delete_policy('Notification')).
-          merge(block_policy('Order'))
+          merge(block_policy('Product'))
       end
 
       private
