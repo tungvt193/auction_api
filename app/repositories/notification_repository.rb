@@ -7,7 +7,7 @@ class NotificationRepository < BaseRepository
     case class_name
     when 'News'
       make_news_message
-     when 'Video'
+    when 'Video'
       make_video_message
     when 'AuctionItem'
       make_auction_item_message(type)
