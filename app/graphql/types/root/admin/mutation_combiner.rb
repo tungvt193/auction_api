@@ -55,6 +55,12 @@ module Types
           field :v1AdminCreateOrder, mutation: ::Mutations::Admin::Orders::CreateOrder
           field :v1AdminUpdateOrder, mutation: ::Mutations::Admin::Orders::UpdateOrder
           field :v1AdminDeleteOrder, mutation: ::Mutations::Admin::Orders::DeleteOrder
+
+          field :v1AdminCreateProduct, mutation: ::Mutations::Admin::Products::CreateProduct
+          field :v1AdminUpdateProduct, mutation: ::Mutations::Admin::Products::UpdateProduct
+          field :v1AdminDeleteProduct, mutation: ::Mutations::Admin::Products::DeleteProduct
+
+          field :v1AdminDeleteRate, mutation: ::Mutations::Admin::Rates::DeleteRate
         end
       end
     end

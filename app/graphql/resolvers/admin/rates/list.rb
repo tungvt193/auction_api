@@ -1,17 +1,16 @@
 module Resolvers
-  module Common
-    module Products
+  module Admin
+    module Rates
       class List < ::Resolvers::BaseQuery
         scope { instance_scope }
-        type types[::Types::ProductType]
+        type types[::Types::RateType]
 
         option :per_page, type: types.Int, default: 10, with: :apply_per_page
 
         def normalize_filters(value, branches = [])
           query = super
 
-          scope = query['smart_filter'].present? ? ::Product.search(:keyword, query['smart_filter']).records : ::Product
-          scope = scope.graphql_ransack(query)
+          scope = instance_scope.graphql_ransack(query)
           branches << scope
 
           branches
@@ -21,7 +20,7 @@ module Resolvers
           # NOTE: Don't run QueryResolver during tests
           return super if context.blank?
 
-          GraphQL::QueryResolver.run(::Product, context, ::Types::ProductType) do
+          GraphQL::QueryResolver.run(::Rating, context, ::Types::RateType) do
             super
           end
         end
@@ -29,7 +28,7 @@ module Resolvers
         private
 
         def instance_scope
-          ::Product.where(status: %w[active popular])
+          ::Rating.all
         end
       end
     end

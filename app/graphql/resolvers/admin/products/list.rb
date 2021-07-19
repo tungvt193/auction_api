@@ -1,5 +1,5 @@
 module Resolvers
-  module Common
+  module Admin
     module Products
       class List < ::Resolvers::BaseQuery
         scope { instance_scope }
@@ -10,8 +10,7 @@ module Resolvers
         def normalize_filters(value, branches = [])
           query = super
 
-          scope = query['smart_filter'].present? ? ::Product.search(:keyword, query['smart_filter']).records : ::Product
-          scope = scope.graphql_ransack(query)
+          scope = instance_scope.graphql_ransack(query)
           branches << scope
 
           branches
@@ -29,7 +28,7 @@ module Resolvers
         private
 
         def instance_scope
-          ::Product.where(status: %w[active popular])
+          ::Product.all
         end
       end
     end

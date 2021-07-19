@@ -45,6 +45,12 @@ module Types
           field :v1AdminSubCategoryList, ::Connections::SubCategoryConnection,
                 function: ::Resolvers::Admin::SubCategories::List, null: true, connection: true
           field :v1AdminSubCategory, resolver: ::Resolvers::Admin::SubCategories::Show
+          field :v1AdminProductList, ::Connections::ProductConnection,
+                function: ::Resolvers::Admin::Products::List, null: true, connection: true
+          field :v1AdminProduct, resolver: ::Resolvers::Admin::Products::Show
+
+          field :v1AdminRateList, ::Connections::RateConnection,
+                function: ::Resolvers::Admin::Rates::List, null: true, connection: true
         end
       end
     end
