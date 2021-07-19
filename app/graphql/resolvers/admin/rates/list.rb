@@ -20,7 +20,7 @@ module Resolvers
           # NOTE: Don't run QueryResolver during tests
           return super if context.blank?
 
-          GraphQL::QueryResolver.run(::Rating, context, ::Types::RateType) do
+          GraphQL::QueryResolver.run(::Rate, context, ::Types::RateType) do
             super
           end
         end
@@ -28,7 +28,7 @@ module Resolvers
         private
 
         def instance_scope
-          ::Rating.all
+          ::Rate.all
         end
       end
     end
