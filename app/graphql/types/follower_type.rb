@@ -15,7 +15,6 @@ module Types
     field :followable_id, Types::GraphqlIdType, null: false
     field :user_id, Types::GraphqlIdType, null: false
     field :status, String, null: true
-    field :message, String, null: true
 
     field :user, Types::UserType, null: true, resolve: Lazy::LazyUser.new
   end
