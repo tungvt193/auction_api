@@ -19,7 +19,7 @@ module Mutations
                                      id: graphql_encode(::Follower, resource),
                                      followable_id: normalize_parameters[:followable_id],
                                      followable_type: normalize_parameters[:followable_type],
-                                     status: is_followed ? 'un_followed': 'followed'
+                                     status: is_followed ? 'un_followed' : 'followed'
                                    })
           }
         end
