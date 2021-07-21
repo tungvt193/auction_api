@@ -69,6 +69,8 @@ class CrawlerRepository < BaseRepository
 
         {
           category_name: category.try(:name),
+          category_en_name: category.try(:en_name),
+          category_ja_name: category.try(:ja_name),
           product_name: model,
           product_id: product.try(:id),
           auction_id: auction.try(:id),

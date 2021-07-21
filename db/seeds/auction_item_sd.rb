@@ -8,7 +8,7 @@ product_companies = ::ProductCompany.select(:company_id, :product_id)
 companies = ::Company.select(:id, :name)
 statuses = ::AuctionItem.statuses.values
 product_ids = product_companies.pluck(:product_id)
-products = ::Product.joins(:category).where(id: product_ids).select(:id, :name, :sub_category_id, :category_id, 'categories.name as category_name')
+products = ::Product.joins(:category).where(id: product_ids).select(:id, :name, :sub_category_id, :category_id, 'categories.name as category_name', 'categories.ja_name as category_ja_name', 'categories.en_name as category_en_name')
 
 Faker::Config.locale = 'ja'
 
@@ -29,6 +29,8 @@ auctions.map do |auction|
     record_attributes.push({
                              product_name: product.try(:name),
                              category_name: product.try(:category_name),
+                             category_en_name: product.try(:category_en_name),
+                             category_ja_name: product.try(:category_ja_name),
                              auction_name: auction.try(:name),
                              status: statuses.sample,
                              auction_id: auction.try(:id),

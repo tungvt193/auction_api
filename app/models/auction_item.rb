@@ -5,6 +5,8 @@
 #  id                  :bigint           unsigned, not null, primary key
 #  product_name        :string(255)      not null
 #  category_name       :string(255)      not null
+#  category_en_name    :string(255)      not null
+#  category_ja_name    :string(255)      not null
 #  auction_name        :string(255)      not null
 #  status              :integer          default("pending"), not null
 #  auction_id          :bigint           not null

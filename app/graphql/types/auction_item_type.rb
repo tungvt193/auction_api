@@ -29,6 +29,8 @@ module Types
     field :name, String, null: false
     field :product_name, String, null: false
     field :category_name, String, null: false
+    field :category_en_name, String, null: false
+    field :category_ja_name, String, null: false
     field :auction_name, String, null: false
     field :status, String, null: false
     field :auction_id, Types::GraphqlIdType, null: false

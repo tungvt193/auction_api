@@ -36,6 +36,8 @@ ActiveRecord::Schema.define(version: 0) do
   create_table "auction_items", id: { type: :bigint, unsigned: true }, charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "product_name", null: false
     t.string "category_name", null: false
+    t.string "category_en_name", null: false
+    t.string "category_ja_name", null: false
     t.string "auction_name", null: false
     t.integer "status", default: 0, null: false
     t.bigint "auction_id", null: false
