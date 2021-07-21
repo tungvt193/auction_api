@@ -35,7 +35,7 @@ class Booking < ApplicationRecord
   belongs_to :auction
   belongs_to :auction_item
 
-  before_commit :auto_address, on: [:create, :update]
+  before_commit :auto_address, on: %i[create update]
   after_commit :init_notification, on: :create
   after_commit :update_notification, on: :update
 
