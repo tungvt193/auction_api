@@ -2,7 +2,8 @@
 # vi: set ft=ruby :
 create_table(:categories, id: { type: :bigint, unsigned: true }, charset: "utf8mb4", collation: "utf8mb4_general_ci") do |t|
   t.string 'name', null: false
-  t.string 'english_name', null: false
+  t.string 'en_name', null: false
+  t.string 'ja_name', null: false
   t.string 'thumb'
   t.string 'thumb_tmp'
   t.string 'slug', null: false

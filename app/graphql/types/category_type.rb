@@ -16,6 +16,8 @@
 module Types
   class CategoryType < BaseNode
     field :name, String, null: false
+    field :en_name, String, null: false
+    field :ja_name, String, null: false
     field :slug, String, null: true
     field :status, String, null: false
     field :thumb_url, String, null: true

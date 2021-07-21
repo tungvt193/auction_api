@@ -117,7 +117,8 @@ ActiveRecord::Schema.define(version: 0) do
 
   create_table "categories", id: { type: :bigint, unsigned: true }, charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name", null: false
-    t.string "english_name", null: false
+    t.string "en_name", null: false
+    t.string "ja_name", null: false
     t.string "thumb"
     t.string "thumb_tmp"
     t.string "slug", null: false
@@ -343,7 +344,8 @@ ActiveRecord::Schema.define(version: 0) do
 
   create_table "sub_categories", id: { type: :bigint, unsigned: true }, charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name", null: false
-    t.string "english_name", null: false
+    t.string "en_name", null: false
+    t.string "ja_name", null: false
     t.bigint "category_id", null: false
     t.integer "status", default: 0, null: false
     t.integer "position", default: 0, null: false

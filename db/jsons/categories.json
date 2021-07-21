@@ -2,61 +2,71 @@
   {
     "id": 1,
     "name": "Máy xúc",
-    "english_name": "Excavator",
+    "en_name": "Excavator",
+    "ja_name": "油圧ショベル",
     "thumb": "categories/máy xúc.png"
   },
   {
     "id": 2,
     "name": "Máy xúc mini",
-    "english_name": "Mini excavator",
+    "en_name": "Mini excavator",
+    "ja_name": "ミニ油圧ショベル",
     "thumb": "categories/máy xúc mini.png"
   },
   {
     "id": 3,
     "name": "Xúc lật",
-    "english_name": "Wheel loader",
+    "en_name": "Wheel loader",
+    "ja_name": "ホイールローダ",
     "thumb": "categories/xúc lật.png"
   },
   {
     "id": 4,
     "name": "Máy ủi",
-    "english_name": "Bulldozer",
+    "en_name": "Bulldozer",
+    "ja_name": "ブルドーザ",
     "thumb": "categories/máy ủi.png"
   },
   {
     "id": 5,
     "name": "Xe cẩu",
-    "english_name": "Crane",
+    "en_name": "Crane",
+    "ja_name": "クレーン",
     "thumb": "categories/xe cẩu.png"
   },
   {
     "id": 6,
     "name": "Thiết bị làm đường",
-    "english_name": "Road construction equipment",
+    "en_name": "Road construction equipment",
+    "ja_name": "道路機械",
     "thumb": "categories/thiết bị làm đường.png"
   },
   {
     "id": 7,
     "name": "Máy công nghiệp",
-    "english_name": "Industry equipment",
+    "en_name": "Industry equipment",
+    "ja_name": "産業機械",
     "thumb": "categories/máy công nghiệp.png"
   },
   {
     "id": 8,
     "name": "Thiết bị mỏ",
-    "english_name": "Mining equipment",
+    "en_name": "Mining equipment",
+    "ja_name": "マイニング機器",
     "thumb": "categories/thiết bị mỏ.png"
   },
   {
     "id": 9,
     "name": "Xe nâng",
-    "english_name": "Lifting machine",
+    "en_name": "Lifting machine",
+    "ja_name": "フォークリフト",
     "thumb": "categories/xe nâng.png"
   },
   {
     "id": 10,
     "name": "Thiết bị lắp kèm & khác",
-    "english_name": "Attaachment & Others",
+    "en_name": "Attachment & Others",
+    "ja_name": "アタッチメント部品＆その他",
     "thumb": "categories/others.png"
   }
 ]

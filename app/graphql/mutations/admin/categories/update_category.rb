@@ -25,7 +25,7 @@ module Mutations
 
         def normalize_parameters
           params.require(:attribute).permit(
-            :name, :status
+            :name, :en_name, :ja_name, :status
           )
         end
       end

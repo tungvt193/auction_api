@@ -13,6 +13,8 @@
 module Types
   class SubCategoryType < BaseNode
     field :name, String, null: false
+    field :en_name, String, null: false
+    field :ja_name, String, null: false
     field :status, String, null: false
     field :position, Int, null: true
     field :category_id, Types::GraphqlIdType, null: false

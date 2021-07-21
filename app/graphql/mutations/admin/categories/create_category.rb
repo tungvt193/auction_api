@@ -23,7 +23,7 @@ module Mutations
         private
 
         def normalize_parameters
-          params.require(:attribute).permit(:name, :status)
+          params.require(:attribute).permit(:name, :en_name, :ja_name, :status)
         end
       end
     end

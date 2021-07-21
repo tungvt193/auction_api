@@ -1,117 +1,140 @@
 [
   {
     "name": "Máy xúc bánh xích",
-    "english_name": "Crawler Excavator",
+    "en_name": "Crawler Excavator",
+    "ja_name": "クローラーショベル",
     "category_id": 1
   },
   {
     "name": "Máy xúc bánh lốp",
-    "english_name": "Wheel Excavator",
+    "en_name": "Wheel Excavator",
+    "ja_name": "ホイールショベル",
     "category_id": 1
   },
   {
     "name": "Xúc lật mini",
-    "english_name": "Mini Wheel loader",
+    "en_name": "Mini Wheel loader",
+    "ja_name": "ミニホイールローダ",
     "category_id": 3
   },
   {
     "name": "Xúc lật bánh lốp",
-    "english_name": "Wheel loader",
+    "en_name": "Wheel loader",
+    "ja_name": "ホイールローダ",
     "category_id": 3
   },
   {
     "name": "Xúc lật bánh xích",
-    "english_name": "Crawler loader",
+    "en_name": "Crawler loader",
+    "ja_name": "クローラーローダー",
     "category_id": 3
   },
   {
     "name": "Xúc lật liên hợp",
-    "english_name": "Loader Backhoes",
+    "en_name": "Loader Backhoes",
+    "ja_name": "バックホーローダー",
     "category_id": 3
   },
   {
     "name": "Cẩu bánh xích",
-    "english_name": "Crawler Crane",
+    "en_name": "Crawler Crane",
+    "ja_name": "クローラクレーン",
     "category_id": 5
   },
   {
     "name": "Cẩu bánh lốp",
-    "english_name": "Tire Crane",
+    "en_name": "Tire Crane",
+    "ja_name": "ホイールクレーン",
     "category_id": 5
   },
   {
     "name": "Xe tải cẩu",
-    "english_name": "Truck Crane",
+    "en_name": "Truck Crane",
+    "ja_name": "トラッククレーン",
     "category_id": 5
   },
   {
     "name": "Máy rải",
-    "english_name": "Paver",
+    "en_name": "Paver",
+    "ja_name": "",
     "category_id": 6
   },
   {
     "name": "Xe lu",
-    "english_name": "Roller",
+    "en_name": "Roller",
+    "ja_name": "タイヤローラ",
     "category_id": 6
   },
   {
     "name": "Máy cào bóc",
-    "english_name": "Cold Planer",
+    "en_name": "Cold Planer",
+    "ja_name": "コールドプレーナー",
     "category_id": 6
   },
   {
     "name": "Máy san",
-    "english_name": "Motor Grader",
+    "en_name": "Motor Grader",
+    "ja_name": "モーターグレーダー",
     "category_id": 6
   },
   {
     "name": "Máy nén",
-    "english_name": "Air Compressors",
+    "en_name": "Air Compressors",
+    "ja_name": "エアコンプレッサー",
     "category_id": 7
   },
   {
     "name": "Máy hàn",
-    "english_name": "welder machine",
+    "en_name": "welder machine",
+    "ja_name": "溶接機",
     "category_id": 7
   },
   {
     "name": "Máy phát điện",
-    "english_name": "Generators",
+    "en_name": "Generators",
+    "ja_name": "電圧電流発生器",
     "category_id": 7
   },
   {
     "name": "Máy khoan",
-    "english_name": "Drill machine",
+    "en_name": "Drill machine",
+    "ja_name": "ドリル",
     "category_id": 8
   },
   {
     "name": "Xe tải bánh lốp",
-    "english_name": "Truck",
+    "en_name": "Truck",
+    "ja_name": "トラック",
     "category_id": 8
   },
   {
     "name": "Xe tải bánh xích",
-    "english_name": "Crawler Truck",
+    "en_name": "Crawler Truck",
+    "ja_name": "クローラートラック",
     "category_id": 8
   },
   {
     "name": "Xe nâng hàng",
-    "english_name": "Folk lift",
+    "en_name": "Folk lift",
+    "ja_name": "フォークリフト",
     "category_id": 9
   },
   {
     "name": "Xe nâng người",
-    "english_name": "Man lift",
+    "en_name": "Man lift",
+    "ja_name": "高所作業車",
     "category_id": 9
   },
   {
     "name": "Máy ủi bánh xích",
-    "english_name": "Crawler Bulldozer",
+    "en_name": "Crawler Bulldozer",
+    "ja_name": "クローラーブルドーザー",
     "category_id": 4
   },
   {
     "name": "Khác",
-    "english_name": "other",
+    "en_name": "other",
+    "ja_name": "その他",
     "category_id": 10
   }
 ]

@@ -10,7 +10,8 @@ categories.each_with_index do |category, index|
   cat = Category.new(
     id: category['id'],
     name: category['name'],
-    english_name: category['english_name'],
+    en_name: category['en_name'],
+    ja_name: category['ja_name'],
     status: 'active',
     created_at: now,
     updated_at: now,
