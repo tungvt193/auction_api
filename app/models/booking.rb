@@ -8,7 +8,7 @@
 #  status          :integer          default("pending"), not null
 #  user_id         :bigint           not null
 #  booking_type    :integer          default("online"), not null
-#  address         :string(255)      default("18 Tôn Thất Thuyết, Mỹ Đình, Cầu Giấy, Hà Nội")
+#  address         :string(255)
 #  zoom_id         :string(255)
 #  zoom_password   :string(255)
 #  supporter_id    :bigint
@@ -35,6 +35,7 @@ class Booking < ApplicationRecord
   belongs_to :auction
   belongs_to :auction_item
 
+  before_commit :auto_address, on: [:create, :update]
   after_commit :init_notification, on: :create
   after_commit :update_notification, on: :update
 
@@ -74,5 +75,11 @@ class Booking < ApplicationRecord
     return unless status_previously_changed?
 
     MakeNotificationJob.perform_async('Booking', status, id)
+  end
+
+  private
+
+  def auto_address
+    self.address = '18 Tôn Thất Thuyết, Mỹ Đình, Cầu Giấy, Hà Nội' if address.blank?
   end
 end
