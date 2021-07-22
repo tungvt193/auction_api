@@ -36,7 +36,7 @@ class NotificationRepository < BaseRepository
         type: 'News',
         title: record.try(:title),
         content_url: record.try(:content_url),
-        app_route: 'news/detail'
+        app_route: 'webview'
       }.to_json
     }
   end
