@@ -42,6 +42,14 @@ class ApplicationRecord < ActiveRecord::Base
     "https://storage.googleapis.com/#{ENV.fetch('GOOGLE_BUCKET_NAME')}"
   end
 
+  def type_definition
+    try(:class).try(:name).try(:concat, 'Type')
+  end
+
+  def graphql_id
+    GraphQL::Schema::UniqueWithinType.encode(type_definition, try(:id))
+  end
+
   class << self
     def download_file(prefix, url, afterfix = 'jpg')
       absolute_path = Rails.root.join('public/downloads')

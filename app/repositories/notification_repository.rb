@@ -32,7 +32,7 @@ class NotificationRepository < BaseRepository
       notification_type: 'global',
       message: record.try(:short_description),
       data: {
-        id: record.try(:id),
+        id: record.try(:graphql_id),
         type: 'News',
         title: record.try(:title),
         content_url: record.try(:content_url),
@@ -47,7 +47,7 @@ class NotificationRepository < BaseRepository
       notification_type: 'global',
       message: record.try(:short_description),
       data: {
-        video_id: record.try(:id),
+        video_id: record.try(:graphql_id),
         type: 'Video',
         title: record.try(:title),
         content_url: record.try(:content_url),
@@ -65,7 +65,7 @@ class NotificationRepository < BaseRepository
       notification_type: 'owner',
       user_id: record.try(:user_id),
       data: {
-        id: record.try(:id),
+        id: record.try(:graphql_id),
         tab: 2,
         app_route: '/',
         sub_tab: 1
@@ -111,7 +111,7 @@ class NotificationRepository < BaseRepository
       notification_type: 'global',
       image_url: record.try(:cover_url),
       data: {
-        id: record.try(:id),
+        id: record.try(:graphql_id),
         type: 'Banner',
         app_route: '/'
       }.to_json
@@ -124,7 +124,7 @@ class NotificationRepository < BaseRepository
       notification_type: 'owner',
       user_id: record.try(:user_id),
       data: {
-        id: record.try(:auction_item_id),
+        id: record.try(:auction_item).try(:graphql_id),
         title: record.try(:auction_item).try(:category_name),
         type: 'AuctionItem',
         app_route: 'biz/detail'
