@@ -51,6 +51,8 @@ module Types
 
           field :v1AdminRateList, ::Connections::RateConnection,
                 function: ::Resolvers::Admin::Rates::List, null: true, connection: true
+
+          field :v1AdminNotificationBadge, resolver: ::Resolvers::Admin::Notifications::Badge
         end
       end
     end

@@ -88,6 +88,7 @@ module Types
           field :v1CommonNotificationList, ::Connections::NotificationConnection,
                 function: ::Resolvers::Common::Notifications::List, null: true, connection: true
           field :v1CommonNotification, resolver: ::Resolvers::Common::Notifications::Show
+          field :v1CommonNotificationBadge, resolver: ::Resolvers::Common::Notifications::Badge
         end
       end
     end

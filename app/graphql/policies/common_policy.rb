@@ -13,7 +13,8 @@ module Policies
           v1CommonSearchHistoryList: user_guard,
           v1CommonSearchHistory: user_guard,
           v1CommonNotificationList: anonymous_guard,
-          v1CommonNotification: user_guard
+          v1CommonNotification: user_guard,
+          v1CommonNotificationBadge: user_guard
         }
       end
 
