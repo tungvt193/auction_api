@@ -2,17 +2,24 @@ module Resolvers
   module Admin
     module Notifications
       class Badge < ::Resolvers::BaseResolver
-        type Int, null: false
+        type ::Types::BadgeType, null: false
 
         def resolve
-          return 0 if current_user.blank?
+          ::OpenStruct.new({
+                             message: 'Fetch data successful',
+                             badge: unread_notifications.size
+                           })
+        end
 
-          unread_notifications = ::Notification.available_notification(current_user).where(
+        private
+
+        def unread_notifications
+          return [] if current_user.blank?
+
+          ::Notification.available_notification(current_user).where(
             '(reader_ids NOT LIKE ?) IS NOT TRUE ',
             "%#{current_user.try(:id)} ,"
           )
-
-          unread_notifications.size
         end
       end
     end
