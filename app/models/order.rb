@@ -34,7 +34,7 @@ class Order < ApplicationRecord
 
   accepts_nested_attributes_for :order_items
 
-  before_commit :generate_code, on: :create
+  before_create :generate_code
   before_save :re_caculate_price
 
   after_commit :init_notification, on: :create
