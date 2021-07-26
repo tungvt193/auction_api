@@ -56,21 +56,6 @@ class NotificationRepository < BaseRepository
     }
   end
 
-  def make_video_message
-    {
-      title: record.try(:title),
-      notification_type: 'global',
-      message: record.try(:short_description),
-      data: {
-        video_id: record.try(:id),
-        type: 'Video',
-        title: record.try(:title),
-        content_url: record.try(:content_url),
-        app_route: 'video/detail'
-      }.to_json
-    }
-  end
-
   def make_auction_item_message(type)
   end
 
