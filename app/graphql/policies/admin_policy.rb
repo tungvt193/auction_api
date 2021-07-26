@@ -46,7 +46,8 @@ module Policies
           },
           v1AdminDeleteRate: {
             guard: ->(_obj, _args, _ctx) { true }
-          }
+          },
+          v1AdminUpdateProfile: admin_guard
         }.merge(block_policy('Auction')).
           merge(block_policy('Banner')).
           merge(block_policy('Booking')).
