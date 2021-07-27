@@ -10,17 +10,16 @@ module Mutations
         def resolve(args)
           super
 
-          resource = object_from_id(args[:id])
           attributes = decode_attributes(normalize_parameters)
 
           ApplicationRecord.transaction do
-            resource.assign_attributes(attributes)
-            resource.avatar = params[:avatar] if params[:avatar].present?
+            current_user.assign_attributes(attributes)
+            current_user.avatar = params[:avatar] if params[:avatar].present?
 
-            resource.save!
+            current_user.save!
           end
 
-          { data: resource }
+          { data: current_user }
         end
 
         private
